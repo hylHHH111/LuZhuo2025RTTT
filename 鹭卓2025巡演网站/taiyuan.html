@@ -98,5 +98,6 @@
         function openLightbox(name) { document.getElementById('lightboxImg').src = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect fill='%23B5E3FF' width='100%25' height='100%25'/><text fill='%23002CCD' x='50%25' y='50%25' text-anchor='middle' font-size='40' font-weight='bold'>${encodeURIComponent(name)}</text></svg>`; document.getElementById('lightbox').classList.add('active'); }
         function closeLightbox(e) { if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close')) return; document.getElementById('lightbox').classList.remove('active'); }
     </script>
+    <script src="js/music.js"></script>
 </body>
 </html>

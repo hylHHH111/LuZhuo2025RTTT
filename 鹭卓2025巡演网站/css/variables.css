@@ -3,24 +3,24 @@
    ============================================ */
 
 :root {
-  /* 主色调 - 新配色方案 */
-  --primary: #3A86C5;
-  --primary-light: #73B4E9;
-  --accent: #C2DEF5;
-  --accent-light: #FAFADB;
+  /* 主色调 - 新配色方案 (基于色卡: Shallow Cotton Candy #A8D8EA, Creamy Wave #D4F0F7) */
+  --primary: #5BA4C9;
+  --primary-light: #A8D8EA;
+  --accent: #D4F0F7;
+  --accent-light: #E8F6FA;
   --white: #FFFFFF;
-  --black: #000000;
+  --black: #2C3E50;
   
   /* 功能色 */
   --bg-primary: var(--white);
   --bg-secondary: var(--accent);
   --text-primary: var(--black);
-  --text-secondary: #666666;
+  --text-secondary: #5A6C7D;
   --text-light: var(--white);
   
   /* 导航 */
   --nav-height: 70px;
-  --nav-bg: linear-gradient(135deg, #3A86C5 0%, #73B4E9 100%);
+  --nav-bg: linear-gradient(135deg, #5BA4C9 0%, #A8D8EA 100%);
   
   /* 间距 */
   --space-xs: 0.25rem;
@@ -32,7 +32,7 @@
   --space-3xl: 4rem;
   
   /* 字体 */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -50,9 +50,9 @@
   --radius-full: 9999px;
   
   /* 阴影 */
-  --shadow-sm: 0 2px 4px rgba(58, 134, 197, 0.1);
-  --shadow-md: 0 4px 12px rgba(58, 134, 197, 0.15);
-  --shadow-lg: 0 8px 24px rgba(58, 134, 197, 0.2);
+  --shadow-sm: 0 2px 4px rgba(91, 164, 201, 0.1);
+  --shadow-md: 0 4px 12px rgba(91, 164, 201, 0.15);
+  --shadow-lg: 0 8px 24px rgba(91, 164, 201, 0.2);
   
   /* 过渡 */
   --transition-fast: 0.15s ease;
