@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北京站 - 鹭卓2025 RTTT巡演</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-family); background: var(--white); color: var(--text-primary); line-height: 1.6; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); background: var(--nav-bg); z-index: 1000; box-shadow: var(--shadow-md); }
+        .navbar-container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-lg); height: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .navbar-logo { font-size: var(--font-size-xl); font-weight: 700; color: var(--white); text-decoration: none; }
+        .navbar-nav { display: flex; gap: var(--space-xs); }
+        .nav-item { padding: var(--space-sm) var(--space-md); color: var(--white); text-decoration: none; font-size: var(--font-size-base); font-weight: 500; border-radius: var(--radius-md); transition: all var(--transition-fast); position: relative; }
+        .nav-item:hover { color: var(--accent-light); background: rgba(255,255,255,0.1); }
+        .nav-item.active { color: var(--white); }
+        .nav-item.active::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 20px; height: 2px; background: var(--white); border-radius: var(--radius-full); }
+        .navbar-toggle { display: none; flex-direction: column; gap: 5px; padding: var(--space-sm); background: none; border: none; cursor: pointer; }
+        .navbar-toggle span { display: block; width: 24px; height: 2px; background: var(--white); }
+        .main-content { padding-top: var(--nav-height); }
+        .city-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); padding: var(--space-3xl) var(--space-lg); text-align: center; }
+        .city-name { font-size: var(--font-size-4xl); font-weight: 800; margin-bottom: var(--space-md); }
+        .city-date { font-size: var(--font-size-xl); color: var(--accent-light); }
+        .content-section { padding: var(--space-3xl) var(--space-lg); max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: var(--font-size-2xl); font-weight: 700; color: var(--primary); margin-bottom: var(--space-xl); display: flex; align-items: center; gap: var(--space-md); }
+        .section-title::before { content: ''; width: 4px; height: 28px; background: var(--primary); border-radius: var(--radius-sm); }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); margin-bottom: var(--space-3xl); }
+        .info-card { background: linear-gradient(135deg, var(--accent-light) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: var(--space-xl); border-left: 4px solid var(--primary); }
+        .info-card-title { font-size: var(--font-size-lg); font-weight: 600; color: var(--primary); margin-bottom: var(--space-sm); }
+        .info-card-content { color: var(--text-secondary); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); margin-bottom: var(--space-3xl); }
+        .gallery-item { aspect-ratio: 4/3; background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: all var(--transition-base); display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 600; }
+        .gallery-item:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
+        .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
+        .video-item { background: var(--accent-light); border-radius: var(--radius-lg); overflow: hidden; }
+        .video-placeholder { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 48px; cursor: pointer; }
+        .video-title { padding: var(--space-md) var(--space-lg); font-weight: 600; color: var(--primary); }
+        .lightbox { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: all var(--transition-base); }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox-img { max-width: 90%; max-height: 90%; border-radius: var(--radius-lg); }
+        .lightbox-close { position: absolute; top: 30px; right: 30px; width: 50px; height: 50px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px; color: var(--primary); }
+        .footer { background: var(--primary); color: var(--white); padding: var(--space-2xl) var(--space-lg); text-align: center; }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all var(--transition-base); z-index: 999; font-size: 20px; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        @media (max-width: 1024px) { .navbar-nav { position: fixed; top: var(--nav-height); left: 0; right: 0; background: var(--nav-bg); flex-direction: column; padding: var(--space-md); transform: translateY(-100%); opacity: 0; visibility: hidden; transition: all var(--transition-base); } .navbar-nav.active { transform: translateY(0); opacity: 1; visibility: visible; } .navbar-toggle { display: flex; } .info-grid, .gallery-grid, .video-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
+            <div class="navbar-nav" id="navbarNav">
+                <a href="home.html" class="nav-item">首页</a>
+                <a href="chengdu.html" class="nav-item">成都站</a>
+                <a href="hefei.html" class="nav-item">合肥站</a>
+                <a href="taiyuan.html" class="nav-item">太原站</a>
+                <a href="beijing.html" class="nav-item active">北京站</a>
+                <a href="nanjing.html" class="nav-item">南京站</a>
+                <a href="stage.html" class="nav-item">舞台直拍</a>
+            </div>
+            <button class="navbar-toggle" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <main class="main-content">
+        <section class="city-header">
+            <h1 class="city-name">北京站</h1>
+            <p class="city-date">敬请期待</p>
+        </section>
+        <section class="content-section">
+            <h2 class="section-title">演出信息</h2>
+            <div class="info-grid">
+                <div class="info-card"><div class="info-card-title">演出时间</div><div class="info-card-content">待定<br>请持续关注官方公告</div></div>
+                <div class="info-card"><div class="info-card-title">演出地点</div><div class="info-card-content">国家体育馆<br>北京市朝阳区天辰东路</div></div>
+                <div class="info-card"><div class="info-card-title">演出场次</div><div class="info-card-content">待定</div></div>
+                <div class="info-card"><div class="info-card-title">票价信息</div><div class="info-card-content">待定</div></div>
+            </div>
+        </section>
+        <section class="content-section">
+            <h2 class="section-title">图文记录</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('敬请期待')">敬请期待</div>
+                <div class="gallery-item" onclick="openLightbox('敬请期待')">敬请期待</div>
+                <div class="gallery-item" onclick="openLightbox('敬请期待')">敬请期待</div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><p>鹭卓2025 RTTT巡演记录 | For Luzhou，From 橘子suuoia_Lu</p></footer>
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+    <script>
+        function toggleMobileMenu() { document.getElementById('navbarNav').classList.toggle('active'); }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        window.addEventListener('scroll', () => { document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 500); });
+        function openLightbox(name) { document.getElementById('lightboxImg').src = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect fill='%23B5E3FF' width='100%25' height='100%25'/><text fill='%23002CCD' x='50%25' y='50%25' text-anchor='middle' font-size='40' font-weight='bold'>${encodeURIComponent(name)}</text></svg>`; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox(e) { if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close')) return; document.getElementById('lightbox').classList.remove('active'); }
+    </script>
+    <script src="js/music.js"></script>
+</body>
+</html>

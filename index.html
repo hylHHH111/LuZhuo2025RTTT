@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鹭卓2025 RTTT巡演</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --warm-cream: #D4F0F7;
+            --warm-peach: #A8D8EA;
+            --warm-coral: #5BA4C9;
+            --warm-pink: #7BC4E0;
+            --warm-brown: #4A90A4;
+            --warm-gold: #7BC4E0;
+            --warm-mint: #A8D8EA;
+            --warm-lavender: #D4F0F7;
+            --paper-texture: rgba(255, 255, 255, 0.98);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(180deg, #A8D8EA 0%, #D4F0F7 50%, #FFFFFF 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        /* 纸质纹理背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 温暖的光晕效果 */
+        .warm-glow {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            animation: floatGlow 10s ease-in-out infinite;
+        }
+
+        .warm-glow-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 216, 234, 0.5) 0%, transparent 70%);
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .warm-glow-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 240, 247, 0.45) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+
+        .warm-glow-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -2s;
+        }
+
+        @keyframes floatGlow {
+            0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+            33% { transform: scale(1.1) translate(20px, -20px); opacity: 0.8; }
+            66% { transform: scale(0.95) translate(-10px, 15px); opacity: 0.7; }
+        }
+
+        /* 手绘风格装饰元素 */
+        .hand-drawn-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 飘浮的小圆点 */
+        .floating-dot {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 8s ease-in-out infinite;
+        }
+
+        .dot-1 {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            left: 15%;
+            top: -20px;
+            animation-delay: 0s;
+        }
+
+        .dot-2 {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            left: 35%;
+            top: -20px;
+            animation-delay: 2s;
+        }
+
+        .dot-3 {
+            width: 10px;
+            height: 10px;
+            background: rgba(168, 216, 234, 0.8);
+            right: 25%;
+            top: -20px;
+            animation-delay: 4s;
+        }
+
+        .dot-4 {
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            right: 10%;
+            top: -20px;
+            animation-delay: 1s;
+        }
+
+        .dot-5 {
+            width: 14px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.6);
+            left: 5%;
+            top: -20px;
+            animation-delay: 3s;
+        }
+
+        .dot-6 {
+            width: 10px;
+            height: 10px;
+            background: rgba(123, 196, 224, 0.7);
+            left: 25%;
+            top: -20px;
+            animation-delay: 5s;
+        }
+
+        .dot-7 {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.85);
+            left: 55%;
+            top: -20px;
+            animation-delay: 0.5s;
+        }
+
+        .dot-8 {
+            width: 9px;
+            height: 9px;
+            background: rgba(168, 216, 234, 0.75);
+            left: 75%;
+            top: -20px;
+            animation-delay: 2.5s;
+        }
+
+        .dot-9 {
+            width: 11px;
+            height: 11px;
+            background: rgba(255, 255, 255, 0.65);
+            left: 45%;
+            top: -20px;
+            animation-delay: 4.5s;
+        }
+
+        .dot-10 {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            left: 85%;
+            top: -20px;
+            animation-delay: 6s;
+        }
+
+        .dot-11 {
+            width: 6px;
+            height: 6px;
+            background: rgba(91, 164, 201, 0.7);
+            left: 65%;
+            top: -20px;
+            animation-delay: 1.5s;
+        }
+
+        .dot-12 {
+            width: 13px;
+            height: 13px;
+            background: rgba(255, 255, 255, 0.7);
+            left: 8%;
+            top: -20px;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        }
+
+        /* 闪闪小圆点 */
+        .sparkle-dot {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10;
+            animation: sparkle 1.9s ease-in-out infinite;
+        }
+
+        .sparkle-1 { width: 2px; height: 2px; background: #FFFFFF; top: 5%; left: 5%; animation-delay: 0s; }
+        .sparkle-2 { width: 1px; height: 1px; background: #FFFFFF; top: 12%; left: 18%; animation-delay: 0.23s; }
+        .sparkle-3 { width: 2px; height: 2px; background: #FFFFFF; top: 8%; left: 35%; animation-delay: 0.47s; }
+        .sparkle-4 { width: 1px; height: 1px; background: #FFFFFF; top: 15%; left: 52%; animation-delay: 0.71s; }
+        .sparkle-5 { width: 2px; height: 2px; background: #FFFFFF; top: 6%; left: 68%; animation-delay: 0.95s; }
+        .sparkle-6 { width: 1px; height: 1px; background: #FFFFFF; top: 14%; left: 82%; animation-delay: 1.19s; }
+        .sparkle-7 { width: 2px; height: 2px; background: #FFFFFF; top: 3%; left: 92%; animation-delay: 1.43s; }
+        .sparkle-8 { width: 1px; height: 1px; background: #FFFFFF; top: 18%; left: 45%; animation-delay: 1.67s; }
+        .sparkle-9 { width: 2px; height: 2px; background: #FFFFFF; top: 22%; left: 8%; animation-delay: 0.08s; }
+        .sparkle-10 { width: 1px; height: 1px; background: #FFFFFF; top: 28%; left: 25%; animation-delay: 0.31s; }
+        .sparkle-11 { width: 2px; height: 2px; background: #FFFFFF; top: 25%; left: 42%; animation-delay: 0.55s; }
+        .sparkle-12 { width: 1px; height: 1px; background: #FFFFFF; top: 32%; left: 58%; animation-delay: 0.79s; }
+        .sparkle-13 { width: 2px; height: 2px; background: #FFFFFF; top: 20%; left: 75%; animation-delay: 1.03s; }
+        .sparkle-14 { width: 1px; height: 1px; background: #FFFFFF; top: 30%; left: 88%; animation-delay: 1.27s; }
+        .sparkle-15 { width: 2px; height: 2px; background: #FFFFFF; top: 35%; left: 12%; animation-delay: 1.51s; }
+        .sparkle-16 { width: 1px; height: 1px; background: #FFFFFF; top: 38%; left: 30%; animation-delay: 1.75s; }
+        .sparkle-17 { width: 2px; height: 2px; background: #FFFFFF; top: 42%; left: 48%; animation-delay: 0.13s; }
+        .sparkle-18 { width: 1px; height: 1px; background: #FFFFFF; top: 36%; left: 65%; animation-delay: 0.37s; }
+        .sparkle-19 { width: 2px; height: 2px; background: #FFFFFF; top: 45%; left: 80%; animation-delay: 0.61s; }
+        .sparkle-20 { width: 1px; height: 1px; background: #FFFFFF; top: 40%; left: 95%; animation-delay: 0.85s; }
+        .sparkle-21 { width: 2px; height: 2px; background: #FFFFFF; top: 48%; left: 5%; animation-delay: 1.09s; }
+        .sparkle-22 { width: 1px; height: 1px; background: #FFFFFF; top: 52%; left: 20%; animation-delay: 1.33s; }
+        .sparkle-23 { width: 2px; height: 2px; background: #FFFFFF; top: 55%; left: 38%; animation-delay: 1.57s; }
+        .sparkle-24 { width: 1px; height: 1px; background: #FFFFFF; top: 50%; left: 55%; animation-delay: 1.81s; }
+        .sparkle-25 { width: 2px; height: 2px; background: #FFFFFF; top: 58%; left: 72%; animation-delay: 0.19s; }
+        .sparkle-26 { width: 1px; height: 1px; background: #FFFFFF; top: 54%; left: 88%; animation-delay: 0.43s; }
+        .sparkle-27 { width: 2px; height: 2px; background: #FFFFFF; top: 62%; left: 15%; animation-delay: 0.67s; }
+        .sparkle-28 { width: 1px; height: 1px; background: #FFFFFF; top: 68%; left: 32%; animation-delay: 0.91s; }
+        .sparkle-29 { width: 1px; height: 1px; background: #FFFFFF; top: 65%; left: 50%; animation-delay: 1.15s; }
+        .sparkle-30 { width: 2px; height: 2px; background: #FFFFFF; top: 72%; left: 68%; animation-delay: 1.39s; }
+        .sparkle-31 { width: 1px; height: 1px; background: #FFFFFF; top: 70%; left: 85%; animation-delay: 1.63s; }
+        .sparkle-32 { width: 2px; height: 2px; background: #FFFFFF; top: 78%; left: 8%; animation-delay: 1.87s; }
+        .sparkle-33 { width: 1px; height: 1px; background: #FFFFFF; top: 75%; left: 25%; animation-delay: 0.04s; }
+        .sparkle-34 { width: 2px; height: 2px; background: #FFFFFF; top: 82%; left: 42%; animation-delay: 0.28s; }
+        .sparkle-35 { width: 1px; height: 1px; background: #FFFFFF; top: 80%; left: 60%; animation-delay: 0.52s; }
+        .sparkle-36 { width: 2px; height: 2px; background: #FFFFFF; top: 88%; left: 78%; animation-delay: 0.76s; }
+        .sparkle-37 { width: 1px; height: 1px; background: #FFFFFF; top: 85%; left: 92%; animation-delay: 1.0s; }
+        .sparkle-38 { width: 2px; height: 2px; background: #FFFFFF; top: 92%; left: 15%; animation-delay: 1.24s; }
+        .sparkle-39 { width: 1px; height: 1px; background: #FFFFFF; top: 95%; left: 35%; animation-delay: 1.48s; }
+        .sparkle-40 { width: 2px; height: 2px; background: #FFFFFF; top: 90%; left: 52%; animation-delay: 1.72s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.9), 0 0 30px 6px rgba(168, 216, 234, 0.5); }
+        }
+
+        /* 3D场景容器 */
+        #scene-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            perspective: 1200px;
+            z-index: 2;
+        }
+
+        /* 3D旋转容器 */
+        #carousel {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out;
+            will-change: transform;
+        }
+
+        /* 手绘风格卡片 */
+        .card {
+            position: absolute;
+            width: 110px;
+            height: 150px;
+            left: -55px;
+            top: -75px;
+            background: transparent;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
+            overflow: visible;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            pointer-events: auto;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 30px rgba(91, 164, 201, 0.4);
+            z-index: 1000 !important;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            will-change: transform;
+            display: block;
+            background: transparent;
+        }
+
+        .card-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--warm-peach) 0%, var(--warm-pink) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-brown);
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Noto Sans SC', sans-serif;
+            border-radius: 10px;
+        }
+
+        /* 卡片日期文字 */
+        .card-date {
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #4A90A4;
+            font-family: 'Noto Sans SC', sans-serif;
+            white-space: nowrap;
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* 中央按钮 - 手绘风格 */
+        #center-btn {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 18px 45px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4A90A4;
+            font-size: 48px;
+            font-weight: 500;
+            font-family: 'Noto Serif SC', serif;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 50;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: 4px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        #center-btn:hover {
+            transform: translateX(-50%) scale(1.05);
+            color: #5BA4C9;
+        }
+
+        #center-btn:active {
+            transform: translateX(-50%) scale(0.98);
+        }
+
+        #center-btn.clicked {
+            animation: btnDisappear 0.8s ease forwards;
+        }
+
+        @keyframes btnDisappear {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            50% { transform: translateX(-50%) scale(1.15); opacity: 0.6; }
+            100% { transform: translateX(-50%) scale(0); opacity: 0; }
+        }
+
+        /* 副标题文字 */
+        #subtitle-text {
+            position: absolute;
+            top: calc(8% + 90px);
+            left: 50%;
+            transform: translateX(-50%);
+            color: #4A90A4;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Noto Serif SC', serif;
+            letter-spacing: 3px;
+            text-align: center;
+            z-index: 50;
+            opacity: 1;
+        }
+
+        /* 过渡动画 */
+        .fade-out {
+            animation: fadeOut 1s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .card.scatter {
+            animation: scatter 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes scatter {
+            to {
+                transform: translateZ(800px) rotateY(540deg) rotateX(45deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* 图片放大查看 */
+        #image-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #A8D8EA 0%, #D4F0F7 50%, #FFFFFF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        #image-viewer.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #image-viewer .viewer-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 75%;
+            max-height: 75%;
+        }
+
+        #image-viewer img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 16px;
+            box-shadow:
+                0 20px 60px rgba(93, 64, 55, 0.2),
+                0 0 0 4px rgba(91, 164, 201, 0.3);
+        }
+
+        #image-viewer .viewer-date {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #4A90A4;
+            font-family: 'Noto Sans SC', sans-serif;
+            white-space: nowrap;
+        }
+
+        #image-viewer .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--paper-texture);
+            border: 3px solid var(--warm-coral);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-brown);
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 0 rgba(91, 164, 201, 0.3);
+            font-weight: 300;
+            z-index: 10;
+        }
+
+        #image-viewer .close-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: var(--warm-coral);
+            color: white;
+        }
+
+        #image-viewer .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(91, 164, 201, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4A90A4;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        #image-viewer .nav-btn:hover {
+            background: rgba(91, 164, 201, 0.9);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #image-viewer .nav-btn.prev {
+            left: -80px;
+        }
+
+        #image-viewer .nav-btn.next {
+            right: -80px;
+        }
+
+        /* 加载动画 - 简约风格 */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #A8D8EA 0%, #D4F0F7 50%, #FFFFFF 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+            transition: opacity 0.5s ease;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .loader-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: #4A90A4;
+            letter-spacing: 8px;
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .loader-subtitle {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #5BA4C9;
+            letter-spacing: 4px;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .loader-line {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #5BA4C9, transparent);
+            margin: 0 auto 24px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards, lineShimmer 0.7s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            animation: shimmer 0.7s ease-in-out infinite;
+        }
+
+        @keyframes lineShimmer {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .loader-text {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #7BC4E0;
+            letter-spacing: 6px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 标题文字 */
+        .main-title {
+            position: absolute;
+            top: 22%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            #center-btn {
+                font-size: 32px;
+                padding: 12px 30px;
+                white-space: nowrap;
+            }
+
+            #subtitle-text {
+                font-size: 12px;
+                letter-spacing: 2px;
+                white-space: nowrap;
+                top: calc(8% + 70px);
+            }
+
+            .loader-title {
+                font-size: 36px;
+            }
+
+            .loader-subtitle {
+                font-size: 14px;
+            }
+
+            .card {
+                width: 80px;
+                height: 110px;
+                left: -40px;
+                top: -55px;
+            }
+
+            #image-viewer .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            #image-viewer .nav-btn.prev {
+                left: 10px;
+            }
+
+            #image-viewer .nav-btn.next {
+                right: 10px;
+            }
+
+            #music-control-btn {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 18px !important;
+                bottom: 20px !important;
+                right: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #center-btn {
+                font-size: 24px;
+                padding: 10px 20px;
+            }
+
+            #subtitle-text {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .loader-title {
+                font-size: 28px;
+            }
+
+            .loader-subtitle {
+                font-size: 12px;
+            }
+        }
+
+        /* 移动端横屏适配 */
+        @media (max-height: 500px) and (orientation: landscape) {
+            #center-btn {
+                font-size: 32px;
+                top: 6%;
+            }
+
+            #subtitle-text {
+                font-size: 14px;
+                top: calc(6% + 70px);
+                letter-spacing: 2px;
+            }
+
+            .card {
+                width: 75px;
+                height: 100px;
+                left: -37px;
+                top: -50px;
+            }
+
+            #scene-container {
+                margin-top: 20px;
+            }
+
+            #music-control-btn {
+                width: 35px !important;
+                height: 35px !important;
+                font-size: 16px !important;
+                bottom: 15px !important;
+                right: 15px !important;
+            }
+        }
+
+        /* 移动端竖屏 - 缩略图+大图组合 */
+        #mobile-gallery-container {
+            display: none;
+        }
+
+        @media (max-width: 768px) and (orientation: portrait) {
+            #scene-container {
+                display: none;
+            }
+
+            #mobile-gallery-container {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                background: linear-gradient(180deg, #A8D8EA 0%, #D4F0F7 50%, #FFFFFF 100%);
+                padding: 60px 15px 20px 15px;
+                box-sizing: border-box;
+                overflow-y: auto;
+            }
+
+            /* 画廊标题区域 */
+            .gallery-header {
+                text-align: center;
+                padding: 15px 0 10px 0;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+                user-select: none;
+            }
+
+            .gallery-title {
+                font-size: 32px;
+                color: #4A90A4;
+                font-family: 'Noto Serif SC', serif;
+                font-weight: 600;
+                margin-bottom: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .gallery-header:hover .gallery-title {
+                color: #5BA4C9;
+                transform: scale(1.05);
+            }
+
+            .gallery-subtitle {
+                font-size: 16px;
+                color: #5BA4C9;
+                font-family: 'Noto Sans SC', sans-serif;
+                letter-spacing: 2px;
+                transition: all 0.3s ease;
+            }
+
+            .gallery-header:hover .gallery-subtitle {
+                color: #4A90A4;
+            }
+
+            /* 大图区域 */
+            .gallery-main {
+                flex: 0 0 52%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .gallery-main img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .gallery-main img:active {
+                transform: scale(0.98);
+            }
+
+            .main-image-date {
+                font-size: 14px;
+                color: #4A90A4;
+                font-family: 'Noto Sans SC', sans-serif;
+                text-align: center;
+                margin: 10px 0;
+                white-space: nowrap;
+            }
+
+            .gallery-counter {
+                font-size: 14px;
+                color: #4A90A4;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 6px 16px;
+                border-radius: 20px;
+                font-family: 'Noto Sans SC', sans-serif;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                text-align: center;
+                margin: 10px auto;
+                align-self: center;
+            }
+
+            /* 缩略图区域 */
+            .gallery-thumbnails {
+                flex: 0 0 28%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .thumbnails-wrapper {
+                display: flex;
+                gap: 10px;
+                padding: 0 40px;
+            }
+
+            .thumbnails-counter {
+                font-size: 12px;
+                color: #4A90A4;
+                text-align: center;
+                font-family: 'Noto Sans SC', sans-serif;
+                margin: 5px 0;
+                align-self: center;
+            }
+
+            .thumbnail-item {
+                flex: 0 0 80px;
+                height: 100px;
+                background: white;
+                border-radius: 10px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                border: 3px solid transparent;
+            }
+
+            .thumbnail-item.active {
+                border-color: #5BA4C9;
+                transform: scale(1.05);
+                box-shadow: 0 5px 20px rgba(91, 164, 201, 0.3);
+            }
+
+            .thumbnail-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* 全屏查看 */
+            #gallery-fullscreen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(180deg, #A8D8EA 0%, #D4F0F7 50%, #FFFFFF 100%);
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #gallery-fullscreen img {
+                max-width: 90%;
+                max-height: 70%;
+                object-fit: contain;
+                border-radius: 12px;
+            }
+
+            .fullscreen-date {
+                margin-top: 15px;
+                font-size: 16px;
+                color: #4A90A4;
+                font-family: 'Noto Serif SC', serif;
+                text-align: center;
+            }
+
+            .fullscreen-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                background: rgba(91, 164, 201, 0.3);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 28px;
+                color: #4A90A4;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            .fullscreen-nav {
+                position: absolute;
+                bottom: 25px;
+                width: 36px;
+                height: 36px;
+                background: rgba(91, 164, 201, 0.3);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                color: #4A90A4;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            .fullscreen-nav.prev {
+                left: calc(50% - 80px);
+            }
+
+            .fullscreen-nav.next {
+                right: calc(50% - 80px);
+            }
+
+            .fullscreen-counter {
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 16px;
+                color: #4A90A4;
+                font-family: 'Noto Sans SC', sans-serif;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loader">
+        <div class="loader-content">
+            <h1 class="loader-title">鹭卓</h1>
+            <p class="loader-subtitle">- 2025 Ready To The Top巡回演唱会记鹭网站 -</p>
+            <div class="loader-line"></div>
+            <p class="loader-text">欢迎进入与鹭世界</p>
+        </div>
+    </div>
+
+    <!-- 温暖光晕背景 -->
+    <div class="warm-glow warm-glow-1"></div>
+    <div class="warm-glow warm-glow-2"></div>
+    <div class="warm-glow warm-glow-3"></div>
+
+    <!-- 飘浮的小圆点 - 模拟花瓣飘落 -->
+    <div class="floating-dot dot-1"></div>
+    <div class="floating-dot dot-2"></div>
+    <div class="floating-dot dot-3"></div>
+    <div class="floating-dot dot-4"></div>
+    <div class="floating-dot dot-5"></div>
+    <div class="floating-dot dot-6"></div>
+    <div class="floating-dot dot-7"></div>
+    <div class="floating-dot dot-8"></div>
+    <div class="floating-dot dot-9"></div>
+    <div class="floating-dot dot-10"></div>
+    <div class="floating-dot dot-11"></div>
+    <div class="floating-dot dot-12"></div>
+
+    <!-- 闪闪小圆点 -->
+    <div class="sparkle-dot sparkle-1"></div>
+    <div class="sparkle-dot sparkle-2"></div>
+    <div class="sparkle-dot sparkle-3"></div>
+    <div class="sparkle-dot sparkle-4"></div>
+    <div class="sparkle-dot sparkle-5"></div>
+    <div class="sparkle-dot sparkle-6"></div>
+    <div class="sparkle-dot sparkle-7"></div>
+    <div class="sparkle-dot sparkle-8"></div>
+    <div class="sparkle-dot sparkle-9"></div>
+    <div class="sparkle-dot sparkle-10"></div>
+    <div class="sparkle-dot sparkle-11"></div>
+    <div class="sparkle-dot sparkle-12"></div>
+    <div class="sparkle-dot sparkle-13"></div>
+    <div class="sparkle-dot sparkle-14"></div>
+    <div class="sparkle-dot sparkle-15"></div>
+    <div class="sparkle-dot sparkle-16"></div>
+    <div class="sparkle-dot sparkle-17"></div>
+    <div class="sparkle-dot sparkle-18"></div>
+    <div class="sparkle-dot sparkle-19"></div>
+    <div class="sparkle-dot sparkle-20"></div>
+    <div class="sparkle-dot sparkle-21"></div>
+    <div class="sparkle-dot sparkle-22"></div>
+    <div class="sparkle-dot sparkle-23"></div>
+    <div class="sparkle-dot sparkle-24"></div>
+    <div class="sparkle-dot sparkle-25"></div>
+    <div class="sparkle-dot sparkle-26"></div>
+    <div class="sparkle-dot sparkle-27"></div>
+    <div class="sparkle-dot sparkle-28"></div>
+    <div class="sparkle-dot sparkle-29"></div>
+    <div class="sparkle-dot sparkle-30"></div>
+    <div class="sparkle-dot sparkle-31"></div>
+    <div class="sparkle-dot sparkle-32"></div>
+    <div class="sparkle-dot sparkle-33"></div>
+    <div class="sparkle-dot sparkle-34"></div>
+    <div class="sparkle-dot sparkle-35"></div>
+    <div class="sparkle-dot sparkle-36"></div>
+    <div class="sparkle-dot sparkle-37"></div>
+    <div class="sparkle-dot sparkle-38"></div>
+    <div class="sparkle-dot sparkle-39"></div>
+    <div class="sparkle-dot sparkle-40"></div>
+
+    <!-- 3D场景 - 网页端和横屏 -->
+    <div id="scene-container">
+        <div id="carousel"></div>
+        <div id="center-btn">欢迎来到RTTT</div>
+        <div id="subtitle-text">- 宇宙周而复始，时时与你相遇 -</div>
+    </div>
+
+    <!-- 移动端竖屏 - 缩略图+大图组合 -->
+    <div id="mobile-gallery-container">
+        <div class="gallery-header" onclick="goToHome()">
+            <div class="gallery-title">欢迎来到RTTT</div>
+            <div class="gallery-subtitle">- 宇宙周而复始，时时与你相遇 -</div>
+        </div>
+        <div class="gallery-main">
+            <img id="gallery-main-img" src="" alt="" onclick="openFullscreen()">
+        </div>
+        <div class="main-image-date">成都站-9月26日</div>
+        <div class="gallery-thumbnails">
+            <div class="thumbnails-wrapper"></div>
+        </div>
+    </div>
+    <div id="gallery-fullscreen" style="display: none;">
+        <img id="fullscreen-img" src="" alt="">
+        <div class="fullscreen-date" id="fullscreen-date"></div>
+        <div class="fullscreen-close" onclick="closeFullscreen()">&times;</div>
+        <div class="fullscreen-nav prev" onclick="navigateFullscreen(-1)">&#10094;</div>
+        <div class="fullscreen-nav next" onclick="navigateFullscreen(1)">&#10095;</div>
+        <div class="fullscreen-counter">1 / 30</div>
+    </div>
+
+    <!-- 图片查看器 -->
+    <div id="image-viewer" onclick="closeImageViewer(event)">
+        <div class="close-btn" onclick="closeImageViewer()">&times;</div>
+        <div class="viewer-container">
+            <div class="nav-btn prev" onclick="navigateImage(-1, event)">&#10094;</div>
+            <img id="viewer-img" src="" alt="">
+            <div class="viewer-date" id="viewer-date"></div>
+            <div class="nav-btn next" onclick="navigateImage(1, event)">&#10095;</div>
+        </div>
+    </div>
+
+    <script>
+        // 配置
+        const CONFIG = {
+            cardCount: 30,
+            radius: 550,
+            rotationSpeed: 0.001,
+            mouseSensitivity: 0.001
+        };
+
+        // 卡片日期数据 - 30张图片对应的日期/描述
+        const cardDates = [
+            '成都站-海报', '成都站-手写信', '成都站-9月26日', '成都站-9月26日', '成都站-9月27日','成都站-9月27日', 
+            '合肥站-海报', '合肥站-手写信', '合肥站-10月11日', '合肥站-10月11日','合肥站-10月12日', '合肥站-10月12日', 
+            '太原站-海报', '太原站-手写信', '太原站-10月25日', '太原站-10月25日', '太原站-10月26日', '太原站-10月26日', 
+            '北京站-海报', '北京站-手写信', '北京站-11月08日', '北京站-11月08日', '北京站-11月09日', '北京站-11月09日', 
+            '南京站-海报', '南京站-手写信', '南京站-11月22日', '南京站-11月22日', '南京站-11月23日', '南京站-11月23日'
+        ];
+
+        // 30张图片路径数组
+        const cardImages = [
+            'images/cards/card1.jpg', 'images/cards/card2.jpg', 'images/cards/card3.jpg', 'images/cards/card4.jpg', 'images/cards/card5.jpg',
+            'images/cards/card6.jpg', 'images/cards/card7.jpg', 'images/cards/card8.jpg', 'images/cards/card9.jpg', 'images/cards/card10.jpg',
+            'images/cards/card11.jpg', 'images/cards/card12.jpg', 'images/cards/card13.jpg', 'images/cards/card14.jpg', 'images/cards/card15.jpg',
+            'images/cards/card16.jpg', 'images/cards/card17.jpg', 'images/cards/card18.jpg', 'images/cards/card19.jpg', 'images/cards/card20.jpg',
+            'images/cards/card21.jpg', 'images/cards/card22.jpg', 'images/cards/card23.jpg', 'images/cards/card24.jpg', 'images/cards/card25.jpg',
+            'images/cards/card26.jpg', 'images/cards/card27.jpg', 'images/cards/card28.jpg', 'images/cards/card29.jpg', 'images/cards/card30.jpg'
+        ];
+
+        // 状态
+        let state = {
+            rotationY: 0,
+            targetRotationY: 0,
+            isAutoRotating: true,
+            mouseX: 0,
+            mouseY: 0,
+            currentImageIndex: 0,
+            bookPageIndex: 0
+        };
+
+        // 获取图片路径的辅助函数
+        function getCardImage(index) {
+            return cardImages[index] || cardImages[0];
+        }
+
+        // 移动端画廊功能
+        let currentGalleryIndex = 0;
+        const totalGalleryCards = 30;
+
+        function initGallery() {
+            // 初始化大图
+            updateMainImage(0);
+            
+            // 创建缩略图
+            const thumbnailsWrapper = document.querySelector('.thumbnails-wrapper');
+            thumbnailsWrapper.innerHTML = '';
+            
+            for (let i = 0; i < totalGalleryCards; i++) {
+                const thumb = document.createElement('div');
+                thumb.className = 'thumbnail-item' + (i === 0 ? ' active' : '');
+                thumb.innerHTML = `<img src="${getCardImage(i)}" alt="">`;
+                thumb.onclick = () => selectThumbnail(i);
+                thumbnailsWrapper.appendChild(thumb);
+            }
+            
+            // 添加大图区域滑动切换
+            setupMainImageSwipe();
+            
+            // 添加全屏模式滑动切换
+            setupFullscreenSwipe();
+        }
+        
+        // 大图区域滑动切换
+        function setupMainImageSwipe() {
+            const mainImage = document.getElementById('gallery-main-img');
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            mainImage.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            mainImage.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // 向左滑动，下一张
+                        selectThumbnail((currentGalleryIndex + 1) % totalGalleryCards);
+                    } else {
+                        // 向右滑动，上一张
+                        selectThumbnail((currentGalleryIndex - 1 + totalGalleryCards) % totalGalleryCards);
+                    }
+                }
+            }
+        }
+        
+        // 全屏模式滑动切换
+        function setupFullscreenSwipe() {
+            const fullscreen = document.getElementById('gallery-fullscreen');
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            fullscreen.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            fullscreen.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // 向左滑动，下一张
+                        navigateFullscreen(1);
+                    } else {
+                        // 向右滑动，上一张
+                        navigateFullscreen(-1);
+                    }
+                }
+            }
+        }
+
+        // 跳转到home页面
+        function goToHome() {
+            window.location.href = 'home.html';
+        }
+
+        function selectThumbnail(index) {
+            currentGalleryIndex = index;
+            updateMainImage(index);
+            updateThumbnails(index);
+        }
+
+        function updateMainImage(index) {
+            const mainImg = document.getElementById('gallery-main-img');
+            mainImg.src = getCardImage(index);
+            document.querySelector('.main-image-date').textContent = cardDates[index] || '';
+        }
+
+        function updateThumbnails(activeIndex) {
+            const thumbs = document.querySelectorAll('.thumbnail-item');
+            thumbs.forEach((thumb, index) => {
+                if (index === activeIndex) {
+                    thumb.classList.add('active');
+                    // 滚动到可见区域
+                    thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function openFullscreen() {
+            document.getElementById('gallery-fullscreen').style.display = 'flex';
+            document.getElementById('fullscreen-img').src = getCardImage(currentGalleryIndex);
+            document.querySelector('.fullscreen-counter').textContent = `${currentGalleryIndex + 1} / ${totalGalleryCards}`;
+            document.getElementById('fullscreen-date').textContent = cardDates[currentGalleryIndex] || '';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('gallery-fullscreen').style.display = 'none';
+        }
+
+        function navigateFullscreen(direction) {
+            currentGalleryIndex += direction;
+            if (currentGalleryIndex < 0) {
+                currentGalleryIndex = totalGalleryCards - 1;
+            } else if (currentGalleryIndex >= totalGalleryCards) {
+                currentGalleryIndex = 0;
+            }
+            
+            document.getElementById('fullscreen-img').src = getCardImage(currentGalleryIndex);
+            document.querySelector('.fullscreen-counter').textContent = `${currentGalleryIndex + 1} / ${totalGalleryCards}`;
+            document.getElementById('fullscreen-date').textContent = cardDates[currentGalleryIndex] || '';
+            updateMainImage(currentGalleryIndex);
+            updateThumbnails(currentGalleryIndex);
+        }
+
+        // 初始化
+        function init() {
+            createCards();
+            setupEventListeners();
+            animate();
+            
+            // 初始化移动端画廊
+            initGallery();
+
+            // 隐藏加载动画
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2000);
+        }
+
+        // 创建卡片
+        function createCards() {
+            const carousel = document.getElementById('carousel');
+            const angleStep = 360 / CONFIG.cardCount;
+
+            for (let i = 0; i < CONFIG.cardCount; i++) {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.index = i;
+
+                // 创建图片元素
+                const img = document.createElement('img');
+                img.src = getCardImage(i);
+                img.alt = `卡片 ${i + 1}`;
+                img.loading = 'lazy';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'card-placeholder';
+                    placeholder.textContent = `记忆 ${i + 1}`;
+                    card.appendChild(placeholder);
+                };
+                card.appendChild(img);
+
+                // 创建日期文字
+                const dateLabel = document.createElement('div');
+                dateLabel.className = 'card-date';
+                dateLabel.textContent = cardDates[i] || '';
+                card.appendChild(dateLabel);
+
+                // 计算3D位置 - 交替上下排列
+                const angle = angleStep * i;
+                const radian = (angle * Math.PI) / 180;
+                const x = Math.sin(radian) * CONFIG.radius;
+                const z = Math.cos(radian) * CONFIG.radius;
+                // 交替上下：偶数在上，奇数在下
+                const offsetY = (i % 2 === 0) ? -6 : 6;
+
+                card.style.transform = `translateX(${x}px) translateY(${offsetY}px) translateZ(${z}px) rotateY(${angle}deg)`;
+
+                // 点击事件
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    state.isAutoRotating = false;
+                    state.currentImageIndex = i;
+                    showImage(getCardImage(i), i);
+                });
+
+                carousel.appendChild(card);
+            }
+        }
+
+        // 设置事件监听
+        function setupEventListeners() {
+            let isDragging = false;
+            let startX = 0;
+            let currentRotation = 0;
+            let dragStartTime = 0;
+            let dragThreshold = 5; // 移动超过5px认为是拖动
+            let hasMoved = false;
+
+            document.addEventListener('mousedown', (e) => {
+                if (e.target.closest('#center-btn')) return;
+                isDragging = true;
+                hasMoved = false;
+                dragStartTime = Date.now();
+                startX = e.clientX;
+                currentRotation = state.targetRotationY;
+                document.body.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                if (Math.abs(deltaX) > dragThreshold) {
+                    hasMoved = true;
+                }
+                state.targetRotationY = currentRotation + deltaX * 0.4;
+            });
+
+            document.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                document.body.style.cursor = 'default';
+                
+                // 如果没有移动且点击的是卡片，触发卡片点击
+                if (!hasMoved && e.target.closest('.card')) {
+                    const card = e.target.closest('.card');
+                    const index = parseInt(card.dataset.index);
+                    if (!isNaN(index)) {
+                        state.isAutoRotating = false;
+                        state.currentImageIndex = index;
+                        showImage(getCardImage(index), index);
+                    }
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                isDragging = false;
+                document.body.style.cursor = 'default';
+            });
+
+            document.getElementById('center-btn').addEventListener('click', transitionToHome);
+
+            let touchStartX = 0;
+            let touchCurrentRotation = 0;
+            let touchDragStartTime = 0;
+            let touchHasMoved = false;
+
+            document.addEventListener('touchstart', (e) => {
+                if (e.target.closest('#center-btn')) return;
+                touchHasMoved = false;
+                touchDragStartTime = Date.now();
+                touchStartX = e.touches[0].clientX;
+                touchCurrentRotation = state.targetRotationY;
+            }, { passive: true });
+
+            document.addEventListener('touchmove', (e) => {
+                const touchX = e.touches[0].clientX;
+                const diff = touchX - touchStartX;
+                if (Math.abs(diff) > dragThreshold) {
+                    touchHasMoved = true;
+                }
+                state.targetRotationY = touchCurrentRotation + diff * 0.4;
+            }, { passive: true });
+
+            document.addEventListener('touchend', (e) => {
+                // 如果没有移动且点击的是卡片，触发卡片点击
+                if (!touchHasMoved && e.target.closest('.card')) {
+                    const card = e.target.closest('.card');
+                    const index = parseInt(card.dataset.index);
+                    if (!isNaN(index)) {
+                        state.isAutoRotating = false;
+                        state.currentImageIndex = index;
+                        showImage(getCardImage(index), index);
+                    }
+                }
+            });
+        }
+
+        // 动画循环
+        function animate() {
+            const carousel = document.getElementById('carousel');
+
+            if (state.isAutoRotating) {
+                state.rotationY -= CONFIG.rotationSpeed * 16;
+            }
+
+            const currentRotationY = state.rotationY + state.targetRotationY;
+            // 使用 translate3d 触发 GPU 加速
+            carousel.style.transform = `translate3d(0, 0, 0) rotateY(${currentRotationY}deg)`;
+
+            requestAnimationFrame(animate);
+        }
+
+        // 显示图片
+        function showImage(src, index) {
+            const viewer = document.getElementById('image-viewer');
+            const img = document.getElementById('viewer-img');
+            const dateEl = document.getElementById('viewer-date');
+            img.src = src;
+            dateEl.textContent = cardDates[index] || '';
+            viewer.classList.add('active');
+        }
+
+        // 切换图片
+        function navigateImage(direction, e) {
+            if (e) e.stopPropagation();
+            state.currentImageIndex += direction;
+            if (state.currentImageIndex < 0) {
+                state.currentImageIndex = CONFIG.cardCount - 1;
+            } else if (state.currentImageIndex >= CONFIG.cardCount) {
+                state.currentImageIndex = 0;
+            }
+            const img = document.getElementById('viewer-img');
+            const dateEl = document.getElementById('viewer-date');
+            img.src = getCardImage(state.currentImageIndex);
+            dateEl.textContent = cardDates[state.currentImageIndex] || '';
+        }
+
+        // 关闭图片查看器
+        function closeImageViewer(e) {
+            if (e && e.target !== e.currentTarget && !e.target.classList.contains('close-btn') && !e.target.classList.contains('nav-btn')) {
+                return;
+            }
+            document.getElementById('image-viewer').classList.remove('active');
+            state.isAutoRotating = true;
+        }
+
+        // 过渡到首页
+        function transitionToHome() {
+            const btn = document.getElementById('center-btn');
+            const cards = document.querySelectorAll('.card');
+            const container = document.getElementById('scene-container');
+
+            state.isAutoRotating = false;
+            btn.classList.add('clicked');
+
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('scatter');
+                }, index * 40);
+            });
+
+            setTimeout(() => {
+                container.classList.add('fade-out');
+            }, 400);
+
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 1400);
+        }
+
+        init();
+    </script>
+    <script src="js/music.js"></script>
+</body>
+</html>
