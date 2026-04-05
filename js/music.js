@@ -137,8 +137,8 @@
         // 创建音乐控制按钮
         createMusicButton();
         
-        // 定期保存播放进度
-        setInterval(saveMusicState, 100);
+        // 定期保存播放进度（每1秒）
+        setInterval(saveMusicState, 1000);
         
         // 重置视频暂停状态
         window.bgMusicPausedByVideo = false;
@@ -152,18 +152,13 @@
     
     // 用户首次交互后尝试播放
     function handleUserInteraction(e) {
-        console.log('用户交互触发:', e.type);
-        console.log('当前状态 - 播放中:', window.bgMusicPlaying, '用户暂停:', window.bgMusicUserPaused);
-        
         if (!window.bgMusicPlaying && !window.bgMusicUserPaused) {
-            console.log('尝试播放音乐...');
             bgMusic.play().then(function() {
-                console.log('播放成功!');
                 window.bgMusicPlaying = true;
                 updateMusicButtonState();
                 saveMusicState();
             }).catch(function(error) {
-                console.log('播放失败:', error);
+                // 播放失败，不处理
             });
         }
     }
@@ -208,40 +203,11 @@
         }
     });
     
-    // 监听视频结束 - 恢复音乐
-    document.addEventListener('ended', function(e) {
-        if (e.target.tagName === 'VIDEO') {
-            window.bgMusicPausedByVideo = false;
-            saveMusicState();
-            tryPlay();
-        }
-    }, true);
-    
-    // 监听视频暂停 - 恢复音乐
-    document.addEventListener('pause', function(e) {
-        if (e.target.tagName === 'VIDEO') {
-            window.bgMusicPausedByVideo = false;
-            saveMusicState();
-            tryPlay();
-        }
-    }, true);
-    
     // 恢复音乐函数
     function resumeMusic() {
-        var videos = document.querySelectorAll('video');
-        var hasPlayingVideo = false;
-        for (var i = 0; i < videos.length; i++) {
-            if (!videos[i].paused && !videos[i].ended) {
-                hasPlayingVideo = true;
-                break;
-            }
-        }
-        
-        if (!hasPlayingVideo) {
-            window.bgMusicPausedByVideo = false;
-            saveMusicState();
-            tryPlay();
-        }
+        window.bgMusicPausedByVideo = false;
+        saveMusicState();
+        tryPlay();
     }
     
     // 监听关闭按钮

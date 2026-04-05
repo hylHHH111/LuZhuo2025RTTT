@@ -558,7 +558,7 @@ ul, ol {
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    background: rgba(10, 22, 40, 0.98);
+    background: transparent;
     flex-direction: column;
     padding: var(--space-md);
     gap: var(--space-sm);

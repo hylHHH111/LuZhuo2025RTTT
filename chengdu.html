@@ -75,21 +75,21 @@
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
                         <span class="nav-icon">🎬</span>
-                        <span>海报区</span>
+                        <span>海报信封区</span>
                     </button>
                 </div>
             </section>
 
             <!-- 下半区三栏布局 (1:1:1) -->
             <section class="lower-section">
-                <!-- 海报花絮区 -->
+                <!-- 花絮区 -->
                 <div class="lower-module">
                     <div class="module-header">
                         <h3 class="module-title">花絮定妆照</h3>
                     </div>
                     <div class="card-grid">
                         <div class="card" onclick="openPosterModal()">
-                            <img src="assets/images/poster-cover.jpg" alt="海报花絮" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>海报花絮</text></svg>'">
+                            <img src="assets/images/poster-cover.jpg" alt="花絮" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>花絮</text></svg>'">
                             <div class="card-overlay">
                                 <div class="card-title">花絮</div>
                                 <div class="card-subtitle">点击查看更多</div>
@@ -188,16 +188,87 @@
                 'assets/images/chengdu/bouquet2.jpg',
                 'assets/images/chengdu/bouquet3.jpg'
             ],
-            official: [    // 官摄区照片
-                'assets/images/chengdu/official1.jpg',
-                'assets/images/chengdu/official2.jpg',
-                'assets/images/chengdu/official3.jpg'
+            official: [    // 官摄区照片（三层级结构）
+                {
+                    title: '鹭卓帅哥',
+                    cover: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_3.jpg',
+                    children: [
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_1.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_1.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_2.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_2.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_3.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_3.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_4.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_4.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_5.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_5.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_6.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_6.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_7.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_7.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_8.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_8.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_9.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_9.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_10.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_10.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_11.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_11.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_12.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_12.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_13.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_13.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_14.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_14.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_15.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_15.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_16.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_16.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_17.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_17.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_18.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_18.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_19.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_19.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_20.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_20.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_21.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_21.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_22.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_22.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_23.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_23.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_24.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_24.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_25.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_25.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_26.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_26.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_27.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_27.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_28.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_28.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_29.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_29.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_30.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_30.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_31.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_31.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_32.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_32.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_33.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_33.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_34.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_34.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_35.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_35.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_36.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_36.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_37.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_37.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_38.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_38.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_39.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_39.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_40.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_40.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_41.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_41.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_42.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_42.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_43.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_43.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_44.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_44.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_45.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_45.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_46.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_46.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_47.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_47.jpg', isLeaf: true },
+                        { image: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_48.jpg', thumb: 'images/chengdu/cd_official_photo/luzhuohao/luzhuohao_48.jpg', isLeaf: true }
+                    ]
+                },
+                {
+                    title: '玫瑰园',
+                    cover: 'assets/images/chengdu/official-rose-cover.jpg',
+                    children: [
+                        { title: '图片1', image: 'images/chengdu/cd_official/rose_1.jpg', thumb: 'images/chengdu/cd_official/rose_1.jpg', isLeaf: true },
+                        { title: '图片2', image: 'images/chengdu/cd_official/rose_2.jpg', thumb: 'images/chengdu/cd_official/rose_2.jpg', isLeaf: true },
+                        { title: '图片3', image: 'images/chengdu/cd_official/rose_3.jpg', thumb: 'images/chengdu/cd_official/rose_3.jpg', isLeaf: true }
+                    ]
+                },
+                {
+                    title: '莫拉娱乐',
+                    cover: 'assets/images/chengdu/official-mola-cover.jpg',
+                    children: [
+                        { title: '图片1', image: 'images/chengdu/cd_official/mola_1.jpg', thumb: 'images/chengdu/cd_official/mola_1.jpg', isLeaf: true },
+                        { title: '图片2', image: 'images/chengdu/cd_official/mola_2.jpg', thumb: 'images/chengdu/cd_official/mola_2.jpg', isLeaf: true },
+                        { title: '图片3', image: 'images/chengdu/cd_official/mola_3.jpg', thumb: 'images/chengdu/cd_official/mola_3.jpg', isLeaf: true }
+                    ]
+                }
             ],
             poster: [    // 海报区照片
-                'images/cards/card1.jpg',
-                'images/cards/card2.jpg',
-                'images/cards/card3.jpg',
-                'images/cards/card4.jpg'
+                'images/chengdu/cd_poster_letter/cd_poster_letter1.jpg',
+                'images/chengdu/cd_poster_letter/cd_poster_letter2.jpg',
+                'images/chengdu/cd_poster_letter/cd_poster_letter3.jpg',
+                'images/chengdu/cd_poster_letter/cd_poster_letter4.jpg',
+                'images/chengdu/cd_poster_letter/cd_poster_letter5.jpg',
+                'images/chengdu/cd_poster_letter/cd_poster_letter6.jpg',
             ]
         };
         
@@ -388,14 +459,14 @@
             cardAlbum.openNavModal('花束区', navData.bouquet);
         }
         
-        // 打开官摄区弹窗
+        // 打开官摄区弹窗（三层级）
         function openOfficialModal() {
-            cardAlbum.openNavModal('官摄区', navData.official);
+            cardAlbum.openModal('官摄区', navData.official, 0);
         }
         
         // 打开海报区弹窗
         function openPosterNavModal() {
-            cardAlbum.openNavModal('海报区', navData.poster);
+            cardAlbum.openNavModal('海报信封区', navData.poster);
         }
         
         // 播放视频
@@ -464,6 +535,11 @@
             } else {
                 cardAlbum.openModal('Day 2 直拍', fancamData[1].children, 0);
             }
+        }
+        
+        // 打开海报花絮弹窗
+        function openPosterModal() {
+            cardAlbum.openNavModal('花絮', posterData);
         }
         
         // 打开定妆照弹窗

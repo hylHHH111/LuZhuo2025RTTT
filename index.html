@@ -116,130 +116,6 @@
             z-index: 1;
         }
 
-        /* 飘浮的小圆点 */
-        .floating-dot {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-            animation: floatUp 8s ease-in-out infinite;
-        }
-
-        .dot-1 {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.8);
-            left: 15%;
-            top: -20px;
-            animation-delay: 0s;
-        }
-
-        .dot-2 {
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.7);
-            left: 35%;
-            top: -20px;
-            animation-delay: 2s;
-        }
-
-        .dot-3 {
-            width: 10px;
-            height: 10px;
-            background: rgba(66, 171, 243, 0.6);
-            right: 25%;
-            top: -20px;
-            animation-delay: 4s;
-        }
-
-        .dot-4 {
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.9);
-            right: 10%;
-            top: -20px;
-            animation-delay: 1s;
-        }
-
-        .dot-5 {
-            width: 14px;
-            height: 14px;
-            background: rgba(255, 255, 255, 0.6);
-            left: 5%;
-            top: -20px;
-            animation-delay: 3s;
-        }
-
-        .dot-6 {
-            width: 10px;
-            height: 10px;
-            background: rgba(110, 192, 248, 0.6);
-            left: 25%;
-            top: -20px;
-            animation-delay: 5s;
-        }
-
-        .dot-7 {
-            width: 7px;
-            height: 7px;
-            background: rgba(255, 255, 255, 0.85);
-            left: 55%;
-            top: -20px;
-            animation-delay: 0.5s;
-        }
-
-        .dot-8 {
-            width: 9px;
-            height: 9px;
-            background: rgba(162, 215, 252, 0.7);
-            left: 75%;
-            top: -20px;
-            animation-delay: 2.5s;
-        }
-
-        .dot-9 {
-            width: 11px;
-            height: 11px;
-            background: rgba(255, 255, 255, 0.65);
-            left: 45%;
-            top: -20px;
-            animation-delay: 4.5s;
-        }
-
-        .dot-10 {
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            left: 85%;
-            top: -20px;
-            animation-delay: 6s;
-        }
-
-        .dot-11 {
-            width: 6px;
-            height: 6px;
-            background: rgba(66, 171, 243, 0.6);
-            left: 65%;
-            top: -20px;
-            animation-delay: 1.5s;
-        }
-
-        .dot-12 {
-            width: 13px;
-            height: 13px;
-            background: rgba(255, 255, 255, 0.7);
-            left: 8%;
-            top: -20px;
-            animation-delay: 3.5s;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-        }
-
         /* 闪闪小圆点 */
         .sparkle-dot {
             position: fixed;
@@ -279,16 +155,6 @@
         .sparkle-28 { width: 1px; height: 1px; background: #FFFFFF; top: 68%; left: 32%; animation-delay: 0.91s; }
         .sparkle-29 { width: 1px; height: 1px; background: #FFFFFF; top: 65%; left: 50%; animation-delay: 1.15s; }
         .sparkle-30 { width: 2px; height: 2px; background: #FFFFFF; top: 72%; left: 68%; animation-delay: 1.39s; }
-        .sparkle-31 { width: 1px; height: 1px; background: #FFFFFF; top: 70%; left: 85%; animation-delay: 1.63s; }
-        .sparkle-32 { width: 2px; height: 2px; background: #FFFFFF; top: 78%; left: 8%; animation-delay: 1.87s; }
-        .sparkle-33 { width: 1px; height: 1px; background: #FFFFFF; top: 75%; left: 25%; animation-delay: 0.04s; }
-        .sparkle-34 { width: 2px; height: 2px; background: #FFFFFF; top: 82%; left: 42%; animation-delay: 0.28s; }
-        .sparkle-35 { width: 1px; height: 1px; background: #FFFFFF; top: 80%; left: 60%; animation-delay: 0.52s; }
-        .sparkle-36 { width: 2px; height: 2px; background: #FFFFFF; top: 88%; left: 78%; animation-delay: 0.76s; }
-        .sparkle-37 { width: 1px; height: 1px; background: #FFFFFF; top: 85%; left: 92%; animation-delay: 1.0s; }
-        .sparkle-38 { width: 2px; height: 2px; background: #FFFFFF; top: 92%; left: 15%; animation-delay: 1.24s; }
-        .sparkle-39 { width: 1px; height: 1px; background: #FFFFFF; top: 95%; left: 35%; animation-delay: 1.48s; }
-        .sparkle-40 { width: 2px; height: 2px; background: #FFFFFF; top: 90%; left: 52%; animation-delay: 1.72s; }
 
         @keyframes sparkle {
             0%, 100% { opacity: 0.3; transform: scale(1); }
@@ -309,7 +175,7 @@
         /* 2D滑动容器 */
         #carousel {
             position: absolute;
-            top: 55%;
+            top: 58%;
             left: 50%;
             width: 0;
             height: 0;
@@ -321,10 +187,10 @@
         /* 手绘风格卡片 */
         .card {
             position: absolute;
-            width: 110px;
-            height: 150px;
-            left: -55px;
-            top: -75px;
+            width: 150px;
+            height: 205px;
+            left: -75px;
+            top: -102px;
             background: transparent;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(66, 171, 243, 0.15);
@@ -372,25 +238,10 @@
             border-radius: 10px;
         }
 
-        /* 卡片日期文字 */
-        .card-date {
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 10px;
-            color: var(--primary);
-            font-family: 'Noto Sans SC', sans-serif;
-            white-space: nowrap;
-            text-align: center;
-            z-index: 10;
-            pointer-events: none;
-        }
-
         /* 中央按钮 - 手绘风格 */
         #center-btn {
             position: absolute;
-            top: 8%;
+            top: 0%;
             left: 50%;
             transform: translateX(-50%);
             padding: 18px 45px;
@@ -438,7 +289,7 @@
         /* 副标题文字 */
         #subtitle-text {
             position: absolute;
-            top: calc(8% + 90px);
+            top: calc(0% + 90px);
             left: 50%;
             transform: translateX(-50%);
             color: var(--primary);
@@ -706,7 +557,7 @@
                 font-size: 12px;
                 letter-spacing: 2px;
                 white-space: nowrap;
-                top: calc(8% + 70px);
+                top: calc(0% + 70px);
             }
 
             .loader-title {
@@ -718,10 +569,10 @@
             }
 
             .card {
-                width: 80px;
-                height: 110px;
-                left: -40px;
-                top: -55px;
+                width: 110px;
+                height: 150px;
+                left: -55px;
+                top: -75px;
             }
 
             #image-viewer .nav-btn {
@@ -771,20 +622,20 @@
         @media (max-height: 500px) and (orientation: landscape) {
             #center-btn {
                 font-size: 32px;
-                top: 6%;
+                top: 3%;
             }
 
             #subtitle-text {
                 font-size: 14px;
-                top: calc(6% + 70px);
+                top: calc(3% + 70px);
                 letter-spacing: 2px;
             }
 
             .card {
-                width: 75px;
-                height: 100px;
-                left: -37px;
-                top: -50px;
+                width: 100px;
+                height: 135px;
+                left: -50px;
+                top: -67px;
             }
 
             #scene-container {
@@ -887,15 +738,6 @@
                 transform: scale(0.98);
             }
 
-            .main-image-date {
-                font-size: 14px;
-                color: var(--primary);
-                font-family: 'Noto Sans SC', sans-serif;
-                text-align: center;
-                margin: 10px 0;
-                white-space: nowrap;
-            }
-
             .gallery-counter {
                 font-size: 14px;
                 color: var(--primary);
@@ -980,14 +822,6 @@
                 border-radius: 12px;
             }
 
-            .fullscreen-date {
-                margin-top: 15px;
-                font-size: 16px;
-                color: var(--primary);
-                font-family: 'Noto Serif SC', serif;
-                text-align: center;
-            }
-
             .fullscreen-close {
                 position: absolute;
                 top: 20px;
@@ -1070,20 +904,6 @@
     <div class="warm-glow warm-glow-2"></div>
     <div class="warm-glow warm-glow-3"></div>
 
-    <!-- 飘浮的小圆点 - 模拟花瓣飘落 -->
-    <div class="floating-dot dot-1"></div>
-    <div class="floating-dot dot-2"></div>
-    <div class="floating-dot dot-3"></div>
-    <div class="floating-dot dot-4"></div>
-    <div class="floating-dot dot-5"></div>
-    <div class="floating-dot dot-6"></div>
-    <div class="floating-dot dot-7"></div>
-    <div class="floating-dot dot-8"></div>
-    <div class="floating-dot dot-9"></div>
-    <div class="floating-dot dot-10"></div>
-    <div class="floating-dot dot-11"></div>
-    <div class="floating-dot dot-12"></div>
-
     <!-- 闪闪小圆点 -->
     <div class="sparkle-dot sparkle-1"></div>
     <div class="sparkle-dot sparkle-2"></div>
@@ -1115,16 +935,6 @@
     <div class="sparkle-dot sparkle-28"></div>
     <div class="sparkle-dot sparkle-29"></div>
     <div class="sparkle-dot sparkle-30"></div>
-    <div class="sparkle-dot sparkle-31"></div>
-    <div class="sparkle-dot sparkle-32"></div>
-    <div class="sparkle-dot sparkle-33"></div>
-    <div class="sparkle-dot sparkle-34"></div>
-    <div class="sparkle-dot sparkle-35"></div>
-    <div class="sparkle-dot sparkle-36"></div>
-    <div class="sparkle-dot sparkle-37"></div>
-    <div class="sparkle-dot sparkle-38"></div>
-    <div class="sparkle-dot sparkle-39"></div>
-    <div class="sparkle-dot sparkle-40"></div>
 
     <!-- 3D场景 - 网页端和横屏 -->
     <div id="scene-container">
@@ -1142,14 +952,12 @@
         <div class="gallery-main">
             <img id="gallery-main-img" src="" alt="" onclick="openFullscreen()">
         </div>
-        <div class="main-image-date">成都站-9月26日</div>
         <div class="gallery-thumbnails">
             <div class="thumbnails-wrapper"></div>
         </div>
     </div>
     <div id="gallery-fullscreen" style="display: none;">
         <img id="fullscreen-img" src="" alt="">
-        <div class="fullscreen-date" id="fullscreen-date"></div>
         <div class="fullscreen-close" onclick="closeFullscreen()">&times;</div>
         <div class="fullscreen-nav prev" onclick="navigateFullscreen(-1)">&#10094;</div>
         <div class="fullscreen-nav next" onclick="navigateFullscreen(1)">&#10095;</div>
@@ -1169,43 +977,33 @@
     <script>
         // 配置
         const CONFIG = {
-            cardCount: 20,
+            cardCount: 10,
             radius: 550,
             rotationSpeed: 0, // 禁用自动旋转
             mouseSensitivity: 0.5 // 增加滑动灵敏度
         };
 
-        // 20张图片路径数组
+        // 10张图片路径数组 - 使用本地路径
         const cardImages = [
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card1.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card2.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card3.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card4.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card5.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card6.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card7.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card8.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card9.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card10.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card11.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card12.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card13.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card14.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card15.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card16.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card17.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card18.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card19.jpg?format=webp&quality=80",
-            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card20.jpg?format=webp&quality=80",
+            "images/cards/card1.jpg",
+            "images/cards/card2.jpg",
+            "images/cards/card3.jpg",
+            "images/cards/card4.jpg",
+            "images/cards/card5.jpg",
+            "images/cards/card6.jpg",
+            "images/cards/card7.jpg",
+            "images/cards/card8.jpg",
+            "images/cards/card9.jpg",
+            "images/cards/card10.jpg"
         ];
 
-        // 20张图片对应的日期/描述
+        // 10张图片对应的日期/描述
         const cardDates = [
-            '成都站-9月26日', '成都站-9月26日','成都站-9月27日', '成都站-9月27日',
-            '合肥站-10月11日', '合肥站-10月11日','合肥站-10月12日', '合肥站-10月12日',
-            '太原站-10月25日', '太原站-10月25日', '太原站-10月26日', '太原站-10月26日',
-            '北京站-海报', '北京站-手写信', '北京站-11月08日', '北京站-11月09日',
-            '南京站-海报', '南京站-手写信', '南京站-11月22日', '南京站-11月23日'
+            '成都站-9月26日', '成都站-9月27日',
+            '合肥站-10月11日', '合肥站-10月12日',
+            '太原站-10月25日', '太原站-10月26日',
+            '北京站-11月08日', '北京站-11月09日',
+            '南京站-11月22日', '南京站-11月23日'
         ];
 
         // 状态
@@ -1229,7 +1027,7 @@
 
         // 移动端画廊功能
         let currentGalleryIndex = 0;
-        const totalGalleryCards = 20;
+        const totalGalleryCards = 10;
 
         function initGallery() {
             // 检查是否在移动端竖屏模式
@@ -1395,7 +1193,6 @@
         function updateMainImage(index) {
             const mainImg = document.getElementById('gallery-main-img');
             mainImg.src = getCardImage(index);
-            document.querySelector('.main-image-date').textContent = cardDates[index] || '';
         }
 
         function updateThumbnails(activeIndex) {
@@ -1415,7 +1212,6 @@
             document.getElementById('gallery-fullscreen').style.display = 'flex';
             document.getElementById('fullscreen-img').src = getCardImage(currentGalleryIndex);
             document.querySelector('.fullscreen-counter').textContent = `${currentGalleryIndex + 1} / ${totalGalleryCards}`;
-            document.getElementById('fullscreen-date').textContent = cardDates[currentGalleryIndex] || '';
         }
 
         function closeFullscreen() {
@@ -1432,9 +1228,34 @@
             
             document.getElementById('fullscreen-img').src = getCardImage(currentGalleryIndex);
             document.querySelector('.fullscreen-counter').textContent = `${currentGalleryIndex + 1} / ${totalGalleryCards}`;
-            document.getElementById('fullscreen-date').textContent = cardDates[currentGalleryIndex] || '';
             updateMainImage(currentGalleryIndex);
             updateThumbnails(currentGalleryIndex);
+        }
+
+        // 自动缓慢向左滑动
+        function startAutoSlide() {
+            const slideSpeed = 0.2; // 滑动速度
+            const slideInterval = setInterval(() => {
+                state.targetRotationY -= slideSpeed;
+                
+                // 当滑动到第10张卡片时，回到第1张
+                const cardWidth = window.innerHeight < 500 && window.innerWidth > window.innerHeight ? 120 : 170;
+                const maxOffset = -(CONFIG.cardCount - 1) * cardWidth;
+                if (state.targetRotationY < maxOffset) {
+                    state.targetRotationY = 0;
+                }
+            }, 16); // 约60fps
+            
+            // 保存interval ID以便停止
+            window.autoSlideInterval = slideInterval;
+        }
+        
+        // 停止自动滑动
+        function stopAutoSlide() {
+            if (window.autoSlideInterval) {
+                clearInterval(window.autoSlideInterval);
+                window.autoSlideInterval = null;
+            }
         }
 
         // 初始化
@@ -1452,6 +1273,14 @@
                 
                 // 初始化移动端画廊
                 initGallery();
+                
+                // 重置到第1张卡片位置
+                const cardWidth = window.innerHeight < 500 && window.innerWidth > window.innerHeight ? 120 : 170;
+                const centerOffset = (CONFIG.cardCount - 1) * cardWidth / 2;
+                state.targetRotationY = centerOffset;
+                
+                // 启动自动缓慢向左滑动
+                setTimeout(() => startAutoSlide(), 1500);
             } catch (error) {
                 console.error('初始化错误:', error);
             }
@@ -1461,7 +1290,6 @@
                 const loader = document.getElementById('loader');
                 if (loader) {
                     loader.classList.add('hidden');
-                    console.log('加载动画已隐藏');
                 }
             }, 1000);
         }
@@ -1473,7 +1301,7 @@
             
             // 根据屏幕宽度调整卡片间距 - 横屏时使用更小的间距
             const isLandscape = window.innerHeight < 500 && window.innerWidth > window.innerHeight;
-            const cardWidthInit = isLandscape ? 90 : 130;
+            const cardWidthInit = isLandscape ? 120 : 170;
 
             for (let i = 0; i < CONFIG.cardCount; i++) {
                 const card = document.createElement('div');
@@ -1518,11 +1346,11 @@
                 card.appendChild(img);
 
                 // 计算2D位置 - 水平排列
-                const cardWidthPos = isLandscape ? 90 : 130; // 卡片宽度 + 间距
+                const cardWidthPos = isLandscape ? 120 : 170; // 卡片宽度 + 间距
                 const totalWidthPos = CONFIG.cardCount * cardWidthPos;
                 const xPos = (i * cardWidthPos) - (totalWidthPos / 2) + (cardWidthPos / 2);
                 // 交替上下：偶数在上，奇数在下
-                const offsetYValue = isLandscape ? 50 : 80;
+                const offsetYValue = isLandscape ? 65 : 105;
                 const offsetY = (i % 2 === 0) ? -offsetYValue : offsetYValue;
                 // 根据距离中心的远近设置缩放和透明度
                 const centerIndex = Math.floor(CONFIG.cardCount / 2);
@@ -1643,10 +1471,10 @@
             // 2D滑动：只更新卡片位置
             // 根据屏幕宽度调整卡片间距 - 横屏时使用更小的间距
             const isLandscape = window.innerHeight < 500 && window.innerWidth > window.innerHeight;
-            const cardWidth = isLandscape ? 90 : 130;
+            const cardWidth = isLandscape ? 120 : 170;
             const totalWidth = CONFIG.cardCount * cardWidth;
             const offsetX = state.targetRotationY;
-            const offsetYValue = isLandscape ? 50 : 80;
+            const offsetYValue = isLandscape ? 65 : 105;
             
             cards.forEach((card, i) => {
                 const baseX = (i * cardWidth) - (totalWidth / 2) + (cardWidth / 2);

@@ -125,6 +125,49 @@ class CardAlbum {
                     break;
             }
         });
+        
+        // 触摸滑动事件
+        this.bindTouchEvents();
+    }
+    
+    /**
+     * 绑定触摸滑动事件
+     */
+    bindTouchEvents() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50; // 最小滑动距离
+        
+        const viewerImageContainer = document.getElementById('viewerImageContainer');
+        if (!viewerImageContainer) return;
+        
+        viewerImageContainer.addEventListener('touchstart', (e) => {
+            if (!this.viewer?.classList.contains('active')) return;
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        viewerImageContainer.addEventListener('touchend', (e) => {
+            if (!this.viewer?.classList.contains('active')) return;
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX, minSwipeDistance);
+        }, { passive: true });
+    }
+    
+    /**
+     * 处理滑动
+     */
+    handleSwipe(startX, endX, minDistance) {
+        const swipeDistance = endX - startX;
+        
+        if (Math.abs(swipeDistance) < minDistance) return;
+        
+        if (swipeDistance > 0) {
+            // 向右滑动 - 上一张
+            this.prevImage();
+        } else {
+            // 向左滑动 - 下一张
+            this.nextImage();
+        }
     }
     
     /**
@@ -180,11 +223,22 @@ class CardAlbum {
                     </div>
                 `;
             } else if (isLastLevel) {
-                // 图片卡片（最后一级）
+                // 图片卡片（最后一级）- 官摄区及其子分类不显示标题
+                // 检查当前层级链中是否有官摄区
+                let isOfficialArea = title === '官摄区';
+                if (!isOfficialArea) {
+                    // 检查所有父级
+                    for (let i = 0; i <= level; i++) {
+                        if (this.levelData[i] && this.levelData[i].title === '官摄区') {
+                            isOfficialArea = true;
+                            break;
+                        }
+                    }
+                }
                 return `
                     <div class="modal-card" onclick="cardAlbum.openImageViewer(${level}, ${index})">
                         <img src="${item.image || item.thumb || item.cover}" alt="${item.title}" loading="lazy">
-                        <div class="modal-card-title">${item.title}</div>
+                        ${!isOfficialArea ? `<div class="modal-card-title">${item.title}</div>` : ''}
                     </div>
                 `;
             } else {
@@ -389,6 +443,10 @@ class CardAlbum {
             if (title === '合照区') {
                 // 合照区：前5张为9月26日，后5张为9月27日
                 imgTitle = i < 5 ? `9月26日合照 ${i + 1}` : `9月27日合照 ${i - 4}`;
+            } else if (title === '海报信封区') {
+                // 海报信封区：自定义名称
+                const posterTitles = ['手写信信封', '成都站手写信', '主海报', '倒计时3天', '倒计时2天', '倒计时1天'];
+                imgTitle = posterTitles[i] || `图片 ${i + 1}`;
             } else {
                 imgTitle = `图片 ${i + 1}`;
             }
