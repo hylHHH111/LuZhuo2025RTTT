@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>鹭卓2025 RTTT巡演</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -303,15 +306,15 @@
             z-index: 2;
         }
 
-        /* 3D旋转容器 */
+        /* 2D滑动容器 */
         #carousel {
             position: absolute;
             top: 55%;
             left: 50%;
             width: 0;
             height: 0;
-            transform-style: preserve-3d;
-            transition: transform 0.15s ease-out;
+            transform-style: flat;
+            transition: transform 0.3s ease-out;
             will-change: transform;
         }
 
@@ -1049,6 +1052,18 @@
             <p class="loader-text">欢迎进入与鹭世界</p>
         </div>
     </div>
+    
+    <!-- 强制隐藏加载动画的备用脚本 -->
+    <script>
+        // 备用：无论如何3秒后隐藏加载动画
+        setTimeout(function() {
+            var loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+            }
+        }, 3000);
+    </script>
 
     <!-- 温暖光晕背景 -->
     <div class="warm-glow warm-glow-1"></div>
@@ -1147,7 +1162,6 @@
         <div class="viewer-container">
             <div class="nav-btn prev" onclick="navigateImage(-1, event)">&#10094;</div>
             <img id="viewer-img" src="" alt="">
-            <div class="viewer-date" id="viewer-date"></div>
             <div class="nav-btn next" onclick="navigateImage(1, event)">&#10095;</div>
         </div>
     </div>
@@ -1155,41 +1169,58 @@
     <script>
         // 配置
         const CONFIG = {
-            cardCount: 30,
+            cardCount: 20,
             radius: 550,
-            rotationSpeed: 0.001,
-            mouseSensitivity: 0.001
+            rotationSpeed: 0, // 禁用自动旋转
+            mouseSensitivity: 0.5 // 增加滑动灵敏度
         };
 
-        // 卡片日期数据 - 30张图片对应的日期/描述
-        const cardDates = [
-            '成都站-海报', '成都站-手写信', '成都站-9月26日', '成都站-9月26日', '成都站-9月27日','成都站-9月27日', 
-            '合肥站-海报', '合肥站-手写信', '合肥站-10月11日', '合肥站-10月11日','合肥站-10月12日', '合肥站-10月12日', 
-            '太原站-海报', '太原站-手写信', '太原站-10月25日', '太原站-10月25日', '太原站-10月26日', '太原站-10月26日', 
-            '北京站-海报', '北京站-手写信', '北京站-11月08日', '北京站-11月08日', '北京站-11月09日', '北京站-11月09日', 
-            '南京站-海报', '南京站-手写信', '南京站-11月22日', '南京站-11月22日', '南京站-11月23日', '南京站-11月23日'
+        // 20张图片路径数组
+        const cardImages = [
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card1.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card2.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card3.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card4.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card5.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card6.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card7.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card8.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card9.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card10.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card11.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card12.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card13.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card14.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card15.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card16.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card17.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card18.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card19.jpg?format=webp&quality=80",
+            "https://cdn.jsdelivr.net/gh/hylHHH111/LuZhuo2025RTTT@main/images/cards/card20.jpg?format=webp&quality=80",
         ];
 
-        // 30张图片路径数组
-        const cardImages = [
-            'images/cards/card1.jpg', 'images/cards/card2.jpg', 'images/cards/card3.jpg', 'images/cards/card4.jpg', 'images/cards/card5.jpg',
-            'images/cards/card6.jpg', 'images/cards/card7.jpg', 'images/cards/card8.jpg', 'images/cards/card9.jpg', 'images/cards/card10.jpg',
-            'images/cards/card11.jpg', 'images/cards/card12.jpg', 'images/cards/card13.jpg', 'images/cards/card14.jpg', 'images/cards/card15.jpg',
-            'images/cards/card16.jpg', 'images/cards/card17.jpg', 'images/cards/card18.jpg', 'images/cards/card19.jpg', 'images/cards/card20.jpg',
-            'images/cards/card21.jpg', 'images/cards/card22.jpg', 'images/cards/card23.jpg', 'images/cards/card24.jpg', 'images/cards/card25.jpg',
-            'images/cards/card26.jpg', 'images/cards/card27.jpg', 'images/cards/card28.jpg', 'images/cards/card29.jpg', 'images/cards/card30.jpg'
+        // 20张图片对应的日期/描述
+        const cardDates = [
+            '成都站-9月26日', '成都站-9月26日','成都站-9月27日', '成都站-9月27日',
+            '合肥站-10月11日', '合肥站-10月11日','合肥站-10月12日', '合肥站-10月12日',
+            '太原站-10月25日', '太原站-10月25日', '太原站-10月26日', '太原站-10月26日',
+            '北京站-海报', '北京站-手写信', '北京站-11月08日', '北京站-11月09日',
+            '南京站-海报', '南京站-手写信', '南京站-11月22日', '南京站-11月23日'
         ];
 
         // 状态
         let state = {
             rotationY: 0,
             targetRotationY: 0,
-            isAutoRotating: true,
+            isAutoRotating: false, // 禁用自动旋转
             mouseX: 0,
             mouseY: 0,
             currentImageIndex: 0,
             bookPageIndex: 0
         };
+
+        // 动画帧计数器
+        let frameCount = 0;
 
         // 获取图片路径的辅助函数
         function getCardImage(index) {
@@ -1198,29 +1229,94 @@
 
         // 移动端画廊功能
         let currentGalleryIndex = 0;
-        const totalGalleryCards = 30;
+        const totalGalleryCards = 20;
 
         function initGallery() {
+            // 检查是否在移动端竖屏模式
+            const mobileGallery = document.getElementById('mobile-gallery-container');
+            if (!mobileGallery || window.getComputedStyle(mobileGallery).display === 'none') {
+                return; // 如果不是移动端竖屏，不初始化画廊
+            }
+            
             // 初始化大图
             updateMainImage(0);
             
             // 创建缩略图
             const thumbnailsWrapper = document.querySelector('.thumbnails-wrapper');
+            if (!thumbnailsWrapper) return; // 如果找不到缩略图容器，跳过
             thumbnailsWrapper.innerHTML = '';
             
             for (let i = 0; i < totalGalleryCards; i++) {
                 const thumb = document.createElement('div');
                 thumb.className = 'thumbnail-item' + (i === 0 ? ' active' : '');
-                thumb.innerHTML = `<img src="${getCardImage(i)}" alt="">`;
+                // 懒加载：只加载前5张和当前可见的缩略图
+                if (i < 5) {
+                    thumb.innerHTML = `<img src="${getCardImage(i)}" alt="" loading="lazy">`;
+                } else {
+                    thumb.innerHTML = `<img data-src="${getCardImage(i)}" alt="" class="lazy-thumb">`;
+                }
                 thumb.onclick = () => selectThumbnail(i);
                 thumbnailsWrapper.appendChild(thumb);
             }
+            
+            // 初始化懒加载观察器
+            initLazyLoad();
             
             // 添加大图区域滑动切换
             setupMainImageSwipe();
             
             // 添加全屏模式滑动切换
             setupFullscreenSwipe();
+        }
+        
+        // 懒加载初始化
+        function initLazyLoad() {
+            // 处理缩略图懒加载
+            const lazyThumbs = document.querySelectorAll('.lazy-thumb');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        img.classList.remove('lazy-thumb');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            lazyThumbs.forEach(img => imageObserver.observe(img));
+        }
+        
+        // 2D卡片懒加载 - 根据屏幕位置加载
+        function loadVisibleCards() {
+            const lazyImages = document.querySelectorAll('.lazy-card-img');
+            const viewportWidth = window.innerWidth;
+            const loadRange = viewportWidth * 0.8; // 加载屏幕宽度 80% 范围内的卡片
+            
+            lazyImages.forEach(img => {
+                const card = img.closest('.card');
+                if (!card) return; // 如果找不到卡片，跳过
+                
+                const rect = card.getBoundingClientRect();
+                const cardCenterX = rect.left + rect.width / 2;
+                
+                // 检查卡片是否在屏幕可见范围内
+                const isVisible = cardCenterX > -loadRange && cardCenterX < viewportWidth + loadRange;
+                
+                if (isVisible && img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    img.classList.remove('lazy-card-img');
+                    img.style.opacity = '1';
+                }
+            });
         }
         
         // 大图区域滑动切换
@@ -1343,37 +1439,72 @@
 
         // 初始化
         function init() {
-            createCards();
-            setupEventListeners();
-            animate();
-            
-            // 初始化移动端画廊
-            initGallery();
+            try {
+                createCards();
+                setupEventListeners();
+                animate();
+                
+                // 初始化3D卡片懒加载
+                initLazyLoad();
+                
+                // 加载初始可见的3D卡片
+                setTimeout(() => loadVisibleCards(), 100);
+                
+                // 初始化移动端画廊
+                initGallery();
+            } catch (error) {
+                console.error('初始化错误:', error);
+            }
 
-            // 隐藏加载动画
+            // 隐藏加载动画 - 无论初始化是否成功，1秒后都隐藏
             setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 2000);
+                const loader = document.getElementById('loader');
+                if (loader) {
+                    loader.classList.add('hidden');
+                    console.log('加载动画已隐藏');
+                }
+            }, 1000);
         }
 
         // 创建卡片
         function createCards() {
             const carousel = document.getElementById('carousel');
             const angleStep = 360 / CONFIG.cardCount;
+            
+            // 根据屏幕宽度调整卡片间距 - 横屏时使用更小的间距
+            const isLandscape = window.innerHeight < 500 && window.innerWidth > window.innerHeight;
+            const cardWidthInit = isLandscape ? 90 : 130;
 
             for (let i = 0; i < CONFIG.cardCount; i++) {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.dataset.index = i;
 
-                // 创建图片元素
+                // 创建图片元素 - 只加载屏幕中央的卡片，其余懒加载
                 const img = document.createElement('img');
-                img.src = getCardImage(i);
+                // 计算卡片是否在屏幕中央区域（初始状态）
+                const totalWidth = CONFIG.cardCount * cardWidthInit;
+                const x = (i * cardWidthInit) - (totalWidth / 2) + (cardWidthInit / 2);
+                const viewportWidth = window.innerWidth || 1920;
+                const cardScreenX = (viewportWidth / 2) + x;
+                const isCenterCard = Math.abs(cardScreenX - viewportWidth / 2) < viewportWidth * 0.4;
+                
+                if (isCenterCard) {
+                    img.src = getCardImage(i);
+                    img.style.opacity = '1';
+                } else {
+                    img.dataset.src = getCardImage(i);
+                    img.classList.add('lazy-card-img');
+                    img.style.opacity = '0';
+                    img.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                }
+                
                 img.alt = `卡片 ${i + 1}`;
                 img.loading = 'lazy';
                 img.style.width = '100%';
                 img.style.height = '100%';
                 img.style.objectFit = 'cover';
+                img.style.transition = 'opacity 0.3s ease';
                 img.onerror = function() {
                     this.style.display = 'none';
                     const placeholder = document.createElement('div');
@@ -1381,29 +1512,35 @@
                     placeholder.textContent = `记忆 ${i + 1}`;
                     card.appendChild(placeholder);
                 };
+                img.onload = function() {
+                    this.style.opacity = '1';
+                };
                 card.appendChild(img);
 
-                // 创建日期文字
-                const dateLabel = document.createElement('div');
-                dateLabel.className = 'card-date';
-                dateLabel.textContent = cardDates[i] || '';
-                card.appendChild(dateLabel);
-
-                // 计算3D位置 - 交替上下排列
-                const angle = angleStep * i;
-                const radian = (angle * Math.PI) / 180;
-                const x = Math.sin(radian) * CONFIG.radius;
-                const z = Math.cos(radian) * CONFIG.radius;
+                // 计算2D位置 - 水平排列
+                const cardWidthPos = isLandscape ? 90 : 130; // 卡片宽度 + 间距
+                const totalWidthPos = CONFIG.cardCount * cardWidthPos;
+                const xPos = (i * cardWidthPos) - (totalWidthPos / 2) + (cardWidthPos / 2);
                 // 交替上下：偶数在上，奇数在下
-                const offsetY = (i % 2 === 0) ? -6 : 6;
+                const offsetYValue = isLandscape ? 50 : 80;
+                const offsetY = (i % 2 === 0) ? -offsetYValue : offsetYValue;
+                // 根据距离中心的远近设置缩放和透明度
+                const centerIndex = Math.floor(CONFIG.cardCount / 2);
+                const distanceFromCenter = Math.abs(i - centerIndex);
+                const scale = Math.max(0.7, 1 - (distanceFromCenter * 0.05));
+                const opacity = Math.max(0.5, 1 - (distanceFromCenter * 0.1));
 
-                card.style.transform = `translateX(${x}px) translateY(${offsetY}px) translateZ(${z}px) rotateY(${angle}deg)`;
+                card.style.transform = `translateX(${xPos}px) translateY(${offsetY}px) scale(${scale})`;
+                card.style.opacity = opacity;
+                card.style.zIndex = 100 - distanceFromCenter;
 
                 // 点击事件
                 card.addEventListener('click', (e) => {
                     e.stopPropagation();
                     state.isAutoRotating = false;
                     state.currentImageIndex = i;
+                    // 加载点击卡片附近的图片
+                    loadVisibleCards();
                     showImage(getCardImage(i), i);
                 });
 
@@ -1501,16 +1638,39 @@
 
         // 动画循环
         function animate() {
-            const carousel = document.getElementById('carousel');
-
-            if (state.isAutoRotating) {
-                state.rotationY -= CONFIG.rotationSpeed * 16;
+            const cards = document.querySelectorAll('.card');
+            
+            // 2D滑动：只更新卡片位置
+            // 根据屏幕宽度调整卡片间距 - 横屏时使用更小的间距
+            const isLandscape = window.innerHeight < 500 && window.innerWidth > window.innerHeight;
+            const cardWidth = isLandscape ? 90 : 130;
+            const totalWidth = CONFIG.cardCount * cardWidth;
+            const offsetX = state.targetRotationY;
+            const offsetYValue = isLandscape ? 50 : 80;
+            
+            cards.forEach((card, i) => {
+                const baseX = (i * cardWidth) - (totalWidth / 2) + (cardWidth / 2);
+                const x = baseX + offsetX;
+                const offsetY = (i % 2 === 0) ? -offsetYValue : offsetYValue;
+                
+                // 计算距离中心的距离，用于缩放和透明度
+                const viewportCenter = window.innerWidth / 2;
+                const cardScreenX = (window.innerWidth / 2) + x;
+                const distanceFromCenter = Math.abs(cardScreenX - viewportCenter) / (window.innerWidth / 3);
+                const scale = Math.max(0.7, 1 - (distanceFromCenter * 0.3));
+                const opacity = Math.max(0.3, 1 - (distanceFromCenter * 0.5));
+                
+                card.style.transform = `translateX(${x}px) translateY(${offsetY}px) scale(${scale})`;
+                card.style.opacity = opacity;
+                card.style.zIndex = Math.floor(100 - distanceFromCenter * 10);
+            });
+            
+            // 每30帧（约0.5秒）检查一次可见卡片
+            frameCount++;
+            if (frameCount % 30 === 0) {
+                loadVisibleCards();
             }
-
-            const currentRotationY = state.rotationY + state.targetRotationY;
-            // 使用 translate3d 触发 GPU 加速
-            carousel.style.transform = `translate3d(0, 0, 0) rotateY(${currentRotationY}deg)`;
-
+            
             requestAnimationFrame(animate);
         }
 
@@ -1518,9 +1678,7 @@
         function showImage(src, index) {
             const viewer = document.getElementById('image-viewer');
             const img = document.getElementById('viewer-img');
-            const dateEl = document.getElementById('viewer-date');
             img.src = src;
-            dateEl.textContent = cardDates[index] || '';
             viewer.classList.add('active');
         }
 
@@ -1534,9 +1692,7 @@
                 state.currentImageIndex = 0;
             }
             const img = document.getElementById('viewer-img');
-            const dateEl = document.getElementById('viewer-date');
             img.src = getCardImage(state.currentImageIndex);
-            dateEl.textContent = cardDates[state.currentImageIndex] || '';
         }
 
         // 关闭图片查看器
