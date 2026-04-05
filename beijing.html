@@ -5,98 +5,450 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北京站 - 鹭卓2025 RTTT巡演</title>
     <link rel="stylesheet" href="css/variables.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-family); background: var(--white); color: var(--text-primary); line-height: 1.6; }
-        .navbar { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); background: var(--nav-bg); z-index: 1000; box-shadow: var(--shadow-md); }
-        .navbar-container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-lg); height: 100%; display: flex; align-items: center; justify-content: space-between; }
-        .navbar-logo { font-size: var(--font-size-xl); font-weight: 700; color: var(--white); text-decoration: none; }
-        .navbar-nav { display: flex; gap: var(--space-xs); }
-        .nav-item { padding: var(--space-sm) var(--space-md); color: var(--white); text-decoration: none; font-size: var(--font-size-base); font-weight: 500; border-radius: var(--radius-md); transition: all var(--transition-fast); position: relative; }
-        .nav-item:hover { color: var(--accent-light); background: rgba(255,255,255,0.1); }
-        .nav-item.active { color: var(--white); }
-        .nav-item.active::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 20px; height: 2px; background: var(--white); border-radius: var(--radius-full); }
-        .navbar-toggle { display: none; flex-direction: column; gap: 5px; padding: var(--space-sm); background: none; border: none; cursor: pointer; }
-        .navbar-toggle span { display: block; width: 24px; height: 2px; background: var(--white); }
-        .main-content { padding-top: var(--nav-height); }
-        .city-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); padding: var(--space-3xl) var(--space-lg); text-align: center; }
-        .city-name { font-size: var(--font-size-4xl); font-weight: 800; margin-bottom: var(--space-md); }
-        .city-date { font-size: var(--font-size-xl); color: var(--accent-light); }
-        .content-section { padding: var(--space-3xl) var(--space-lg); max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: var(--font-size-2xl); font-weight: 700; color: var(--primary); margin-bottom: var(--space-xl); display: flex; align-items: center; gap: var(--space-md); }
-        .section-title::before { content: ''; width: 4px; height: 28px; background: var(--primary); border-radius: var(--radius-sm); }
-        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); margin-bottom: var(--space-3xl); }
-        .info-card { background: linear-gradient(135deg, var(--accent-light) 0%, var(--white) 100%); border-radius: var(--radius-lg); padding: var(--space-xl); border-left: 4px solid var(--primary); }
-        .info-card-title { font-size: var(--font-size-lg); font-weight: 600; color: var(--primary); margin-bottom: var(--space-sm); }
-        .info-card-content { color: var(--text-secondary); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); margin-bottom: var(--space-3xl); }
-        .gallery-item { aspect-ratio: 4/3; background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: all var(--transition-base); display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 600; }
-        .gallery-item:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
-        .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
-        .video-item { background: var(--accent-light); border-radius: var(--radius-lg); overflow: hidden; }
-        .video-placeholder { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 48px; cursor: pointer; }
-        .video-title { padding: var(--space-md) var(--space-lg); font-weight: 600; color: var(--primary); }
-        .lightbox { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: all var(--transition-base); }
-        .lightbox.active { opacity: 1; visibility: visible; }
-        .lightbox-img { max-width: 90%; max-height: 90%; border-radius: var(--radius-lg); }
-        .lightbox-close { position: absolute; top: 30px; right: 30px; width: 50px; height: 50px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px; color: var(--primary); }
-        .footer { background: var(--primary); color: var(--white); padding: var(--space-2xl) var(--space-lg); text-align: center; }
-        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all var(--transition-base); z-index: 999; font-size: 20px; }
-        .back-to-top.visible { opacity: 1; visibility: visible; }
-        @media (max-width: 1024px) { .navbar-nav { position: fixed; top: var(--nav-height); left: 0; right: 0; background: var(--nav-bg); flex-direction: column; padding: var(--space-md); transform: translateY(-100%); opacity: 0; visibility: hidden; transition: all var(--transition-base); } .navbar-nav.active { transform: translateY(0); opacity: 1; visibility: visible; } .navbar-toggle { display: flex; } .info-grid, .gallery-grid, .video-grid { grid-template-columns: 1fr; } }
-    </style>
+    <link rel="stylesheet" href="css/city-page.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
-            <div class="navbar-nav" id="navbarNav">
-                <a href="home.html" class="nav-item">首页</a>
-                <a href="chengdu.html" class="nav-item">成都站</a>
-                <a href="hefei.html" class="nav-item">合肥站</a>
-                <a href="taiyuan.html" class="nav-item">太原站</a>
-                <a href="beijing.html" class="nav-item active">北京站</a>
-                <a href="nanjing.html" class="nav-item">南京站</a>
-                <a href="stage.html" class="nav-item">舞台直拍</a>
-            </div>
-            <button class="navbar-toggle" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
-    <main class="main-content">
-        <section class="city-header">
+    <!-- 主内容 -->
+    <main class="main-content" style="padding-top: 0;">
+        <!-- 城市头部（包含导航栏） -->
+        <section class="city-header" style="position: relative; padding-top: 70px;">
+            <!-- 导航栏 -->
+            <nav class="navbar" style="background: transparent; position: absolute; top: 0; left: 0; right: 0; z-index: 100; box-shadow: none;">
+                <div class="navbar-container">
+                    <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
+                    <div class="navbar-nav" id="navbarNav">
+                        <a href="home.html" class="nav-item">首页</a>
+                        <a href="chengdu.html" class="nav-item">成都站</a>
+                        <a href="hefei.html" class="nav-item">合肥站</a>
+                        <a href="taiyuan.html" class="nav-item">太原站</a>
+                        <a href="beijing.html" class="nav-item active">北京站</a>
+                        <a href="nanjing.html" class="nav-item">南京站</a>
+                        <a href="stage.html" class="nav-item">舞台直拍</a>
+                    </div>
+                    <button class="navbar-toggle" id="navbarToggle" onclick="toggleMobileMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
             <h1 class="city-name">北京站</h1>
-            <p class="city-date">敬请期待</p>
+            <p class="city-date">待定</p>
         </section>
-        <section class="content-section">
-            <h2 class="section-title">演出信息</h2>
-            <div class="info-grid">
-                <div class="info-card"><div class="info-card-title">演出时间</div><div class="info-card-content">待定<br>请持续关注官方公告</div></div>
-                <div class="info-card"><div class="info-card-title">演出地点</div><div class="info-card-content">国家体育馆<br>北京市朝阳区天辰东路</div></div>
-                <div class="info-card"><div class="info-card-title">演出场次</div><div class="info-card-content">待定</div></div>
-                <div class="info-card"><div class="info-card-title">票价信息</div><div class="info-card-content">待定</div></div>
-            </div>
-        </section>
-        <section class="content-section">
-            <h2 class="section-title">图文记录</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox('敬请期待')">敬请期待</div>
-                <div class="gallery-item" onclick="openLightbox('敬请期待')">敬请期待</div>
-                <div class="gallery-item" onclick="openLightbox('敬请期待')">敬请期待</div>
-            </div>
-        </section>
+
+        <!-- 页面内容 -->
+        <div class="page-container">
+            <!-- 上半区两栏布局 (75%:25%) -->
+            <section class="upper-section">
+                <!-- 纪录片模块 -->
+                <div class="documentary-module">
+                    <div class="video-card" onclick="openDocumentaryModal()">
+                        <div class="video-thumbnail">
+                            <img src="images/beijing/bj_frontcover.jpg" alt="北京站纪录片封面" onerror="this.style.display='none'">
+                            <div class="play-overlay">
+                                <div class="play-btn">▶</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">北京站纪录片</div>
+                        <div class="video-desc">记录鹭卓北京站的精彩瞬间与幕后花絮</div>
+                    </div>
+                </div>
+
+                <!-- 垂直导航区 -->
+                <div class="nav-module">
+                    <button class="nav-button" onclick="openGroupPhotoModal()">
+                        <span class="nav-icon">📸</span>
+                        <span>合照区</span>
+                    </button>
+                    <button class="nav-button" onclick="openBouquetModal()">
+                        <span class="nav-icon">�</span>
+                        <span>花束区</span>
+                    </button>
+                    <button class="nav-button" onclick="openOfficialModal()">
+                        <span class="nav-icon">�</span>
+                        <span>官摄区</span>
+                    </button>
+                    <button class="nav-button" onclick="openPosterNavModal()">
+                        <span class="nav-icon">🎬</span>
+                        <span>海报区</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 下半区三栏布局 (1:1:1) -->
+            <section class="lower-section">
+                <!-- 海报花絮区 -->
+                <div class="lower-module">
+                    <div class="module-header">
+                        <h3 class="module-title">海报花絮</h3>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card" onclick="openPosterModal()">
+                            <img src="assets/images/poster-cover.jpg" alt="海报花絮" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>海报花絮</text></svg>'">
+                            <div class="card-overlay">
+                                <div class="card-title">海报花絮</div>
+                                <div class="card-subtitle">点击查看更多</div>
+                            </div>
+                        </div>
+                        <div class="card" onclick="openStylingModal()">
+                            <img src="assets/images/styling-cover.jpg" alt="定妆照" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>定妆照</text></svg>'">
+                            <div class="card-overlay">
+                                <div class="card-title">定妆照</div>
+                                <div class="card-subtitle">造型展示</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 直拍区 -->
+                <div class="lower-module">
+                    <div class="module-header">
+                        <h3 class="module-title">舞台直拍</h3>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card" onclick="openFancamModal('day1')">
+                            <img src="assets/images/day1-cover.jpg" alt="Day1直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 1</text></svg>'">
+                            <div class="card-overlay">
+                                <div class="card-title">Day 1</div>
+                                <div class="card-subtitle">待定</div>
+                            </div>
+                        </div>
+                        <div class="card" onclick="openFancamModal('day2')">
+                            <img src="assets/images/day2-cover.jpg" alt="Day2直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 2</text></svg>'">
+                            <div class="card-overlay">
+                                <div class="card-title">Day 2</div>
+                                <div class="card-subtitle">待定</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图集区 -->
+                <div class="lower-module">
+                    <div class="module-header">
+                        <h3 class="module-title">精彩图集</h3>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card" onclick="openGalleryModal('day1')">
+                            <img src="assets/images/day1-gallery-cover.jpg" alt="Day1图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>Day 1</text></svg>'">
+                            <div class="card-overlay">
+                                <div class="card-title">Day 1</div>
+                                <div class="card-subtitle">现场图集</div>
+                            </div>
+                        </div>
+                        <div class="card" onclick="openGalleryModal('day2')">
+                            <img src="assets/images/day2-gallery-cover.jpg" alt="Day2图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>Day 2</text></svg>'">
+                            <div class="card-overlay">
+                                <div class="card-title">Day 2</div>
+                                <div class="card-subtitle">现场图集</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer class="footer"><p>鹭卓2025 RTTT巡演记录 | For Luzhou，From 橘子suuoia_Lu</p></footer>
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
-    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
-        <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p class="footer-text">鹭卓2025 RTTT巡演记录 | For Luzhou，From 橘子suuoia_Lu</p>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- 脚本 -->
+    <script src="js/card-album.js"></script>
+    <script src="js/video-player.js"></script>
     <script>
-        function toggleMobileMenu() { document.getElementById('navbarNav').classList.toggle('active'); }
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        window.addEventListener('scroll', () => { document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 500); });
-        function openLightbox(name) { document.getElementById('lightboxImg').src = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect fill='%23B5E3FF' width='100%25' height='100%25'/><text fill='%23002CCD' x='50%25' y='50%25' text-anchor='middle' font-size='40' font-weight='bold'>${encodeURIComponent(name)}</text></svg>`; document.getElementById('lightbox').classList.add('active'); }
-        function closeLightbox(e) { if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close')) return; document.getElementById('lightbox').classList.remove('active'); }
+        // 城市数据配置
+        const cityName = '北京站';
+        
+        // 垂直导航数据
+        const navData = {
+            groupPhoto: [
+                'assets/images/beijing/group1.jpg',
+                'assets/images/beijing/group2.jpg',
+                'assets/images/beijing/group3.jpg'
+            ],
+            bouquet: [
+                'assets/images/beijing/bouquet1.jpg',
+                'assets/images/beijing/bouquet2.jpg',
+                'assets/images/beijing/bouquet3.jpg'
+            ],
+            official: [
+                'assets/images/beijing/official1.jpg',
+                'assets/images/beijing/official2.jpg',
+                'assets/images/beijing/official3.jpg'
+            ]
+        };
+        
+        // 海报花絮数据
+        const posterData = [
+            'assets/images/beijing/poster1.jpg',
+            'assets/images/beijing/poster2.jpg',
+            'assets/images/beijing/poster3.jpg',
+            'assets/images/beijing/poster4.jpg',
+            'assets/images/beijing/poster5.jpg',
+            'assets/images/beijing/poster6.jpg'
+        ];
+        
+        // 直拍区三层级数据
+        const fancamData = [
+            {
+                title: 'Day 1',
+                cover: 'assets/images/day1-cover.jpg',
+                children: [
+                    {
+                        title: '主舞台',
+                        cover: 'assets/images/stage-main.jpg',
+                        children: [
+                            { title: '开场曲', type: 'video', videoUrl: 'assets/videos/beijing/day1/opening.mp4', isLeaf: true },
+                            { title: '主打歌', type: 'video', videoUrl: 'assets/videos/beijing/day1/main.mp4', isLeaf: true },
+                            { title: '安可曲', type: 'video', videoUrl: 'assets/videos/beijing/day1/encore.mp4', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '延伸台',
+                        cover: 'assets/images/stage-extend.jpg',
+                        children: [
+                            { title: '互动环节', type: 'video', videoUrl: 'assets/videos/beijing/day1/interact.mp4', isLeaf: true },
+                            { title: '粉丝合唱', type: 'video', videoUrl: 'assets/videos/beijing/day1/chorus.mp4', isLeaf: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'Day 2',
+                cover: 'assets/images/day2-cover.jpg',
+                children: [
+                    {
+                        title: '主舞台',
+                        cover: 'assets/images/stage-main.jpg',
+                        children: [
+                            { title: '开场曲', type: 'video', videoUrl: 'assets/videos/beijing/day2/opening.mp4', isLeaf: true },
+                            { title: '主打歌', type: 'video', videoUrl: 'assets/videos/beijing/day2/main.mp4', isLeaf: true },
+                            { title: '安可曲', type: 'video', videoUrl: 'assets/videos/beijing/day2/encore.mp4', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '延伸台',
+                        cover: 'assets/images/stage-extend.jpg',
+                        children: [
+                            { title: '互动环节', type: 'video', videoUrl: 'assets/videos/beijing/day2/interact.mp4', isLeaf: true },
+                            { title: '粉丝合唱', type: 'video', videoUrl: 'assets/videos/beijing/day2/chorus.mp4', isLeaf: true }
+                        ]
+                    }
+                ]
+            }
+        ];
+        
+        // 图集区三层级数据
+        // 定妆照数据（独立出来，用于海报花絮区）
+        const stylingData = [
+            {
+                title: '造型A',
+                cover: 'assets/images/styling-a.jpg',
+                children: [
+                    { title: '正面照', image: 'assets/images/beijing/styling-a1.jpg', thumb: 'assets/images/beijing/styling-a1-thumb.jpg', isLeaf: true },
+                    { title: '侧面照', image: 'assets/images/beijing/styling-a2.jpg', thumb: 'assets/images/beijing/styling-a2-thumb.jpg', isLeaf: true },
+                    { title: '特写', image: 'assets/images/beijing/styling-a3.jpg', thumb: 'assets/images/beijing/styling-a3-thumb.jpg', isLeaf: true }
+                ]
+            },
+            {
+                title: '造型B',
+                cover: 'assets/images/styling-b.jpg',
+                children: [
+                    { title: '正面照', image: 'assets/images/beijing/styling-b1.jpg', thumb: 'assets/images/beijing/styling-b1-thumb.jpg', isLeaf: true },
+                    { title: '侧面照', image: 'assets/images/beijing/styling-b2.jpg', thumb: 'assets/images/beijing/styling-b2-thumb.jpg', isLeaf: true }
+                ]
+            }
+        ];
+        
+        // 图集区数据（仅包含Day1和Day2）
+        const galleryData = [
+            {
+                title: 'Day 1',
+                cover: 'assets/images/day1-gallery-cover.jpg',
+                children: [
+                    {
+                        title: '造型A',
+                        cover: 'assets/images/day1-style1.jpg',
+                        children: [
+                            { title: '舞台照1', image: 'assets/images/beijing/day1-1.jpg', thumb: 'assets/images/beijing/day1-1-thumb.jpg', isLeaf: true },
+                            { title: '舞台照2', image: 'assets/images/beijing/day1-2.jpg', thumb: 'assets/images/beijing/day1-2-thumb.jpg', isLeaf: true },
+                            { title: '舞台照3', image: 'assets/images/beijing/day1-3.jpg', thumb: 'assets/images/beijing/day1-3-thumb.jpg', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '造型B',
+                        cover: 'assets/images/day1-style2.jpg',
+                        children: [
+                            { title: '舞台照1', image: 'assets/images/beijing/day1-4.jpg', thumb: 'assets/images/beijing/day1-4-thumb.jpg', isLeaf: true },
+                            { title: '舞台照2', image: 'assets/images/beijing/day1-5.jpg', thumb: 'assets/images/beijing/day1-5-thumb.jpg', isLeaf: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                title: 'Day 2',
+                cover: 'assets/images/day2-gallery-cover.jpg',
+                children: [
+                    {
+                        title: '造型A',
+                        cover: 'assets/images/day2-style1.jpg',
+                        children: [
+                            { title: '舞台照1', image: 'assets/images/beijing/day2-1.jpg', thumb: 'assets/images/beijing/day2-1-thumb.jpg', isLeaf: true },
+                            { title: '舞台照2', image: 'assets/images/beijing/day2-2.jpg', thumb: 'assets/images/beijing/day2-2-thumb.jpg', isLeaf: true },
+                            { title: '舞台照3', image: 'assets/images/beijing/day2-3.jpg', thumb: 'assets/images/beijing/day2-3-thumb.jpg', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '造型B',
+                        cover: 'assets/images/day2-style2.jpg',
+                        children: [
+                            { title: '舞台照1', image: 'assets/images/beijing/day2-4.jpg', thumb: 'assets/images/beijing/day2-4-thumb.jpg', isLeaf: true },
+                            { title: '舞台照2', image: 'assets/images/beijing/day2-5.jpg', thumb: 'assets/images/beijing/day2-5-thumb.jpg', isLeaf: true }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initVideoPlayer();
+            initBackToTop();
+        });
+        
+        function initVideoPlayer() {
+            const videoContainer = document.getElementById('documentaryVideo');
+            if (videoContainer && typeof createVideoPlayer === 'function') {
+                createVideoPlayer('documentaryVideo', {
+                    src: 'assets/videos/beijing/documentary.mp4',
+                    poster: 'assets/images/beijing/doc-poster.jpg',
+                    title: '北京站纪录片'
+                });
+            }
+        }
+        
+        function initBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (!backToTop) return;
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+        }
+        
+        function toggleMobileMenu() {
+            const navbarNav = document.getElementById('navbarNav');
+            navbarNav?.classList.toggle('active');
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function openGroupPhotoModal() {
+            cardAlbum.openNavModal('合照区', navData.groupPhoto);
+        }
+        
+        function openBouquetModal() {
+            cardAlbum.openNavModal('花束区', navData.bouquet);
+        }
+        
+        function openOfficialModal() {
+            cardAlbum.openNavModal('官摄区', navData.official);
+        }
+        
+        function openPosterModal() {
+            cardAlbum.openPosterModal('海报花絮', posterData);
+        }
+        
+        function openFancamModal(day) {
+            if (day === 'day1') {
+                cardAlbum.openModal('Day 1 直拍', fancamData[0].children, 0);
+            } else {
+                cardAlbum.openModal('Day 2 直拍', fancamData[1].children, 0);
+            }
+        }
+        
+        // 打开定妆照弹窗
+        function openStylingModal() {
+            cardAlbum.openModal('定妆照', stylingData, 0);
+        }
+        
+        function openGalleryModal(type) {
+            let data, title;
+            switch(type) {
+                case 'day1':
+                    title = 'Day 1 图集';
+                    data = galleryData[0].children;
+                    break;
+                case 'day2':
+                    title = 'Day 2 图集';
+                    data = galleryData[1].children;
+                    break;
+            }
+            cardAlbum.openModal(title, data, 0);
+        }
+        
+        // 播放视频
+        function playVideo(videoUrl, title) {
+            const modal = document.createElement('div');
+            modal.className = 'video-modal';
+            modal.innerHTML = `
+                <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
+                <div class="video-modal-content">
+                    <button class="video-modal-close" onclick="closeVideoModal()">×</button>
+                    <h3 class="video-modal-title">${title}</h3>
+                    <div class="video-iframe-container">
+                        <iframe src="${videoUrl}" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 关闭视频弹窗
+        function closeVideoModal() {
+            const modal = document.querySelector('.video-modal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // 打开纪录片弹窗
+        function openDocumentaryModal() {
+            playVideo('https://weibo.com/tv/show/1034:5226437192646763?from=old_pc_videoshow', '北京站纪录片');
+        }
+        
+        // 海报区数据
+        const posterNavData = [
+            { title: '海报1', cover: 'images/cards/card1.jpg', children: [{ title: '海报1', image: 'images/cards/card1.jpg', isLeaf: true }] },
+            { title: '手写信1', cover: 'images/cards/card2.jpg', children: [{ title: '手写信1', image: 'images/cards/card2.jpg', isLeaf: true }] },
+            { title: '海报2', cover: 'images/cards/card3.jpg', children: [{ title: '海报2', image: 'images/cards/card3.jpg', isLeaf: true }] },
+            { title: '手写信2', cover: 'images/cards/card4.jpg', children: [{ title: '手写信2', image: 'images/cards/card4.jpg', isLeaf: true }] }
+        ];
+        
+        // 打开海报区弹窗
+        function openPosterNavModal() {
+            cardAlbum.openModal('海报区', posterNavData, 0);
+        }
+        
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('navbarNav')?.classList.remove('active');
+            });
+        });
     </script>
     <script src="js/music.js"></script>
 </body>

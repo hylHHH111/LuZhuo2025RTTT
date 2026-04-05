@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
@@ -129,9 +130,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 44, 205, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(97, 194, 255, 0.1) 0%, transparent 50%);
+            background:
+                radial-gradient(circle at 20% 80%, rgba(66, 171, 243, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(66, 171, 243, 0.1) 0%, transparent 50%);
         }
         
         .banner-content {
@@ -442,7 +443,7 @@
                     <!-- 定义箭头标记 -->
                     <defs>
                         <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="#61C2FF" />
+                            <polygon points="0 0, 10 3.5, 0 7" fill="var(--primary-light)" />
                         </marker>
                     </defs>
                     

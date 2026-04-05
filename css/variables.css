@@ -1,26 +1,54 @@
 /* ============================================
    鹭卓2025 RTTT巡演记录网站 - CSS变量
+   新配色方案：高级感蓝色系
    ============================================ */
 
 :root {
-  /* 主色调 - 新配色方案 (基于色卡: Shallow Cotton Candy #A8D8EA, Creamy Wave #D4F0F7) */
-  --primary: #5BA4C9;
-  --primary-light: #A8D8EA;
-  --accent: #D4F0F7;
-  --accent-light: #E8F6FA;
-  --white: #FFFFFF;
-  --black: #2C3E50;
+  /* 主色调 - 基于色卡 #42abf3, #6ec0f8, #a2d7fc, #cdecff, #e4f5fd */
+  --primary: #42abf3;
+  --primary-light: #6ec0f8;
+  --primary-lighter: #a2d7fc;
+  --primary-lightest: #cdecff;
+  --primary-bg: #e4f5fd;
+  
+  /* 兼容旧变量名 */
+  --accent: #a2d7fc;
+  --accent-light: #e4f5fd;
+  
+  /* 辅助色 */
+  --white: #ffffff;
+  --black: #1a1a2e;
+  --gray-dark: #2d3748;
+  --gray: #4a5568;
+  --gray-light: #a0aec0;
+  --gray-lighter: #e2e8f0;
   
   /* 功能色 */
   --bg-primary: var(--white);
-  --bg-secondary: var(--accent);
+  --bg-secondary: var(--primary-bg);
+  --bg-gradient: linear-gradient(135deg, var(--primary-bg) 0%, var(--white) 100%);
+  
   --text-primary: var(--black);
-  --text-secondary: #5A6C7D;
+  --text-secondary: var(--gray);
+  --text-tertiary: var(--gray-light);
   --text-light: var(--white);
+  --text-primary-color: var(--primary);
   
   /* 导航 */
-  --nav-height: 70px;
-  --nav-bg: linear-gradient(135deg, #5BA4C9 0%, #A8D8EA 100%);
+  --nav-height: 56px;
+  --nav-bg: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  
+  /* 卡片 */
+  --card-bg: var(--white);
+  --card-border: 1px solid var(--primary-lightest);
+  --card-shadow: 0 4px 20px rgba(66, 171, 243, 0.12);
+  --card-shadow-hover: 0 12px 40px rgba(66, 171, 243, 0.2);
+  
+  /* 按钮 */
+  --btn-primary-bg: var(--primary);
+  --btn-primary-hover: var(--primary-light);
+  --btn-secondary-bg: var(--primary-bg);
+  --btn-secondary-hover: var(--primary-lightest);
   
   /* 间距 */
   --space-xs: 0.25rem;
@@ -50,9 +78,9 @@
   --radius-full: 9999px;
   
   /* 阴影 */
-  --shadow-sm: 0 2px 4px rgba(91, 164, 201, 0.1);
-  --shadow-md: 0 4px 12px rgba(91, 164, 201, 0.15);
-  --shadow-lg: 0 8px 24px rgba(91, 164, 201, 0.2);
+  --shadow-sm: 0 2px 8px rgba(66, 171, 243, 0.08);
+  --shadow-md: 0 4px 20px rgba(66, 171, 243, 0.12);
+  --shadow-lg: 0 8px 30px rgba(66, 171, 243, 0.16);
   
   /* 过渡 */
   --transition-fast: 0.15s ease;

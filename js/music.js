@@ -169,8 +169,20 @@
     }
     
     // 添加点击交互事件监听
-    document.addEventListener('click', handleUserInteraction);
-    document.addEventListener('touchstart', handleUserInteraction);
+    document.addEventListener('click', function(e) {
+        // 排除导航栏和汉堡菜单按钮的点击
+        if (e.target.closest('.navbar, .navbar-toggle, .navbar-nav, .nav-item')) {
+            return;
+        }
+        handleUserInteraction(e);
+    });
+    document.addEventListener('touchstart', function(e) {
+        // 排除导航栏和汉堡菜单按钮的触摸
+        if (e.target.closest('.navbar, .navbar-toggle, .navbar-nav, .nav-item')) {
+            return;
+        }
+        handleUserInteraction(e);
+    });
     
     // 立即执行初始化
     initMusic();
