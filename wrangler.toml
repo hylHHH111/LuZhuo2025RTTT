@@ -1,8 +1,14 @@
 name = "luzhuo2025rttt"
-main = "index.html"
 compatibility_date = "2026-04-06"
 workers_dev = true
 
 [assets]
+# 只打包网站根目录，同时彻底排除.git和所有无关文件
 directory = "./"
-exclude = [".git/**", "node_modules/**"]
+exclude = [
+  ".git/**",
+  ".gitignore",
+  "node_modules/**",
+  "*.log",
+  "*.md"
+]
