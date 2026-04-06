@@ -447,6 +447,9 @@ class CardAlbum {
                 // 海报信封区：自定义名称
                 const posterTitles = ['手写信信封', '成都站手写信', '主海报', '倒计时3天', '倒计时2天', '倒计时1天'];
                 imgTitle = posterTitles[i] || `图片 ${i + 1}`;
+            } else if (title === '花束区') {
+                // 花束区：图片1和图片2不显示文字
+                imgTitle = '';
             } else {
                 imgTitle = `图片 ${i + 1}`;
             }
