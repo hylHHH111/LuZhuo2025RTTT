@@ -74,7 +74,7 @@
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
                         <span class="nav-icon">🎬</span>
-                        <span>海报区</span>
+                        <span>海报信封区</span>
                     </button>
                 </div>
             </section>
@@ -167,23 +167,66 @@
     <script>
         // 垂直导航数据
         const navData = {
-            groupPhoto: [
-                'images/cards/card1.jpg',
-                'images/cards/card2.jpg',
-                'images/cards/card3.jpg',
-                'images/cards/card4.jpg'
+            groupPhoto: [   // 合照区照片
+                'images/taiyuan/ty_groupphoto/ty_groupphoto1.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto2.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto3.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto4.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto5.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto6.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto7.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto8.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto9.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto10.webp'
             ],
-            bouquet: [
-                'images/cards/card5.jpg',
-                'images/cards/card6.jpg',
-                'images/cards/card7.jpg',
-                'images/cards/card8.jpg'
+            bouquet: [    // 花束区照片
+                'images/taiyuan/ty_flower/ty_flower_1.webp',
+                'images/taiyuan/ty_flower/ty_flower_2.webp',
+                'images/taiyuan/ty_flower/ty_flower_3.webp',
+                'images/taiyuan/ty_flower/ty_flower_4.webp',
+                'images/taiyuan/ty_flower/ty_flower_5.webp',
+                'images/taiyuan/ty_flower/ty_flower_6.webp',
+                'images/taiyuan/ty_flower/ty_flower_7.webp',
+                'images/taiyuan/ty_flower/ty_flower_8.webp',
+                'images/taiyuan/ty_flower/ty_flower_9.webp',
+                'images/taiyuan/ty_flower/ty_flower_10.webp'
             ],
-            official: [
-                'images/cards/card9.jpg',
-                'images/cards/card10.jpg',
-                'images/cards/card11.jpg',
-                'images/cards/card12.jpg'
+            official: [    // 官摄区照片（三层级结构）
+                {
+                    title: '鹭卓帅哥',
+                    cover: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_1.webp',
+                    children: [
+                        { image: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_1.webp', thumb: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_1.webp', isLeaf: true },
+                        { image: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_2.webp', thumb: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_2.webp', isLeaf: true },
+                        { image: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_3.webp', thumb: 'images/taiyuan/ty_official/luzhuohao/luzhuohao_3.webp', isLeaf: true }
+                    ]
+                },
+                {
+                    title: '玫瑰园',
+                    cover: 'images/taiyuan/ty_official/guiyuan/guiyuan_1.webp',
+                    children: [
+                        { image: 'images/taiyuan/ty_official/guiyuan/guiyuan_1.webp', thumb: 'images/taiyuan/ty_official/guiyuan/guiyuan_1.webp', isLeaf: true },
+                        { image: 'images/taiyuan/ty_official/guiyuan/guiyuan_2.webp', thumb: 'images/taiyuan/ty_official/guiyuan/guiyuan_2.webp', isLeaf: true },
+                        { image: 'images/taiyuan/ty_official/guiyuan/guiyuan_3.webp', thumb: 'images/taiyuan/ty_official/guiyuan/guiyuan_3.webp', isLeaf: true }
+                    ]
+                },
+                {
+                    title: '莫拉娱乐',
+                    cover: 'images/taiyuan/ty_official/mola/mola_1.webp',
+                    children: [
+                        { image: 'images/taiyuan/ty_official/mola/mola_1.webp', thumb: 'images/taiyuan/ty_official/mola/mola_1.webp', isLeaf: true },
+                        { image: 'images/taiyuan/ty_official/mola/mola_2.webp', thumb: 'images/taiyuan/ty_official/mola/mola_2.webp', isLeaf: true },
+                        { image: 'images/taiyuan/ty_official/mola/mola_3.webp', thumb: 'images/taiyuan/ty_official/mola/mola_3.webp', isLeaf: true }
+                    ]
+                }
+            ],
+            poster: [    // 海报信封区照片
+                'images/taiyuan/ty_poster_letter/ty_poster_letter1.webp',
+                'images/taiyuan/ty_poster_letter/ty_poster_letter2.webp',
+                'images/taiyuan/ty_poster_letter/ty_poster_letter3.webp',
+                'images/taiyuan/ty_poster_letter/ty_poster_letter4.webp',
+                'images/taiyuan/ty_poster_letter/ty_poster_letter5.webp',
+                'images/taiyuan/ty_poster_letter/ty_poster_letter6.webp'
             ]
         };
 
@@ -269,7 +312,7 @@
 
         // 打开官摄区弹窗
         function openOfficialModal() {
-            cardAlbum.openNavModal('官摄区', navData.official);
+            cardAlbum.openModal('官摄区', navData.official, 0);
         }
 
         // 打开海报花絮弹窗
@@ -330,17 +373,9 @@
             playVideo('https://weibo.com/tv/show/1034:5226437192646763?from=old_pc_videoshow', '太原站纪录片');
         }
         
-        // 海报区数据
-        const posterNavData = [
-            { title: '海报1', cover: 'images/cards/card1.jpg', children: [{ title: '海报1', image: 'images/cards/card1.jpg', isLeaf: true }] },
-            { title: '手写信1', cover: 'images/cards/card2.jpg', children: [{ title: '手写信1', image: 'images/cards/card2.jpg', isLeaf: true }] },
-            { title: '海报2', cover: 'images/cards/card3.jpg', children: [{ title: '海报2', image: 'images/cards/card3.jpg', isLeaf: true }] },
-            { title: '手写信2', cover: 'images/cards/card4.jpg', children: [{ title: '手写信2', image: 'images/cards/card4.jpg', isLeaf: true }] }
-        ];
-        
-        // 打开海报区弹窗
+        // 打开海报信封区弹窗
         function openPosterNavModal() {
-            cardAlbum.openModal('海报区', posterNavData, 0);
+            cardAlbum.openNavModal('海报信封区', navData.poster);
         }
         
         // 回到顶部

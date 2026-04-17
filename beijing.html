@@ -72,7 +72,7 @@
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
                         <span class="nav-icon">🎬</span>
-                        <span>海报区</span>
+                        <span>海报信封区</span>
                     </button>
                 </div>
             </section>
@@ -168,20 +168,66 @@
         
         // 垂直导航数据
         const navData = {
-            groupPhoto: [
-                'assets/images/beijing/group1.jpg',
-                'assets/images/beijing/group2.jpg',
-                'assets/images/beijing/group3.jpg'
+            groupPhoto: [   // 合照区照片
+                'images/beijing/bj_groupphoto/bj_groupphoto1.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto2.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto3.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto4.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto5.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto6.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto7.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto8.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto9.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto10.webp'
             ],
-            bouquet: [
-                'assets/images/beijing/bouquet1.jpg',
-                'assets/images/beijing/bouquet2.jpg',
-                'assets/images/beijing/bouquet3.jpg'
+            bouquet: [    // 花束区照片
+                'images/beijing/bj_flower/bj_flower_1.webp',
+                'images/beijing/bj_flower/bj_flower_2.webp',
+                'images/beijing/bj_flower/bj_flower_3.webp',
+                'images/beijing/bj_flower/bj_flower_4.webp',
+                'images/beijing/bj_flower/bj_flower_5.webp',
+                'images/beijing/bj_flower/bj_flower_6.webp',
+                'images/beijing/bj_flower/bj_flower_7.webp',
+                'images/beijing/bj_flower/bj_flower_8.webp',
+                'images/beijing/bj_flower/bj_flower_9.webp',
+                'images/beijing/bj_flower/bj_flower_10.webp'
             ],
-            official: [
-                'assets/images/beijing/official1.jpg',
-                'assets/images/beijing/official2.jpg',
-                'assets/images/beijing/official3.jpg'
+            official: [    // 官摄区照片（三层级结构）
+                {
+                    title: '鹭卓帅哥',
+                    cover: 'images/beijing/bj_official/luzhuohao/luzhuohao_1.webp',
+                    children: [
+                        { image: 'images/beijing/bj_official/luzhuohao/luzhuohao_1.webp', thumb: 'images/beijing/bj_official/luzhuohao/luzhuohao_1.webp', isLeaf: true },
+                        { image: 'images/beijing/bj_official/luzhuohao/luzhuohao_2.webp', thumb: 'images/beijing/bj_official/luzhuohao/luzhuohao_2.webp', isLeaf: true },
+                        { image: 'images/beijing/bj_official/luzhuohao/luzhuohao_3.webp', thumb: 'images/beijing/bj_official/luzhuohao/luzhuohao_3.webp', isLeaf: true }
+                    ]
+                },
+                {
+                    title: '玫瑰园',
+                    cover: 'images/beijing/bj_official/guiyuan/guiyuan_1.webp',
+                    children: [
+                        { image: 'images/beijing/bj_official/guiyuan/guiyuan_1.webp', thumb: 'images/beijing/bj_official/guiyuan/guiyuan_1.webp', isLeaf: true },
+                        { image: 'images/beijing/bj_official/guiyuan/guiyuan_2.webp', thumb: 'images/beijing/bj_official/guiyuan/guiyuan_2.webp', isLeaf: true },
+                        { image: 'images/beijing/bj_official/guiyuan/guiyuan_3.webp', thumb: 'images/beijing/bj_official/guiyuan/guiyuan_3.webp', isLeaf: true }
+                    ]
+                },
+                {
+                    title: '莫拉娱乐',
+                    cover: 'images/beijing/bj_official/mola/mola_1.webp',
+                    children: [
+                        { image: 'images/beijing/bj_official/mola/mola_1.webp', thumb: 'images/beijing/bj_official/mola/mola_1.webp', isLeaf: true },
+                        { image: 'images/beijing/bj_official/mola/mola_2.webp', thumb: 'images/beijing/bj_official/mola/mola_2.webp', isLeaf: true },
+                        { image: 'images/beijing/bj_official/mola/mola_3.webp', thumb: 'images/beijing/bj_official/mola/mola_3.webp', isLeaf: true }
+                    ]
+                }
+            ],
+            poster: [    // 海报信封区照片
+                'images/beijing/bj_poster_letter/bj_poster_letter1.webp',
+                'images/beijing/bj_poster_letter/bj_poster_letter2.webp',
+                'images/beijing/bj_poster_letter/bj_poster_letter3.webp',
+                'images/beijing/bj_poster_letter/bj_poster_letter4.webp',
+                'images/beijing/bj_poster_letter/bj_poster_letter5.webp',
+                'images/beijing/bj_poster_letter/bj_poster_letter6.webp'
             ]
         };
         
@@ -364,7 +410,7 @@
         }
         
         function openOfficialModal() {
-            cardAlbum.openNavModal('官摄区', navData.official);
+            cardAlbum.openModal('官摄区', navData.official, 0);
         }
         
         function openPosterModal() {
@@ -431,17 +477,9 @@
             playVideo('https://weibo.com/tv/show/1034:5226437192646763?from=old_pc_videoshow', '北京站纪录片');
         }
         
-        // 海报区数据
-        const posterNavData = [
-            { title: '海报1', cover: 'images/cards/card1.jpg', children: [{ title: '海报1', image: 'images/cards/card1.jpg', isLeaf: true }] },
-            { title: '手写信1', cover: 'images/cards/card2.jpg', children: [{ title: '手写信1', image: 'images/cards/card2.jpg', isLeaf: true }] },
-            { title: '海报2', cover: 'images/cards/card3.jpg', children: [{ title: '海报2', image: 'images/cards/card3.jpg', isLeaf: true }] },
-            { title: '手写信2', cover: 'images/cards/card4.jpg', children: [{ title: '手写信2', image: 'images/cards/card4.jpg', isLeaf: true }] }
-        ];
-        
-        // 打开海报区弹窗
+        // 打开海报信封区弹窗
         function openPosterNavModal() {
-            cardAlbum.openModal('海报区', posterNavData, 0);
+            cardAlbum.openNavModal('海报信封区', navData.poster);
         }
         
         document.querySelectorAll('.nav-item').forEach(item => {
