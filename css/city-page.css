@@ -941,9 +941,10 @@ body {
     transform: scale(1.1);
 }
 
-/* ========== 视频卡片 ========== */
-.video-card {
-    aspect-ratio: 16/9;
+/* ========== 舞台直拍视频卡片（专用样式，避免冲突） ========== */
+.stage-video-card {
+    width: 100%;
+    aspect-ratio: 3/4;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -954,33 +955,50 @@ body {
     justify-content: center;
 }
 
-.video-card-play {
+.stage-video-card .video-card-play {
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    color: var(--primary);
+    color: var(--white);
     transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-.video-card:hover .video-card-play {
+.stage-video-card:hover .video-card-play {
     transform: scale(1.1);
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.video-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
 }
 
 .video-card-title {
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    text-align: center;
+    padding: 0 var(--space-xs);
+}
+
+.video-card-badge {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-md);
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: var(--white);
-    font-size: var(--font-size-base);
+    top: 8px;
+    right: 8px;
+    background: #ff2442;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
     font-weight: 600;
 }
 
@@ -1273,6 +1291,22 @@ body {
     
     .video-iframe-container {
         aspect-ratio: 16/10;
+    }
+    
+    /* 移动端垂直导航区样式 */
+    .nav-module {
+        min-height: 400px;
+        height: auto;
+        gap: var(--space-sm);
+    }
+    
+    .nav-button {
+        min-height: 180px;
+        padding: var(--space-md);
+    }
+    
+    .nav-icon {
+        font-size: 32px;
     }
 }
 
