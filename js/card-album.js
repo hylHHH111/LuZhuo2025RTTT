@@ -210,16 +210,21 @@ class CardAlbum {
             const isLastLevel = level >= 2 || item.isLeaf;
             
             if (isLastLevel && item.type === 'video') {
-                // 视频卡片
+                // 判断视频来源：小红书跳转新窗口，微博弹窗播放
                 const isXiaohongshu = item.videoUrl.includes('xiaohongshu.com');
                 const clickAction = isXiaohongshu 
                     ? `window.open('${item.videoUrl}', '_blank')` 
                     : `cardAlbum.playVideo('${item.videoUrl}', '${item.title}')`;
+                const badge = isXiaohongshu ? '<div class="video-card-badge">小红书</div>' : '';
+                const coverImage = item.image || item.thumb || '';
+                
                 return `
-                    <div class="video-card" onclick="${clickAction}">
-                        <div class="video-card-play">▶</div>
+                    <div class="video-card-wrapper">
+                        <div class="stage-video-card" onclick="${clickAction}" style="background-image: url('${coverImage}'); background-size: cover; background-position: center;">
+                            <div class="video-card-play">▶</div>
+                            ${badge}
+                        </div>
                         <div class="video-card-title">${item.title}</div>
-                        ${isXiaohongshu ? '<div class="video-card-badge">小红书</div>' : ''}
                     </div>
                 `;
             } else if (isLastLevel) {
@@ -405,21 +410,31 @@ class CardAlbum {
      * 播放视频
      */
     playVideo(url, title) {
-        // 创建视频弹窗
+        // 降低歌曲选择弹窗的z-index，使其置于底层
+        const songModal = document.getElementById(this.options.modalId);
+        if (songModal) {
+            songModal.style.zIndex = '1000';
+        }
+        
+        // 创建视频弹窗 - 使用 iframe 嵌入微博视频
         const videoModal = document.createElement('div');
         videoModal.className = 'modal-overlay active';
+        videoModal.style.zIndex = '3000';
         videoModal.innerHTML = `
-            <div class="modal-content" style="max-width: 900px;">
-                <div class="modal-header">
-                    <h3 class="modal-title">${title}</h3>
-                    <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">×</button>
+            <div class="modal-content" style="max-width: 900px; width: 90%;">
+                <div class="modal-header" style="padding: var(--space-sm) var(--space-lg);">
+                    <h3 class="modal-title" style="font-size: var(--font-size-lg);">${title}</h3>
+                    <button class="modal-close" onclick="cardAlbum.closeVideoModal(this)">×</button>
                 </div>
                 <div class="modal-body" style="padding: 0;">
-                    <div class="video-container" style="aspect-ratio: 16/9;">
-                        <video class="video-player" controls autoplay style="width: 100%; height: 100%;">
-                            <source src="${url}" type="video/mp4">
-                            您的浏览器不支持视频播放
-                        </video>
+                    <div class="video-container" style="aspect-ratio: 9/16; background: #000; max-height: 90vh;">
+                        <iframe 
+                            src="${url}" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            allowfullscreen
+                            style="width: 100%; height: 100%;">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -427,11 +442,25 @@ class CardAlbum {
         
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) {
-                videoModal.remove();
+                cardAlbum.closeVideoModal(videoModal.querySelector('.modal-close'));
             }
         });
         
         document.body.appendChild(videoModal);
+    }
+    
+    /**
+     * 关闭视频弹窗并恢复歌曲选择弹窗
+     */
+    closeVideoModal(closeBtn) {
+        const videoModal = closeBtn.closest('.modal-overlay');
+        videoModal.remove();
+        
+        // 恢复歌曲选择弹窗的z-index
+        const songModal = document.getElementById(this.options.modalId);
+        if (songModal) {
+            songModal.style.zIndex = '';
+        }
     }
     
     /**
@@ -483,6 +512,22 @@ class CardAlbum {
      */
     openGalleryModal(cityName, data) {
         this.openModal(`${cityName} - 精彩图集`, data, 0);
+    }
+    
+    /**
+     * 打开视频弹窗（舞台直拍专用）
+     */
+    openVideoModal(title, videoData) {
+        // 直接显示所有视频，不需要"视频列表"层级
+        const data = videoData.map((video, i) => ({
+            title: video.title,
+            image: video.image,
+            thumb: video.thumb,
+            videoUrl: video.videoUrl,
+            type: 'video',
+            isLeaf: true
+        }));
+        this.openModal(title, data, 0);
     }
 }
 
@@ -615,6 +660,10 @@ class CityDataManager {
 // 全局实例
 const cardAlbum = new CardAlbum();
 const cityDataManager = new CityDataManager();
+
+// 挂载到 window 对象，确保在 HTML 中可用
+window.cardAlbum = cardAlbum;
+window.cityDataManager = cityDataManager;
 
 // 导出
 if (typeof module !== 'undefined' && module.exports) {
