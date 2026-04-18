@@ -11,11 +11,11 @@
     <!-- 主内容 -->
     <main class="main-content" style="padding-top: 0;">
         <!-- 城市头部（包含导航栏） -->
-        <section class="city-header" style="position: relative; padding-top: 70px;">
+        <section class="city-header" style="position: relative; padding-top: 70px; background-image: url('images/taiyuan_header.webp'); background-position: center 80%; background-size: 120%; background-repeat: no-repeat;">
             <!-- 导航栏 -->
             <nav class="navbar" style="background: transparent; position: absolute; top: 0; left: 0; right: 0; z-index: 9999; box-shadow: none;">
                 <div class="navbar-container">
-                    <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
+                    <img src="images/rttt_logo/taiyuanlogo.png" alt="太原站" class="navbar-logo-img" style="height: 45px; opacity: 0.85;">
                     <div class="navbar-nav" id="navbarNav">
                         <a href="home.html" class="nav-item">首页</a>
                         <a href="chengdu.html" class="nav-item">成都站</a>
@@ -32,9 +32,10 @@
                     </button>
                 </div>
             </nav>
-            <div class="city-header-content" style="position: absolute; bottom: 50px; left: 40px; text-align: left; z-index: 1;">
-                <h2 class="city-name" style="margin-bottom: 8px; font-size: 35px;">太原站</h2>
-                <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px;">待定</p>
+            <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left; z-index: 1;">
+                <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">太原站</h2>
+                <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px;">2025年10月25-26日 山西体育中心汾酒体育馆</p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://weibo.com/p/231522233f2604e6ee65f75b668d1692e153da" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌：#鹭卓巡演repo在这里#</a></p>
             </div>
         </section>
 
@@ -46,7 +47,7 @@
                 <div class="documentary-module">
                     <div class="video-card" onclick="openDocumentaryModal()">
                         <div class="video-thumbnail">
-                            <img src="images/cards/card1.jpg" alt="太原站纪录片封面" onerror="this.style.display='none'">
+                            <img src="images/taiyuan/ty_frontcover.webp" alt="太原站纪录片封面" onerror="this.style.display='none'">
                             <div class="play-overlay">
                                 <div class="play-btn">▶</div>
                             </div>
@@ -168,15 +169,15 @@
         // 垂直导航数据
         const navData = {
             groupPhoto: [   // 合照区照片
-                'images/taiyuan/ty_groupphoto/ty_groupphoto1.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto2.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto3.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto4.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto5.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto6.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto7.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto8.webp',
-                'images/taiyuan/ty_groupphoto/ty_groupphoto9.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto01.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto02.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto03.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto04.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto05.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto06.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto07.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto08.webp',
+                'images/taiyuan/ty_groupphoto/ty_groupphoto09.webp',
                 'images/taiyuan/ty_groupphoto/ty_groupphoto10.webp'
             ],
             bouquet: [    // 花束区照片
@@ -290,19 +291,15 @@
             initBackToTop();
         });
 
-        // 打开合照区弹窗
+        // 打开合照区弹窗（太原站：前5张10月25日，后5张10月26日）
         function openGroupPhotoModal() {
-            cardAlbum.openNavModal('合照区', navData.groupPhoto);
-        }
-
-        // 打开花束区弹窗
-        function openBouquetModal() {
-            cardAlbum.openNavModal('花束区', navData.bouquet);
-        }
-
-        // 打开合照区弹窗
-        function openGroupPhotoModal() {
-            cardAlbum.openNavModal('合照区', navData.groupPhoto);
+            const groupPhotoData = navData.groupPhoto.map((img, i) => ({
+                title: i < 5 ? `10月25日合照 ${i + 1}` : `10月26日合照 ${i - 4}`,
+                image: img,
+                thumb: img,
+                isLeaf: true
+            }));
+            cardAlbum.openModal('合照区', groupPhotoData, 0);
         }
 
         // 打开花束区弹窗
@@ -373,9 +370,16 @@
             playVideo('https://weibo.com/tv/show/1034:5226437192646763?from=old_pc_videoshow', '太原站纪录片');
         }
         
-        // 打开海报信封区弹窗
+        // 打开海报信封区弹窗（太原站自定义标题）
         function openPosterNavModal() {
-            cardAlbum.openNavModal('海报信封区', navData.poster);
+            const posterTitles = ['手写信信封', '太原站手写信', '主海报', '倒计时3天', '倒计时2天', '倒计时1天'];
+            const posterData = navData.poster.map((img, i) => ({
+                title: posterTitles[i] || `图片 ${i + 1}`,
+                image: img,
+                thumb: img,
+                isLeaf: true
+            }));
+            cardAlbum.openModal('海报信封区', posterData, 0);
         }
         
         // 回到顶部
