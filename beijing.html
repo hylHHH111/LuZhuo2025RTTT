@@ -11,11 +11,11 @@
     <!-- 主内容 -->
     <main class="main-content" style="padding-top: 0;">
         <!-- 城市头部（包含导航栏） -->
-        <section class="city-header" style="position: relative; padding-top: 70px;">
+        <section class="city-header" style="position: relative; padding-top: 70px; background-image: url('images/beijing_header.webp');background-position: center 43%; background-size: cover; background-repeat: no-repeat;">
             <!-- 导航栏 -->
             <nav class="navbar" style="background: transparent; position: absolute; top: 0; left: 0; right: 0; z-index: 100; box-shadow: none;">
                 <div class="navbar-container">
-                    <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
+                    <a href="home.html" class="navbar-logo" style="display: flex; align-items: flex-end; margin-top: 10px;"><img src="images/rttt_logo/beijinglogo.png" alt="鹭卓2025RTTT巡演记录" style="height: 60px; width: auto;"></a>
                     <div class="navbar-nav" id="navbarNav">
                         <a href="home.html" class="nav-item">首页</a>
                         <a href="chengdu.html" class="nav-item">成都站</a>
@@ -32,8 +32,11 @@
                     </button>
                 </div>
             </nav>
-            <h1 class="city-name">北京站</h1>
-            <p class="city-date">待定</p>
+            <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left;">
+                <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">北京站</h2>
+                <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px;">2025年11月08-09日 华熙生物·润百颜中心</p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌不要不要~砸砸~：#跟着鹭卓一起热浪抵达#</a></p>
+            </div>
         </section>
 
         <!-- 页面内容 -->
@@ -44,7 +47,7 @@
                 <div class="documentary-module">
                     <div class="video-card" onclick="openDocumentaryModal()">
                         <div class="video-thumbnail">
-                            <img src="images/beijing/bj_frontcover.jpg" alt="北京站纪录片封面" onerror="this.style.display='none'">
+                            <img src="images/beijing/bj_frontcover.webp" alt="北京站纪录片封面" onerror="this.style.display='none'">
                             <div class="play-overlay">
                                 <div class="play-btn">▶</div>
                             </div>
@@ -63,11 +66,11 @@
                         <span>合照区</span>
                     </button>
                     <button class="nav-button" onclick="openBouquetModal()">
-                        <span class="nav-icon">�</span>
+                        <span class="nav-icon">💐</span>
                         <span>花束区</span>
                     </button>
                     <button class="nav-button" onclick="openOfficialModal()">
-                        <span class="nav-icon">�</span>
+                        <span class="nav-icon">📷</span>
                         <span>官摄区</span>
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
@@ -169,28 +172,24 @@
         // 垂直导航数据
         const navData = {
             groupPhoto: [   // 合照区照片
-                'images/beijing/bj_groupphoto/bj_groupphoto1.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto2.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto3.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto4.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto5.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto6.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto7.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto8.webp',
-                'images/beijing/bj_groupphoto/bj_groupphoto9.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto01.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto02.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto03.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto04.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto05.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto06.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto07.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto08.webp',
+                'images/beijing/bj_groupphoto/bj_groupphoto09.webp',
                 'images/beijing/bj_groupphoto/bj_groupphoto10.webp'
             ],
             bouquet: [    // 花束区照片
-                'images/beijing/bj_flower/bj_flower_1.webp',
-                'images/beijing/bj_flower/bj_flower_2.webp',
-                'images/beijing/bj_flower/bj_flower_3.webp',
-                'images/beijing/bj_flower/bj_flower_4.webp',
-                'images/beijing/bj_flower/bj_flower_5.webp',
-                'images/beijing/bj_flower/bj_flower_6.webp',
-                'images/beijing/bj_flower/bj_flower_7.webp',
-                'images/beijing/bj_flower/bj_flower_8.webp',
-                'images/beijing/bj_flower/bj_flower_9.webp',
-                'images/beijing/bj_flower/bj_flower_10.webp'
+                'images/beijing/bj_flower/bj_flower01.webp',
+                'images/beijing/bj_flower/bj_flower02.webp',
+                'images/beijing/bj_flower/bj_flower03.webp',
+                'images/beijing/bj_flower/bj_flower04.webp',
+                'images/beijing/bj_flower/bj_flower05.webp',
+                'images/beijing/bj_flower/bj_flower06.webp'
             ],
             official: [    // 官摄区照片（三层级结构）
                 {
@@ -402,7 +401,7 @@
         }
         
         function openGroupPhotoModal() {
-            cardAlbum.openNavModal('合照区', navData.groupPhoto);
+            cardAlbum.openNavModal('合照区', navData.groupPhoto, { dates: ['11月08日', '11月09日'] });
         }
         
         function openBouquetModal() {

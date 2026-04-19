@@ -165,7 +165,7 @@ body {
 .city-name {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 4px;
     letter-spacing: 2px;
 }
 
@@ -173,6 +173,8 @@ body {
     font-size: var(--font-size-lg);
     color: var(--primary-light);
     opacity: 0.9;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 /* ========== 页面内容容器 ========== */
@@ -793,6 +795,16 @@ body {
     object-fit: cover;
 }
 
+/* 针对 ty_gy_10.webp 缩略图显示左侧内容 */
+.modal-card img[src*="ty_gy_10"] {
+    object-position: 20% center;
+}
+
+/* 针对 ty_mola_03.webp 缩略图显示右侧内容 */
+.modal-card img[src*="ty_mola_03"] {
+    object-position: 70% center;
+}
+
 .modal-card-title {
     position: absolute;
     bottom: 0;
@@ -908,6 +920,21 @@ body {
     object-fit: contain;
     border-radius: var(--radius-lg);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* 针对 hf_mola_23.webp 图片向左移动 */
+.viewer-image[src*="hf_mola_23"] {
+    object-position: 20% center;
+    transform: translateX(-10%);
+}
+
+/* 针对 ty_gy_10.webp 图片显示左侧内容（人物） */
+.viewer-image.ty-gy-10 {
+    width: auto !important;
+    height: 85vh !important;
+    max-width: none !important;
+    transform: translateX(25%) !important;
+    object-fit: contain !important;
 }
 
 .viewer-toolbar {
@@ -1191,17 +1218,19 @@ body {
 
 @media (max-width: 768px) {
     .city-header-content {
-        bottom: 30px !important;
-        left: 20px !important;
+        bottom: 10px !important;
+        left: 10px !important;
         z-index: 1;
     }
     
     .city-header-content .city-name {
         font-size: 28px !important;
+        margin-bottom: 4px !important;
     }
     
     .city-header-content .city-date {
         font-size: 12px !important;
+        margin-top: 4px !important;
     }
     
     .navbar {

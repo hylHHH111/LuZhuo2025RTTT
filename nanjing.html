@@ -11,11 +11,11 @@
     <!-- 主内容 -->
     <main class="main-content" style="padding-top: 0;">
         <!-- 城市头部（包含导航栏） -->
-        <section class="city-header" style="position: relative; padding-top: 70px;">
+        <section class="city-header" style="position: relative; padding-top: 70px; background: url('images/nanjing_header.webp');background-position: center 45%; background-size: cover; background-repeat: no-repeat;">
             <!-- 导航栏 -->
             <nav class="navbar" style="background: transparent; position: absolute; top: 0; left: 0; right: 0; z-index: 100; box-shadow: none;">
                 <div class="navbar-container">
-                    <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
+                    <a href="home.html" class="navbar-logo" style="display: flex; align-items: flex-end; margin-top: 40px;"><img src="images/rttt_logo/nanjinglogo.png" alt="鹭卓2025RTTT巡演记录" style="height: 100px; width: auto;"></a>
                     <div class="navbar-nav" id="navbarNav">
                         <a href="home.html" class="nav-item">首页</a>
                         <a href="chengdu.html" class="nav-item">成都站</a>
@@ -32,8 +32,11 @@
                     </button>
                 </div>
             </nav>
-            <h1 class="city-name">南京站</h1>
-            <p class="city-date">待定</p>
+            <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left;">
+                <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">南京站</h2>
+                <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px;">2025年11月22-23日 南京梦之蓝青奥体育公园体育馆</p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://weibo.com/p/231522503296ad748ee91d96d2691870686294" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌作词-鹭卓 作曲-鹭卓 编曲-鹭卓：#给鹭卓的三行情诗#</a></p>
+            </div>
         </section>
 
         <!-- 页面内容 -->
@@ -169,28 +172,24 @@
         // 垂直导航数据
         const navData = {
             groupPhoto: [   // 合照区照片
-                'images/nanjing/nj_groupphoto/nj_groupphoto1.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto2.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto3.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto4.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto5.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto6.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto7.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto8.webp',
-                'images/nanjing/nj_groupphoto/nj_groupphoto9.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto01.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto02.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto03.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto04.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto05.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto06.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto07.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto08.webp',
+                'images/nanjing/nj_groupphoto/nj_groupphoto09.webp',
                 'images/nanjing/nj_groupphoto/nj_groupphoto10.webp'
             ],
             bouquet: [    // 花束区照片
-                'images/nanjing/nj_flower/nj_flower_1.webp',
-                'images/nanjing/nj_flower/nj_flower_2.webp',
-                'images/nanjing/nj_flower/nj_flower_3.webp',
-                'images/nanjing/nj_flower/nj_flower_4.webp',
-                'images/nanjing/nj_flower/nj_flower_5.webp',
-                'images/nanjing/nj_flower/nj_flower_6.webp',
-                'images/nanjing/nj_flower/nj_flower_7.webp',
-                'images/nanjing/nj_flower/nj_flower_8.webp',
-                'images/nanjing/nj_flower/nj_flower_9.webp',
-                'images/nanjing/nj_flower/nj_flower_10.webp'
+                'images/nanjing/nj_flower/nj_flower01.webp',
+                'images/nanjing/nj_flower/nj_flower02.webp',
+                'images/nanjing/nj_flower/nj_flower03.webp',
+                'images/nanjing/nj_flower/nj_flower04.webp',
+                'images/nanjing/nj_flower/nj_flower05.webp',
+                'images/nanjing/nj_flower/nj_flower06.webp'
             ],
             official: [    // 官摄区照片（三层级结构）
                 {
@@ -402,7 +401,7 @@
         }
         
         function openGroupPhotoModal() {
-            cardAlbum.openNavModal('合照区', navData.groupPhoto);
+            cardAlbum.openNavModal('合照区', navData.groupPhoto, { dates: ['11月22日', '11月23日'] });
         }
         
         function openBouquetModal() {

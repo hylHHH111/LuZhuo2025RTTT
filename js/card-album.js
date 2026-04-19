@@ -313,11 +313,18 @@ class CardAlbum {
     showImage() {
         const image = this.currentImages[this.currentImageIndex];
         const viewerImg = document.getElementById('viewerImage');
+        const viewerContainer = document.getElementById('viewerImageContainer');
         const counter = document.getElementById('viewerCounter');
         
         if (viewerImg) {
             viewerImg.src = image.image || image.thumb;
             viewerImg.alt = image.title || '';
+            
+            // 针对特定图片调整显示位置（大图查看器）
+            const imageSrc = image.image || image.thumb;
+            if (imageSrc.includes('ty_gy_10')) {
+                // 大图查看器保持原样
+            }
         }
         
         if (counter) {
@@ -466,12 +473,14 @@ class CardAlbum {
     /**
      * 打开垂直导航弹窗
      */
-    openNavModal(title, images) {
+    openNavModal(title, images, options = {}) {
         const navData = images.map((img, i) => {
             let imgTitle;
             if (title === '合照区') {
-                // 合照区：前5张为9月26日，后5张为9月27日
-                imgTitle = i < 5 ? `9月26日合照 ${i + 1}` : `9月27日合照 ${i - 4}`;
+                // 合照区：根据城市显示不同日期
+                const cityDates = options.dates || ['9月26日', '9月27日'];
+                const halfIndex = Math.floor(images.length / 2);
+                imgTitle = i < halfIndex ? `${cityDates[0]}合照 ${i + 1}` : `${cityDates[1]}合照 ${i - halfIndex + 1}`;
             } else if (title === '海报信封区') {
                 // 海报信封区：自定义名称
                 const posterTitles = ['手写信信封', '成都站手写信', '主海报', '倒计时3天', '倒计时2天', '倒计时1天'];
