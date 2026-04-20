@@ -10,7 +10,7 @@ const SENSITIVE_WORDS = [
 ];
 
 // 管理员密钥
-const ADMIN_KEY = 'luzhou20251835172hhll';
+const ADMIN_KEY = '19951124';
 
 // 最大留言数量
 const MAX_MESSAGES = 222;
