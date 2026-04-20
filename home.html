@@ -310,6 +310,262 @@
             transform: translateY(-3px);
         }
         
+        /* 留言板区域 */
+        .guestbook-section {
+            padding: var(--space-3xl) var(--space-lg);
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--white) 50%, var(--accent-light) 100%);
+        }
+        
+        .guestbook-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .guestbook-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            font-size: var(--font-size-base);
+        }
+        
+        .guestbook-form {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .form-row {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .guestbook-input,
+        .guestbook-textarea {
+            width: 100%;
+            padding: var(--space-md);
+            border: 2px solid var(--accent-light);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-family: inherit;
+            transition: border-color var(--transition-fast);
+            background: var(--white);
+        }
+        
+        .guestbook-input:focus,
+        .guestbook-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .guestbook-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .char-count {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
+        .guestbook-submit {
+            padding: var(--space-md) var(--space-xl);
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .guestbook-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .guestbook-submit:disabled {
+            background: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .message-error {
+            color: #e74c3c;
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-sm);
+            min-height: 20px;
+        }
+        
+        .message-success {
+            color: #27ae60;
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-sm);
+        }
+        
+        /* 管理功能 */
+        .admin-section {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .admin-toggle {
+            padding: var(--space-sm) var(--space-md);
+            background: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .admin-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .admin-panel {
+            margin-top: var(--space-md);
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .admin-input {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--accent);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+        }
+        
+        .admin-confirm {
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+        
+        .admin-confirm:hover {
+            background: var(--primary-light);
+        }
+        
+        /* 留言列表 */
+        .messages-container {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .messages-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--accent-light);
+        }
+        
+        .messages-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .messages-limit {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .messages-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .message-item {
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--white) 100%);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            position: relative;
+            transition: transform var(--transition-fast);
+        }
+        
+        .message-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .message-nickname {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: var(--font-size-base);
+        }
+        
+        .message-time {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .message-content {
+            color: var(--text-primary);
+            line-height: 1.8;
+            word-wrap: break-word;
+        }
+        
+        .message-delete {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            padding: var(--space-xs) var(--space-sm);
+            background: #e74c3c;
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .message-item:hover .message-delete {
+            opacity: 1;
+        }
+        
+        .message-delete:hover {
+            background: #c0392b;
+        }
+        
+        .loading-tip,
+        .empty-tip {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: var(--space-xl);
+        }
+        
         /* 响应式 */
         @media (max-width: 1024px) {
             .navbar-nav {
@@ -538,6 +794,50 @@
         </section>
     </main>
 
+    <!-- 留言板区域 -->
+    <section class="guestbook-section" id="guestbook">
+        <div class="guestbook-container">
+            <h2 class="section-title">粉丝留言板</h2>
+            <p class="guestbook-subtitle">留下你对鹭卓的祝福吧~</p>
+            
+            <!-- 留言输入表单 -->
+            <div class="guestbook-form">
+                <div class="form-row">
+                    <input type="text" id="nicknameInput" class="guestbook-input" placeholder="输入昵称（选填，最多10字）" maxlength="10">
+                </div>
+                <div class="form-row">
+                    <textarea id="contentInput" class="guestbook-textarea" placeholder="写下你的留言..." maxlength="500"></textarea>
+                </div>
+                <div class="form-row form-actions">
+                    <span class="char-count"><span id="charCount">0</span>/500</span>
+                    <button class="guestbook-submit" onclick="submitMessage()">发布留言</button>
+                </div>
+                <div id="messageError" class="message-error"></div>
+            </div>
+            
+            <!-- 管理功能 -->
+            <div class="admin-section">
+                <button class="admin-toggle" onclick="toggleAdminMode()">管理模式</button>
+                <div id="adminPanel" class="admin-panel" style="display: none;">
+                    <input type="password" id="adminKeyInput" class="admin-input" placeholder="输入管理密钥">
+                    <button class="admin-confirm" onclick="verifyAdminKey()">确认</button>
+                </div>
+            </div>
+            
+            <!-- 留言列表 -->
+            <div class="messages-container">
+                <div class="messages-header">
+                    <span class="messages-count">共 <span id="messageTotal">0</span> 条留言</span>
+                    <span class="messages-limit">（最多显示222条）</span>
+                </div>
+                <div id="messagesList" class="messages-list">
+                    <!-- 留言将在这里动态显示 -->
+                    <div class="loading-tip">正在加载留言...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 页脚 -->
     <footer class="footer">
         <p class="footer-text">鹭卓2025 RTTT巡演记录 | For Luzhou，From 橘子suuoia_Lu</p>
@@ -577,6 +877,241 @@
             item.addEventListener('click', () => {
                 document.getElementById('navbarNav').classList.remove('active');
             });
+        });
+        
+        // ==================== 留言板功能 ====================
+        
+        // Cloudflare Worker 地址
+        const WORKER_URL = 'https://luzhou-guestbook.1760791286.workers.dev';
+        
+        // 管理密钥（需要与 worker.js 中的一致）
+        const ADMIN_KEY = 'luzhou20251835172hhll';
+        
+        // 敏感词列表（前端预检）
+        const SENSITIVE_WORDS = [
+            '傻逼', '傻B', 'sb', 'SB', '妈的', '他妈', '草泥马', '操', '垃圾', '去死',
+            '滚', '贱', '蠢', '笨', '丑', '恶心', '废物', '脑残', '神经病', '变态',
+            '诈骗', '骗子', '赌博', '毒品', '色情', '暴力', '恐怖', '邪教', '反动','沅','卓沅','2699','沅儿','劳尔','抄袭'
+        ];
+        
+        // 管理员模式状态
+        let isAdminMode = false;
+        let adminVerified = false;
+        
+        // 页面加载时获取留言
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMessages();
+            setupCharCount();
+        });
+        
+        // 设置字数统计
+        function setupCharCount() {
+            const textarea = document.getElementById('contentInput');
+            const charCount = document.getElementById('charCount');
+            
+            textarea.addEventListener('input', () => {
+                charCount.textContent = textarea.value.length;
+            });
+        }
+        
+        // 检查敏感词
+        function checkSensitiveWords(text) {
+            for (const word of SENSITIVE_WORDS) {
+                if (text.toLowerCase().includes(word.toLowerCase())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        // 格式化时间
+        function formatTime(timestamp) {
+            const date = new Date(timestamp);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day} ${hours}:${minutes}`;
+        }
+        
+        // 获取留言列表
+        async function loadMessages() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/messages`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayMessages(data.messages);
+                } else {
+                    showError('加载留言失败');
+                }
+            } catch (error) {
+                console.error('加载留言出错:', error);
+                document.getElementById('messagesList').innerHTML = 
+                    '<div class="empty-tip">加载失败，请刷新页面重试</div>';
+            }
+        }
+        
+        // 显示留言列表
+        function displayMessages(messages) {
+            const container = document.getElementById('messagesList');
+            const totalElement = document.getElementById('messageTotal');
+            
+            totalElement.textContent = messages.length;
+            
+            if (messages.length === 0) {
+                container.innerHTML = '<div class="empty-tip">还没有留言，快来抢沙发吧~</div>';
+                return;
+            }
+            
+            container.innerHTML = messages.map(msg => `
+                <div class="message-item" data-id="${msg.id}">
+                    ${adminVerified ? `<button class="message-delete" onclick="deleteMessage('${msg.id}')">删除</button>` : ''}
+                    <div class="message-header">
+                        <span class="message-nickname">${escapeHtml(msg.nickname)}</span>
+                        <span class="message-time">${formatTime(msg.timestamp)}</span>
+                    </div>
+                    <div class="message-content">${escapeHtml(msg.content)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // HTML 转义防止 XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 提交留言
+        async function submitMessage() {
+            const nicknameInput = document.getElementById('nicknameInput');
+            const contentInput = document.getElementById('contentInput');
+            const errorDiv = document.getElementById('messageError');
+            const submitBtn = document.querySelector('.guestbook-submit');
+            
+            const nickname = nicknameInput.value.trim();
+            const content = contentInput.value.trim();
+            
+            // 验证
+            if (!content) {
+                showError('请输入留言内容');
+                return;
+            }
+            
+            if (content.length > 500) {
+                showError('留言内容不能超过500字');
+                return;
+            }
+            
+            // 前端敏感词检查
+            const checkText = nickname + content;
+            if (checkSensitiveWords(checkText)) {
+                showError('您的留言包含敏感词，请重新输入');
+                return;
+            }
+            
+            // 禁用按钮
+            submitBtn.disabled = true;
+            submitBtn.textContent = '发布中...';
+            
+            try {
+                const response = await fetch(`${WORKER_URL}/api/messages`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nickname, content })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // 清空表单
+                    nicknameInput.value = '';
+                    contentInput.value = '';
+                    document.getElementById('charCount').textContent = '0';
+                    showError('');
+                    
+                    // 重新加载留言
+                    await loadMessages();
+                    
+                    // 显示成功提示
+                    const successDiv = document.createElement('div');
+                    successDiv.className = 'message-success';
+                    successDiv.textContent = '留言发布成功！';
+                    errorDiv.parentNode.insertBefore(successDiv, errorDiv.nextSibling);
+                    setTimeout(() => successDiv.remove(), 3000);
+                } else {
+                    showError(data.error || '发布失败，请重试');
+                }
+            } catch (error) {
+                console.error('发布留言出错:', error);
+                showError('网络错误，请稍后重试');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '发布留言';
+            }
+        }
+        
+        // 显示错误信息
+        function showError(message) {
+            const errorDiv = document.getElementById('messageError');
+            errorDiv.textContent = message;
+        }
+        
+        // 切换管理模式
+        function toggleAdminMode() {
+            const panel = document.getElementById('adminPanel');
+            isAdminMode = !isAdminMode;
+            panel.style.display = isAdminMode ? 'flex' : 'none';
+        }
+        
+        // 验证管理密钥
+        function verifyAdminKey() {
+            const input = document.getElementById('adminKeyInput');
+            if (input.value === ADMIN_KEY) {
+                adminVerified = true;
+                input.value = '';
+                document.getElementById('adminPanel').style.display = 'none';
+                loadMessages(); // 重新加载以显示删除按钮
+                alert('管理验证成功！现在可以删除留言了');
+            } else {
+                alert('管理密钥错误');
+            }
+        }
+        
+        // 删除留言
+        async function deleteMessage(id) {
+            if (!confirm('确定要删除这条留言吗？')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${WORKER_URL}/api/messages`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id, adminKey: ADMIN_KEY })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    loadMessages();
+                    alert('删除成功');
+                } else {
+                    alert(data.error || '删除失败');
+                }
+            } catch (error) {
+                console.error('删除留言出错:', error);
+                alert('删除失败，请重试');
+            }
+        }
+        
+        // 回车提交（在输入框内按 Ctrl+Enter）
+        document.getElementById('contentInput')?.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                submitMessage();
+            }
         });
     </script>
     <script src="js/music.js"></script>
