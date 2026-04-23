@@ -12,10 +12,37 @@
         
         /* 页面头部 */
         .stage-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: url('images/stage/stage_header.webp') center/cover no-repeat;
             color: var(--white);
-            padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-lg) var(--space-2xl);
+            padding: calc(var(--nav-height) + var(--space-3xl)) var(--space-lg) var(--space-3xl);
             text-align: center;
+            position: relative;
+            min-height: 350px;
+        }
+        .stage-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+        .stage-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .stage-header > * {
+            position: relative;
+            z-index: 1;
         }
         .stage-title {
             font-size: var(--font-size-3xl);
@@ -28,13 +55,14 @@
             max-width: 500px;
             margin: 0 auto;
             position: relative;
+            margin-top: 80px;
         }
         .search-input {
             width: 100%;
             padding: var(--space-md) var(--space-xl);
             padding-left: 50px;
             font-size: var(--font-size-base);
-            border: 2px solid var(--accent);
+            border: 2px solid #e0e0e0;
             border-radius: var(--radius-full);
             background: var(--white);
             color: var(--text-primary);
@@ -42,8 +70,8 @@
             transition: all var(--transition-fast);
         }
         .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(91, 164, 201, 0.15);
+            border-color: #999;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
         }
         .search-icon {
             position: absolute;
@@ -90,8 +118,8 @@
         /* 歌曲卡册网格 */
         .song-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-xl);
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--space-md);
         }
         
         /* 歌曲卡片 */
@@ -177,7 +205,17 @@
         }
         
         /* 响应式 */
-        @media (max-width: 1024px) {
+        @media (max-width: 1400px) {
+            .song-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        @media (max-width: 1200px) {
+            .song-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
             .song-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -192,39 +230,37 @@
         }
         @media (max-width: 480px) {
             .song-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
-            <div class="navbar-nav" id="navbarNav">
-                <a href="home.html" class="nav-item">首页</a>
-                <a href="chengdu.html" class="nav-item">成都站</a>
-                <a href="hefei.html" class="nav-item">合肥站</a>
-                <a href="taiyuan.html" class="nav-item">太原站</a>
-                <a href="beijing.html" class="nav-item">北京站</a>
-                <a href="nanjing.html" class="nav-item">南京站</a>
-                <a href="stage.html" class="nav-item active">舞台直拍</a>
-            </div>
-            <button class="navbar-toggle" onclick="toggleMobileMenu()">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
     <!-- 主内容 -->
     <main class="main-content" style="padding-top: 0;">
-        <!-- 页面头部 -->
-        <section class="stage-header">
-            <h1 class="stage-title">舞台直拍合集</h1>
+        <!-- 页面头部（包含导航栏） -->
+        <section class="stage-header" style="position: relative; padding-top: 70px;">
+            <!-- 导航栏 -->
+            <nav class="navbar" style="background: transparent; position: absolute; top: 0; left: 0; right: 0; z-index: 100; box-shadow: none;">
+                <div class="navbar-container">
+                    <a href="home.html" class="navbar-logo"></a>
+                    <div class="navbar-nav" id="navbarNav">
+                        <a href="home.html" class="nav-item">首页</a>
+                        <a href="chengdu.html" class="nav-item">成都站</a>
+                        <a href="hefei.html" class="nav-item">合肥站</a>
+                        <a href="taiyuan.html" class="nav-item">太原站</a>
+                        <a href="beijing.html" class="nav-item">北京站</a>
+                        <a href="nanjing.html" class="nav-item">南京站</a>
+                        <a href="stage.html" class="nav-item active">舞台直拍</a>
+                    </div>
+                    <button class="navbar-toggle" onclick="toggleMobileMenu()">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </nav>
             <div class="search-container">
                 <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" id="searchInput" placeholder="搜索歌曲名称..." oninput="searchSongs(this.value)">
+                <input type="text" class="search-input" id="searchInput" placeholder="舞台直拍合集|搜索歌曲名称..." oninput="searchSongs(this.value)">
             </div>
         </section>
 
@@ -247,81 +283,90 @@
         // 舞台直拍数据 - 三层级结构：分类 -> 歌曲 -> 视频
         const stageData = [
             {
+                id: 'new-tour',
+                name: '个巡新歌',
+                songs: [
+                    { id: 'all-eyes-on-me', name: 'All Eyes On Me', cover: '', videos: [] },
+                    { id: 'break-the-chains', name: 'Break The Chains', cover: '', videos: [] },
+                    { id: 'cant-stop-the-rain', name: "Can't Stop The Rain", cover: '', videos: [] },
+                    { id: 'gone-with-the-metro', name: 'Gone With The Metro', cover: 'images/stage/metro.webp', videos: [] },
+                    { id: 'neverlose', name: 'NeverLose', cover: '', videos: [] },
+                    { id: 'huanizhisuoyou', name: '话你知所有', cover: '', videos: [] },
+                    { id: 'juxianghuaxingyun', name: '具象化幸运', cover: '', videos: [] },
+                    { id: 'linghunsuilie', name: '灵魂碎裂', cover: '', videos: [] },
+                    { id: 'liuxingzhuiruyunhai', name: '流星坠入云海', cover: '', videos: [] },
+                    { id: 'relangdida', name: '热浪抵达', cover: '', videos: [] },
+                    { id: 'ruguozuihoushengwo', name: '如果最后只剩我', cover: '', videos: [] },
+                    { id: 'wushengdianying', name: '无声电影', cover: '', videos: [] }
+                ]
+            },
+            {
                 id: 'original',
                 name: '原创歌曲',
                 songs: [
-                    {
-                        id: 'bufenkai',
-                        name: '不要分开',
-                        cover: 'images/stage/byfk.webp',
-                        videos: [
-                            { videoUrl: 'https://www.xiaohongshu.com/explore/6905761c000000000703a273?xsec_token=AB170FekrpOO4PCd4B1XoRffTkOwpaVgRYGcahgvCdIds=&xsec_source=pc_user', title: '奇迹小冬' },
-                            { videoUrl: 'https://www.xiaohongshu.com/explore/6907824f000000000301828c?xsec_token=ABldSoVF3_ozQevfp16ZH2wx6NF3JEduCpeKNSVBDH05s=&xsec_source=pc_user', title: 'Irradiaphilia_鹭卓' },
-                            { videoUrl: 'https://www.xiaohongshu.com/explore/690b16ee0000000003037d8e?xsec_token=ABUu8o4vx2r_7LjUr72poOnNYpcohZtzqlafGMZFjpf1o=&xsec_source=pc_user', title: 'Fawnella_1124鹭卓' },
-                            { videoUrl: 'https://weibo.com/tv/show/1034:5226116613341211?from=old_pc_videoshow', title: 'YEELEN丨鹭卓' },
-                            { videoUrl: 'https://weibo.com/tv/show/1034:5226543518253070?from=old_pc_videoshow', title: 'LINA_1124' }
-                        ]
-                    },
-                    {
-                        id: 'yinji',
-                        name: '印记',
-                        cover: 'images/covers/yinji.jpg',
-                        videos: [
-                            { city: '成都', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '印记 - 成都站' },
-                            { city: '合肥', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '印记 - 合肥站' },
-                            { city: '南京', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '印记 - 南京站' }
-                        ]
-                    }
+                    { id: '4-in-love', name: '4 in love', cover: '', videos: [] },
+                    { id: 'bufenkai', name: '不要分开', cover: '', videos: [] },
+                    { id: 'chaozai', name: '超载', cover: '', videos: [] },
+                    { id: 'chuan', name: '船', cover: '', videos: [] },
+                    { id: 'guang', name: '光', cover: '', videos: [] },
+                    { id: 'houdoumendexia', name: '后陡门的夏', cover: '', videos: [] },
+                    { id: 'haibugou', name: '还不够', cover: '', videos: [] },
+                    { id: 'yinji', name: '印记', cover: '', videos: [] },
+                    { id: 'qingxuwending', name: '情绪稳定', cover: '', videos: [] },
+                    { id: 'sihai', name: '四海', cover: '', videos: [] },
+                    { id: 'vttt', name: 'VTTT', cover: '', videos: [] },
+                    { id: 'you-all-my-life', name: 'You All My Life', cover: '', videos: [] }
                 ]
             },
             {
                 id: 'single',
                 name: '个人单曲',
                 songs: [
-                    {
-                        id: 'ruguo',
-                        name: '如果最后只剩我',
-                        cover: 'images/covers/ruguo.jpg',
-                        videos: [
-                            { city: '成都', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '如果最后只剩我 - 成都站' },
-                            { city: '合肥', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '如果最后只剩我 - 合肥站' },
-                            { city: '北京', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '如果最后只剩我 - 北京站' },
-                            { city: '南京', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '如果最后只剩我 - 南京站' }
-                        ]
-                    }
+                    { id: 'blah-3', name: 'Blah*3', cover: '', videos: [] },
+                    { id: 'bieguiling', name: '别归零', cover: '', videos: [] },
+                    { id: 'bufangqingdeyuji', name: '不放晴的雨季', cover: '', videos: [] },
+                    { id: 'gaishiyingxiong', name: '盖世英雄', cover: '', videos: [] },
+                    { id: 'henidengyanhua', name: '和你等烟花', cover: '', videos: [] },
+                    { id: 'huoshangjiaoyou', name: '火上浇油', cover: '', videos: [] },
+                    { id: 'jiandandeyijuhua', name: '简单的一句话', cover: '', videos: [] },
+                    { id: 'last', name: 'LAST', cover: '', videos: [] },
+                    { id: 'nizuizhongwoshiluo', name: '你最懂我失落', cover: '', videos: [] },
+                    { id: 'qushe', name: '取舍', cover: '', videos: [] },
+                    { id: 'shenaisanxi', name: '深爱山西', cover: '', videos: [] },
+                    { id: 'qimiao', name: '七秒', cover: '', videos: [] },
+                    { id: 'what-you-want', name: 'What You Want', cover: '', videos: [] }
                 ]
             },
             {
-                id: 'request',
-                name: '点歌环节',
+                id: 'cover',
+                name: '翻唱曲目',
                 songs: [
-                    {
-                        id: 'meirenyu',
-                        name: '美人鱼',
-                        cover: 'images/covers/meirenyu.jpg',
-                        videos: [
-                            { city: '成都', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '美人鱼 - 成都站' },
-                            { city: '合肥', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '美人鱼 - 合肥站' }
-                        ]
-                    },
-                    {
-                        id: 'diyici',
-                        name: '第一次',
-                        cover: 'images/covers/diyici.jpg',
-                        videos: [
-                            { city: '成都', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '第一次 - 成都站' },
-                            { city: '北京', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '第一次 - 北京站' }
-                        ]
-                    },
-                    {
-                        id: 'nvhai',
-                        name: '女孩',
-                        cover: 'images/covers/nvhai.jpg',
-                        videos: [
-                            { city: '合肥', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '女孩 - 合肥站' },
-                            { city: '南京', videoUrl: 'https://weibo.com/tv/show/1034:5236284294103051', title: '女孩 - 南京站' }
-                        ]
-                    }
+                    { id: 'aicuo', name: '爱错', cover: '', videos: [] },
+                    { id: 'aijiuyigezi', name: '爱就一个字', cover: '', videos: [] },
+                    { id: 'chuxue', name: '初雪', cover: '', videos: [] },
+                    { id: 'diyici', name: '第一次', cover: '', videos: [] },
+                    { id: 'dujiajiyi', name: '独家记忆', cover: '', videos: [] },
+                    { id: 'lover-boy-88', name: 'Lover boy 88', cover: '', videos: [] },
+                    { id: 'lutaiwan', name: '路太弯', cover: '', videos: [] },
+                    { id: 'melody', name: 'Melody', cover: '', videos: [] },
+                    { id: 'meirenyu', name: '美人鱼', cover: '', videos: [] },
+                    { id: 'nvhai', name: '女孩', cover: '', videos: [] },
+                    { id: 'papillon', name: 'Papillon', cover: '', videos: [] },
+                    { id: 'perfect', name: 'Perfect', cover: '', videos: [] },
+                    { id: 'piaoyangguohaikannide', name: '漂洋过海来看你', cover: '', videos: [] },
+                    { id: 'rnb-all-night', name: 'R&b ALL Night', cover: '', videos: [] },
+                    { id: 'wodeguozhifenniyiban', name: '我的果汁分你一半', cover: '', videos: [] },
+                    { id: 'yongbushilian-deai', name: '永不失联的爱', cover: '', videos: [] },
+                    { id: 'youwozai', name: '有我在', cover: '', videos: [] },
+                    { id: 'zainayaoyuandedifang', name: '在那遥远的地方', cover: '', videos: [] }
+                ]
+            },
+            {
+                id: 'dance-piano',
+                name: '舞蹈钢琴展示',
+                songs: [
+                    { id: 'dance-break', name: 'Dance Break', cover: '', videos: [] },
+                    { id: 'kanong', name: '卡农', cover: '', videos: [] }
                 ]
             }
         ];
