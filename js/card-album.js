@@ -206,6 +206,10 @@ class CardAlbum {
         
         if (!gridEl) return;
         
+        // 保存当前数据用于事件委托
+        this.currentGridData = data;
+        this.currentLevel = level;
+        
         gridEl.innerHTML = data.map((item, index) => {
             const isLastLevel = level >= 2 || item.isLeaf;
             
@@ -215,34 +219,19 @@ class CardAlbum {
                 const isWeibo = item.videoUrl.includes('weibo.com') || item.videoUrl.includes('video.weibo.com');
                 
                 // 转义标题中的特殊字符，避免 HTML/JS 语法错误
-                const escapedTitle = item.title.replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, ' ').replace(/\r/g, '');
                 const displayTitle = item.title.replace(/\n/g, '<br>');
                 
-                let clickAction;
-                let badge = '';
-                
-                if (isXiaohongshu) {
-                    // 小红书视频：跳转新窗口（无法嵌入）
-                    clickAction = `window.open('${item.videoUrl}', '_blank')`;
-                    // 不显示小红书标签
-                    badge = '';
-                } else if (isWeibo) {
-                    // 微博视频：弹窗内嵌播放
-                    clickAction = `cardAlbum.playVideo('${item.videoUrl}', '${escapedTitle}')`;
-                    // 不显示微博标签
-                    badge = '';
-                } else {
-                    // 本地视频：弹窗播放
-                    clickAction = `cardAlbum.playVideo('${item.videoUrl}', '${escapedTitle}')`;
-                }
+                // 确定视频类型
+                let videoType = 'local';
+                if (isXiaohongshu) videoType = 'xiaohongshu';
+                else if (isWeibo) videoType = 'weibo';
                 
                 const coverImage = item.image || item.thumb || '';
                 
                 return `
-                    <div class="video-card-wrapper">
-                        <div class="stage-video-card" onclick="${clickAction}" style="background-image: url('${coverImage}'); background-size: cover; background-position: center;">
+                    <div class="video-card-wrapper" data-index="${index}" data-video-type="${videoType}">
+                        <div class="stage-video-card" data-index="${index}" style="background-image: url('${coverImage}'); background-size: cover; background-position: center;">
                             <div class="video-card-play">▶</div>
-                            ${badge}
                         </div>
                         <div class="video-card-title">${displayTitle}</div>
                     </div>
@@ -261,7 +250,7 @@ class CardAlbum {
                     }
                 }
                 return `
-                    <div class="modal-card" onclick="cardAlbum.openImageViewer(${level}, ${index})">
+                    <div class="modal-card" data-index="${index}" data-action="viewImage">
                         <img src="${item.image || item.thumb || item.cover}" alt="${item.title}" loading="lazy">
                         ${!isOfficialArea ? `<div class="modal-card-title">${item.title}</div>` : ''}
                     </div>
@@ -269,13 +258,82 @@ class CardAlbum {
             } else {
                 // 可展开的卡片
                 return `
-                    <div class="modal-card" onclick="cardAlbum.openNextLevel(${index})">
+                    <div class="modal-card" data-index="${index}" data-action="openLevel">
                         <img src="${item.cover || item.image}" alt="${item.title}" loading="lazy">
                         <div class="modal-card-title">${item.title}</div>
                     </div>
                 `;
             }
         }).join('');
+        
+        // 添加事件委托处理所有卡片点击（移动端更可靠）
+        this.attachCardListeners(gridEl);
+    }
+    
+    /**
+     * 为卡片添加事件监听器（事件委托模式，移动端更可靠）
+     */
+    attachCardListeners(gridEl) {
+        // 移除旧的事件监听器
+        if (this._cardClickHandler) {
+            gridEl.removeEventListener('click', this._cardClickHandler);
+        }
+        
+        // 创建新的事件处理器
+        this._cardClickHandler = (e) => {
+            // 查找最近的卡片元素（优先查找有 video-type 的，然后是普通卡片）
+            const videoCard = e.target.closest('[data-video-type]');
+            const card = videoCard || e.target.closest('[data-index]');
+            if (!card) return;
+            
+            const index = parseInt(card.dataset.index);
+            const action = card.dataset.action;
+            const videoType = card.dataset.videoType;
+            const item = this.currentGridData[index];
+            
+            if (!item) return;
+            
+            // 根据动作类型处理
+            if (videoType) {
+                // 视频卡片
+                if (!item.videoUrl) return;
+                
+                if (videoType === 'xiaohongshu') {
+                    // 小红书视频：跳转新窗口
+                    window.open(item.videoUrl, '_blank');
+                } else {
+                    // 微博视频和本地视频：弹窗播放
+                    this.playVideo(item.videoUrl, item.title);
+                }
+            } else if (action === 'viewImage') {
+                // 图片查看
+                this.openImageViewer(this.currentLevel, index);
+            } else if (action === 'openLevel') {
+                // 打开下一层级
+                this.openNextLevel(index);
+            }
+        };
+        
+        // 添加点击事件监听器
+        gridEl.addEventListener('click', this._cardClickHandler);
+        
+        // 移动端添加 touchstart 事件以改善响应
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            gridEl.addEventListener('touchstart', (e) => {
+                const card = e.target.closest('[data-index]');
+                if (card) {
+                    card.style.transform = 'scale(0.98)';
+                    card.style.transition = 'transform 0.1s';
+                }
+            }, { passive: true });
+            
+            gridEl.addEventListener('touchend', (e) => {
+                const card = e.target.closest('[data-index]');
+                if (card) {
+                    card.style.transform = 'scale(1)';
+                }
+            }, { passive: true });
+        }
     }
     
     /**
@@ -437,6 +495,9 @@ class CardAlbum {
      * 播放视频
      */
     playVideo(url, title) {
+        // 检测是否为移动端
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
         // 降低歌曲选择弹窗的z-index，使其置于底层
         const songModal = document.getElementById(this.options.modalId);
         if (songModal) {
@@ -457,7 +518,7 @@ class CardAlbum {
                 </iframe>
             `;
         } else if (url.includes('weibo.com')) {
-            // 微博视频嵌入 - 直接使用原始链接
+            // 微博视频 - 移动端和PC端统一使用iframe嵌入
             videoContent = `
                 <iframe 
                     src="${url}" 
@@ -505,6 +566,22 @@ class CardAlbum {
         });
         
         document.body.appendChild(videoModal);
+        
+        // 移动端添加提示
+        if (isMobile && url.includes('weibo.com')) {
+            const videoContainer = videoModal.querySelector('.video-container');
+            const tip = document.createElement('div');
+            tip.style.cssText = 'position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 12px; z-index: 10;';
+            tip.textContent = '点击视频可全屏播放';
+            videoContainer.appendChild(tip);
+            
+            // 3秒后自动隐藏提示
+            setTimeout(() => {
+                tip.style.opacity = '0';
+                tip.style.transition = 'opacity 0.5s';
+                setTimeout(() => tip.remove(), 500);
+            }, 3000);
+        }
     }
     
     /**

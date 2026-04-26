@@ -1178,7 +1178,7 @@
                                 </div>
                                 <div class="song-info">
                                     <div class="song-title">${song.name}</div>
-                                    <div class="song-video-count">${song.videos.length} 个视频</div>
+                                    <div class="song-video-count">${song.videos ? song.videos.length : 0} 个视频</div>
                                 </div>
                             </div>
                         `}).join('')}
@@ -1204,6 +1204,12 @@
         function openSongVideos(categoryId, songId) {
             const category = stageData.find(c => c.id === categoryId);
             const song = category.songs.find(s => s.id === songId);
+            
+            // 检查是否有视频
+            if (!song.videos || song.videos.length === 0) {
+                alert('该歌曲暂无视频');
+                return;
+            }
             
             // 如果只有一个视频，直接弹窗播放
             if (song.videos.length === 1) {
