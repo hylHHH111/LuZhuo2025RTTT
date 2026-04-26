@@ -60,7 +60,7 @@
         
         if (window.bgMusicPlaying) {
             btn.innerHTML = '♪';
-            btn.style.background = 'rgba(91,164,201,0.9)';
+            btn.style.background = '#42abf3';
             btn.setAttribute('data-playing', 'true');
         } else {
             btn.innerHTML = '♫';
@@ -97,7 +97,7 @@
         var btn = document.createElement('div');
         btn.id = 'music-control-btn';
         btn.innerHTML = '♪';
-        btn.style.cssText = 'position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:rgba(91,164,201,0.9);color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
+        btn.style.cssText = 'position:fixed;bottom:30px;right:20px;width:36px;height:36px;border-radius:50%;background:#42abf3;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
         
         btn.addEventListener('mouseenter', function() {
             btn.style.transform = 'scale(1.1)';

@@ -6,6 +6,13 @@
     <title>鹭卓2025RTTT巡演 成都站 </title>
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/city-page.css">
+    <style>
+        @media (max-width: 1024px) {
+            .navbar-nav {
+                background: transparent !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 主内容 -->
@@ -668,6 +675,29 @@
             item.addEventListener('click', () => {
                 document.getElementById('navbarNav')?.classList.remove('active');
             });
+        });
+
+        // 滚动时自动关闭移动端导航栏
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', function() {
+            const navbarNav = document.getElementById('navbarNav');
+            if (navbarNav && navbarNav.classList.contains('active')) {
+                if (Math.abs(window.scrollY - lastScrollY) > 5) {
+                    navbarNav.classList.remove('active');
+                }
+            }
+            lastScrollY = window.scrollY;
+        }, { passive: true });
+
+        // 点击页面其他地方关闭移动端导航栏
+        document.addEventListener('click', function(e) {
+            const navbarNav = document.getElementById('navbarNav');
+            const navbarToggle = document.querySelector('.navbar-toggle');
+            const isClickInNavbar = navbarNav && (navbarNav.contains(e.target) || navbarToggle.contains(e.target));
+            
+            if (!isClickInNavbar && navbarNav && navbarNav.classList.contains('active')) {
+                navbarNav.classList.remove('active');
+            }
         });
     </script>
     <script src="js/music.js"></script>

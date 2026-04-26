@@ -20,7 +20,7 @@ body {
 
 /* ========== 导航栏 (与home.html一致) ========== */
 .navbar {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -141,12 +141,12 @@ body {
 
 /* 城市页面头部内的导航栏样式 */
 .city-header .navbar {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
-    box-shadow: none;
+    background: transparent !important;
+    box-shadow: none !important;
     z-index: 9999;
 }
 
@@ -1015,6 +1015,7 @@ body {
     font-weight: 500;
     text-align: center;
     padding: 0 var(--space-xs);
+    white-space: pre-line;
 }
 
 .video-card-badge {
@@ -1058,10 +1059,10 @@ body {
 /* ========== 回到顶部 ========== */
 .back-to-top {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
+    bottom: 72px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
     background: var(--primary);
     color: var(--white);
     border-radius: 50%;
@@ -1074,7 +1075,7 @@ body {
     transition: all var(--transition-base);
     box-shadow: var(--shadow-md);
     z-index: 999;
-    font-size: 20px;
+    font-size: 16px;
     border: none;
 }
 
@@ -1153,23 +1154,35 @@ body {
 
 /* ========== 响应式适配 ========== */
 @media (max-width: 1024px) {
+    .navbar {
+        position: fixed !important;
+        background: var(--nav-bg) !important;
+        box-shadow: var(--shadow-md) !important;
+    }
+    
+    .city-header .navbar {
+        position: fixed !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    
     .navbar-nav {
         position: fixed;
         top: 0;
         right: 0;
         left: auto;
         width: auto;
-        padding-top: 50px;
-        padding-right: var(--space-md);
-        background: rgba(128, 128, 128, 0.85);
-        flex-direction: column;
-        align-items: flex-end;
-        gap: var(--space-xs);
+        padding: 45px 15px 15px !important;
+        background: transparent;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 5px !important;
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
         transition: all var(--transition-base);
         pointer-events: none;
+        z-index: 100000 !important;
     }
     
     .navbar-nav.active {
@@ -1180,11 +1193,11 @@ body {
     }
     
     .navbar-nav .nav-item {
-        text-align: right;
+        text-align: center !important;
         width: auto;
-        background: transparent;
-        padding-top: 2px;
-        padding-bottom: 2px;
+        background: transparent !important;
+        padding: 2px 0px !important;
+        border-radius: 8px !important;
     }
     
     .navbar-toggle {
@@ -1235,7 +1248,7 @@ body {
     
     .navbar {
         background: transparent !important;
-        z-index: 9999 !important;
+        z-index: 2147483647 !important;
         pointer-events: auto !important;
     }
     
@@ -1254,14 +1267,14 @@ body {
     }
     
     .navbar-nav {
-        z-index: 9998;
+        z-index: 2147483647;
         top: 0;
         right: 0;
         left: auto;
         width: auto;
         padding-top: 50px;
         padding-right: var(--space-md);
-        background: rgba(128, 128, 128, 0.85);
+        background: transparent;
         align-items: flex-end;
     }
     

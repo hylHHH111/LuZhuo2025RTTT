@@ -210,12 +210,32 @@ class CardAlbum {
             const isLastLevel = level >= 2 || item.isLeaf;
             
             if (isLastLevel && item.type === 'video') {
-                // 判断视频来源：小红书跳转新窗口，微博弹窗播放
+                // 判断视频来源
                 const isXiaohongshu = item.videoUrl.includes('xiaohongshu.com');
-                const clickAction = isXiaohongshu 
-                    ? `window.open('${item.videoUrl}', '_blank')` 
-                    : `cardAlbum.playVideo('${item.videoUrl}', '${item.title}')`;
-                const badge = isXiaohongshu ? '<div class="video-card-badge">小红书</div>' : '';
+                const isWeibo = item.videoUrl.includes('weibo.com') || item.videoUrl.includes('video.weibo.com');
+                
+                // 转义标题中的特殊字符，避免 HTML/JS 语法错误
+                const escapedTitle = item.title.replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, ' ').replace(/\r/g, '');
+                const displayTitle = item.title.replace(/\n/g, '<br>');
+                
+                let clickAction;
+                let badge = '';
+                
+                if (isXiaohongshu) {
+                    // 小红书视频：跳转新窗口（无法嵌入）
+                    clickAction = `window.open('${item.videoUrl}', '_blank')`;
+                    // 不显示小红书标签
+                    badge = '';
+                } else if (isWeibo) {
+                    // 微博视频：弹窗内嵌播放
+                    clickAction = `cardAlbum.playVideo('${item.videoUrl}', '${escapedTitle}')`;
+                    // 不显示微博标签
+                    badge = '';
+                } else {
+                    // 本地视频：弹窗播放
+                    clickAction = `cardAlbum.playVideo('${item.videoUrl}', '${escapedTitle}')`;
+                }
+                
                 const coverImage = item.image || item.thumb || '';
                 
                 return `
@@ -224,7 +244,7 @@ class CardAlbum {
                             <div class="video-card-play">▶</div>
                             ${badge}
                         </div>
-                        <div class="video-card-title">${item.title}</div>
+                        <div class="video-card-title">${displayTitle}</div>
                     </div>
                 `;
             } else if (isLastLevel) {
@@ -423,7 +443,44 @@ class CardAlbum {
             songModal.style.zIndex = '1000';
         }
         
-        // 创建视频弹窗 - 使用 iframe 嵌入微博视频
+        // 判断视频平台类型
+        let videoContent;
+        if (url.includes('xiaohongshu.com')) {
+            // 小红书视频嵌入
+            videoContent = `
+                <iframe 
+                    src="${url}?fullscreen=true" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allowfullscreen
+                    style="width: 100%; height: 100%;">
+                </iframe>
+            `;
+        } else if (url.includes('weibo.com')) {
+            // 微博视频嵌入 - 直接使用原始链接
+            videoContent = `
+                <iframe 
+                    src="${url}" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allowfullscreen
+                    style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                </iframe>
+            `;
+        } else {
+            // 其他视频源
+            videoContent = `
+                <iframe 
+                    src="${url}" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allowfullscreen
+                    style="width: 100%; height: 100%;">
+                </iframe>
+            `;
+        }
+        
+        // 创建视频弹窗
         const videoModal = document.createElement('div');
         videoModal.className = 'modal-overlay active';
         videoModal.style.zIndex = '3000';
@@ -434,14 +491,8 @@ class CardAlbum {
                     <button class="modal-close" onclick="cardAlbum.closeVideoModal(this)">×</button>
                 </div>
                 <div class="modal-body" style="padding: 0;">
-                    <div class="video-container" style="aspect-ratio: 9/16; background: #000; max-height: 90vh;">
-                        <iframe 
-                            src="${url}" 
-                            frameborder="0" 
-                            scrolling="no" 
-                            allowfullscreen
-                            style="width: 100%; height: 100%;">
-                        </iframe>
+                    <div class="video-container" style="aspect-ratio: 9/16; background: #000; max-height: 90vh; position: relative;">
+                        ${videoContent}
                     </div>
                 </div>
             </div>
