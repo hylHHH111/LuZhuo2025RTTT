@@ -189,7 +189,7 @@
     document.addEventListener('click', function(e) {
         var target = e.target;
         var videoElement = target.tagName === 'VIDEO' ? target : target.closest('video');
-        var videoContainer = target.closest('.video-card, [data-video], .video-item, .video-play-btn, .video-thumbnail, .video-wrapper, .video-grid-item');
+        var videoContainer = target.closest('.video-card, [data-video], .video-item, .video-play-btn, .video-thumbnail, .video-wrapper, .video-grid-item, .video-card-wrapper, .stage-video-card, .video-card-play');
         
         if (videoElement || videoContainer) {
             window.bgMusicPausedByVideo = true;
