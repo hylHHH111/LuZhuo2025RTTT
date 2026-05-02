@@ -498,6 +498,27 @@ class CardAlbum {
         // 检测是否为移动端
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
+        // 暂停背景音乐
+        if (window.bgMusic) {
+            window.bgMusicPausedByVideo = true;
+            if (window.bgMusicPlaying) {
+                window.bgMusic.pause();
+                window.bgMusicPlaying = false;
+                // 更新音乐按钮状态
+                const btn = document.getElementById('music-control-btn');
+                if (btn) {
+                    btn.innerHTML = '♫';
+                    btn.style.background = 'rgba(150,150,150,0.9)';
+                    btn.setAttribute('data-playing', 'false');
+                }
+                // 保存状态
+                try {
+                    localStorage.setItem('bgMusic_isPlaying', 'false');
+                    localStorage.setItem('bgMusic_pausedByVideo', 'true');
+                } catch (e) {}
+            }
+        }
+        
         // 降低歌曲选择弹窗的z-index，使其置于底层
         const songModal = document.getElementById(this.options.modalId);
         if (songModal) {
@@ -595,6 +616,28 @@ class CardAlbum {
         const songModal = document.getElementById(this.options.modalId);
         if (songModal) {
             songModal.style.zIndex = '';
+        }
+        
+        // 恢复背景音乐（如果用户没有手动暂停）
+        if (window.bgMusic && window.bgMusicPausedByVideo && !window.bgMusicUserPaused) {
+            window.bgMusicPausedByVideo = false;
+            window.bgMusic.play().then(() => {
+                window.bgMusicPlaying = true;
+                // 更新音乐按钮状态
+                const btn = document.getElementById('music-control-btn');
+                if (btn) {
+                    btn.innerHTML = '♪';
+                    btn.style.background = '#42abf3';
+                    btn.setAttribute('data-playing', 'true');
+                }
+                // 保存状态
+                try {
+                    localStorage.setItem('bgMusic_isPlaying', 'true');
+                    localStorage.setItem('bgMusic_pausedByVideo', 'false');
+                } catch (e) {}
+            }).catch((error) => {
+                // 播放失败，不处理
+            });
         }
     }
     
