@@ -274,7 +274,7 @@
             visibility: hidden;
             transition: all 0.3s ease;
             max-height: 400px;
-            overflow-y: auto;
+            overflow: visible;
             z-index: 999;
         }
         .nav-locator:hover .nav-locator-menu {
@@ -282,7 +282,10 @@
             visibility: visible;
         }
         .nav-category {
-            position: static;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .nav-category-title {
             padding: 10px 16px;
@@ -297,32 +300,34 @@
             background: var(--accent-light);
         }
         .nav-songs-list {
-            position: fixed;
-            right: 245px;
-            bottom: 20px;
+            position: absolute;
+            right: calc(100% + 1px);
+            bottom: -40px;
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            padding: 8px 0;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.15);
+            padding: 8px 0 5px 0;
             min-width: 160px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            max-height: calc(100vh - 150px);
+            max-height: 400px;
             overflow-y: auto;
             z-index: 1001;
+            display: none;
         }
         .nav-category:hover .nav-songs-list {
-            opacity: 1;
-            visibility: visible;
+            display: block;
         }
         .nav-song-item {
-            padding: 8px 16px;
+            padding: 4px 16px;
             cursor: pointer;
             transition: background 0.2s;
             white-space: nowrap;
             font-size: 14px;
             color: var(--text-primary);
+        }
+        .nav-songs-list::after {
+            content: '';
+            display: block;
+            height: 5px;
         }
         .nav-song-item:hover {
             background: var(--accent-light);
@@ -449,6 +454,46 @@
         // 舞台直拍数据 - 三层级结构：分类 -> 歌曲 -> 视频
         const stageData = [
             {
+                id: 'meiguiyuan-zhipai',
+                name: '玫瑰园直拍特辑',
+                songs: [
+                    { id: 'meiguiyuan-vttt', name: 'VTTT', cover: '', videos: [
+                        { title: '成都站 | 2025.09.26', videoUrl: 'https://weibo.com/tv/show/1034:5217330909872195?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27', videoUrl: 'https://weibo.com/tv/show/1034:5217334110126155?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-huoshangjiaoyou', name: '火上浇油', cover: '', videos: [
+                        { title: '成都站 | 2025.09.26', videoUrl: 'https://weibo.com/tv/show/1034:5217758246535235?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27', videoUrl: 'https://weibo.com/tv/show/1034:5217759580323844?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-qimiao', name: '七秒', cover: '', videos: [
+                        { title: '成都站 | 2025.09.26', videoUrl: 'https://weibo.com/tv/show/1034:5218092767445029?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27', videoUrl: 'https://weibo.com/tv/show/1034:5218093513769002?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-huanizhisuoyou', name: '话你知所有', cover: '', videos: [
+                        { title: '成都站 | 2025.09.26', videoUrl: 'https://weibo.com/tv/show/1034:5222019785228312?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27', videoUrl: 'https://weibo.com/tv/show/1034:5222388074217475?from=old_pc_videoshow' },
+                        { title: '合肥站 | 2025.10.11', videoUrl: 'https://weibo.com/tv/show/1034:5221213283221534?from=old_pc_videoshow' },
+                        { title: '合肥站 | 2025.10.12', videoUrl: 'https://weibo.com/tv/show/1034:5221590246555743?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-ruguozuihouzhishengwo', name: '如果最后只剩我', cover: '', videos: [
+                        { title: '太原站 | 2025.10.25', videoUrl: 'https://weibo.com/tv/show/1034:5227418538147893?from=old_pc_videoshow' },
+                        { title: '太原站 | 2025.10.26', videoUrl: 'https://weibo.com/tv/show/1034:5227482429980711?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-gonewiththemetro', name: 'Gone With The Metro', cover: 'images/stage/gexunxinge/metro.webp', videos: [
+                        { title: '北京站 | 2025.11.08', videoUrl: 'https://weibo.com/tv/show/1034:5230944781795340?from=old_pc_videoshow' },
+                        { title: '北京站 | 2025.11.09', videoUrl: 'https://weibo.com/tv/show/1034:5232183611424840?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-cantstoptherain', name: "Can't Stop The Rain", cover: 'images/stage/gexunxinge/cant-stop-the-rain.webp', videos: [
+                        { title: '北京站 | 2025.11.08', videoUrl: 'https://weibo.com/tv/show/1034:5231072213139465?from=old_pc_videoshow' },
+                        { title: '北京站 | 2025.11.09', videoUrl: 'https://weibo.com/tv/show/1034:5231866907918355?from=old_pc_videoshow' },
+                        { title: '南京站 | 2025.11.22', videoUrl: 'https://weibo.com/tv/show/1034:5237286778896439?from=old_pc_videoshow' }
+                    ] },
+                    { id: 'meiguiyuan-linghunsuilie', name: '灵魂碎裂', cover: 'images/stage/gexunxinge/linghunsuilie.webp', videos: [
+                        { title: '北京站 | 2025.11.09', videoUrl: 'https://weibo.com/tv/show/1034:5232558976467019?from=old_pc_videoshow' }
+                    ] }
+                ]
+            },
+            {
                 id: 'new-tour',
                 name: '个巡新歌',
                 songs: [
@@ -465,6 +510,7 @@
                         { title: '合肥站 | 2025.10.11\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5222220918620166?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5224992774750244?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/68eb315e00000000030225e2?xsec_token=ABDWFsSmloH3EcKT3bJmgVJbLoUy7LJcmblqZ2919Ljvw=&xsec_source=pc_user' },
+                        { title: '合肥站 | 2025.10.11\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/697435fa000000000e03eab5?xsec_token=ABmYH8AyGqpHPezLAFhikiulsAH2ZGD_LPjPEmx75pw1w=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.11\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/68efb203000000000300cfa8?xsec_token=ABzt-mZZ8DX1g3heZA3GzvQsV-LFo8d_sgFsyY8xQy9z4=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.12\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5222077087547435?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.12\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5222808436015161?from=old_pc_videoshow' },
@@ -475,6 +521,7 @@
                         { title: '太原站 | 2025.10.25\n奇迹小冬', videoUrl: 'https://www.xiaohongshu.com/explore/68fdbf3700000000070211d5?xsec_token=ABsd7QvLE3WKPRN_1On010J_x0Obq6wOb2xbiMtGrtvDw=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.25\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/69060bf10000000003019a24?xsec_token=ABny7NodLuc-ddX9YXwL3u3CAFgCnZGckiKkvOExjixYM=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.25\nFawnella_1124鹭卓', videoUrl: 'https://www.xiaohongshu.com/explore/690c6b660000000003018cac?xsec_token=AB_5RIJaDphiCAM-gwMvzY13PiT045IHlwYjGdrBTayc4=&xsec_source=pc_user' },
+                        { title: '太原站 | 2025.10.25\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/6966b816000000000e00ee64?xsec_token=ABA9n8zKRz_nO6xFoNmMhR3SqSHSflwi79BF9Tmjwg5ag=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.26\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5229328238051337?from=old_pc_videoshow' },
                         { title: '太原站 | 2025.10.26\n大仙儿话很多', videoUrl: 'https://weibo.com/tv/show/1034:5229649303634006?from=old_pc_videoshow' },
                         { title: '太原站 | 2025.10.26\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/690da491000000000302f71a?xsec_token=ABAfatsAMFr74LgjyzX4_YgZovtgbPE_dcJ7823ACsWTs=&xsec_source=pc_user' },
@@ -508,6 +555,7 @@
                         { title: '北京站 | 2025.11.09\nFawnella_1124鹭卓', videoUrl: 'https://www.xiaohongshu.com/explore/6910ca96000000000300ca81?xsec_token=AB370gKpOsgaGH4UT4-b_S5g-uVtE1IZUbfBxozMQqJf4=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.09\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/69114d670000000003023d0c?xsec_token=ABa6TLkO2I_E-8E52aaKyuT5yssLLuIljh9Gj-WLuQm1Q=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.09\n我是一颗土豆子', videoUrl: 'https://www.xiaohongshu.com/explore/691530e10000000005011ad5?xsec_token=AB3MlNbGzzMW21t7bD4aOqd-zMcehCICJc2jCXoIh9JqM=&xsec_source=pc_user' },
+                        { title: '北京站 | 2025.11.09\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/6913f4630000000005001aa9?xsec_token=ABhiQq76EgF-ABSDSiHlSQkPfFmcZMHySOQ_V0jlV7vug=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.22\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5238132891910148?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5243249242341385?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\n香香吗喽', videoUrl: 'https://weibo.com/tv/show/1034:5283368540241936?from=old_pc_videoshow' },
@@ -515,6 +563,7 @@
                         { title: '南京站 | 2025.11.23\n我是一颗土豆子', videoUrl: 'https://www.xiaohongshu.com/explore/69280ba3000000001e0235dd?xsec_token=ABsdOOnXFMoRv9EJRTJnT-Utl-EPZ4zYl0ONxYldfdVpc=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/692eaee3000000001b031989?xsec_token=ABy-_MBTizChDWqe0IEMXwIRS_uM2Lq0fTpvrbHGj9usk=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/6943992d000000001b020cb4?xsec_token=ABv7_2we3rzNSglXvxHbT9apmID-es-sQ8fwYiIsMqoCk=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.23\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/695feddf000000001a032504?xsec_token=ABitfEj9eFY2SDalZG5HlrKpNEYsaFTGmVkKpNgIhO4e8=&xsec_source=pc_user' },
                     ] },
                     { id: 'gone-with-the-metro', name: 'Gone With The Metro', cover: 'images/stage/gexunxinge/metro.webp', videos: [
                         { title: '北京站 | 2025.11.08\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5230841786466424?from=old_pc_videoshow' },
@@ -529,6 +578,7 @@
                         { title: '北京站 | 2025.11.09\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5232540324397126?from=old_pc_videoshow' },
                         { title: '北京站 | 2025.11.09\nMiu-00', videoUrl: 'https://weibo.com/tv/show/1034:5232824475648010?from=old_pc_videoshow' },
                         { title: '北京站 | 2025.11.09\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/6915c215000000000d03d152?xsec_token=AB6bYzOFertitOa4NrNNRCBKe7667mcENLEgyXCEugcDU=&xsec_source=pc_user' },
+                        { title: '北京站 | 2025.11.09\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/6911a7cd0000000005012aaf?xsec_token=ABAt1EZUYC1ekZWtcqrq5a__wTkJ8Gk0_EmqQkNiRN2Fg=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.22\nMiu-00', videoUrl: 'https://weibo.com/tv/show/1034:5237192281227269?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5238135412424722?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5243244657967120?from=old_pc_videoshow' },
@@ -566,11 +616,13 @@
                         { title: '成都站 | 2025.09.27\n奇迹小冬', videoUrl: 'https://www.xiaohongshu.com/explore/68d8074f000000001201c556?xsec_token=ABaJVwsGPc8Jx6MhmN5aWrRi27mZ8zjPGWafGTMM2Xj_4=&xsec_source=pc_user' },
                         { title: '成都站 | 2025.09.27\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/68d91d1500000000130115c5?xsec_token=ABNu7ff5VmXxdVGXAtAUBvr31mydEmhCNdzN4_lwTxJcM=&xsec_source=pc_user' },
                         { title: '成都站 | 2025.09.27\n凤梨酱🍍', videoUrl: 'https://www.xiaohongshu.com/explore/68dcd1d4000000000402aa8f?xsec_token=AB9vBSj2S4lYu694seKzB_rSlyJGskbZvO9ne-tISUH6o=&xsec_source=pc_user' },
+                        { title: '成都站 | 2025.09.27\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/68da3d71000000001101599e?xsec_token=ABDxEDnjYUaaFs0ifDEQzXgpmzFeIWWZJHouDRIwzLXNA=&xsec_source=pc_like' },
                         { title: '合肥站 | 2025.10.11\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5220711300792455?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\nSerenity·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5220948006338615?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5224860025290834?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/68eb353b000000000300e7ff?xsec_token=ABDWFsSmloH3EcKT3bJmgVJQyYUfFymVPm9gDKaOD_tZM=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.11\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/68ec6a340000000003034506?xsec_token=ABEOQ_1g8ANxFornZKdqLcjEXLrfv2SYx6D4WHihzEkRk=&xsec_source=pc_user' },
+                        { title: '合肥站 | 2025.10.12\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/68ebd92a0000000004002bd5?xsec_token=ABbBQiIuuOMvYQ0OdwQiWQnU6AN8G6g1ypfAi8S7T7jFg=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.12\nMiu-00', videoUrl: 'https://weibo.com/tv/show/1034:5221062405718086?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.12\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5221065308176426?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.12\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5221267406782579?from=old_pc_videoshow' },
@@ -639,7 +691,9 @@
                         { title: '南京站 | 2025.11.22\n奇迹小冬', videoUrl: 'https://www.xiaohongshu.com/explore/692973f7000000001e00ce25?xsec_token=ABSm1BeYJYxRhEVmq8B9iKMfwTSAQqRoK1x0HF3mNBcYU=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.22\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/6929d0bf00000000190264be?xsec_token=ABCu1SX6_OyLdG6SAl6XzhkZzGZ3K3y1CHKO5xdWbbXRY=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.22\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/69651254000000002203bbf4?xsec_token=ABcm3-nnxbPHV-vJtmNfup5QwwnRw1drNinatE_npdzXA=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.22\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/692eb3d2000000001e030d9c?xsec_token=ABJSvKH7CKv7wXcRg-cQH3gxoEIzEfTRuWde7Tt-lRttI=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/69412574000000000d03583e?xsec_token=ABY7LV5q2Ysiysvcb-RoqmwyZCAxGMPzjiK5DcmUt24kc=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.23\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/696299a7000000000e03f3cc?xsec_token=ABdqk-dUb58ewDMfXaQxTsTvcMoAa6ExKyvzZfvm7cPAU=&xsec_source=pc_user' },
                     ] },
                     { id: 'liuxingzhuiruyunhai', name: '流星坠入云海', cover: '', videos: [
                         { title: '北京站 | 2025.11.08\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5230836086407174?from=old_pc_videoshow' },
@@ -789,6 +843,7 @@
                         { title: '太原站 | 2025.10.25\nRoseGlow微光', videoUrl: 'https://weibo.com/tv/show/1034:5228967645610021?from=old_pc_videoshow' },
                         { title: '太原站 | 2025.10.25\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/69077f85000000000301b3d8?xsec_token=ABgyrW3vAjFbUOkNJ_MegJYiAEf6WT1Gzb_HNTsZBcnZY=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.25\nFawnella_1124鹭卓', videoUrl: 'https://www.xiaohongshu.com/explore/690c9e0d00000000030136f5?xsec_token=AB_5RIJaDphiCAM-gwMvzY13JTVhW-GoQUCAmrFXI_o4s=&xsec_source=pc_user' },
+                        { title: '太原站 | 2025.10.25\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/696bc379000000001a01f29d?xsec_token=ABUOW0kl3SeYqc0VKgkjoyQBthj_Th_HcK9V-tjAB80jo=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.26\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5227950300397656?from=old_pc_videoshow' },
                         { title: '太原站 | 2025.10.26\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5229328422862936?from=old_pc_videoshow' },
                         { title: '太原站 | 2025.10.26\nFawnella_1124鹭卓', videoUrl: 'https://www.xiaohongshu.com/explore/69003fb6000000000302cfb8?xsec_token=ABxRZm9U_UjfuuPhx8DoJqzlOCT5_R1rbIS3c9WdP8LtU=&xsec_source=pc_user' },
@@ -862,9 +917,11 @@
                         { title: '太原站 | 2025.10.26\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5227994843906061?from=old_pc_videoshow' },
                         { title: '太原站 | 2025.10.26\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/690e19d50000000003036ff1?xsec_token=AB44I8rcXflN1sstFq5W50gKehTqvapU0SArM9sKo2A-A=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.08\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/691ae04b00000000190255d6?xsec_token=ABM7F7w-i625_4PitN3MZ9uqGdIYQ02NRQd8t2QXsJgLc=&xsec_source=pc_user' },
+                        { title: '北京站 | 2025.11.09\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/697c76130000000028022ceb?xsec_token=ABNOVwcvcrVuOJI527kaebIAZUBVBPEgJgkd1jNjEjRJM=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.22\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5243372152225953?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/692c5d90000000001b0317aa?xsec_token=ABWRdkjV8gfkuOcb2kEmJpbghdLhoBzsbiji8U2dHQpG0=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/692d89800000000019026724?xsec_token=ABI4iTCT8jH8lx1F3yHz9Pck9rPMkxjC3D_hXiDDk8SKs=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.23\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/69315b1e000000001e021d85?xsec_token=ABI5m5BviRXkTPOc0-Fb9sBX0u8Ujr1aSIqW7b9AZD5n4=&xsec_source=pc_user' },
                     ] },
                     { id: 'haibugou', name: '还不够', cover: '', videos: [
                         { title: '成都站 | 2025.09.26\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5216630456909886?from=old_pc_videoshow' },
@@ -924,6 +981,7 @@
                         { title: '成都站 | 2025.09.26\nYEELEN丨鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5249277447045193?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.27\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5216232807530561?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.27\nMoments鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5243808732872744?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/68dfae5a00000000050395c3?xsec_token=ABtH-OpY948oFkLXc9jiHKe13ydogSzsdOEnl3F_SWneE=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.25\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/690842480000000003018821?xsec_token=ABt8cebg-6jkvGBpAsdO-CpOQfztUlJhK-dJ1J-SDOO7Q=&xsec_source=pc_user' },
                         { title: '太原站 | 2025.10.26\nRoseGlow微光', videoUrl: 'https://www.xiaohongshu.com/explore/69bbef5b000000001f00716a?xsec_token=ABGBH7pURfb1tQXzA5MVUw_hfEEhgYcrDpp4Dv3Vh_EVU=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.08\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5232247188684814?from=old_pc_videoshow' },    
@@ -978,6 +1036,7 @@
                         { title: '南京站 | 2025.11.22\n香香吗喽', videoUrl: 'https://weibo.com/tv/show/1034:5273322003300362?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/69f0b3e2000000003601e65c?xsec_token=ABZYKef2vjXnSIR0stfjY0VxJ2VP7fklvR2UEvicdxaN4=&xsec_source=pc_like' },
                         { title: '南京站 | 2025.11.22\nkurokura', videoUrl: 'https://www.xiaohongshu.com/explore/6921b31b000000001f00cb02?xsec_token=ABDagJ5uQhEB20E5InRxpUubgF_GxVsOR-4xV8IMkOOPY=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.22\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/69534ab0000000001f00905c?xsec_token=ABcMiBwZmXXGpSmR3q1LAd_84P9CG3UbVygjVIVg2IBDw=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5243472853008390?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.23\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/69267733000000000d03811d?xsec_token=ABliDNsO_gu03JY77iZ6IpNFrXkzl5bBGn7a_mLQIEaGE=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\n凤梨酱🍍', videoUrl: 'https://www.xiaohongshu.com/explore/6958e5b6000000001e02c40e?xsec_token=ABDLYEcxsH_mYiHIYGF-pJwVwD4m9lcFsbr0-t-QWwBSo=&xsec_source=pc_user' },
@@ -987,6 +1046,7 @@
                         { title: '成都站 | 2025.09.26\nPreciousRose', videoUrl: 'https://weibo.com/tv/show/1034:5288020224704627?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.27\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5215964438921252?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.27\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5216642616197196?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/68dd36d10000000005038ad7?xsec_token=ABLH_bO4hw4T7UE1XaVCi4d1er4AA2EvKx-cfe7AeP92I=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.11\nSerenity·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5220763037532180?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5222219119263749?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\n-小熊的能-', videoUrl: 'https://weibo.com/tv/show/1034:5287870374805543?from=old_pc_videoshow' },
@@ -1141,10 +1201,12 @@
                         { title: '北京站 | 2025.11.08\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5230940927229969?from=old_pc_videoshow' },
                         { title: '北京站 | 2025.11.08\nFawnella_1124鹭卓', videoUrl: 'https://www.xiaohongshu.com/explore/691055fd00000000030110bc?xsec_token=AB370gKpOsgaGH4UT4-b_S5jKlSAGtLZ50LSSaeCGdEXo=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.09\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5231287666147338?from=old_pc_videoshow' },
+                        { title: '北京站 | 2025.11.09\n墨mio', videoUrl: 'https://www.xiaohongshu.com/user/profile/5b92912fa8c6ec000111abf1?xsec_token=ABjVXlT0AYP1LFBji2_mU4KAyatL86EeeyAghQajmSHgc=&xsec_source=pc_note' },
                         { title: '北京站 | 2025.11.09\nMiu-00', videoUrl: 'https://weibo.com/tv/show/1034:5231571435716617?from=old_pc_videoshow' },
                         { title: '北京站 | 2025.11.09\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5233777077846045?from=old_pc_videoshow' },
                         { title: '北京站 | 2025.11.09\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/6952917a000000002203258f?xsec_token=ABHa1S_L9JbRm2Fc4pGMJfEZGURV4f1jtgKVYwrmCosOw=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.09\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/6919d7de000000001b0320f2?xsec_token=ABaRM4RThE9auIVI_dfV9Vtsqjzbs8OBPyzLrh8pRn3GU=&xsec_source=pc_user' },
+                        { title: '北京站 | 2025.11.09\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/6912c5320000000004013445?xsec_token=ABl9c6NtLdIL5R9i7T5fvmbP_zvsHGjGqWsRcrMIFvkE0=&xsec_source=pc_user' },
                     ] },
                     { id: 'aijiuyigezi', name: '爱就一个字', cover: '', videos: [
                         { title: '合肥站 | 2025.10.11\nYEELEN丨鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5220698746978339?from=old_pc_videoshow' },
@@ -1153,6 +1215,8 @@
                         { title: '合肥站 | 2025.10.11\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5221894513688582?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.11\nFawnella_1124鹭卓', videoUrl: 'https://www.xiaohongshu.com/explore/68f789da000000000303b213?xsec_token=ABlJaoFa9SHWcrlUQ0cZ_xYxT5x__uPUFWML_f_4nX9v4=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.11\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/69f2d3a100000000360195dd?xsec_token=ABFAzjMmbRah8sK-AGs-5K1yWXVjrd1vTobAnB2wpYOmI=&xsec_source=pc_user' },
+                        { title: '合肥站 | 2025.10.11\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/68eacc320000000005002cad?xsec_token=ABw6WzHqmbx7POSdhH49ABxRdRp9LogEgtswUyqcYJ5FE=&xsec_source=pc_user' },
+                        { title: '合肥站 | 2025.10.11\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/68f8bc700000000005013172?xsec_token=AB3XX14yxMyMLdhk22O12gCpl4XRTkWwmidBsyTjmWxYM=&xsec_source=pc_user' },
                         { title: '合肥站 | 2025.10.12\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5221879401611270?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.12\nYEELEN丨鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5222157207404607?from=old_pc_videoshow' },
                         { title: '合肥站 | 2025.10.12\nMiu-00', videoUrl: 'https://weibo.com/tv/show/1034:5222341064720418?from=old_pc_videoshow' },
@@ -1174,6 +1238,7 @@
                         { title: '北京站 | 2025.11.09\n我是一颗土豆子', videoUrl: 'https://www.xiaohongshu.com/explore/69e4531b000000002300766c?xsec_token=ABkqSD2Jgo0aGTYBEto4nYQtYBQcP-RX_EuIGt63x1IvQ=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.09\noravedilaluna', videoUrl: 'https://www.xiaohongshu.com/explore/6919e099000000001b031595?xsec_token=ABaRM4RThE9auIVI_dfV9VtktE30IuOBLfno1QVovwVNU=&xsec_source=pc_user' },
                         { title: '北京站 | 2025.11.09\nkurokura', videoUrl: 'https://www.xiaohongshu.com/explore/69108a3100000000050329fe?xsec_token=AB370gKpOsgaGH4UT4-b_S5rMqrHzRYnjNGBuKGlj4OQY=&xsec_source=pc_user' },
+                        { title: '北京站 | 2025.11.09\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/697b5b3d000000000e03c1c4?xsec_token=ABUNO8tSuUcOk8Fq-QqKZl--y8B7Rze2B0v7rqGWzMxi0=&xsec_source=pc_like' },
                     ] },
                     { id: 'dujiajiyi', name: '独家记忆', cover: '', videos: [
                         { title: '成都站 | 2025.09.26\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5215365895225360?from=old_pc_videoshow' },
@@ -1220,6 +1285,7 @@
                         { title: '成都站 | 2025.09.27\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5215965164798076?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.27\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5216642360344659?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.27\nSerenity·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5218190305722454?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.27\nLunette丨小月亮', videoUrl: 'https://www.xiaohongshu.com/explore/69f80428000000002301e928?xsec_token=ABHHShoTNs5Rqir1qy2fyH74F3DWY2NdMmWOZ-RtKxlIw=&xsec_source=pc_like' },
                     ] },
                     { id: 'meirenyu', name: '美人鱼', cover: '', videos: [
                         { title: '南京站 | 2025.11.22\nMiu-00', videoUrl: 'https://weibo.com/tv/show/1034:5235924695449653?from=old_pc_videoshow' },
@@ -1243,6 +1309,7 @@
                         { title: '南京站 | 2025.11.23\nRoseGlow微光', videoUrl: 'https://www.xiaohongshu.com/explore/69786290000000001a037e58?xsec_token=ABiCBRufiIOyjHq2EKSngjtDPL4xevrKIamJIyfUwTzPk=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\n凤梨酱🍍', videoUrl: 'https://www.xiaohongshu.com/explore/69311600000000001e032afc?xsec_token=ABI5m5BviRXkTPOc0-Fb9sBfnpnXpLN7V-_4jSDcax9yk=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\nkurokura', videoUrl: 'https://www.xiaohongshu.com/explore/6921c46b000000001e024b9c?xsec_token=ABDagJ5uQhEB20E5InRxpUuVp0bVIWb7YauQe-zOVA_qw=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.23\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/6929762e000000001f00f729?xsec_token=ABSm1BeYJYxRhEVmq8B9iKMcXZ6JDr6qtzefk8-R8oDMs=&xsec_source=pc_user' },
                     ] },
                     { id: 'papillon', name: 'Papillon', cover: '', videos: [
                         { title: '合肥站 | 2025.10.11\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5220678492684332?from=old_pc_videoshow' },
@@ -1271,6 +1338,8 @@
                         { title: '南京站 | 2025.11.22\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5235956094009414?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\nYEELEN丨鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5243808468893747?from=old_pc_videoshow' },
                         { title: '南京站 | 2025.11.22\n奇迹小冬', videoUrl: 'https://www.xiaohongshu.com/explore/6926fb73000000001d03f1f7?xsec_token=ABECXnoPjEIm1FcMqky2kZB6Rjh4RnVooO-6zu4uerjfU=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.22\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/69593132000000001e034b1e?xsec_token=ABchsTo9-R2uvDUYRRJcr3SxDZUeSsK3xZEx2OqHWixpI=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.22\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/692c1e82000000001f0045dd?xsec_token=ABZJ36ZM3ZdIS7VLZCXSEMz9zvimLnYxJFhkm0IhCfWXs=&xsec_source=pc_user' },
                     ] },
                     { id: 'wodeguozhifenniyiban', name: '我的果汁分你一半', cover: '', videos: [
                         { title: '北京站 | 2025.11.08\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5231046569164811?from=old_pc_videoshow' },
@@ -1294,6 +1363,7 @@
                         { title: '成都站 | 2025.09.26\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5216642100297759?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.26\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5216888184307800?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.26\nPreciousRose', videoUrl: 'https://weibo.com/tv/show/1034:5288391806484541?from=old_pc_videoshow' },
+                        { title: '成都站 | 2025.09.26\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/6988574a000000001a01d522?xsec_token=AB4xAyh3jy0cEGnDieHMo1FhXQXYW2kCQV7uOPZXHI0SE=&xsec_source=pc_like' },
                         { title: '合肥站 | 2025.10.12\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5222921594142761?from=old_pc_videoshow' },
                     ] },
                     { id: 'zainayaoyuandedifang', name: '在那遥远的地方', cover: '', videos: [
@@ -1336,6 +1406,8 @@
                         { title: '南京站 | 2025.11.23\n奇迹小冬', videoUrl: 'https://www.xiaohongshu.com/explore/692ad212000000001e0034ce?xsec_token=ABoePlD541ksHsOi009awzvO20BIN8HcY5uahEAh0OgoA=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\n阿乐乐乐', videoUrl: 'https://www.xiaohongshu.com/explore/692af0ab000000000d03d3cb?xsec_token=ABVwFfqESYcII4IJcYUz6ofiC4fSBd-9ngG52wVgv3nQE=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\n一盆两盆的盆', videoUrl: 'https://www.xiaohongshu.com/explore/6923cca6000000001e03b19d?xsec_token=ABvTaywHFo-WZtTE41KxOrAI-bCjOjGiMyS08K7e9Fyqg=&xsec_source=pc_like' },
+                        { title: '南京站 | 2025.11.23\n墨mio', videoUrl: 'https://www.xiaohongshu.com/explore/695030e3000000001e0291e5?xsec_token=AB1jWNRQXulWdymdGt9HREcBWzYej4Di-E14-qMZGwuCg=&xsec_source=pc_user' },
+                        { title: '南京站 | 2025.11.23\nPrayer', videoUrl: 'https://www.xiaohongshu.com/explore/6925793f000000001e030183?xsec_token=ABifjBzG5uQtbE6xFrcVBSWPefefZ2XMMoo-JZNFrNDwA=&xsec_source=pc_user' },
                     ] },
                     { id: 'kanong', name: '卡农', cover: '', videos: [
                         { title: '太原站 | 2025.10.25\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5228761323601925?from=old_pc_videoshow' },
@@ -1367,7 +1439,7 @@
                         { title: '南京站 | 2025.11.23', videoUrl: 'https://player.bilibili.com/player.html?bvid=BV1ytUgB9EGw' }
                     ] }
                 ]
-            }
+            },
         ];
 
         // 生成封面图
@@ -1452,21 +1524,17 @@
                 return;
             }
             
-            // 点击分类标题
+            // 点击分类标题 - 展开/收起歌曲列表
             const categoryTitle = e.target.closest('.nav-category-title');
             if (categoryTitle && locator.contains(categoryTitle)) {
                 e.preventDefault();
                 e.stopPropagation();
                 
                 const categoryId = categoryTitle.dataset.categoryId;
-                console.log('点击分类:', categoryId);
-                
                 const songsList = document.getElementById('songs-' + categoryId);
-                console.log('找到歌曲列表:', songsList);
                 if (!songsList) return;
                 
                 const isVisible = songsList.classList.contains('show');
-                console.log('当前是否显示:', isVisible);
                 
                 // 先关闭所有其他歌曲列表
                 document.querySelectorAll('.nav-songs-list').forEach(list => {
@@ -1476,7 +1544,6 @@
                 // 切换当前列表
                 if (!isVisible) {
                     songsList.classList.add('show');
-                    console.log('已添加 show 类');
                 }
                 return;
             }
