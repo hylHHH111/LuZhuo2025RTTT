@@ -1155,13 +1155,13 @@ body {
 /* ========== 响应式适配 ========== */
 @media (max-width: 1024px) {
     .navbar {
-        position: fixed !important;
+        position: absolute !important;
         background: var(--nav-bg) !important;
         box-shadow: var(--shadow-md) !important;
     }
-    
+
     .city-header .navbar {
-        position: fixed !important;
+        position: absolute !important;
         background: transparent !important;
         box-shadow: none !important;
     }
@@ -1295,7 +1295,13 @@ body {
     }
     
     .card-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--space-sm);
+    }
+
+    .card-grid .card {
+        min-width: 0;
+        width: 100%;
     }
     
     .modal-grid {

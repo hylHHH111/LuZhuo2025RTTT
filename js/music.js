@@ -13,7 +13,7 @@
         bgMusic.id = 'bg-music';
         bgMusic.loop = true;
         bgMusic.preload = 'auto';
-        bgMusic.src = 'music/juxianghuaxingyun.MP3';
+        bgMusic.src = 'music/wushengdianying.MP3';
         bgMusic.volume = 0.5;
         bgMusic.autoplay = true; // 尝试自动播放
         document.body.appendChild(bgMusic);
@@ -189,19 +189,41 @@
     document.addEventListener('click', function(e) {
         var target = e.target;
         var videoElement = target.tagName === 'VIDEO' ? target : target.closest('video');
-        var videoContainer = target.closest('.video-card, [data-video], .video-item, .video-play-btn, .video-thumbnail, .video-wrapper, .video-grid-item, .video-card-wrapper, .stage-video-card, .video-card-play');
+        var videoContainer = target.closest('.video-card, [data-video], .video-item, .video-play-btn, .video-thumbnail, .video-wrapper, .video-grid-item, .video-card-wrapper, .stage-video-card, .video-card-play, [data-video-type]');
         
         if (videoElement || videoContainer) {
             window.bgMusicPausedByVideo = true;
-            saveMusicState();
-            if (window.bgMusicPlaying) {
+            // 强制暂停音乐，不管当前状态
+            try {
                 bgMusic.pause();
                 window.bgMusicPlaying = false;
                 updateMusicButtonState();
                 saveMusicState();
+            } catch (err) {
+                console.log('暂停背景音乐失败:', err);
             }
         }
     });
+    
+    // 监听触摸事件 - 移动端视频点击
+    document.addEventListener('touchstart', function(e) {
+        var target = e.target;
+        var videoElement = target.tagName === 'VIDEO' ? target : target.closest('video');
+        var videoContainer = target.closest('.video-card, [data-video], .video-item, .video-play-btn, .video-thumbnail, .video-wrapper, .video-grid-item, .video-card-wrapper, .stage-video-card, .video-card-play, [data-video-type]');
+        
+        if (videoElement || videoContainer) {
+            window.bgMusicPausedByVideo = true;
+            // 强制暂停音乐，不管当前状态
+            try {
+                bgMusic.pause();
+                window.bgMusicPlaying = false;
+                updateMusicButtonState();
+                saveMusicState();
+            } catch (err) {
+                console.log('暂停背景音乐失败:', err);
+            }
+        }
+    }, { passive: true });
     
     // 恢复音乐函数
     function resumeMusic() {

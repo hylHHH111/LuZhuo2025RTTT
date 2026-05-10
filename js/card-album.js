@@ -177,6 +177,11 @@ class CardAlbum {
      * @param {number} level - 当前层级
      */
     openModal(title, data, level = 0) {
+        // 保存当前滚动位置（只在打开第一层时保存）
+        if (level === 0) {
+            this.savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        }
+        
         this.currentLevel = level;
         this.levelData[level] = { title, data };
         
@@ -212,11 +217,14 @@ class CardAlbum {
         
         gridEl.innerHTML = data.map((item, index) => {
             const isLastLevel = level >= 2 || item.isLeaf;
+            const isVideo = item.type === 'video' || item.videoUrl || item.video;
             
-            if (isLastLevel && item.type === 'video') {
+            if (isLastLevel && isVideo) {
+                // 获取视频URL
+                const videoUrl = item.videoUrl || item.video || '';
                 // 判断视频来源
-                const isXiaohongshu = item.videoUrl.includes('xiaohongshu.com');
-                const isWeibo = item.videoUrl.includes('weibo.com') || item.videoUrl.includes('video.weibo.com');
+                const isXiaohongshu = videoUrl.includes('xiaohongshu.com');
+                const isWeibo = videoUrl.includes('weibo.com') || videoUrl.includes('video.weibo.com');
                 
                 // 转义标题中的特殊字符，避免 HTML/JS 语法错误
                 const displayTitle = item.title.replace(/\n/g, '<br>');
@@ -296,14 +304,15 @@ class CardAlbum {
             // 根据动作类型处理
             if (videoType) {
                 // 视频卡片
-                if (!item.videoUrl) return;
+                const videoUrl = item.videoUrl || item.video;
+                if (!videoUrl) return;
                 
                 if (videoType === 'xiaohongshu') {
                     // 小红书视频：跳转新窗口
-                    window.open(item.videoUrl, '_blank');
+                    window.open(videoUrl, '_blank');
                 } else {
                     // 微博视频和本地视频：弹窗播放
-                    this.playVideo(item.videoUrl, item.title);
+                    this.playVideo(videoUrl, item.title);
                 }
             } else if (action === 'viewImage') {
                 // 图片查看
@@ -371,6 +380,12 @@ class CardAlbum {
         document.body.style.overflow = '';
         this.currentLevel = 0;
         this.history = [];
+        
+        // 恢复滚动位置
+        if (this.savedScrollPosition !== undefined) {
+            window.scrollTo(0, this.savedScrollPosition);
+            this.savedScrollPosition = undefined;
+        }
     }
     
     /**
@@ -498,25 +513,27 @@ class CardAlbum {
         // 检测是否为移动端
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
-        // 暂停背景音乐
-        if (window.bgMusic) {
-            window.bgMusicPausedByVideo = true;
-            if (window.bgMusicPlaying) {
+        // 暂停背景音乐 - 强制暂停，不检查当前状态
+        try {
+            if (window.bgMusic) {
                 window.bgMusic.pause();
                 window.bgMusicPlaying = false;
-                // 更新音乐按钮状态
-                const btn = document.getElementById('music-control-btn');
-                if (btn) {
-                    btn.innerHTML = '♫';
-                    btn.style.background = 'rgba(150,150,150,0.9)';
-                    btn.setAttribute('data-playing', 'false');
-                }
-                // 保存状态
-                try {
-                    localStorage.setItem('bgMusic_isPlaying', 'false');
-                    localStorage.setItem('bgMusic_pausedByVideo', 'true');
-                } catch (e) {}
             }
+            window.bgMusicPausedByVideo = true;
+            // 更新音乐按钮状态
+            const btn = document.getElementById('music-control-btn');
+            if (btn) {
+                btn.innerHTML = '♫';
+                btn.style.background = 'rgba(150,150,150,0.9)';
+                btn.setAttribute('data-playing', 'false');
+            }
+            // 保存状态
+            try {
+                localStorage.setItem('bgMusic_isPlaying', 'false');
+                localStorage.setItem('bgMusic_pausedByVideo', 'true');
+            } catch (e) {}
+        } catch (err) {
+            console.log('暂停背景音乐失败:', err);
         }
         
         // 降低歌曲选择弹窗的z-index，使其置于底层
@@ -685,6 +702,21 @@ class CardAlbum {
      */
     openFancamModal(cityName, data) {
         this.openModal(`${cityName} - 舞台直拍`, data, 0);
+    }
+    
+    /**
+     * 计算视频总数
+     */
+    countVideos(data) {
+        let count = 0;
+        data.forEach(item => {
+            if (item.children) {
+                count += this.countVideos(item.children);
+            } else if (item.type === 'video' || item.videoUrl || item.video) {
+                count++;
+            }
+        });
+        return count;
     }
     
     /**

@@ -425,9 +425,11 @@
         
         function openFancamModal(day) {
             if (day === 'day1') {
-                cardAlbum.openModal('Day 1 直拍', fancamData[0].children, 0);
+                const videoCount = cardAlbum.countVideos(fancamData[0].children);
+                cardAlbum.openModal(`南京站Day 1 直拍 - 共${videoCount}个视频`, fancamData[0].children, 0);
             } else {
-                cardAlbum.openModal('Day 2 直拍', fancamData[1].children, 0);
+                const videoCount = cardAlbum.countVideos(fancamData[1].children);
+                cardAlbum.openModal(`南京站Day 2 直拍 - 共${videoCount}个视频`, fancamData[1].children, 0);
             }
         }
         
