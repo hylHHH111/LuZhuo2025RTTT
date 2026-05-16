@@ -54,7 +54,7 @@
                 <div class="documentary-module">
                     <div class="video-card" onclick="openDocumentaryModal()">
                         <div class="video-thumbnail">
-                            <img src="images/nanjing/nj_frontcover.jpg" alt="南京站纪录片封面" onerror="this.style.display='none'">
+                            <img src="images/nanjing/nj_frontcover.webp" alt="南京站纪录片封面" onerror="this.style.display='none'">
                             <div class="play-overlay">
                                 <div class="play-btn">▶</div>
                             </div>
@@ -73,11 +73,11 @@
                         <span>合照区</span>
                     </button>
                     <button class="nav-button" onclick="openBouquetModal()">
-                        <span class="nav-icon">�</span>
+                        <span class="nav-icon">💐</span>
                         <span>花束区</span>
                     </button>
                     <button class="nav-button" onclick="openOfficialModal()">
-                        <span class="nav-icon">�</span>
+                        <span class="nav-icon">📷</span>
                         <span>官摄区</span>
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
@@ -122,14 +122,14 @@
                             <img src="assets/images/day1-cover.jpg" alt="Day1直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 1</text></svg>'">
                             <div class="card-overlay">
                                 <div class="card-title">Day 1</div>
-                                <div class="card-subtitle">待定</div>
+                                <div class="card-subtitle">2025年11月22日</div>
                             </div>
                         </div>
                         <div class="card" onclick="openFancamModal('day2')">
                             <img src="assets/images/day2-cover.jpg" alt="Day2直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 2</text></svg>'">
                             <div class="card-overlay">
                                 <div class="card-title">Day 2</div>
-                                <div class="card-subtitle">待定</div>
+                                <div class="card-subtitle">2025年11月23日</div>
                             </div>
                         </div>
                     </div>
@@ -201,29 +201,88 @@
             official: [    // 官摄区照片（三层级结构）
                 {
                     title: '鹭卓帅哥',
-                    cover: 'images/nanjing/nj_official/luzhuohao/luzhuohao_1.webp',
+                    cover: 'images/nanjing/nj_official_photo/lz/nj_lz_15.webp',
                     children: [
-                        { image: 'images/nanjing/nj_official/luzhuohao/luzhuohao_1.webp', thumb: 'images/nanjing/nj_official/luzhuohao/luzhuohao_1.webp', isLeaf: true },
-                        { image: 'images/nanjing/nj_official/luzhuohao/luzhuohao_2.webp', thumb: 'images/nanjing/nj_official/luzhuohao/luzhuohao_2.webp', isLeaf: true },
-                        { image: 'images/nanjing/nj_official/luzhuohao/luzhuohao_3.webp', thumb: 'images/nanjing/nj_official/luzhuohao/luzhuohao_3.webp', isLeaf: true }
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_01.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_01.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_02.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_02.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_03.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_03.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_04.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_04.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_05.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_05.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_06.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_06.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_07.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_07.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_08.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_08.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_09.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_09.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_10.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_10.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_11.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_11.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_12.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_12.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_13.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_13.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_14.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_14.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_15.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_15.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/lz/nj_lz_16.webp', thumb: 'images/nanjing/nj_official_photo/lz/nj_lz_16.webp', isLeaf: true }
                     ]
                 },
                 {
                     title: '玫瑰园',
-                    cover: 'images/nanjing/nj_official/guiyuan/guiyuan_1.webp',
+                    cover: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_01.webp',
                     children: [
-                        { image: 'images/nanjing/nj_official/guiyuan/guiyuan_1.webp', thumb: 'images/nanjing/nj_official/guiyuan/guiyuan_1.webp', isLeaf: true },
-                        { image: 'images/nanjing/nj_official/guiyuan/guiyuan_2.webp', thumb: 'images/nanjing/nj_official/guiyuan/guiyuan_2.webp', isLeaf: true },
-                        { image: 'images/nanjing/nj_official/guiyuan/guiyuan_3.webp', thumb: 'images/nanjing/nj_official/guiyuan/guiyuan_3.webp', isLeaf: true }
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_01.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_01.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_02.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_02.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_03.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_03.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_04.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_04.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_05.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_05.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_06.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_06.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_07.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_07.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_08.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_08.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_09.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_09.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_10.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_10.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_11.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_11.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_12.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_12.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_13.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_13.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_14.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_14.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_15.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_15.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_16.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_16.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_17.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_17.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_18.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_18.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_19.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_19.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_20.webp', thumb: 'images/nanjing/nj_official_photo/guiyuan/nj_gy_20.webp', isLeaf: true }
                     ]
                 },
                 {
                     title: '莫拉娱乐',
-                    cover: 'images/nanjing/nj_official/mola/mola_1.webp',
+                    cover: 'images/nanjing/nj_official_photo/mola/nj_mola_24.webp',
                     children: [
-                        { image: 'images/nanjing/nj_official/mola/mola_1.webp', thumb: 'images/nanjing/nj_official/mola/mola_1.webp', isLeaf: true },
-                        { image: 'images/nanjing/nj_official/mola/mola_2.webp', thumb: 'images/nanjing/nj_official/mola/mola_2.webp', isLeaf: true },
-                        { image: 'images/nanjing/nj_official/mola/mola_3.webp', thumb: 'images/nanjing/nj_official/mola/mola_3.webp', isLeaf: true }
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_01.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_01.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_02.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_02.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_03.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_03.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_04.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_04.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_05.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_05.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_06.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_06.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_07.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_07.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_08.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_08.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_09.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_09.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_10.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_10.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_11.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_11.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_12.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_12.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_13.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_13.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_14.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_14.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_15.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_15.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_16.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_16.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_17.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_17.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_19.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_19.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_20.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_20.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_21.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_21.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_22.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_22.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_23.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_23.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_24.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_24.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_25.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_25.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_26.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_26.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_27.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_27.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_28.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_28.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_29.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_29.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_30.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_30.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_31.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_31.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_32.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_32.webp', isLeaf: true },
+                        { image: 'images/nanjing/nj_official_photo/mola/nj_mola_33.webp', thumb: 'images/nanjing/nj_official_photo/mola/nj_mola_33.webp', isLeaf: true }
                     ]
                 }
             ],
@@ -916,12 +975,19 @@
         
         // 打开纪录片弹窗
         function openDocumentaryModal() {
-            playVideo('https://weibo.com/tv/show/1034:5226437192646763?from=old_pc_videoshow', '南京站纪录片');
+            playVideo('https://weibo.com/tv/show/1034:5290871923343395?from=old_pc_videoshow', '南京站纪录片');
         }
         
         // 打开海报信封区弹窗
         function openPosterNavModal() {
-            cardAlbum.openNavModal('海报信封区', navData.poster);
+            const posterTitles = ['手写信信封', '南京站手写信', '主海报', '倒计时3天', '倒计时2天', '倒计时1天'];
+            const posterData = navData.poster.map((img, i) => ({
+                title: posterTitles[i] || `图片 ${i + 1}`,
+                image: img.image || img,
+                thumb: img.thumb || img.image || img,
+                isLeaf: true
+            }));
+            cardAlbum.openModal('南京站手封信', posterData, 0);
         }
         
         document.querySelectorAll('.nav-item').forEach(item => {

@@ -770,8 +770,8 @@ body {
 /* 弹窗内卡片网格 */
 .modal-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
 }
 
 .modal-card {

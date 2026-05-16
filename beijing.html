@@ -82,7 +82,7 @@
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
                         <span class="nav-icon">🎬</span>
-                        <span>海报信封区</span>
+                        <span>北京站手写信</span>
                     </button>
                 </div>
             </section>
@@ -1016,12 +1016,19 @@
         
         // 打开纪录片弹窗
         function openDocumentaryModal() {
-            playVideo('https://weibo.com/tv/show/1034:5226437192646763?from=old_pc_videoshow', '北京站纪录片');
+            playVideo('https://weibo.com/tv/show/1034:5290564736712814?from=old_pc_videoshow', '北京站纪录片');
         }
         
         // 打开海报信封区弹窗
         function openPosterNavModal() {
-            cardAlbum.openNavModal('海报信封区', navData.poster);
+            const posterTitles = ['手写信信封', '北京站手写信', '主海报', '倒计时3天', '倒计时2天', '倒计时1天'];
+            const posterData = navData.poster.map((img, i) => ({
+                title: posterTitles[i] || `图片 ${i + 1}`,
+                image: img.image || img,
+                thumb: img.thumb || img.image || img,
+                isLeaf: true
+            }));
+            cardAlbum.openModal('北京站手写信', posterData, 0);
         }
         
         document.querySelectorAll('.nav-item').forEach(item => {
