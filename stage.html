@@ -152,7 +152,7 @@
         
         /* 分类区域 */
         .category-section {
-            margin-bottom: var(--space-3xl);
+            margin-bottom: 50px;
         }
         .category-header {
             display: flex;
@@ -223,7 +223,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.05);
             z-index: 1;
             transition: all var(--transition-base);
         }
@@ -248,7 +248,7 @@
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 2px;
-            font-size: var(--font-size-base);
+            font-size: var(--font-size-sm);
             line-height: 1.3;
             white-space: pre-line;
         }
@@ -284,15 +284,31 @@
         }
         @media (max-width: 768px) {
             .song-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-md);
             }
             .stage-title {
                 font-size: var(--font-size-2xl);
             }
+            .song-title {
+                font-size: var(--font-size-xs);
+            }
+            .category-header {
+                margin-bottom: var(--space-md);
+                padding-bottom: var(--space-sm);
+            }
         }
         @media (max-width: 480px) {
             .song-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-sm);
+            }
+            .song-title {
+                font-size: var(--font-size-xs);
+            }
+            .category-header {
+                margin-bottom: var(--space-sm);
+                padding-bottom: var(--space-xs);
             }
         }
 

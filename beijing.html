@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北京站 - 鹭卓2025 RTTT巡演</title>
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/city-page.css">
+    <link rel="stylesheet" href="css/city-page.css?v=2">
     <style>
         @media (max-width: 1024px) {
             .navbar-nav {
@@ -122,14 +122,14 @@
                             <img src="assets/images/day1-cover.jpg" alt="Day1直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 1</text></svg>'">
                             <div class="card-overlay">
                                 <div class="card-title">Day 1</div>
-                                <div class="card-subtitle">待定</div>
+                                <div class="card-subtitle">2025年11月08日</div>
                             </div>
                         </div>
                         <div class="card" onclick="openFancamModal('day2')">
                             <img src="assets/images/day2-cover.jpg" alt="Day2直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 2</text></svg>'">
                             <div class="card-overlay">
                                 <div class="card-title">Day 2</div>
-                                <div class="card-subtitle">待定</div>
+                                <div class="card-subtitle">2025年11月09日</div>
                             </div>
                         </div>
                     </div>
@@ -138,21 +138,21 @@
                 <!-- 图集区 -->
                 <div class="lower-module">
                     <div class="module-header">
-                        <h3 class="module-title">精彩图集</h3>
+                        <h3 class="module-title">站姐图集</h3>
                     </div>
                     <div class="card-grid">
                         <div class="card" onclick="openGalleryModal('day1')">
                             <img src="assets/images/day1-gallery-cover.jpg" alt="Day1图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>Day 1</text></svg>'">
                             <div class="card-overlay">
-                                <div class="card-title">Day 1</div>
-                                <div class="card-subtitle">现场图集</div>
+                                <div class="card-title">DAY 1</div>
+                                <div class="card-subtitle">2025年11月08日</div>
                             </div>
                         </div>
                         <div class="card" onclick="openGalleryModal('day2')">
                             <img src="assets/images/day2-gallery-cover.jpg" alt="Day2图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>Day 2</text></svg>'">
                             <div class="card-overlay">
-                                <div class="card-title">Day 2</div>
-                                <div class="card-subtitle">现场图集</div>
+                                <div class="card-title">DAY 2</div>
+                                <div class="card-subtitle">2025年11月09日</div>
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
     <!-- 脚本 -->
-    <script src="js/card-album.js"></script>
+    <script src="js/card-album.js?v=3"></script>
     <script src="js/video-player.js"></script>
     <script>
         // 城市数据配置
@@ -860,21 +860,54 @@
                 cover: 'assets/images/day1-gallery-cover.jpg',
                 children: [
                     {
-                        title: '造型A',
-                        cover: 'assets/images/day1-style1.jpg',
-                        children: [
-                            { title: '舞台照1', image: 'assets/images/beijing/day1-1.jpg', thumb: 'assets/images/beijing/day1-1-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/beijing/day1-2.jpg', thumb: 'assets/images/beijing/day1-2-thumb.jpg', isLeaf: true },
-                            { title: '舞台照3', image: 'assets/images/beijing/day1-3.jpg', thumb: 'assets/images/beijing/day1-3-thumb.jpg', isLeaf: true }
-                        ]
+                        title: '夜行者套装',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_1.webp',
+                        children: []
                     },
                     {
-                        title: '造型B',
-                        cover: 'assets/images/day1-style2.jpg',
-                        children: [
-                            { title: '舞台照1', image: 'assets/images/beijing/day1-4.jpg', thumb: 'assets/images/beijing/day1-4-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/beijing/day1-5.jpg', thumb: 'assets/images/beijing/day1-5-thumb.jpg', isLeaf: true }
-                        ]
+                        title: '重工盘花蕾丝套装',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '小香风粗花呢拼接夹克',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢拼接夹克/bj_1108_03_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '白色衬衫',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '碎钻黑外套',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '碎钻黑皮马甲',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-碎钻黑皮马甲/bj_1108_06_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '蓝色运动棒球外套',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '动物纹短毛外套',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '鹭加索手绘外套',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_1.webp',
+                        children: []
+                    },
+                    {
+                        title: '黑色罩衫+背心',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_1.webp',
+                        children: []
                     }
                 ]
             },

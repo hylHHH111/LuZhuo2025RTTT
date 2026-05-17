@@ -138,21 +138,21 @@
                 <!-- 图集区 -->
                 <div class="lower-module">
                     <div class="module-header">
-                        <h3 class="module-title">精彩图集</h3>
+                        <h3 class="module-title">站姐图集</h3>
                     </div>
                     <div class="card-grid">
-                        <div class="card" onclick="openGalleryModal('stage')">
-                            <img src="assets/images/gallery-stage-cover.jpg" alt="舞台图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>舞台图集</text></svg>'">
+                        <div class="card" onclick="openGalleryModal('day1')">
+                            <img src="images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_40.webp" alt="Day 1 图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 1 图集</text刺绣手工钻红外套/ty_0></svg>'">
                             <div class="card-overlay">
-                                <div class="card-title">舞台</div>
-                                <div class="card-subtitle">精彩瞬间</div>
+                                <div class="card-title">DAY 1</div>
+                                <div class="card-subtitle">2025年10月25日</div>
                             </div>
                         </div>
-                        <div class="card" onclick="openGalleryModal('backstage')">
-                            <img src="assets/images/gallery-backstage-cover.jpg" alt="后台图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>后台图集</text></svg>'">
+                        <div class="card" onclick="openGalleryModal('day2')">
+                            <img src="images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_4.webp" alt="Day 2 图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 2 图集</text></svg>'">
                             <div class="card-overlay">
-                                <div class="card-title">后台</div>
-                                <div class="card-subtitle">幕后花絮</div>
+                                <div class="card-title">DAY 2</div>
+                                <div class="card-subtitle">2025年10月26日</div>
                             </div>
                         </div>
                     </div>
@@ -860,22 +860,489 @@
             }
         ];
 
-        // 图集数据
+        // 图集数据 - 三层结构：Day -> 妆造名称 -> 图片
         const galleryData = [
             {
-                title: '舞台',
-                cover: 'images/cards/card1.jpg',
+                title: 'Day 1',
+                cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_1.webp',
                 children: [
-                    { title: '舞台1', image: 'images/cards/card1.jpg', isLeaf: true },
-                    { title: '舞台2', image: 'images/cards/card2.jpg', isLeaf: true }
+                    {
+                        title: '刺绣手工钻红外套',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_35.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_20.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_21.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_21.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_22.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_22.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_23.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_23.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_24.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_24.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_25.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_25.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_26.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_26.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_27.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_27.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_28.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_28.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_29.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_29.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_30.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_30.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_31.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_31.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_32.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_32.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_33.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_33.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_34.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_34.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_35.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_35.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_36.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_36.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_37.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_37.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_38.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_38.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_39.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_39.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_40.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_40.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_41.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_41.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_42.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/1-刺绣手工钻红外套/ty_01_42.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '红色衬衫',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_1.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/2-红色衬衫/ty_02_17.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '粉红豹小翅膀',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_1.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_20.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_21.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_21.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_22.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_22.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_23.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_23.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_24.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_24.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_25.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_25.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_26.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_26.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_27.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_27.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_28.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_28.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_29.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_29.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_30.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_30.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_31.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/3-粉红豹小翅膀/ty_03_31.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '浅蓝色套装',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_4.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/4-浅蓝色套装/ty_04_17.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '背后镂空套装',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_8.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/5-背后镂空套装/ty_05_9.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '红色机甲服',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_11.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_20.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_21.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_21.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_22.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_22.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_23.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_23.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_24.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/6-红色机甲服/ty_06_24.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '定制白金机能套装',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_8.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/7-定制白金机能套装/ty_07_8.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '全员感受！',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_6.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day1-1025/8-全员感受！/ty_08_19.webp', isLeaf: true }
+                        ]
+                    }
                 ]
             },
             {
-                title: '后台',
-                cover: 'images/cards/card2.jpg',
+                title: 'Day 2',
+                cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_4.webp',
                 children: [
-                    { title: '后台1', image: 'images/cards/card3.jpg', isLeaf: true },
-                    { title: '后台2', image: 'images/cards/card4.jpg', isLeaf: true }
+                    {
+                        title: '山西非遗上党堆锦服饰',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_34.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_20.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_21.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_21.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_22.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_22.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_23.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_23.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_24.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_24.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_25.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_25.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_26.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_26.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_27.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_27.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_28.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_28.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_29.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_29.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_30.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_30.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_31.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_31.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_32.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_32.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_33.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_33.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_34.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_34.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_35.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_35.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_36.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_36.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_37.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_37.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_38.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_38.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_39.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_39.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_40.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_40.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_41.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_41.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_42.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/1-山西非遗上党堆锦服饰/ty_01_42.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '珠绣衬衫',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_6.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/2-珠绣衬衫/ty_02_6.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '鲨鱼嘴马甲',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_2.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_20.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_21.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_21.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_22.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_22.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_23.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_23.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_24.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_24.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_25.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_25.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_26.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_26.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_27.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_27.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_28.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_28.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_29.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_29.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_30.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_30.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_31.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_31.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_32.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_32.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_33.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/3-鲨鱼嘴马甲/ty_03_33.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '白色斗篷',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_12.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/4-白色斗篷/ty_04_20.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '白色套装',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_18.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/5-白色套装/ty_05_20.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '碎钻镂空外套',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_7.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/6-碎钻镂空外套/ty_06_7.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '红色套装',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_2.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_17.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_18.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_18.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_19.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_19.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_20.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_20.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_21.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_21.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_22.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_22.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_23.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_23.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_24.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_24.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_25.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_25.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_26.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_26.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_27.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_27.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_28.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_28.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_29.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_29.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_30.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_30.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_31.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_31.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_32.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_32.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_33.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_33.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_34.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_34.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_35.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_35.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_36.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_36.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_37.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_37.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_38.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_38.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_39.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_39.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_40.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_40.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_41.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_41.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_42.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/7-红色套装/ty_07_42.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '定制银白色铠甲服装',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_4.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/8-定制银白色铠甲服装/ty_08_15.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '灰色罩衫',
+                        cover: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_2.webp',
+                        children: [
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_1.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_1.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_2.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_2.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_3.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_3.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_4.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_4.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_5.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_5.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_6.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_6.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_7.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_7.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_8.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_8.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_9.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_9.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_10.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_10.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_11.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_11.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_12.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_12.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_13.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_13.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_14.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_14.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_15.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_15.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_16.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_16.webp', isLeaf: true },
+                            { image: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_17.webp', thumb: 'images/taiyuan/ty_zhanjie_photo/Day2-1026/9-灰色罩衫/ty_09_17.webp', isLeaf: true }
+                        ]
+                    }
                 ]
             }
         ];
@@ -948,10 +1415,10 @@
             }
         }
 
-        // 打开图集弹窗
+        // 打开图集弹窗 - 三层结构：Day -> 妆造名称 -> 图片
         function openGalleryModal(type) {
-            const title = type === 'stage' ? '舞台图集' : '后台图集';
-            const data = type === 'stage' ? galleryData[0].children : galleryData[1].children;
+            const title = type === 'day1' ? '站姐图集 - 2025年10月25日' : '站姐图集 - 2025年10月26日';
+            const data = type === 'day1' ? galleryData[0].children : galleryData[1].children;
             cardAlbum.openModal(title, data, 0);
         }
         
