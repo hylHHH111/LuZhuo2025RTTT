@@ -211,6 +211,23 @@ class CardAlbum {
         
         if (!gridEl) return;
         
+        // 为舞台直拍添加特定class
+        const isFancam = title.includes('直拍') || title.includes('特辑') || this.currentModalType === 'stage-fancam';
+        const isCityFancam = this.currentModalType === 'stage-fancam';
+        if (isFancam) {
+            gridEl.classList.add('modal-grid-fancam');
+        } else {
+            gridEl.classList.remove('modal-grid-fancam');
+        }
+        // 城市页面直拍单独标记
+        if (isCityFancam) {
+            gridEl.classList.add('modal-grid-city-fancam');
+        } else {
+            gridEl.classList.remove('modal-grid-city-fancam');
+        }
+        // 重置标记
+        this.currentModalType = null;
+        
         // 保存当前数据用于事件委托
         this.currentGridData = data;
         this.currentLevel = level;
@@ -234,8 +251,10 @@ class CardAlbum {
                 if (isXiaohongshu) videoType = 'xiaohongshu';
                 else if (isWeibo) videoType = 'weibo';
                 
-                const coverImage = item.image || item.thumb || '';
+                // 优先使用视频自身的封面，其次使用父级（歌曲）封面
+                const coverImage = item.image || item.thumb || item.parentCover || '';
                 
+                const isFancam = title.includes('直拍');
                 return `
                     <div class="video-card-wrapper" data-index="${index}" data-video-type="${videoType}">
                         <div class="stage-video-card" data-index="${index}" style="background-image: url('${coverImage}'); background-size: cover; background-position: center;">
@@ -245,11 +264,9 @@ class CardAlbum {
                     </div>
                 `;
             } else if (isLastLevel) {
-                // 图片卡片（最后一级）- 官摄区及其子分类不显示标题
-                // 检查当前层级链中是否有官摄区
                 let isOfficialArea = title === '官摄区';
+                const isGroupPhoto = title === '合照区';
                 if (!isOfficialArea) {
-                    // 检查所有父级
                     for (let i = 0; i <= level; i++) {
                         if (this.levelData[i] && this.levelData[i].title === '官摄区') {
                             isOfficialArea = true;
@@ -257,18 +274,23 @@ class CardAlbum {
                         }
                     }
                 }
+                const cardClass = (isOfficialArea || isGroupPhoto) ? 'modal-card modal-card-official' : 'modal-card';
+                const showTitle = isGroupPhoto;
                 return `
-                    <div class="modal-card" data-index="${index}" data-action="viewImage">
+                    <div class="${cardClass}" data-index="${index}" data-action="viewImage">
                         <img src="${item.image || item.thumb || item.cover}" alt="${item.title}" loading="lazy">
-                        ${!isOfficialArea ? `<div class="modal-card-title">${item.title}</div>` : ''}
+                        ${showTitle ? `<div class="modal-card-title">${item.title}</div>` : ''}
                     </div>
                 `;
             } else {
-                // 可展开的卡片
+                const isFancam = title.includes('直拍');
+                const isOfficialArea = title === '官摄区';
+                const isGallery = title.includes('精彩图集') || title.includes('图集');
+                const cardClass = (isOfficialArea || isGallery) ? 'modal-card modal-card-official' : 'modal-card';
                 return `
-                    <div class="modal-card" data-index="${index}" data-action="openLevel">
+                    <div class="${cardClass}" data-index="${index}" data-action="openLevel">
                         <img src="${item.cover || item.image}" alt="${item.title}" loading="lazy">
-                        <div class="modal-card-title">${item.title}</div>
+                        ${(isOfficialArea || isGallery) ? `<div class="modal-card-title">${item.title}</div>` : (!isFancam ? `<div class="modal-card-title">${item.title}</div>` : '')}
                     </div>
                 `;
             }
@@ -352,11 +374,23 @@ class CardAlbum {
         const currentData = this.levelData[this.currentLevel].data[index];
         if (!currentData.children) return;
         
+        // 保存父级封面信息到子数据中
+        const childrenWithCover = currentData.children.map(child => ({
+            ...child,
+            parentCover: currentData.cover || currentData.image || ''
+        }));
+        
+        // 保存当前的 modalType，以便在下一层使用
+        const savedModalType = this.currentModalType;
+        
         this.openModal(
             currentData.title,
-            currentData.children,
+            childrenWithCover,
             this.currentLevel + 1
         );
+        
+        // 恢复 modalType（用于城市页面直拍样式）
+        this.currentModalType = savedModalType;
     }
     
     /**
@@ -701,6 +735,8 @@ class CardAlbum {
      * 打开直拍区弹窗（三层级）
      */
     openFancamModal(cityName, data) {
+        // 添加舞台直拍标记
+        this.currentModalType = 'stage-fancam';
         this.openModal(`${cityName} - 舞台直拍`, data, 0);
     }
     
@@ -739,6 +775,8 @@ class CardAlbum {
             type: 'video',
             isLeaf: true
         }));
+        // 添加舞台直拍标记，用于样式区分
+        this.currentModalType = 'stage-fancam';
         this.openModal(title, data, 0);
     }
 }
