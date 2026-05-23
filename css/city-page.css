@@ -632,9 +632,6 @@ body {
 }
 
 .nav-button:hover {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    color: var(--white);
-    border-color: var(--primary);
     transform: translateY(-2px);
 }
 
@@ -1440,16 +1437,87 @@ body {
 
 /* 城市页面舞台直拍移动端一行3个 - 确保优先级最高 */
 @media (max-width: 768px) {
-    .modal-grid-city-fancam {
+    .modal-grid.modal-grid-fancam.modal-grid-city-fancam {
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: var(--space-sm) !important;
+        gap: var(--space-xs) !important;
     }
 }
 
 @media (max-width: 480px) {
-    .modal-grid-city-fancam {
+    .modal-grid.modal-grid-fancam.modal-grid-city-fancam {
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: var(--space-xs) !important;
+        gap: 4px !important;
+    }
+}
+
+/* 视频列表层级专用样式 - 移动端一行3个 */
+@media (max-width: 768px) {
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level {
+        grid-template-columns: repeat(3, 120px) !important;
+        gap: 8px !important;
+        justify-content: center !important;
+        justify-items: center !important;
+    }
+    
+    /* 移动端视频列表卡片固定尺寸120*160 */
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper {
+        width: 120px !important;
+        padding: 4px !important;
+        gap: 4px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .stage-video-card {
+        width: 100% !important;
+        height: 160px !important;
+        aspect-ratio: unset !important;
+        max-height: 160px !important;
+    }
+    
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .stage-video-card .video-card-play {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 14px !important;
+    }
+    
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .video-card-title {
+        font-size: 10px !important;
+        padding: 0 4px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level {
+        grid-template-columns: repeat(3, 120px) !important;
+        gap: 4px !important;
+        justify-content: center !important;
+        justify-items: center !important;
+    }
+    
+    /* 移动端视频列表卡片固定尺寸120*160 */
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper {
+        width: 120px !important;
+        padding: 2px !important;
+        gap: 2px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .stage-video-card {
+        width: 100% !important;
+        height: 160px !important;
+        aspect-ratio: unset !important;
+        max-height: 160px !important;
+    }
+    
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .stage-video-card .video-card-play {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 12px !important;
+    }
+    
+    .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .video-card-title {
+        font-size: 9px !important;
+        padding: 0 2px !important;
     }
 }
 

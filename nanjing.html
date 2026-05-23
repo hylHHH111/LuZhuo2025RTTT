@@ -12,6 +12,12 @@
                 background: transparent !important;
             }
         }
+        .nav-button .nav-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
     </style>
 </head>
 <body>
@@ -69,20 +75,16 @@
                 <!-- 垂直导航区 -->
                 <div class="nav-module">
                     <button class="nav-button" onclick="openGroupPhotoModal()">
-                        <span class="nav-icon">📸</span>
-                        <span>合照区</span>
+                        <img src="images/daohanlan/groupphoto.webp" alt="合照区" class="nav-cover">
                     </button>
                     <button class="nav-button" onclick="openBouquetModal()">
-                        <span class="nav-icon">💐</span>
-                        <span>花束区</span>
+                        <img src="images/daohanlan/flower.webp" alt="花束区" class="nav-cover">
                     </button>
                     <button class="nav-button" onclick="openOfficialModal()">
-                        <span class="nav-icon">📷</span>
-                        <span>官摄区</span>
+                        <img src="images/daohanlan/official_photo.webp" alt="官摄区" class="nav-cover">
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
-                        <span class="nav-icon">🎬</span>
-                        <span>海报信封区</span>
+                        <img src="images/daohanlan/poster_letter.webp" alt="海报信封区" class="nav-cover">
                     </button>
                 </div>
             </section>
@@ -138,21 +140,21 @@
                 <!-- 图集区 -->
                 <div class="lower-module">
                     <div class="module-header">
-                        <h3 class="module-title">精彩图集</h3>
+                        <h3 class="module-title">站姐图集</h3>
                     </div>
                     <div class="card-grid">
                         <div class="card" onclick="openGalleryModal('day1')">
                             <img src="assets/images/day1-gallery-cover.jpg" alt="Day1图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>Day 1</text></svg>'">
                             <div class="card-overlay">
-                                <div class="card-title">Day 1</div>
-                                <div class="card-subtitle">现场图集</div>
+                                <div class="card-title">DAY 1</div>
+                                <div class="card-subtitle">2025年11月22日</div>
                             </div>
                         </div>
                         <div class="card" onclick="openGalleryModal('day2')">
                             <img src="assets/images/day2-gallery-cover.jpg" alt="Day2图集" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>Day 2</text></svg>'">
                             <div class="card-overlay">
-                                <div class="card-title">Day 2</div>
-                                <div class="card-subtitle">现场图集</div>
+                                <div class="card-title">DAY 2</div>
+                                <div class="card-subtitle">2025年11月23日</div>
                             </div>
                         </div>
                     </div>
@@ -815,47 +817,416 @@
         // 图集区数据（仅包含Day1和Day2）
         const galleryData = [
             {
-                title: 'Day 1',
+                title: 'DAY 1',
                 cover: 'assets/images/day1-gallery-cover.jpg',
                 children: [
                     {
-                        title: '造型A',
-                        cover: 'assets/images/day1-style1.jpg',
+                        title: '柳钉外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_10.webp',
                         children: [
-                            { title: '舞台照1', image: 'assets/images/nanjing/day1-1.jpg', thumb: 'assets/images/nanjing/day1-1-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/nanjing/day1-2.jpg', thumb: 'assets/images/nanjing/day1-2-thumb.jpg', isLeaf: true },
-                            { title: '舞台照3', image: 'assets/images/nanjing/day1-3.jpg', thumb: 'assets/images/nanjing/day1-3-thumb.jpg', isLeaf: true }
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_13.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_14.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/1-柳钉外套/bj_1122_01_14.webp', isLeaf: true }
                         ]
                     },
                     {
-                        title: '造型B',
-                        cover: 'assets/images/day1-style2.jpg',
+                        title: '破洞蕾丝上衣',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_05.webp',
                         children: [
-                            { title: '舞台照1', image: 'assets/images/nanjing/day1-4.jpg', thumb: 'assets/images/nanjing/day1-4-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/nanjing/day1-5.jpg', thumb: 'assets/images/nanjing/day1-5-thumb.jpg', isLeaf: true }
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/2-破洞蕾丝上衣/bj_1122_02_09.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '保时捷配色外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_03.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/3-保时捷配色外套/bj_1122_03_05.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '粉色连帽卫衣',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/4-粉色连帽卫衣/bj_1122_04_09.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '粉色蛋糕',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/5-粉色蛋糕/bj_1122_05_04.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '满天星链条西服外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_03.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/6-满天星链条西服外套/bj_1122_06_05.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '皮革带衬衫',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_06.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-皮革带衬衫/bj_1122_07_11.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '烫钻立体西服外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/8-烫钻立体西服外套/bj_1122_08_05.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '流苏套装',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/9-流苏套装/bj_1122_09_09.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '蓝色珍珠缀饰外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_09.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_13.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_14.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_14.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_15.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_15.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_16.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_16.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_17.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_17.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_18.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_18.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_19.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_19.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_20.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/10-蓝色珍珠缀饰外套/bj_1122_10_20.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '牛仔套装',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_13.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_14.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/11-牛仔套装/bj_1122_11_14.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '紫色网衫',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_06.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_13.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_14.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/12-紫色网衫/bj_1122_12_14.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '黄色皮衣外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_03.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY1-1122/13-黄色皮衣外套/bj_1122_13_06.webp', isLeaf: true }
                         ]
                     }
                 ]
             },
             {
-                title: 'Day 2',
+                title: 'DAY 2',
                 cover: 'assets/images/day2-gallery-cover.jpg',
                 children: [
                     {
-                        title: '造型A',
-                        cover: 'assets/images/day2-style1.jpg',
+                        title: '大翅膀',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_06.webp',
                         children: [
-                            { title: '舞台照1', image: 'assets/images/nanjing/day2-1.jpg', thumb: 'assets/images/nanjing/day2-1-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/nanjing/day2-2.jpg', thumb: 'assets/images/nanjing/day2-2-thumb.jpg', isLeaf: true },
-                            { title: '舞台照3', image: 'assets/images/nanjing/day2-3.jpg', thumb: 'assets/images/nanjing/day2-3-thumb.jpg', isLeaf: true }
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/1-大翅膀/bj_1123_01_10.webp', isLeaf: true }
                         ]
                     },
                     {
-                        title: '造型B',
-                        cover: 'assets/images/day2-style2.jpg',
+                        title: '红黑拼接柳钉马甲',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_05.webp',
                         children: [
-                            { title: '舞台照1', image: 'assets/images/nanjing/day2-4.jpg', thumb: 'assets/images/nanjing/day2-4-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/nanjing/day2-5.jpg', thumb: 'assets/images/nanjing/day2-5-thumb.jpg', isLeaf: true }
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/2-红黑拼接柳钉马甲/bj_1123_02_06.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '赛博朋克套装',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_13.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_14.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_14.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_15.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_15.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_16.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/3-赛博朋克套装/bj_1123_03_16.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '豹纹机车套装',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_03.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/4-豹纹机车套装/bj_1123_04_09.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '豹纹蛋糕',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/5-豹纹蛋糕/bj_1123_05_09.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '黑色西装',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/6-黑色西装/bj_1123_06_04.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '轮胎印花牛仔套装',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_13.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_14.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_14.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_15.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/7-轮胎印花牛仔套装/bj_1123_07_15.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '白色工装风衬衫',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_12.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_13.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/8-白色工装风衬衫/bj_1123_08_13.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '生日小鹭',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_10.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_11.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_12.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/9-生日小鹭/bj_1123_09_12.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '白色纱质斗篷',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_08.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_08.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_09.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_09.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_10.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_10.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_11.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/10-白色纱质斗篷/bj_1123_10_11.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '银灰暗纹外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_08.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_05.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_06.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_06.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_07.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_07.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_08.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/11-银灰暗纹外套/bj_1123_11_08.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '机能风外套',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_01.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_04.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_05.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/12-机能风外套/bj_1123_12_05.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '灰色网衫',
+                        cover: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_04.webp',
+                        children: [
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_01.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_01.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_02.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_02.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_03.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_03.webp', isLeaf: true },
+                            { image: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_04.webp', thumb: 'images/nanjing/nj_zhanjie_photo/DAY2-1123/13-灰色网衫/bj_1123_13_04.webp', isLeaf: true }
                         ]
                     }
                 ]
@@ -919,9 +1290,11 @@
         function openFancamModal(day) {
             if (day === 'day1') {
                 const videoCount = cardAlbum.countVideos(fancamData[0].children);
+                cardAlbum.currentModalType = 'stage-fancam';
                 cardAlbum.openModal(`南京站Day 1 直拍 - 共${videoCount}个视频`, fancamData[0].children, 0);
             } else {
                 const videoCount = cardAlbum.countVideos(fancamData[1].children);
+                cardAlbum.currentModalType = 'stage-fancam';
                 cardAlbum.openModal(`南京站Day 2 直拍 - 共${videoCount}个视频`, fancamData[1].children, 0);
             }
         }
@@ -935,11 +1308,11 @@
             let data, title;
             switch(type) {
                 case 'day1':
-                    title = 'Day 1 图集';
+                    title = '南京站 - DAY 1 站姐图集';
                     data = galleryData[0].children;
                     break;
                 case 'day2':
-                    title = 'Day 2 图集';
+                    title = '南京站 - DAY 2 站姐图集';
                     data = galleryData[1].children;
                     break;
             }

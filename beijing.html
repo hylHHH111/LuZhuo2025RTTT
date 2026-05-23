@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -856,80 +856,384 @@
         // 图集区数据（仅包含Day1和Day2）
         const galleryData = [
             {
-                title: 'Day 1',
+                title: 'DAY 1',
                 cover: 'assets/images/day1-gallery-cover.jpg',
                 children: [
                     {
                         title: '夜行者套装',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_1.webp',
-                        children: []
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_2.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/01-夜行者套装/bj_1108_01_5.webp', isLeaf: true }
+                        ]
                     },
                     {
                         title: '重工盘花蕾丝套装',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_1.webp',
-                        children: []
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_7.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/02-重工盘花蕾丝套装/bj_1108_02_13.webp', isLeaf: true }
+                        ]
                     },
                     {
-                        title: '小香风粗花呢拼接夹克',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢拼接夹克/bj_1108_03_1.webp',
-                        children: []
+                        title: '小香风粗花呢夹克',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_1.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/03-小香风粗花呢夹克/bj_1108_03_5.webp', isLeaf: true }
+                        ]
                     },
                     {
                         title: '白色衬衫',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_1.webp',
-                        children: []
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_8.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/04-白色衬衫/bj_1108_04_12.webp', isLeaf: true }
+                        ]
                     },
                     {
                         title: '碎钻黑外套',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_1.webp',
-                        children: []
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_5.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/05-碎钻黑外套/bj_1108_05_5.webp', isLeaf: true }
+                        ]
                     },
                     {
-                        title: '碎钻黑皮马甲',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-碎钻黑皮马甲/bj_1108_06_1.webp',
-                        children: []
+                        title: '黑皮马甲',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_6.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_13.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_14.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_14.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_15.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_15.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_16.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/06-黑皮马甲/bj_1108_06_16.webp', isLeaf: true }
+                        ]
                     },
                     {
                         title: '蓝色运动棒球外套',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_1.webp',
-                        children: []
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_4.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/07-蓝色运动棒球外套/bj_1108_07_6.webp', isLeaf: true }
+                        ]
                     },
                     {
                         title: '动物纹短毛外套',
                         cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_1.webp',
-                        children: []
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_13.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_14.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_14.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_15.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_15.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_16.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_16.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_17.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_17.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_18.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_18.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_19.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_19.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_20.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/08-动物纹短毛外套/bj_1108_08_20.webp', isLeaf: true }
+                        ]
                     },
                     {
-                        title: '鹭加索手绘外套',
-                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_1.webp',
-                        children: []
+                        title: '鹭加索手绘白皮衣',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_9.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_13.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_14.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_14.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_15.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_15.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_16.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_16.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_17.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_17.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_18.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_18.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_19.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_19.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_20.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_20.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_21.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_21.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_22.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_22.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_23.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_23.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_24.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_24.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_25.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/09-鹭加索手绘外套/bj_1108_09_25.webp', isLeaf: true }
+                        ]
                     },
                     {
                         title: '黑色罩衫+背心',
                         cover: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_1.webp',
-                        children: []
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY1-1108/10-黑色罩衫+背心/bj_1108_10_6.webp', isLeaf: true }
+                        ]
                     }
                 ]
             },
             {
-                title: 'Day 2',
-                cover: 'assets/images/day2-gallery-cover.jpg',
+                title: 'DAY 2',
+                cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_1.webp',
                 children: [
                     {
-                        title: '造型A',
-                        cover: 'assets/images/day2-style1.jpg',
+                        title: '蓝色无袖马甲',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_3.webp',
                         children: [
-                            { title: '舞台照1', image: 'assets/images/beijing/day2-1.jpg', thumb: 'assets/images/beijing/day2-1-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/beijing/day2-2.jpg', thumb: 'assets/images/beijing/day2-2-thumb.jpg', isLeaf: true },
-                            { title: '舞台照3', image: 'assets/images/beijing/day2-3.jpg', thumb: 'assets/images/beijing/day2-3-thumb.jpg', isLeaf: true }
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/1-蓝色无袖马甲/bj_1109_01_6.webp', isLeaf: true }
                         ]
                     },
                     {
-                        title: '造型B',
-                        cover: 'assets/images/day2-style2.jpg',
+                        title: '碎钻白外套',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_11.webp',
                         children: [
-                            { title: '舞台照1', image: 'assets/images/beijing/day2-4.jpg', thumb: 'assets/images/beijing/day2-4-thumb.jpg', isLeaf: true },
-                            { title: '舞台照2', image: 'assets/images/beijing/day2-5.jpg', thumb: 'assets/images/beijing/day2-5-thumb.jpg', isLeaf: true }
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_13.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_14.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_14.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_15.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_15.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_16.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_16.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_17.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_17.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_18.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/2-碎钻白外套/bj_1109_02_18.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '白色小蛋糕',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_6.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/3-白色小蛋糕/bj_1109_03_6.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '蓝绒西服',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_3.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_13.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_14.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_14.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_15.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/4-蓝绒西服/bj_1109_04_15.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '黑色透视衬衫',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_8.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/5-黑色透视衬衫/bj_1109_05_9.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '摇滚柳钉皮外套',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_117.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_100.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_100.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_101.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_101.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_102.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_102.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_103.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_103.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_104.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_104.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_105.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_105.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_106.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_106.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_107.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_107.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_108.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_108.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_109.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_109.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_110.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_110.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_111.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_111.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_112.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_112.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_113.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_113.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_114.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_114.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_115.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_115.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_116.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_116.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_117.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_117.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_118.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_118.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_119.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_119.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_120.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_120.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_121.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_121.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_122.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_122.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_123.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_123.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_124.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_124.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_125.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_125.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_126.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_126.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_127.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_127.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_128.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_128.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_129.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_129.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_130.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_130.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_131.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_131.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_132.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_132.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_133.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_133.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_134.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_134.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_135.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_135.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_136.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_136.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_137.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/6-摇滚柳钉皮外套/bj_1109_06_137.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '牛仔马甲',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_2.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_12.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_13.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_13.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_14.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/7-牛仔马甲/bj_1109_07_14.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: 'Ready连帽上衣',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_11.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/8-Ready连帽上衣/bj_1109_08_11.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '鹭加索手绘蓝皮衣',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_9.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/9-鹭加索手绘蓝皮衣/bj_1109_09_9.webp', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: '白背心',
+                        cover: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_5.webp',
+                        children: [
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_1.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_1.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_2.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_2.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_3.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_3.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_4.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_4.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_5.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_5.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_6.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_6.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_7.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_7.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_8.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_8.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_9.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_9.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_10.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_10.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_11.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_11.webp', isLeaf: true },
+                            { image: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_12.webp', thumb: 'images/beijing/bj_zhanjie_photo/DAY2-1109/10-白背心/bj_1109_10_12.webp', isLeaf: true }
                         ]
                     }
                 ]
@@ -993,9 +1297,11 @@
         function openFancamModal(day) {
             if (day === 'day1') {
                 const videoCount = cardAlbum.countVideos(fancamData[0].children);
+                cardAlbum.currentModalType = 'stage-fancam';
                 cardAlbum.openModal(`北京站Day 1 直拍 - 共${videoCount}个视频`, fancamData[0].children, 0);
             } else {
                 const videoCount = cardAlbum.countVideos(fancamData[1].children);
+                cardAlbum.currentModalType = 'stage-fancam';
                 cardAlbum.openModal(`北京站Day 2 直拍 - 共${videoCount}个视频`, fancamData[1].children, 0);
             }
         }
@@ -1009,11 +1315,11 @@
             let data, title;
             switch(type) {
                 case 'day1':
-                    title = 'Day 1 图集';
+                    title = '北京站 - DAY 1 站姐图集';
                     data = galleryData[0].children;
                     break;
                 case 'day2':
-                    title = 'Day 2 图集';
+                    title = '北京站 - DAY 2 站姐图集';
                     data = galleryData[1].children;
                     break;
             }
@@ -1096,3 +1402,5 @@
     <script src="js/music.js"></script>
 </body>
 </html>
+
+

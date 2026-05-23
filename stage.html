@@ -152,7 +152,7 @@
         
         /* 分类区域 */
         .category-section {
-            margin-bottom: 50px;
+            margin-bottom: var(--space-3xl);
         }
         .category-header {
             display: flex;
@@ -223,7 +223,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.2);
             z-index: 1;
             transition: all var(--transition-base);
         }
@@ -248,7 +248,7 @@
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 2px;
-            font-size: var(--font-size-sm);
+            font-size: var(--font-size-base);
             line-height: 1.3;
             white-space: pre-line;
         }
@@ -284,31 +284,15 @@
         }
         @media (max-width: 768px) {
             .song-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space-md);
+                grid-template-columns: repeat(2, 1fr);
             }
             .stage-title {
                 font-size: var(--font-size-2xl);
             }
-            .song-title {
-                font-size: var(--font-size-xs);
-            }
-            .category-header {
-                margin-bottom: var(--space-md);
-                padding-bottom: var(--space-sm);
-            }
         }
         @media (max-width: 480px) {
             .song-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space-sm);
-            }
-            .song-title {
-                font-size: var(--font-size-xs);
-            }
-            .category-header {
-                margin-bottom: var(--space-sm);
-                padding-bottom: var(--space-xs);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -692,7 +676,7 @@
                         { title: '南京站 | 2025.11.23\n一盆两盆的盆', videoUrl: 'https://www.xiaohongshu.com/explore/69266f99000000001e0200aa?xsec_token=ABECXnoPjEIm1FcMqky2kZB5sSmPOc4eKRP73pRLY2VqE=&xsec_source=pc_user' },
                         { title: '南京站 | 2025.11.23\nRoseGlow微光', videoUrl: 'https://www.xiaohongshu.com/explore/69773dde000000001a032083?xsec_token=ABb_qAZE5BOdl3O-oiCKUQukcTC0F0fGXmFXj-Cu-UBJ8=&xsec_source=pc_user' },
                     ] },
-                    { id: 'huanizhisuoyou', name: '话你知所有', cover: 'images/stage/gexunxinge/huanizhisuoyou.webp', videos: [
+                    { id: 'huanizhisuoyou', name: '话你知所有', cover: '', videos: [
                         { title: '成都站 | 2025.09.26\n日落信笺·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5215209829367882?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.26\nLINA_1124', videoUrl: 'https://weibo.com/tv/show/1034:5216028737601575?from=old_pc_videoshow' },
                         { title: '成都站 | 2025.09.26\nSerenity·鹭卓', videoUrl: 'https://weibo.com/tv/show/1034:5216893091381284?from=old_pc_videoshow' },

@@ -1388,6 +1388,7 @@
             if (day === 'day1') {
                 const videoCount = cardAlbum.countVideos(fancamData[0].children);
                 console.log('Day 1 video count:', videoCount);
+                cardAlbum.currentModalType = 'stage-fancam';
                 cardAlbum.openModal(`太原站Day 1 直拍 - 共${videoCount}个视频`, fancamData[0].children, 0);
             } else {
                 const videoCount = cardAlbum.countVideos(fancamData[1].children);
@@ -1411,13 +1412,14 @@
                 console.log('Day 2 manual count:', manualCount);
                 console.log('Song counts:', songCounts);
                 
+                cardAlbum.currentModalType = 'stage-fancam';
                 cardAlbum.openModal(`太原站Day 2 直拍 - 共${videoCount}个视频`, fancamData[1].children, 0);
             }
         }
 
         // 打开图集弹窗 - 三层结构：Day -> 妆造名称 -> 图片
         function openGalleryModal(type) {
-            const title = type === 'day1' ? '站姐图集 - 2025年10月25日' : '站姐图集 - 2025年10月26日';
+            const title = type === 'day1' ? '太原站 - DAY 1 站姐图集' : '太原站 - DAY 2 站姐图集';
             const data = type === 'day1' ? galleryData[0].children : galleryData[1].children;
             cardAlbum.openModal(title, data, 0);
         }

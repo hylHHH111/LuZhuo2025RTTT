@@ -184,13 +184,14 @@
             will-change: transform;
         }
 
-        /* 手绘风格卡片 */
+        /* 手绘风格卡片 - 响应式尺寸 */
         .card {
             position: absolute;
-            width: 150px;
-            height: 205px;
-            left: -75px;
-            top: -102px;
+            /* 默认尺寸 */
+            width: clamp(100px, 12vw, 180px);
+            height: clamp(137px, 16.4vw, 246px);
+            left: calc(clamp(100px, 12vw, 180px) / -2);
+            top: calc(clamp(137px, 16.4vw, 246px) / -2);
             background: transparent;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(66, 171, 243, 0.15);
@@ -202,6 +203,46 @@
             will-change: transform;
             backface-visibility: hidden;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 横屏小屏幕 */
+        @media (max-width: 1200px) and (orientation: landscape) {
+            .card {
+                width: clamp(90px, 10vw, 140px);
+                height: clamp(123px, 13.7vw, 192px);
+                left: calc(clamp(90px, 10vw, 140px) / -2);
+                top: calc(clamp(123px, 13.7vw, 192px) / -2);
+            }
+        }
+
+        /* 平板横屏 */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            .card {
+                width: clamp(80px, 9vw, 120px);
+                height: clamp(110px, 12.3vw, 164px);
+                left: calc(clamp(80px, 9vw, 120px) / -2);
+                top: calc(clamp(110px, 12.3vw, 164px) / -2);
+            }
+        }
+
+        /* 手机横屏 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .card {
+                width: clamp(70px, 8vw, 100px);
+                height: clamp(96px, 10.9vw, 137px);
+                left: calc(clamp(70px, 8vw, 100px) / -2);
+                top: calc(clamp(96px, 10.9vw, 137px) / -2);
+            }
+        }
+
+        /* 手机竖屏 */
+        @media (max-width: 768px) and (orientation: portrait) {
+            .card {
+                width: clamp(80px, 22vw, 120px);
+                height: clamp(110px, 30vw, 164px);
+                left: calc(clamp(80px, 22vw, 120px) / -2);
+                top: calc(clamp(110px, 30vw, 164px) / -2);
+            }
         }
 
         .card:hover {
@@ -238,20 +279,20 @@
             border-radius: 10px;
         }
 
-        /* 中央按钮 - 手绘风格 */
+        /* 中央按钮 - 手绘风格 - 响应式 */
         #center-btn {
             position: absolute;
             top: 0%;
             left: 50%;
             transform: translateX(-50%);
-            padding: 18px 45px;
+            padding: clamp(12px, 2vw, 18px) clamp(25px, 4vw, 45px);
             background: transparent;
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 48px;
+            font-size: clamp(28px, 4vw, 48px);
             font-weight: 500;
             font-family: 'Noto Serif SC', serif;
             text-align: center;
@@ -261,10 +302,34 @@
             z-index: 50;
             white-space: nowrap;
             overflow: hidden;
-            letter-spacing: 4px;
+            letter-spacing: clamp(2px, 0.5vw, 4px);
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-touch-callout: none;
+        }
+
+        /* 横屏小屏幕 */
+        @media (max-width: 1200px) and (orientation: landscape) {
+            #center-btn {
+                font-size: clamp(24px, 3.5vw, 40px);
+                padding: clamp(10px, 1.5vw, 16px) clamp(20px, 3vw, 40px);
+            }
+        }
+
+        /* 平板横屏 */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            #center-btn {
+                font-size: clamp(22px, 3vw, 36px);
+                padding: clamp(8px, 1.2vw, 14px) clamp(18px, 2.5vw, 35px);
+            }
+        }
+
+        /* 手机横屏 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            #center-btn {
+                font-size: clamp(18px, 2.5vw, 28px);
+                padding: clamp(6px, 1vw, 12px) clamp(15px, 2vw, 28px);
+            }
         }
 
         #center-btn:hover {
@@ -286,16 +351,44 @@
             100% { transform: translateX(-50%) scale(0); opacity: 0; }
         }
 
-        /* 副标题文字 */
+        /* 副标题文字 - 响应式 */
         #subtitle-text {
             position: absolute;
-            top: calc(0% + 90px);
+            top: calc(0% + clamp(50px, 8vw, 90px));
             left: 50%;
             transform: translateX(-50%);
             color: var(--primary);
-            font-size: 14px;
+            font-size: clamp(10px, 1.2vw, 14px);
             font-weight: 400;
             font-family: 'Noto Serif SC', serif;
+            white-space: nowrap;
+        }
+
+        /* 横屏小屏幕 */
+        @media (max-width: 1200px) and (orientation: landscape) {
+            #subtitle-text {
+                font-size: clamp(9px, 1vw, 12px);
+                top: calc(0% + clamp(40px, 6vw, 70px));
+            }
+        }
+
+        /* 平板横屏 */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            #subtitle-text {
+                font-size: clamp(8px, 0.9vw, 11px);
+                top: calc(0% + clamp(35px, 5vw, 60px));
+            }
+        }
+
+        /* 手机横屏 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            #subtitle-text {
+                font-size: clamp(7px, 0.8vw, 10px);
+                top: calc(0% + clamp(30px, 4vw, 50px));
+            }
+        }
+
+        #subtitle-text {
             letter-spacing: 3px;
             text-align: center;
             z-index: 50;
@@ -501,6 +594,26 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
             animation: shimmer 0.7s ease-in-out infinite;
+        }
+
+        /* 进度条样式 */
+        .progress-container {
+            width: 280px;
+            height: 4px;
+            background: rgba(91, 164, 201, 0.2);
+            border-radius: 2px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+            border-radius: 2px;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(91, 164, 201, 0.5);
         }
 
         @keyframes lineShimmer {
@@ -882,21 +995,23 @@
         <div class="loader-content">
             <h1 class="loader-title">鹭卓</h1>
             <p class="loader-subtitle">- 2025 Ready To The Top巡回演唱会记鹭网站 -</p>
-            <div class="loader-line"></div>
-            <p class="loader-text">欢迎进入与鹭世界</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="loader-text" id="progressText">0%</p>
         </div>
     </div>
     
     <!-- 强制隐藏加载动画的备用脚本 -->
     <script>
-        // 备用：无论如何3秒后隐藏加载动画
+        // 备用：无论如何6秒后强制隐藏加载动画
         setTimeout(function() {
             var loader = document.getElementById('loader');
             if (loader) {
                 loader.style.opacity = '0';
                 loader.style.visibility = 'hidden';
             }
-        }, 3000);
+        }, 6000);
     </script>
 
     <!-- 温暖光晕背景 -->
@@ -939,14 +1054,14 @@
     <!-- 3D场景 - 网页端和横屏 -->
     <div id="scene-container">
         <div id="carousel"></div>
-        <div id="center-btn">欢迎来到RTTT</div>
+        <div id="center-btn">点击此处进入RTTT</div>
         <div id="subtitle-text">- 宇宙周而复始，时时与你相遇 -</div>
     </div>
 
     <!-- 移动端竖屏 - 缩略图+大图组合 -->
     <div id="mobile-gallery-container">
         <div class="gallery-header" onclick="goToHome()">
-            <div class="gallery-title">欢迎来到RTTT</div>
+            <div class="gallery-title">点击此处进入RTTT</div>
             <div class="gallery-subtitle">- 宇宙周而复始，时时与你相遇 -</div>
         </div>
         <div class="gallery-main">
@@ -1285,13 +1400,46 @@
                 console.error('初始化错误:', error);
             }
 
-            // 隐藏加载动画 - 无论初始化是否成功，1秒后都隐藏
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                if (loader) {
-                    loader.classList.add('hidden');
+            // 5秒进度条动画 - 最终显示1124%
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            let progress = 0;
+            const duration = 5000; // 5秒
+            const interval = 50; // 每50ms更新一次
+            const maxDisplay = 1124; // 最终显示值
+            const increment = 100 / (duration / interval);
+
+            const progressInterval = setInterval(() => {
+                progress += increment;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                    // 进度完成后显示1124%
+                    if (progressText) {
+                        progressText.textContent = maxDisplay + '%';
+                    }
+                    // 进度条保持100%宽度
+                    if (progressBar) {
+                        progressBar.style.width = '100%';
+                    }
+                    // 延迟后隐藏加载动画
+                    setTimeout(() => {
+                        const loader = document.getElementById('loader');
+                        if (loader) {
+                            loader.classList.add('hidden');
+                        }
+                    }, 500);
+                } else {
+                    // 计算显示的百分比（从0到1124的映射）
+                    const displayProgress = Math.floor(progress * (maxDisplay / 100));
+                    if (progressBar) {
+                        progressBar.style.width = progress + '%';
+                    }
+                    if (progressText) {
+                        progressText.textContent = displayProgress + '%';
+                    }
                 }
-            }, 1000);
+            }, interval);
         }
 
         // 创建卡片

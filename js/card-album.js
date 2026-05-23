@@ -214,6 +214,9 @@ class CardAlbum {
         // 为舞台直拍添加特定class
         const isFancam = title.includes('直拍') || title.includes('特辑') || this.currentModalType === 'stage-fancam';
         const isCityFancam = this.currentModalType === 'stage-fancam';
+        // 检测是否是视频列表层级（第三层）
+        const isVideoLevel = level >= 2 || (data.length > 0 && (data[0].videoUrl || data[0].video || data[0].type === 'video'));
+        
         if (isFancam) {
             gridEl.classList.add('modal-grid-fancam');
         } else {
@@ -225,8 +228,13 @@ class CardAlbum {
         } else {
             gridEl.classList.remove('modal-grid-city-fancam');
         }
-        // 重置标记
-        this.currentModalType = null;
+        // 视频列表层级单独标记（用于移动端一行3个）
+        if (isCityFancam && isVideoLevel) {
+            gridEl.classList.add('modal-grid-video-level');
+        } else {
+            gridEl.classList.remove('modal-grid-video-level');
+        }
+        
         
         // 保存当前数据用于事件委托
         this.currentGridData = data;
@@ -383,14 +391,14 @@ class CardAlbum {
         // 保存当前的 modalType，以便在下一层使用
         const savedModalType = this.currentModalType;
         
+        // 在调用 openModal 之前恢复 modalType，确保 renderModal 能正确识别
+        this.currentModalType = savedModalType;
+        
         this.openModal(
             currentData.title,
             childrenWithCover,
             this.currentLevel + 1
         );
-        
-        // 恢复 modalType（用于城市页面直拍样式）
-        this.currentModalType = savedModalType;
     }
     
     /**
