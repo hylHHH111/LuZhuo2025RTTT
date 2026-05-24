@@ -354,21 +354,30 @@
 
     </main>
 
+    <script src="js/music.js"></script>
     <script>
         // 切换移动端菜单
         function toggleMobileMenu() {
             document.getElementById('navbarNav').classList.toggle('active');
         }
-        
 
-        
+
+
         // 点击导航项后关闭移动端菜单
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
                 document.getElementById('navbarNav').classList.remove('active');
             });
         });
-        
+
+        // 隐藏音乐控制按钮
+        document.addEventListener('DOMContentLoaded', function() {
+            var musicBtn = document.getElementById('music-control-btn');
+            if (musicBtn) {
+                musicBtn.style.display = 'none';
+            }
+        });
+
     </script>
 </body>
 </html>
