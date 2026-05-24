@@ -34,6 +34,26 @@
             overflow: hidden;
         }
 
+        .page-header .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 100;
+        }
+
+        .page-header .navbar-container {
+            position: static;
+        }
+
+        .page-header .navbar-toggle {
+            position: absolute;
+            top: 50%;
+            right: var(--space-lg);
+            transform: translateY(-50%);
+        }
+
         .page-header::after {
             content: '';
             position: absolute;
@@ -61,7 +81,7 @@
             height: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
         }
 
         .navbar-logo {
@@ -70,6 +90,12 @@
             color: var(--white);
             text-decoration: none;
             letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .navbar-logo-placeholder {
+            flex-shrink: 0;
+            width: 1px;
         }
 
         .navbar-nav {
@@ -494,6 +520,8 @@
                 box-shadow: none !important;
             }
 
+
+
             .navbar-nav {
                 position: fixed;
                 top: 0;
@@ -502,7 +530,7 @@
                 width: auto;
                 padding: 45px 15px 15px !important;
                 background: transparent;
-                display: grid !important;
+                display: none !important;
                 grid-template-columns: repeat(3, 1fr) !important;
                 gap: 5px !important;
                 transform: translateY(-100%);
@@ -514,6 +542,7 @@
             }
 
             .navbar-nav.active {
+                display: grid !important;
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
@@ -536,7 +565,10 @@
 
             .navbar-toggle {
                 display: flex !important;
-                position: relative;
+                position: absolute;
+                top: 50%;
+                right: var(--space-lg);
+                transform: translateY(-50%);
                 z-index: 10000;
                 cursor: pointer;
             }
@@ -601,9 +633,8 @@
         <!-- 导航栏 -->
         <nav class="navbar">
             <div class="navbar-container">
-                <a href="home.html" class="navbar-logo">鹭卓2025RTTT巡演记录</a>
+                <div class="navbar-logo-placeholder"></div>
                 <div class="navbar-nav" id="navbarNav">
-                    <a href="home.html" class="nav-item">首页</a>
                     <a href="chengdu.html" class="nav-item">成都站</a>
                     <a href="hefei.html" class="nav-item">合肥站</a>
                     <a href="taiyuan.html" class="nav-item">太原站</a>

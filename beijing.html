@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/city-page.css?v=2">
     <style>
+        .nav-button .nav-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
         @media (max-width: 1024px) {
             .navbar-nav {
                 background: transparent !important;
@@ -24,7 +30,6 @@
                 <div class="navbar-container">
                     <a href="home.html" class="navbar-logo" style="display: flex; align-items: flex-end; margin-top: 10px;"><img src="images/rttt_logo/beijinglogo.png" alt="鹭卓2025RTTT巡演记录" style="height: 60px; width: auto;"></a>
                     <div class="navbar-nav" id="navbarNav">
-                        <a href="home.html" class="nav-item">首页</a>
                         <a href="chengdu.html" class="nav-item">成都站</a>
                         <a href="hefei.html" class="nav-item">合肥站</a>
                         <a href="taiyuan.html" class="nav-item">太原站</a>
@@ -70,20 +75,16 @@
                 <!-- 垂直导航区 -->
                 <div class="nav-module">
                     <button class="nav-button" onclick="openGroupPhotoModal()">
-                        <span class="nav-icon">📸</span>
-                        <span>合照区</span>
+                        <img src="images/daohanlan/groupphoto.webp" alt="合照区" class="nav-cover">
                     </button>
                     <button class="nav-button" onclick="openBouquetModal()">
-                        <span class="nav-icon">💐</span>
-                        <span>花束区</span>
+                        <img src="images/daohanlan/flower.webp" alt="花束区" class="nav-cover">
                     </button>
                     <button class="nav-button" onclick="openOfficialModal()">
-                        <span class="nav-icon">📷</span>
-                        <span>官摄区</span>
+                        <img src="images/daohanlan/official_photo.webp" alt="官摄区" class="nav-cover">
                     </button>
                     <button class="nav-button" onclick="openPosterNavModal()">
-                        <span class="nav-icon">🎬</span>
-                        <span>北京站手写信</span>
+                        <img src="images/daohanlan/poster_letter.webp" alt="海报信封区" class="nav-cover">
                     </button>
                 </div>
             </section>
