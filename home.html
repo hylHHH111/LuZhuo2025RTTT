@@ -582,30 +582,57 @@
         
         /* 响应式 */
         @media (max-width: 1024px) {
+            .navbar {
+                position: absolute !important;
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+
             .navbar-nav {
                 position: fixed;
-                top: var(--nav-height);
-                left: 0;
+                top: 0;
                 right: 0;
-                background: rgba(66, 171, 243, 0.95);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: var(--space-md);
-                gap: var(--space-xs);
+                left: auto;
+                width: auto;
+                padding: 45px 15px 15px !important;
+                background: transparent;
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 5px !important;
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
                 transition: all var(--transition-base);
+                pointer-events: none;
+                z-index: 100000 !important;
             }
-            
+
             .navbar-nav.active {
                 transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
+                pointer-events: auto;
             }
-            
+
+            .navbar-nav .nav-item {
+                text-align: center !important;
+                width: auto;
+                background: transparent !important;
+                padding: 2px 0px !important;
+                border-radius: 8px !important;
+                font-size: var(--font-size-base);
+                color: var(--white);
+            }
+
+            .navbar-nav .nav-item:hover {
+                background: rgba(255, 255, 255, 0.1) !important;
+            }
+
             .navbar-toggle {
-                display: flex;
+                display: flex !important;
+                position: relative;
+                z-index: 10000;
+                cursor: pointer;
             }
             
             .city-line-svg {
@@ -685,6 +712,7 @@
                         <a href="beijing.html" class="nav-item">北京站</a>
                         <a href="nanjing.html" class="nav-item">南京站</a>
                         <a href="stage.html" class="nav-item">舞台直拍</a>
+                        <a href="message.html" class="nav-item">留言鹭语</a>
                     </div>
                     <button class="navbar-toggle" id="navbarToggle" onclick="toggleMobileMenu()">
                         <span></span>

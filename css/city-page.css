@@ -606,12 +606,12 @@ body {
     border-radius: var(--radius-lg);
     border: 1px solid rgba(91, 164, 201, 0.2);
     box-shadow: var(--shadow-md);
-    padding: var(--space-md);
+    padding: var(--space-sm);
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .nav-button {
@@ -620,7 +620,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    padding: var(--space-sm);
+    padding: var(--space-xs);
     background: linear-gradient(135deg, var(--accent-light) 0%, var(--white) 100%);
     border: 2px solid rgba(91, 164, 201, 0.2);
     border-radius: var(--radius-md);
@@ -1402,36 +1402,54 @@ body {
         aspect-ratio: 16/10;
     }
     
-    /* 移动端垂直导航区样式 */
+    /* 移动端垂直导航区样式 - 1行4列 */
     .nav-module {
-        min-height: 400px;
+        min-height: auto;
         height: auto;
-        gap: var(--space-sm);
+        gap: var(--space-xs);
+        padding: var(--space-xs);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
     }
-    
+
     .nav-button {
-        min-height: 180px;
-        padding: var(--space-md);
+        min-height: 80px;
+        padding: var(--space-xs);
     }
-    
+
     .nav-icon {
-        font-size: 32px;
+        font-size: 20px;
     }
-}
 
 @media (max-width: 480px) {
     .card-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .modal-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .card-center-btn {
         width: 50px;
         height: 50px;
         font-size: 20px;
+    }
+
+    /* 小屏幕导航按钮保持1行4列 */
+    .nav-module {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .nav-button {
+        min-height: 60px;
+        padding: 4px;
+    }
+
+    .nav-button .nav-cover {
+        border-radius: 6px;
     }
 }
 
