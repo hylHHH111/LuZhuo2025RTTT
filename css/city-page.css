@@ -1213,11 +1213,11 @@ body {
         right: 0;
         left: auto;
         width: auto;
-        padding: 45px 15px 15px !important;
+        padding: 40px 10px 10px !important;
         background: transparent;
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 5px !important;
+        gap: 2px !important;
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
@@ -1225,31 +1225,31 @@ body {
         pointer-events: none;
         z-index: 100000 !important;
     }
-    
+
     .navbar-nav.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
     }
-    
+
     .navbar-nav .nav-item {
         text-align: center !important;
         width: auto;
         background: transparent !important;
-        padding: 2px 0px !important;
-        border-radius: 8px !important;
+        padding: 1px 0px !important;
+        border-radius: 6px !important;
     }
     
     .navbar-toggle {
         display: flex !important;
         position: relative;
-        z-index: 10000;
+        z-index: 100001;
         cursor: pointer;
     }
-    
+
     .city-header .navbar-toggle {
-        z-index: 10000;
+        z-index: 100001;
     }
     
     .upper-section {
