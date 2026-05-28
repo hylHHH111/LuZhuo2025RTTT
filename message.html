@@ -190,7 +190,7 @@
 
         /* 留言板区域 */
         .guestbook-section {
-            padding: var(--space-md) var(--space-lg) var(--space-xl);
+            padding: var(--space-sm) var(--space-lg) var(--space-md);
             background: linear-gradient(180deg, var(--primary-bg) 0%, var(--white) 100%);
         }
 
@@ -515,12 +515,14 @@
         /* 响应式 */
         @media (max-width: 1024px) {
             .navbar {
-                position: absolute !important;
+                position: relative !important;
                 background: transparent !important;
                 box-shadow: none !important;
             }
 
-
+            .header-content {
+                padding-top: 20px;
+            }
 
             .navbar-nav {
                 position: fixed;
@@ -528,11 +530,11 @@
                 right: 0;
                 left: auto;
                 width: auto;
-                padding: 45px 15px 15px !important;
+                padding: 40px 10px 10px !important;
                 background: transparent;
                 display: none !important;
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 5px !important;
+                gap: 2px !important;
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
@@ -553,8 +555,8 @@
                 text-align: center !important;
                 width: auto;
                 background: transparent !important;
-                padding: 2px 0px !important;
-                border-radius: 8px !important;
+                padding: 1px 0px !important;
+                border-radius: 6px !important;
                 font-size: var(--font-size-base);
                 color: var(--white);
             }
@@ -569,7 +571,7 @@
                 top: 50%;
                 right: var(--space-lg);
                 transform: translateY(-50%);
-                z-index: 10000;
+                z-index: 100001;
                 cursor: pointer;
             }
 
@@ -727,6 +729,12 @@
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
+            }
+
+            // 滚动时收起导航栏
+            const navbarNav = document.getElementById('navbarNav');
+            if (navbarNav && navbarNav.classList.contains('active')) {
+                navbarNav.classList.remove('active');
             }
         });
 

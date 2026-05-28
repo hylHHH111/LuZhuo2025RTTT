@@ -48,7 +48,7 @@
             <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left;">
                 <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">成都站</h2>
                 <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px; margin-bottom: 4px;">2025年9月26-27日 成都东安湖体育公园多功能体育馆</p>
-                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://weibo.com/p/2315226052b20b68344334845e7904c7514e64" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌惟愿与你共度漫长岁月：#想对鹭卓说的话#</a></p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://weibo.com/p/2315226052b20b68344334845e7904c7514e64" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #想对鹭卓说的话#</a></p>
             </div>
         </section>
 
@@ -427,7 +427,8 @@
                         cover: '',
                         children: [
                             { title: '日落信笺·鹭卓', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5216632373706830?from=old_pc_videoshow', isLeaf: true },
-                            { title: 'LINA_1124', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5218139227750546?from=old_pc_videoshow', isLeaf: true }
+                            { title: 'LINA_1124', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5218139227750546?from=old_pc_videoshow', isLeaf: true },
+                            { title: 'PreciousRose', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5290223660105767?from=old_pc_videoshow', isLeaf: true }
                         ]
                     },
                     {
@@ -465,7 +466,8 @@
                         children: [
                             { title: '日落信笺·鹭卓', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5215480101666874?from=old_pc_videoshow', isLeaf: true },
                             { title: 'LINA_1124', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5217960894332966?from=old_pc_videoshow', isLeaf: true },
-                            { title: '阿乐乐乐', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/68d79f9e00000000130158c1?xsec_token=ABxgWZw4grGQY-JP7Ijpt5nKNYdoxZO_nk2XTwSdSiHQs=&xsec_source=pc_user', isLeaf: true }
+                            { title: '阿乐乐乐', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/68d79f9e00000000130158c1?xsec_token=ABxgWZw4grGQY-JP7Ijpt5nKNYdoxZO_nk2XTwSdSiHQs=&xsec_source=pc_user', isLeaf: true },
+                            { title: 'Irradiaphilia_鹭卓', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/6a0af054000000003700e0de?xsec_token=ABTiesL9ZLQTdIzwNaYyo175t4xUxvC_hm6IbC8W4FxQM=&xsec_source=pc_user', isLeaf: true }
                         ]
                     },
                     {
@@ -639,7 +641,8 @@
                             { title: 'Serenity·鹭卓', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5216736983842822?from=old_pc_videoshow', isLeaf: true },
                             { title: '阿乐乐乐', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/68d895fe000000001302b578?xsec_token=ABmGILvdaAc5slSqVxjoE8nN3UqC3Yg3bsrqbJj8UQSys=&xsec_source=pc_user', isLeaf: true },
                             { title: 'oravedilaluna', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/68dac1610000000013016d73?xsec_token=ABlLcFFNQ1QI55ISEuYHCyriZbRRTb3K-RIKhQsVxVQUc=&xsec_source=pc_user', isLeaf: true },
-                            { title: '麩菓子', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/68e4c2f50000000004005280?xsec_token=AB51NVyPi7jYCZwgjeFsVyJmRstDUBJa1DrRpcbvJiniU=&xsec_source=pc_user', isLeaf: true }
+                            { title: '麩菓子', type: 'video', videoUrl: 'https://www.xiaohongshu.com/explore/68e4c2f50000000004005280?xsec_token=AB51NVyPi7jYCZwgjeFsVyJmRstDUBJa1DrRpcbvJiniU=&xsec_source=pc_user', isLeaf: true },
+                            { title: 'PreciousRose', type: 'video', videoUrl: 'https://weibo.com/tv/show/1034:5296607730794604?from=old_pc_videoshow', isLeaf: true }
                         ]
                     }
                 ]
@@ -1451,11 +1454,11 @@
             if (day === 'day1') {
                 const videoCount = cardAlbum.countVideos(fancamData[0].children);
                 cardAlbum.currentModalType = 'stage-fancam';
-                cardAlbum.openModal(`成都站Day 1 直拍 - 共${videoCount}个视频`, fancamData[0].children, 0);
+                cardAlbum.openModal(`成都站 - DAY 1 舞台直拍`, fancamData[0].children, 0);
             } else {
                 const videoCount = cardAlbum.countVideos(fancamData[1].children);
                 cardAlbum.currentModalType = 'stage-fancam';
-                cardAlbum.openModal(`成都站Day 2 直拍 - 共${videoCount}个视频`, fancamData[1].children, 0);
+                cardAlbum.openModal(`成都站 - DAY 2 舞台直拍`, fancamData[1].children, 0);
             }
         }
         
