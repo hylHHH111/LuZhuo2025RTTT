@@ -484,6 +484,47 @@
                 closeVideoModal();
             }
         });
+
+        // 微信视频自动播放兼容
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerVideo = document.querySelector('.header-video');
+            if (headerVideo) {
+                // 尝试播放（处理微信自动播放限制）
+                const playVideo = function() {
+                    headerVideo.play().catch(function(e) {
+                        console.log('视频自动播放被阻止，等待用户交互');
+                    });
+                };
+                
+                // 页面加载完成后尝试播放
+                playVideo();
+                
+                // 监听微信的 WeixinJSBridgeReady 事件
+                if (typeof WeixinJSBridge !== 'undefined') {
+                    WeixinJSBridge.invoke('getNetworkType', {}, function() {
+                        playVideo();
+                    });
+                } else {
+                    // 如果 WeixinJSBridge 还未加载，监听 ready 事件
+                    document.addEventListener('WeixinJSBridgeReady', function() {
+                        playVideo();
+                    }, false);
+                }
+                
+                // 用户首次点击页面时尝试播放（处理某些浏览器的限制）
+                document.addEventListener('touchstart', function() {
+                    if (headerVideo.paused) {
+                        playVideo();
+                    }
+                }, { once: true });
+                
+                document.addEventListener('click', function() {
+                    if (headerVideo.paused) {
+                        playVideo();
+                    }
+                }, { once: true });
+            }
+        });
     </script>
 </body>
 </html>
