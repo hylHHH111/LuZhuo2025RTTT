@@ -419,11 +419,9 @@
 <body>
     <!-- 首页头部 -->
     <header class="home-header">
-        <!-- 背景视频 -->
-        <video class="header-video" autoplay muted loop playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false">
-            <source src="home.mp4" type="video/mp4">
-        </video>
-        <!-- 视频遮罩层 -->
+        <!-- 背景 GIF -->
+        <img class="header-video" src="home.gif" alt="背景动画">
+        <!-- 遮罩层 -->
         <div class="header-video-overlay"></div>
 
         <!-- 导航栏 -->
@@ -541,53 +539,7 @@
             }
         });
 
-        // 微信视频自动播放兼容
-        (function() {
-            const headerVideo = document.querySelector('.header-video');
-            if (!headerVideo) return;
-            
-            // 尝试播放（处理微信自动播放限制）
-            const playVideo = function() {
-                if (!headerVideo.paused) return;
-                headerVideo.play().catch(function(e) {
-                    console.log('视频自动播放被阻止:', e);
-                });
-            };
-            
-            // 立即尝试播放
-            playVideo();
-            
-            // 页面加载完成后尝试播放
-            window.addEventListener('load', playVideo);
-            
-            // 监听微信的 WeixinJSBridgeReady 事件
-            if (typeof WeixinJSBridge !== 'undefined') {
-                WeixinJSBridge.invoke('getNetworkType', {}, playVideo);
-            } else {
-                document.addEventListener('WeixinJSBridgeReady', playVideo, false);
-            }
-            
-            // 页面可见性变化时尝试播放
-            document.addEventListener('visibilitychange', function() {
-                if (!document.hidden) {
-                    playVideo();
-                }
-            });
-            
-            // 用户首次交互时尝试播放
-            const userEvents = ['touchstart', 'click', 'scroll', 'touchend'];
-            userEvents.forEach(function(event) {
-                document.addEventListener(event, function handler() {
-                    playVideo();
-                    document.removeEventListener(event, handler);
-                }, { once: true, passive: true });
-            });
-            
-            // 定时尝试播放（微信有时需要延迟）
-            setTimeout(playVideo, 100);
-            setTimeout(playVideo, 500);
-            setTimeout(playVideo, 1000);
-        })();
+
     </script>
     <script src="js/music.js"></script>
 </body>
