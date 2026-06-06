@@ -84,7 +84,7 @@
         }
 
         .navbar-logo-img {
-            height: 50px;
+            height: 37px;
             width: auto;
             object-fit: contain;
             margin-top: 4px;
@@ -270,15 +270,17 @@
 
         /* 页脚 */
         .footer {
-            padding: var(--space-xl);
+            background: var(--primary);
+            color: var(--white);
+            padding: 30px var(--space-lg);
             text-align: center;
-            background: var(--white);
-            border-top: 1px solid var(--primary-lightest);
+            margin-top: var(--space-2xl);
         }
 
         .footer-text {
-            font-size: var(--font-size-sm);
-            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+            color: var(--white);
+            opacity: 0.9;
         }
 
         /* 移动端适配 */
@@ -379,13 +381,46 @@
             bottom: 10%;
             right: -50px;
         }
+
+        /* ========== 回到顶部 ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 72px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            border: none;
+            font-size: 16px;
+            z-index: 9998;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
     <!-- 首页头部 -->
     <header class="home-header">
         <!-- 背景视频 -->
-        <video class="header-video" autoplay muted loop playsinline>
+        <video class="header-video" autoplay muted loop playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false">
             <source src="home.mp4" type="video/mp4">
         </video>
         <!-- 视频遮罩层 -->
@@ -438,9 +473,12 @@
         </div>
     </main>
 
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
     <!-- 页脚 -->
     <footer class="footer">
-        <p class="footer-text">鹭卓2025 RTTT巡演记录 | For Luzhou，From 橘子suuoia_Lu</p>
+        <p class="footer-text">鹭卓2025 RTTT巡演记录 | ALL FOR LUZHUO</p>
     </footer>
 
     <!-- 视频播放模态框 -->
@@ -485,46 +523,72 @@
             }
         });
 
-        // 微信视频自动播放兼容
-        document.addEventListener('DOMContentLoaded', function() {
-            const headerVideo = document.querySelector('.header-video');
-            if (headerVideo) {
-                // 尝试播放（处理微信自动播放限制）
-                const playVideo = function() {
-                    headerVideo.play().catch(function(e) {
-                        console.log('视频自动播放被阻止，等待用户交互');
-                    });
-                };
-                
-                // 页面加载完成后尝试播放
-                playVideo();
-                
-                // 监听微信的 WeixinJSBridgeReady 事件
-                if (typeof WeixinJSBridge !== 'undefined') {
-                    WeixinJSBridge.invoke('getNetworkType', {}, function() {
-                        playVideo();
-                    });
-                } else {
-                    // 如果 WeixinJSBridge 还未加载，监听 ready 事件
-                    document.addEventListener('WeixinJSBridgeReady', function() {
-                        playVideo();
-                    }, false);
-                }
-                
-                // 用户首次点击页面时尝试播放（处理某些浏览器的限制）
-                document.addEventListener('touchstart', function() {
-                    if (headerVideo.paused) {
-                        playVideo();
-                    }
-                }, { once: true });
-                
-                document.addEventListener('click', function() {
-                    if (headerVideo.paused) {
-                        playVideo();
-                    }
-                }, { once: true });
+        // 回到顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 监听滚动显示/隐藏回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
             }
         });
+
+        // 微信视频自动播放兼容
+        (function() {
+            const headerVideo = document.querySelector('.header-video');
+            if (!headerVideo) return;
+            
+            // 尝试播放（处理微信自动播放限制）
+            const playVideo = function() {
+                if (!headerVideo.paused) return;
+                headerVideo.play().catch(function(e) {
+                    console.log('视频自动播放被阻止:', e);
+                });
+            };
+            
+            // 立即尝试播放
+            playVideo();
+            
+            // 页面加载完成后尝试播放
+            window.addEventListener('load', playVideo);
+            
+            // 监听微信的 WeixinJSBridgeReady 事件
+            if (typeof WeixinJSBridge !== 'undefined') {
+                WeixinJSBridge.invoke('getNetworkType', {}, playVideo);
+            } else {
+                document.addEventListener('WeixinJSBridgeReady', playVideo, false);
+            }
+            
+            // 页面可见性变化时尝试播放
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    playVideo();
+                }
+            });
+            
+            // 用户首次交互时尝试播放
+            const userEvents = ['touchstart', 'click', 'scroll', 'touchend'];
+            userEvents.forEach(function(event) {
+                document.addEventListener(event, function handler() {
+                    playVideo();
+                    document.removeEventListener(event, handler);
+                }, { once: true, passive: true });
+            });
+            
+            // 定时尝试播放（微信有时需要延迟）
+            setTimeout(playVideo, 100);
+            setTimeout(playVideo, 500);
+            setTimeout(playVideo, 1000);
+        })();
     </script>
+    <script src="js/music.js"></script>
 </body>
 </html>
