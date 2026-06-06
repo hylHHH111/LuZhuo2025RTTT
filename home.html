@@ -54,6 +54,30 @@
             z-index: 1;
         }
 
+        /* 微信播放提示层 */
+        .wechat-play-hint {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .play-hint-text {
+            color: var(--white);
+            font-size: var(--font-size-lg);
+            padding: var(--space-md) var(--space-xl);
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(4px);
+        }
+
         /* 导航栏 - 绝对定位在顶部，与成都页面一致 */
         .home-header .navbar {
             position: absolute;
@@ -419,10 +443,16 @@
 <body>
     <!-- 首页头部 -->
     <header class="home-header">
-        <!-- 背景 GIF -->
-        <img class="header-video" src="home.gif" alt="背景动画">
-        <!-- 遮罩层 -->
+        <!-- 背景视频 -->
+        <video class="header-video" autoplay muted loop playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false">
+            <source src="home.mp4" type="video/mp4">
+        </video>
+        <!-- 视频遮罩层 -->
         <div class="header-video-overlay"></div>
+        <!-- 微信播放提示层 -->
+        <div class="wechat-play-hint" id="wechatPlayHint" style="display: none;">
+            <div class="play-hint-text">点击任意位置开始播放</div>
+        </div>
 
         <!-- 导航栏 -->
         <nav class="navbar">
@@ -539,7 +569,72 @@
             }
         });
 
-
+        // 视频自动播放处理（微信显示提示层，其他浏览器自动播放）
+        (function() {
+            const headerVideo = document.querySelector('.header-video');
+            const playHint = document.getElementById('wechatPlayHint');
+            if (!headerVideo) return;
+            
+            // 检测是否在微信浏览器中
+            const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+            
+            // 尝试播放视频
+            const playVideo = function() {
+                if (!headerVideo.paused) return Promise.resolve();
+                return headerVideo.play().catch(function(e) {
+                    console.log('视频自动播放被阻止:', e);
+                    throw e;
+                });
+            };
+            
+            // 隐藏提示层
+            const hideHint = function() {
+                if (playHint) {
+                    playHint.style.display = 'none';
+                }
+            };
+            
+            // 显示提示层
+            const showHint = function() {
+                if (playHint && isWechat) {
+                    playHint.style.display = 'flex';
+                }
+            };
+            
+            if (isWechat) {
+                // 微信环境：尝试自动播放，失败则显示提示层
+                playVideo().then(function() {
+                    // 播放成功，隐藏提示层
+                    hideHint();
+                }).catch(function() {
+                    // 播放失败，显示提示层
+                    showHint();
+                });
+                
+                // 点击提示层播放视频
+                if (playHint) {
+                    playHint.addEventListener('click', function() {
+                        playVideo().then(function() {
+                            hideHint();
+                        });
+                    });
+                }
+                
+                // 点击页面任意位置也尝试播放
+                document.addEventListener('touchstart', function handler() {
+                    playVideo().then(function() {
+                        hideHint();
+                    });
+                    document.removeEventListener('touchstart', handler);
+                }, { once: true });
+                
+            } else {
+                // 非微信环境：正常自动播放
+                playVideo();
+                window.addEventListener('load', playVideo);
+                setTimeout(playVideo, 100);
+            }
+        })();
     </script>
     <script src="js/music.js"></script>
 </body>
