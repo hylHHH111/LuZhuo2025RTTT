@@ -1087,7 +1087,7 @@ body {
 .footer {
     background: var(--primary);
     color: var(--white);
-    padding: var(--space-2xl) var(--space-lg);
+    padding: 10px var(--space-lg);
     text-align: center;
     margin-top: var(--space-2xl);
 }
