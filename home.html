@@ -256,8 +256,9 @@
             bottom: 0;
             background: rgba(0, 0, 0, 0.3);
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
+            padding-bottom: var(--space-lg);
             transition: background var(--transition-base);
         }
 
@@ -266,16 +267,17 @@
         }
 
         .play-btn {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.95);
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            color: var(--primary);
-            transition: transform var(--transition-base), background var(--transition-base);
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.95);
+            transition: transform var(--transition-base), border-color var(--transition-base), color var(--transition-base);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -286,7 +288,8 @@
 
         .video-card:hover .play-btn {
             transform: scale(1.1);
-            background: var(--white);
+            border-color: var(--white);
+            color: var(--white);
         }
 
         .video-info {
@@ -503,7 +506,7 @@
             <!-- 第一个纪录片 -->
             <div class="video-card" onclick="openWeiboVideoModal()">
                 <div class="video-thumbnail">
-                    <img src="images/home_video_cover.jpg" alt="巡演宣传片" onerror="this.style.display='none'">
+                    <img src="images/home.webp" alt="鹭卓2025RTTT演唱会纪录片" onerror="this.style.display='none'">
                     <div class="play-overlay">
                         <div class="play-btn"></div>
                     </div>
@@ -516,14 +519,14 @@
             <!-- 第二个纪录片（占位符） -->
             <div class="video-card" onclick="openWeiboVideoModal2()">
                 <div class="video-thumbnail">
-                    <img src="images/home_video_cover2.jpg" alt="纪录片2" onerror="this.style.display='none'">
+                    <img src="images/home/jlp2.webp" alt="鹭卓有关那些记忆碎片" onerror="this.style.display='none'">
                     <div class="play-overlay">
                         <div class="play-btn"></div>
                     </div>
                 </div>
                 <div class="video-info">
-                    <div class="video-title">纪录片标题2</div>
-                    <div class="video-desc">纪录片描述2</div>
+                    <div class="video-title">鹭卓有关那些记忆碎片</div>
+                    <div class="video-desc">5城10场55首歌</div>
                 </div>
             </div>
         </div>
@@ -554,7 +557,7 @@
     <div id="weiboVideoModal2" class="modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center;">
         <div style="position: relative; width: 90%; max-width: 900px; background: #000; border-radius: 12px; overflow: hidden;">
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--white); color: var(--text-primary); border-bottom: 1px solid var(--gray-lighter);">
-                <h3 style="margin: 0; font-size: 16px;">纪录片标题2</h3>
+                <h3 style="margin: 0; font-size: 16px;">鹭卓有关那些记忆碎片</h3>
                 <button onclick="closeWeiboVideoModal2()" style="background: none; border: none; color: var(--text-primary); font-size: 24px; cursor: pointer; line-height: 1;">✕</button>
             </div>
             <div id="weiboVideoContainer2" style="aspect-ratio: 16/9; position: relative; background: #000;">
@@ -609,11 +612,11 @@
             document.body.style.overflow = '';
         }
 
-        // 打开第二个微博视频模态框
+        // 打开第二个小红书视频模态框
         function openWeiboVideoModal2() {
             const modal = document.getElementById('weiboVideoModal2');
             const container = document.getElementById('weiboVideoContainer2');
-            const videoUrl = 'https://weibo.com/tv/show/1034:0000000000000000?from=old_pc_videoshow'; // 占位符链接
+            const videoUrl = 'https://www.xiaohongshu.com/explore/69269a06000000001b0276c9?xsec_token=ABECXnoPjEIm1FcMqky2kZB3fNjcEd3oHVfMys2b5mJ1k=&xsec_source=pc_collect';
             
             // 插入 iframe
             container.innerHTML = `
@@ -776,6 +779,25 @@
             }
             document.addEventListener('click', handleFirstInteraction);
             document.addEventListener('touchstart', handleFirstInteraction);
+            
+            // 阻止首页视频暂停音乐（在捕获阶段拦截，但不阻止后续处理）
+            document.addEventListener('click', function(e) {
+                var target = e.target;
+                var isHomeVideo = target.closest('.video-section');
+                if (isHomeVideo) {
+                    // 阻止 music.js 的暂停逻辑，但不阻止其他点击处理
+                    setTimeout(forceResumeMusic, 50);
+                }
+            }, true);
+            
+            document.addEventListener('touchstart', function(e) {
+                var target = e.target;
+                var isHomeVideo = target.closest('.video-section');
+                if (isHomeVideo) {
+                    // 阻止 music.js 的暂停逻辑，但不阻止其他点击处理
+                    setTimeout(forceResumeMusic, 50);
+                }
+            }, true);
         })();
     </script>
 </body>

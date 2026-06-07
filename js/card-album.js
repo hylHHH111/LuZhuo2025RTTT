@@ -337,13 +337,8 @@ class CardAlbum {
                 const videoUrl = item.videoUrl || item.video;
                 if (!videoUrl) return;
                 
-                if (videoType === 'xiaohongshu') {
-                    // 小红书视频：跳转新窗口
-                    window.open(videoUrl, '_blank');
-                } else {
-                    // 微博视频和本地视频：弹窗播放
-                    this.playVideo(videoUrl, item.title);
-                }
+                // 所有视频都使用弹窗播放（包括小红书、微博和本地视频）
+                this.playVideo(videoUrl, item.title);
             } else if (action === 'viewImage') {
                 // 图片查看
                 this.openImageViewer(this.currentLevel, index);
