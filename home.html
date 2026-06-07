@@ -738,5 +738,45 @@
         })();
     </script>
     <script src="js/music.js"></script>
+    <script>
+        // 页面加载后强制恢复音乐播放
+        (function() {
+            function forceResumeMusic() {
+                if (window.bgMusic && !window.bgMusicPlaying) {
+                    // 重置暂停状态
+                    window.bgMusicUserPaused = false;
+                    window.bgMusicPausedByVideo = false;
+                    
+                    window.bgMusic.play().then(function() {
+                        window.bgMusicPlaying = true;
+                        if (window.updateMusicButtonState) {
+                            window.updateMusicButtonState();
+                        }
+                        if (window.saveMusicState) {
+                            window.saveMusicState();
+                        }
+                    }).catch(function(error) {
+                        console.log('自动播放失败:', error);
+                    });
+                }
+            }
+            
+            // 页面加载完成后尝试播放
+            window.addEventListener('load', function() {
+                setTimeout(forceResumeMusic, 100);
+                setTimeout(forceResumeMusic, 500);
+                setTimeout(forceResumeMusic, 1000);
+            });
+            
+            // 用户首次交互后尝试播放
+            function handleFirstInteraction() {
+                forceResumeMusic();
+                document.removeEventListener('click', handleFirstInteraction);
+                document.removeEventListener('touchstart', handleFirstInteraction);
+            }
+            document.addEventListener('click', handleFirstInteraction);
+            document.addEventListener('touchstart', handleFirstInteraction);
+        })();
+    </script>
 </body>
 </html>
