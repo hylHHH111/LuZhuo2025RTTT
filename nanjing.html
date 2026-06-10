@@ -90,31 +90,8 @@
                 </div>
             </section>
 
-            <!-- 下半区三栏布局 (1:1:1) -->
+            <!-- 下半区两栏布局 (1:1) -->
             <section class="lower-section">
-                <!-- 海报花絮区 -->
-                <div class="lower-module">
-                    <div class="module-header">
-                        <h3 class="module-title">海报花絮</h3>
-                    </div>
-                    <div class="card-grid">
-                        <div class="card" onclick="openPosterModal()">
-                            <img src="assets/images/poster-cover.jpg" alt="海报花絮" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>海报花絮</text></svg>'">
-                            <div class="card-overlay">
-                                <div class="card-title">海报花絮</div>
-                                <div class="card-subtitle">点击查看更多</div>
-                            </div>
-                        </div>
-                        <div class="card" onclick="openStylingModal()">
-                            <img src="assets/images/styling-cover.jpg" alt="定妆照" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2218%22>定妆照</text></svg>'">
-                            <div class="card-overlay">
-                                <div class="card-title">定妆照</div>
-                                <div class="card-subtitle">造型展示</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- 直拍区 -->
                 <div class="lower-module">
                     <div class="module-header">
@@ -122,18 +99,10 @@
                     </div>
                     <div class="card-grid">
                         <div class="card" onclick="openFancamModal('day1')">
-                            <img src="assets/images/day1-cover.jpg" alt="Day1直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 1</text></svg>'">
-                            <div class="card-overlay">
-                                <div class="card-title">Day 1</div>
-                                <div class="card-subtitle">2025年11月22日</div>
-                            </div>
+                            <img src="images/stage_photo/nj1.webp" alt="Day1直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 1</text></svg>'">
                         </div>
                         <div class="card" onclick="openFancamModal('day2')">
-                            <img src="assets/images/day2-cover.jpg" alt="Day2直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 2</text></svg>'">
-                            <div class="card-overlay">
-                                <div class="card-title">Day 2</div>
-                                <div class="card-subtitle">2025年11月23日</div>
-                            </div>
+                            <img src="images/stage_photo/nj2.webp" alt="Day2直拍" class="card-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22533%22><rect fill=%22%23E8F6FA%22 width=%22100%25%22 height=%22100%25%22/><text fill=%22%235BA4C9%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2220%22>Day 2</text></svg>'">
                         </div>
                     </div>
                 </div>
@@ -406,6 +375,7 @@
                     },
                     {
                         title: '女孩',
+                        cover: 'images/stage/fanchangqumu/nvhai.webp',
                         children: [
                             { title: '日落信笺·鹭卓', video: 'https://weibo.com/tv/show/1034:5235955078987800?from=old_pc_videoshow', isLeaf: true },
                             { title: 'Miu-00', video: 'https://weibo.com/tv/show/1034:5237713809375258?from=old_pc_videoshow', isLeaf: true },
@@ -418,6 +388,7 @@
                     },
                     {
                         title: '美人鱼',
+                        cover: 'images/stage/fanchangqumu/mry.webp',
                         children: [
                             { title: 'Miu-00', video: 'https://weibo.com/tv/show/1034:5235924695449653?from=old_pc_videoshow', isLeaf: true },
                             { title: '日落信笺·鹭卓', video: 'https://weibo.com/tv/show/1034:5235956941520962?from=old_pc_videoshow', isLeaf: true },
@@ -425,6 +396,18 @@
                             { title: '阿乐乐乐', video: 'https://www.xiaohongshu.com/explore/6921b27c000000000d03baf2?xsec_token=ABVU2vIF0kgUtVg0JvdwPTALEbVe7_75b9OsMZyMBNUw4=&xsec_source=pc_user', isLeaf: true },
                             { title: '奇迹小冬', video: 'https://www.xiaohongshu.com/explore/6922a626000000001d039591?xsec_token=AB79inIzxZxCgfy3puuzfrpiMmhXvEIT-1dvZErHjqWHE=&xsec_source=pc_user', isLeaf: true },
                             { title: '麩菓子', video: 'https://www.xiaohongshu.com/explore/69225f480000000001f005e96?xsec_token=AB79inIzxZxCgfy3puuzfrpg5P6pbvjL8K9WE2LlsPDqg=&xsec_source=pc_user', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: 'R&b ALL Night',
+                        cover: 'images/stage/fanchangqumu/allnight.webp',
+                        children: [
+                            { title: '日落信笺·鹭卓', video: 'https://weibo.com/tv/show/1034:5235956094009414?from=old_pc_videoshow', isLeaf: true },
+                            { title: 'YEELEN丨鹭卓', video: 'https://weibo.com/tv/show/1034:5243808468893747?from=old_pc_videoshow', isLeaf: true },
+                            { title: '奇迹小冬', video: 'https://www.xiaohongshu.com/explore/6926fb73000000001d03f1f7?xsec_token=ABECXnoPjEIm1FcMqky2kZB6Rjh4RnVooO-6zu4uerjfU=&xsec_source=pc_user', isLeaf: true },
+                            { title: '墨mio', video: 'https://www.xiaohongshu.com/explore/69593132000000001e034b1e?xsec_token=ABchsTo9-R2uvDUYRRJcr3SxDZUeSsK3xZEx2OqHWixpI=&xsec_source=pc_user', isLeaf: true },
+                            { title: 'Prayer', video: 'https://www.xiaohongshu.com/explore/692c1e82000000001f0045dd?xsec_token=ABZJ36ZM3ZdIS7VLZCXSEMz9zvimLnYxJFhkm0IhCfWXs=&xsec_source=pc_user', isLeaf: true },
+                            { title: '麩菓子', video: 'https://www.xiaohongshu.com/explore/69220c41000000001e02484e?xsec_token=AB79inIzxZxCgfy3puuzfrpow3TEYgMSZj0rxvf2-wZD8=&xsec_source=pc_user', isLeaf: true }
                         ]
                     },
                     {
@@ -674,6 +657,7 @@
                     },
                     {
                         title: '女孩',
+                        cover: 'images/stage/fanchangqumu/nvhai.webp',
                         children: [
                             { title: 'LINA_1124', video: 'https://weibo.com/tv/show/1034:5243211011260448?from=old_pc_videoshow', isLeaf: true },
                             { title: '阿乐乐乐', video: 'https://www.xiaohongshu.com/explore/6981be6f000000002200934e?xsec_token=ABsBtt1RWpUefK4RQeA2wlbRHwRlR_urPYLL77p18bOnY=&xsec_source=pc_user', isLeaf: true },
@@ -688,6 +672,7 @@
                     },
                     {
                         title: '美人鱼',
+                        cover: 'images/stage/fanchangqumu/mry.webp',
                         children: [
                             { title: 'LINA_1124', video: 'https://weibo.com/tv/show/1034:5243212596707369?from=old_pc_videoshow', isLeaf: true },
                             { title: '阿乐乐乐', video: 'https://www.xiaohongshu.com/explore/6989d1b70000000015020a09?xsec_token=ABhMGyWPX4OmmYOgKO5OvBkI04o4rQouBhV7bMfRrif1U=&xsec_source=pc_user', isLeaf: true },
@@ -695,6 +680,18 @@
                             { title: '麩菓子', video: 'https://www.xiaohongshu.com/explore/69299ea7000000001e02150b?xsec_token=ABSm1BeYJYxRhEVmq8B9iKMRQTtBXUbComUdPW942y7E=&xsec_source=pc_user', isLeaf: true },
                             { title: 'Irradiaphilia_鹭卓', video: 'https://www.xiaohongshu.com/explore/6a103fde0000000036033da8?xsec_token=ABQgHA-jAGrBSJBmLC3PlTVIGRCQ1F-pPLGmSWCX6GgnE=&xsec_source=pc_user', isLeaf: true },
                             { title: '胡椒小熊饼🍪', video: 'https://www.xiaohongshu.com/explore/6964e4ba000000001a027483?xsec_token=ABYpM_X5ASJMOvNdC5WeVkX4KC_bLtHuoF45pFV9p1zig=&xsec_source=pc_user', isLeaf: true }
+                        ]
+                    },
+                    {
+                        title: 'R&b ALL Night',
+                        cover: 'images/stage/fanchangqumu/allnight.webp',
+                        children: [
+                            { title: '日落信笺·鹭卓', video: 'https://weibo.com/tv/show/1034:5235956094009414?from=old_pc_videoshow', isLeaf: true },
+                            { title: 'YEELEN丨鹭卓', video: 'https://weibo.com/tv/show/1034:5243808468893747?from=old_pc_videoshow', isLeaf: true },
+                            { title: '奇迹小冬', video: 'https://www.xiaohongshu.com/explore/6926fb73000000001d03f1f7?xsec_token=ABECXnoPjEIm1FcMqky2kZB6Rjh4RnVooO-6zu4uerjfU=&xsec_source=pc_user', isLeaf: true },
+                            { title: '墨mio', video: 'https://www.xiaohongshu.com/explore/69593132000000001e034b1e?xsec_token=ABchsTo9-R2uvDUYRRJcr3SxDZUeSsK3xZEx2OqHWixpI=&xsec_source=pc_user', isLeaf: true },
+                            { title: 'Prayer', video: 'https://www.xiaohongshu.com/explore/692c1e82000000001f0045dd?xsec_token=ABZJ36ZM3ZdIS7VLZCXSEMz9zvimLnYxJFhkm0IhCfWXs=&xsec_source=pc_user', isLeaf: true },
+                            { title: '麩菓子', video: 'https://www.xiaohongshu.com/explore/69220c41000000001e02484e?xsec_token=AB79inIzxZxCgfy3puuzfrpow3TEYgMSZj0rxvf2-wZD8=&xsec_source=pc_user', isLeaf: true }
                         ]
                     },
                     {
