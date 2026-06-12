@@ -667,6 +667,29 @@ body {
     margin: 0 auto;
 }
 
+/* ========== 右侧图片模块 ========== */
+.side-image-module {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    overflow: hidden;
+}
+
+.side-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 85%;
+    max-height: 85%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+}
+
 /* ========== 弹窗样式 ========== */
 .modal-overlay {
     position: fixed;
@@ -1258,6 +1281,10 @@ body {
 
     .lower-section {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .side-image-module {
+        display: none;
     }
 
     .nav-module {
