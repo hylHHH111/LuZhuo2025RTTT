@@ -326,6 +326,12 @@
 
         /* 移动端适配 */
         @media (max-width: 768px) {
+            #weiboVideoContainer,
+            #weiboVideoContainer2 {
+                aspect-ratio: 1/1 !important;
+                min-height: 55vh;
+            }
+
             .navbar {
                 background: transparent !important;
                 z-index: 2147483647 !important;
@@ -573,23 +579,36 @@
             nav.classList.toggle('active');
         }
 
+        // 检测是否在微信环境
+        function isWechat() {
+            return /MicroMessenger/i.test(navigator.userAgent);
+        }
+
         // 打开微博视频模态框
         function openWeiboVideoModal() {
             const modal = document.getElementById('weiboVideoModal');
             const container = document.getElementById('weiboVideoContainer');
             const videoUrl = 'https://weibo.com/tv/show/1034:5306837772206150?from=old_pc_videoshow';
-            
-            // 插入 iframe
-            container.innerHTML = `
-                <iframe 
-                    src="${videoUrl}" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    allowfullscreen
-                    style="width:100%;height:100%;position:absolute;top:0;left:0;">
-                </iframe>
-            `;
-            
+
+            if (isWechat()) {
+                container.innerHTML = `
+                    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px;color:#fff;text-align:center;">
+                        <p style="margin-bottom:16px;font-size:15px;">微信内暂不支持播放，请点击下方按钮在浏览器中打开</p>
+                        <a href="${videoUrl}" target="_blank" style="display:inline-block;padding:10px 24px;background:var(--primary);color:#fff;border-radius:24px;text-decoration:none;font-size:14px;font-weight:600;">在浏览器中打开</a>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <iframe
+                        src="${videoUrl}"
+                        frameborder="0"
+                        scrolling="no"
+                        allowfullscreen
+                        style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                    </iframe>
+                `;
+            }
+
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -617,18 +636,26 @@
             const modal = document.getElementById('weiboVideoModal2');
             const container = document.getElementById('weiboVideoContainer2');
             const videoUrl = 'https://www.xiaohongshu.com/explore/69269a06000000001b0276c9?xsec_token=ABECXnoPjEIm1FcMqky2kZB3fNjcEd3oHVfMys2b5mJ1k=&xsec_source=pc_collect';
-            
-            // 插入 iframe
-            container.innerHTML = `
-                <iframe 
-                    src="${videoUrl}" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    allowfullscreen
-                    style="width:100%;height:100%;position:absolute;top:0;left:0;">
-                </iframe>
-            `;
-            
+
+            if (isWechat()) {
+                container.innerHTML = `
+                    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px;color:#fff;text-align:center;">
+                        <p style="margin-bottom:16px;font-size:15px;">微信内暂不支持播放，请点击下方按钮在浏览器中打开</p>
+                        <a href="${videoUrl}" target="_blank" style="display:inline-block;padding:10px 24px;background:var(--primary);color:#fff;border-radius:24px;text-decoration:none;font-size:14px;font-weight:600;">在浏览器中打开</a>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <iframe
+                        src="${videoUrl}"
+                        frameborder="0"
+                        scrolling="no"
+                        allowfullscreen
+                        style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                    </iframe>
+                `;
+            }
+
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
