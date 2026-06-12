@@ -1255,9 +1255,14 @@ body {
     .upper-section {
         grid-template-columns: 1fr;
     }
-    
+
     .lower-section {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-module {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
     }
     
     .modal-content {
@@ -1334,7 +1339,7 @@ body {
     .lower-section {
         grid-template-columns: 1fr;
     }
-    
+
     .card-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: var(--space-sm);
@@ -1399,7 +1404,7 @@ body {
     }
     
     .video-iframe-container {
-        aspect-ratio: 16/10;
+        height: 400px;
     }
     
     /* 移动端垂直导航区样式 - 1行4列 */
@@ -1506,33 +1511,33 @@ body {
 
 @media (max-width: 480px) {
     .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level {
-        grid-template-columns: repeat(3, 120px) !important;
-        gap: 4px !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: var(--space-sm) !important;
         justify-content: center !important;
         justify-items: center !important;
     }
-    
-    /* 移动端视频列表卡片固定尺寸120*160 */
+
+    /* 移动端视频列表卡片自适应 */
     .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper {
-        width: 120px !important;
-        padding: 2px !important;
-        gap: 2px !important;
+        width: 100% !important;
+        padding: var(--space-xs) !important;
+        gap: var(--space-xs) !important;
         flex-shrink: 0 !important;
     }
-    
+
     .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .stage-video-card {
         width: 100% !important;
-        height: 160px !important;
+        height: 140px !important;
         aspect-ratio: unset !important;
-        max-height: 160px !important;
+        max-height: 140px !important;
     }
-    
+
     .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .stage-video-card .video-card-play {
         width: 30px !important;
         height: 30px !important;
         font-size: 12px !important;
     }
-    
+
     .modal-overlay.active .modal-content .modal-body #modalGrid.modal-grid-video-level .video-card-wrapper .video-card-title {
         font-size: 9px !important;
         padding: 0 2px !important;
@@ -1551,4 +1556,5 @@ body {
     .main-content {
         padding-top: 0;
     }
+}
 }

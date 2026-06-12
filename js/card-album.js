@@ -549,7 +549,15 @@ class CardAlbum {
     playVideo(url, title) {
         // 检测是否为移动端
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        
+
+        // 微信环境下的小红书视频直接跳转新页面
+        const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+        const isXiaohongshu = url.includes('xiaohongshu.com');
+        if (isWeChat && isXiaohongshu) {
+            window.open(url, '_blank');
+            return;
+        }
+
         // 暂停背景音乐 - 强制暂停，不检查当前状态
         try {
             if (window.bgMusic) {
@@ -572,7 +580,7 @@ class CardAlbum {
         } catch (err) {
             console.log('暂停背景音乐失败:', err);
         }
-        
+
         // 降低歌曲选择弹窗的z-index，使其置于底层
         const songModal = document.getElementById(this.options.modalId);
         if (songModal) {
