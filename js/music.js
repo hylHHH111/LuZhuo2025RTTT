@@ -60,10 +60,18 @@
             return;
         }
         
+        // 音乐控制按钮样式
+        var buttonStyles = 'position:fixed;bottom:30px;right:20px;width:36px;height:36px;border-radius:50%;background:#42abf3;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
+
+        // 移动端适配
+        if (window.innerWidth <= 768) {
+            buttonStyles = 'position:fixed;bottom:20px;right:16px;width:36px;height:36px;border-radius:50%;background:#42abf3;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
+        }
+
         var btn = document.createElement('div');
         btn.id = 'music-control-btn';
         btn.innerHTML = '♪';
-        btn.style.cssText = 'position:fixed;bottom:30px;right:20px;width:36px;height:36px;border-radius:50%;background:#42abf3;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
+        btn.style.cssText = buttonStyles;
         
         btn.addEventListener('mouseenter', function() {
             btn.style.transform = 'scale(1.1)';
