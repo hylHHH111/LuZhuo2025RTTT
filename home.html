@@ -794,23 +794,10 @@
     <script>
         // 页面加载后强制恢复音乐播放
         (function() {
+            // 使用全局的强制恢复函数
             function forceResumeMusic() {
-                if (window.bgMusic && !window.bgMusicPlaying) {
-                    // 重置暂停状态
-                    window.bgMusicUserPaused = false;
-                    window.bgMusicPausedByVideo = false;
-                    
-                    window.bgMusic.play().then(function() {
-                        window.bgMusicPlaying = true;
-                        if (window.updateMusicButtonState) {
-                            window.updateMusicButtonState();
-                        }
-                        if (window.saveMusicState) {
-                            window.saveMusicState();
-                        }
-                    }).catch(function(error) {
-                        console.log('自动播放失败:', error);
-                    });
+                if (window.forceResumeBgMusic) {
+                    window.forceResumeBgMusic();
                 }
             }
             
@@ -830,24 +817,46 @@
             document.addEventListener('click', handleFirstInteraction);
             document.addEventListener('touchstart', handleFirstInteraction);
             
-            // 阻止首页视频暂停音乐（在捕获阶段拦截，但不阻止后续处理）
-            document.addEventListener('click', function(e) {
-                var target = e.target;
-                var isHomeVideo = target.closest('.video-section');
-                if (isHomeVideo) {
-                    // 阻止 music.js 的暂停逻辑，但不阻止其他点击处理
-                    setTimeout(forceResumeMusic, 50);
+            // 滚动时持续恢复音乐播放
+            var scrollResumeTimer = null;
+            function startScrollResume() {
+                if (scrollResumeTimer) clearInterval(scrollResumeTimer);
+                scrollResumeTimer = setInterval(forceResumeMusic, 30);
+            }
+            function stopScrollResume() {
+                if (scrollResumeTimer) {
+                    clearInterval(scrollResumeTimer);
+                    scrollResumeTimer = null;
                 }
-            }, true);
+            }
             
-            document.addEventListener('touchstart', function(e) {
-                var target = e.target;
-                var isHomeVideo = target.closest('.video-section');
-                if (isHomeVideo) {
-                    // 阻止 music.js 的暂停逻辑，但不阻止其他点击处理
-                    setTimeout(forceResumeMusic, 50);
+            document.addEventListener('touchstart', function() {
+                startScrollResume();
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function() {
+                forceResumeMusic();
+            }, { passive: true });
+            
+            document.addEventListener('touchend', function() {
+                stopScrollResume();
+                setTimeout(forceResumeMusic, 100);
+            }, { passive: true });
+            
+            document.addEventListener('touchcancel', function() {
+                stopScrollResume();
+            }, { passive: true });
+            
+            window.addEventListener('scroll', function() {
+                forceResumeMusic();
+            }, { passive: true });
+            
+            // 监听音乐暂停事件，尝试恢复
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    setTimeout(forceResumeMusic, 100);
                 }
-            }, true);
+            });
         })();
     </script>
 </body>

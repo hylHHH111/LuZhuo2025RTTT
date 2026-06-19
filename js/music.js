@@ -289,6 +289,19 @@
         }
     });
     
+    // 强制恢复音乐播放的函数 - 用于处理移动端滚动自动暂停问题
+    window.forceResumeBgMusic = function() {
+        if (bgMusic.paused && !window.bgMusicUserPaused) {
+            bgMusic.play().then(function() {
+                window.bgMusicPlaying = true;
+                updateMusicButtonState();
+                saveMusicState();
+            }).catch(function(error) {
+                // 播放失败，可能是自动播放策略限制
+            });
+        }
+    };
+    
     // 尝试恢复播放的函数
     function attemptResumeMusic(forceResume) {
         // 如果音频被暂停，且不是用户手动暂停
