@@ -127,9 +127,8 @@
     
     // 初始化
     function init() {
-        // 创建音频元素
-        audioElement = document.getElementById('bg-music');
-        if (!audioElement) {
+        // 创建音频元素（使用 singleton 模式，确保只有一个音频元素）
+        if (!window.bgMusic) {
             audioElement = document.createElement('audio');
             audioElement.id = 'bg-music';
             audioElement.loop = true;
@@ -137,10 +136,11 @@
             audioElement.src = 'music/kanong.mp3';
             audioElement.volume = 0.5;
             document.body.appendChild(audioElement);
+            window.bgMusic = audioElement;
+        } else {
+            // 使用已存在的音频元素
+            audioElement = window.bgMusic;
         }
-        
-        // 设置全局引用
-        window.bgMusic = audioElement;
         
         // 恢复用户暂停状态
         restoreMusicState();
@@ -148,16 +148,51 @@
         // 创建按钮
         createMusicButton();
         
+        // 页面加载时从 localStorage 恢复播放位置
+        try {
+            var savedTime = localStorage.getItem('bgMusic_currentTime');
+            if (savedTime) {
+                savedTime = parseFloat(savedTime);
+                // 使用 setTimeout 确保音频有时间加载
+                setTimeout(function() {
+                    if (!isNaN(audioElement.duration) && audioElement.duration > 0) {
+                        audioElement.currentTime = Math.min(savedTime, audioElement.duration - 1);
+                        console.log('恢复播放位置:', audioElement.currentTime);
+                    }
+                }, 100);
+            }
+        } catch (e) {
+            console.log('恢复播放位置失败:', e);
+        }
+        
         // 如果没有用户暂停，则尝试播放
         if (!window.bgMusicUserPaused) {
             playMusic();
         }
         
         updateMusicButtonState();
+        
+        // 定期保存播放位置到 localStorage（每 1 秒）
+        setInterval(function() {
+            try {
+                if (audioElement && !audioElement.paused && audioElement.currentTime > 0) {
+                    localStorage.setItem('bgMusic_currentTime', audioElement.currentTime);
+                }
+            } catch (e) {}
+        }, 1000);
     }
     
     // 立即初始化
     init();
+    
+    // 页面关闭前保存播放位置
+    window.addEventListener('beforeunload', function() {
+        try {
+            if (audioElement && !audioElement.paused) {
+                localStorage.setItem('bgMusic_currentTime', audioElement.currentTime);
+            }
+        } catch (e) {}
+    });
     
     // 用户交互后尝试播放（Safari 需要用户交互才能自动播放）
     function onUserInteraction() {
