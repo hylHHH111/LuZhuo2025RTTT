@@ -1,0 +1,19 @@
+# 所有HTML页面（首页、各巡演页面、留言页）仅缓存10分钟，过期强制拉新
+/*.html
+  Cache-Control: public, max-age=600, must-revalidate
+
+# 图片、动图长期缓存30天
+/*.webp
+  Cache-Control: public, max-age=2592000, immutable
+/*.png
+  Cache-Control: public, max-age=2592000, immutable
+/*.jpg
+  Cache-Control: public, max-age=2592000, immutable
+/*.gif
+  Cache-Control: public, max-age=2592000, immutable
+
+# 脚本、样式缓存7天
+/*.css
+  Cache-Control: public, max-age=604800
+/*.js
+  Cache-Control: public, max-age=604800
