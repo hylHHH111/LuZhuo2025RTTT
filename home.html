@@ -579,38 +579,11 @@
             nav.classList.toggle('active');
         }
 
-        // 暂停背景音乐
-        function pauseBgMusic() {
-            if (window.bgMusic) {
-                window.bgMusicPausedByVideo = true;
-                window.bgMusic.pause();
-                window.bgMusicPlaying = false;
-                if (window.updateMusicButtonState) {
-                    window.updateMusicButtonState();
-                }
-                if (window.saveMusicState) {
-                    window.saveMusicState();
-                }
-            }
-        }
-
-        // 恢复背景音乐
-        function resumeBgMusic() {
-            window.bgMusicPausedByVideo = false;
-            if (window.bgMusic && !window.bgMusicUserPaused) {
-                window.bgMusic.play().then(function() {
-                    window.bgMusicPlaying = true;
-                    if (window.updateMusicButtonState) {
-                        window.updateMusicButtonState();
-                    }
-                    if (window.saveMusicState) {
-                        window.saveMusicState();
-                    }
-                }).catch(function(error) {
-                    console.log('恢复播放失败:', error);
-                });
-            }
-        }
+        // 暂停背景音乐（由 music.js 提供）
+        // window.pauseBgMusic 已在 music.js 中定义
+        
+        // 恢复背景音乐（由 music.js 提供）
+        // window.resumeBgMusic 已在 music.js 中定义
 
         // 打开微博视频模态框
         function openWeiboVideoModal() {
