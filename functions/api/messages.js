@@ -10,10 +10,10 @@ const SENSITIVE_WORDS = [
 ];
 
 // 管理员密钥
-const ADMIN_KEY = '19951124';
+const ADMIN_KEY = 'luzhuo20251835172llzz';
 
 // 最大留言数量
-const MAX_MESSAGES = 222;
+const MAX_MESSAGES = 1124;
 
 // CORS 响应头
 const corsHeaders = {
