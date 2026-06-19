@@ -1,25 +1,57 @@
-// 背景音乐播放器
+// 背景音乐播放器 - Web Audio API 版本
 (function() {
     // 防止重复初始化
-    if (window.bgMusicInitialized) {
-        return;
-    }
+    if (window.bgMusicInitialized) return;
     window.bgMusicInitialized = true;
-    
-    // 创建音频元素
-    var bgMusic = document.createElement('audio');
-    bgMusic.id = 'bg-music';
-    bgMusic.loop = true;
-    bgMusic.preload = 'auto';
-    bgMusic.src = 'music/kanong.mp3';
-    bgMusic.volume = 0.5;
-    document.body.appendChild(bgMusic);
-    window.bgMusic = bgMusic;
     
     // 状态变量
     window.bgMusicPlaying = false;
     window.bgMusicPausedByVideo = false;
     window.bgMusicUserPaused = false;
+    
+    // Web Audio API 相关
+    var audioContext = null;
+    var audioElement = null;
+    var sourceNode = null;
+    var gainNode = null;
+    var audioStarted = false;
+    
+    // 创建音频元素
+    audioElement = document.createElement('audio');
+    audioElement.id = 'bg-music';
+    audioElement.loop = true;
+    audioElement.preload = 'auto';
+    audioElement.src = 'music/kanong.mp3';
+    audioElement.volume = 0.5;
+    document.body.appendChild(audioElement);
+    window.bgMusic = audioElement;
+    
+    // 初始化 Web Audio API
+    function initWebAudio() {
+        if (audioStarted) return;
+        
+        try {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            gainNode = audioContext.createGain();
+            gainNode.gain.value = 0.5;
+            gainNode.connect(audioContext.destination);
+            
+            sourceNode = audioContext.createMediaElementSource(audioElement);
+            sourceNode.connect(gainNode);
+            
+            audioStarted = true;
+            console.log('Web Audio API 已启用');
+        } catch (e) {
+            console.log('Web Audio API 不可用:', e);
+        }
+    }
+    
+    // 确保 AudioContext 运行
+    function ensureContextRunning() {
+        if (audioContext && audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
+    }
     
     // 创建音乐控制按钮
     function createMusicButton() {
@@ -59,14 +91,16 @@
     
     // 切换播放/暂停
     function toggleMusic() {
-        if (window.bgMusicPlaying) {
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
             window.bgMusicUserPaused = true;
-            bgMusic.pause();
+            audioElement.pause();
             window.bgMusicPlaying = false;
         } else {
             window.bgMusicUserPaused = false;
             window.bgMusicPausedByVideo = false;
-            bgMusic.play();
+            initWebAudio();
+            ensureContextRunning();
+            audioElement.play();
             window.bgMusicPlaying = true;
         }
         updateButtonState();
@@ -74,19 +108,27 @@
     
     // 尝试播放
     function tryPlay() {
-        if (window.bgMusicUserPaused) return;
-        bgMusic.play().then(function() {
-            window.bgMusicPlaying = true;
-            updateButtonState();
-        }).catch(function() {});
+        if (window.bgMusicUserPaused || window.bgMusicPausedByVideo) return;
+        
+        initWebAudio();
+        ensureContextRunning();
+        
+        var promise = audioElement.play();
+        if (promise) {
+            promise.then(function() {
+                window.bgMusicPlaying = true;
+                updateButtonState();
+            }).catch(function() {});
+        }
     }
     
     // 初始化
     createMusicButton();
-    tryPlay();
     
-    // 用户首次交互后播放
+    // 用户首次交互后初始化 Web Audio 和播放
     function onFirstInteraction() {
+        initWebAudio();
+        ensureContextRunning();
         tryPlay();
         document.removeEventListener('click', onFirstInteraction);
         document.removeEventListener('touchstart', onFirstInteraction);
@@ -101,7 +143,7 @@
                       target.closest('.video-card') || target.closest('.video-play-btn');
         if (isVideo) {
             window.bgMusicPausedByVideo = true;
-            bgMusic.pause();
+            audioElement.pause();
             window.bgMusicPlaying = false;
             updateButtonState();
         }
@@ -124,24 +166,23 @@
     document.addEventListener('visibilitychange', function() {
         if (!document.hidden && !window.bgMusicUserPaused) {
             window.bgMusicPausedByVideo = false;
+            initWebAudio();
+            ensureContextRunning();
             tryPlay();
             updateButtonState();
         }
     });
     
-    // 监听音频播放/暂停事件
-    bgMusic.addEventListener('play', function() {
-        window.bgMusicPlaying = true;
-        updateButtonState();
-    });
-    
-    bgMusic.addEventListener('pause', function() {
-        // 如果不是用户暂停也不是视频暂停，尝试恢复
-        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
-            tryPlay();
+    // 持续轮询恢复播放（关键！用于对抗浏览器自动暂停）
+    setInterval(function() {
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo && audioElement.paused) {
+            initWebAudio();
+            ensureContextRunning();
+            audioElement.play().then(function() {
+                window.bgMusicPlaying = true;
+                updateButtonState();
+            }).catch(function() {});
         }
-        window.bgMusicPlaying = false;
-        updateButtonState();
-    });
+    }, 100); // 每100ms检查一次
     
 })();
