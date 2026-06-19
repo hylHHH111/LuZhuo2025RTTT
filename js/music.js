@@ -4,6 +4,14 @@
     if (window.bgMusicInitialized) return;
     window.bgMusicInitialized = true;
     
+    // 如果在 iframe 中运行，完全禁用音频功能（由父页面 shell.html 处理）
+    if (window !== window.parent) {
+        // 仅定义空函数供外部调用
+        window.pauseBgMusic = function() {};
+        window.resumeBgMusic = function() {};
+        return;
+    }
+    
     // 状态变量
     window.bgMusicPlaying = false;
     window.bgMusicPausedByVideo = false;
