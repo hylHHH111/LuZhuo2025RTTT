@@ -86,7 +86,7 @@
         <source src="music/kanong.mp3" type="audio/mpeg">
     </audio>
     
-    <div class="music-button-container">
+    <div class="music-button-container" id="music-button-container">
         <button id="music-control-btn" aria-label="音乐控制">♪</button>
     </div>
     
@@ -159,6 +159,17 @@
                     if (iframe.contentWindow) {
                         iframe.contentWindow.pauseBgMusic = window.pauseBgMusic;
                         iframe.contentWindow.resumeBgMusic = window.resumeBgMusic;
+                        
+                        // 移除 iframe 中可能存在的重复音乐按钮
+                        setTimeout(function() {
+                            try {
+                                var iframeBtn = iframe.contentWindow.document.getElementById('music-control-btn');
+                                if (iframeBtn) {
+                                    iframeBtn.remove();
+                                    console.log('已移除 iframe 中的重复音乐按钮');
+                                }
+                            } catch(e) {}
+                        }, 500);
                     }
                 } catch(e) {
                     console.log('注入失败:', e);
