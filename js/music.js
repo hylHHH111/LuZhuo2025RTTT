@@ -1,4 +1,6 @@
 // 背景音乐播放器 - Web Audio API 版本
+// 注意：此脚本只在独立打开 home.html 时生效
+// 通过 shell.html 的 iframe 打开时，音频由 shell.html 控制
 (function() {
     // 防止重复初始化
     if (window.bgMusicInitialized) return;
@@ -6,7 +8,6 @@
     
     // 如果在 iframe 中运行，完全禁用音频功能（由父页面 shell.html 处理）
     if (window !== window.parent) {
-        // 仅定义空函数供外部调用
         window.pauseBgMusic = function() {};
         window.resumeBgMusic = function() {};
         return;
@@ -65,6 +66,11 @@
     function createMusicButton() {
         // 如果在 iframe 中运行，不创建按钮（由父页面 shell.html 提供）
         if (window !== window.parent) {
+            return;
+        }
+        
+        // 如果页面上已经有音乐按钮，不再创建
+        if (document.getElementById('music-control-btn')) {
             return;
         }
         
