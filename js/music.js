@@ -301,8 +301,8 @@
     document.addEventListener('touchstart', markUserInteraction, { once: true });
     document.addEventListener('click', markUserInteraction, { once: true });
     
-    // 使用 requestAnimationFrame 轮询检测并恢复播放
-    function checkAndResumeMusic() {
+    // 尝试恢复播放的函数
+    function attemptResumeMusic() {
         // 如果音频被暂停，且不是用户手动暂停，也不是视频暂停，且用户有过交互
         if (bgMusic.paused && !window.bgMusicUserPaused && !window.bgMusicPausedByVideo && userInteracted) {
             bgMusic.play().then(function() {
@@ -313,11 +313,20 @@
                 // 播放失败，可能是自动播放策略限制
             });
         }
-        requestAnimationFrame(checkAndResumeMusic);
     }
     
-    // 启动轮询检测
-    checkAndResumeMusic();
+    // 使用 setInterval 持续检测并恢复播放（比 requestAnimationFrame 更可靠）
+    setInterval(attemptResumeMusic, 100); // 每100ms检测一次
+    
+    // 监听 touchmove 事件 - 滚动时持续尝试恢复播放
+    document.addEventListener('touchmove', function() {
+        attemptResumeMusic();
+    }, { passive: true });
+    
+    // 监听 scroll 事件
+    window.addEventListener('scroll', function() {
+        attemptResumeMusic();
+    }, { passive: true });
     
     // 监听音频暂停事件 - 作为补充
     bgMusic.addEventListener('pause', function() {
