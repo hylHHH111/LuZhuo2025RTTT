@@ -560,23 +560,27 @@ class CardAlbum {
 
         // 暂停背景音乐 - 强制暂停，不检查当前状态
         try {
-            if (window.bgMusic) {
-                window.bgMusic.pause();
-                window.bgMusicPlaying = false;
+            // 通过 postMessage 调用父页面的函数
+            if (window.parent && window !== window.parent) {
+                window.parent.postMessage({ action: 'pauseBgMusic' }, '*');
+            } else {
+                // 如果是独立页面，尝试直接操作
+                if (window.bgMusic) {
+                    window.bgMusic.pause();
+                    window.bgMusicPlaying = false;
+                }
+                window.bgMusicPausedByVideo = true;
+                const btn = document.getElementById('music-control-btn');
+                if (btn) {
+                    btn.innerHTML = '♫';
+                    btn.style.background = 'rgba(150,150,150,0.9)';
+                    btn.setAttribute('data-playing', 'false');
+                }
+                try {
+                    localStorage.setItem('bgMusic_isPlaying', 'false');
+                    localStorage.setItem('bgMusic_pausedByVideo', 'true');
+                } catch (e) {}
             }
-            window.bgMusicPausedByVideo = true;
-            // 更新音乐按钮状态
-            const btn = document.getElementById('music-control-btn');
-            if (btn) {
-                btn.innerHTML = '♫';
-                btn.style.background = 'rgba(150,150,150,0.9)';
-                btn.setAttribute('data-playing', 'false');
-            }
-            // 保存状态
-            try {
-                localStorage.setItem('bgMusic_isPlaying', 'false');
-                localStorage.setItem('bgMusic_pausedByVideo', 'true');
-            } catch (e) {}
         } catch (err) {
             console.log('暂停背景音乐失败:', err);
         }
@@ -681,25 +685,31 @@ class CardAlbum {
         }
         
         // 恢复背景音乐（如果用户没有手动暂停）
-        if (window.bgMusic && window.bgMusicPausedByVideo && !window.bgMusicUserPaused) {
-            window.bgMusicPausedByVideo = false;
-            window.bgMusic.play().then(() => {
-                window.bgMusicPlaying = true;
-                // 更新音乐按钮状态
-                const btn = document.getElementById('music-control-btn');
-                if (btn) {
-                    btn.innerHTML = '♪';
-                    btn.style.background = '#42abf3';
-                    btn.setAttribute('data-playing', 'true');
+        try {
+            // 通过 postMessage 调用父页面的函数
+            if (window.parent && window !== window.parent) {
+                window.parent.postMessage({ action: 'resumeBgMusic' }, '*');
+            } else {
+                // 如果是独立页面，尝试直接操作
+                if (window.bgMusic && window.bgMusicPausedByVideo && !window.bgMusicUserPaused) {
+                    window.bgMusicPausedByVideo = false;
+                    window.bgMusic.play().then(() => {
+                        window.bgMusicPlaying = true;
+                        const btn = document.getElementById('music-control-btn');
+                        if (btn) {
+                            btn.innerHTML = '♪';
+                            btn.style.background = '#42abf3';
+                            btn.setAttribute('data-playing', 'true');
+                        }
+                        try {
+                            localStorage.setItem('bgMusic_isPlaying', 'true');
+                            localStorage.setItem('bgMusic_pausedByVideo', 'false');
+                        } catch (e) {}
+                    }).catch((error) => {});
                 }
-                // 保存状态
-                try {
-                    localStorage.setItem('bgMusic_isPlaying', 'true');
-                    localStorage.setItem('bgMusic_pausedByVideo', 'false');
-                } catch (e) {}
-            }).catch((error) => {
-                // 播放失败，不处理
-            });
+            }
+        } catch (err) {
+            console.log('恢复背景音乐失败:', err);
         }
     }
     

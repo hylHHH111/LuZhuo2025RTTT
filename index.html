@@ -399,9 +399,9 @@
                     if (progressBar) {
                         progressBar.style.width = '100%';
                     }
-                    // 延迟后跳转到chengdu.html
+                    // 延迟后跳转到 shell.html
                     setTimeout(() => {
-                        window.location.href = 'home.html';
+                        window.location.href = 'shell.html';
                     }, 500);
                 } else {
                     // 计算显示的百分比（从0到1124的映射）
@@ -418,7 +418,15 @@
 
         // 启动
         window.addEventListener('load', init);
+        
+        // 记录用户交互（用于解锁音频自动播放）
+        function recordInteraction() {
+            localStorage.setItem('userInteracted', 'true');
+            document.removeEventListener('click', recordInteraction);
+            document.removeEventListener('touchstart', recordInteraction);
+        }
+        document.addEventListener('click', recordInteraction);
+        document.addEventListener('touchstart', recordInteraction);
     </script>
-    <script src="js/music.js"></script>
 </body>
 </html>

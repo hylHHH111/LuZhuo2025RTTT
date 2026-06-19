@@ -1398,8 +1398,36 @@
             cardAlbum.openModal(title, data, 0);
         }
         
+        // 安全的音乐控制函数
+        function safePauseBgMusic() {
+            try {
+                if (window.parent && window !== window.parent) {
+                    window.parent.postMessage({ action: 'pauseBgMusic' }, '*');
+                    return;
+                }
+                if (typeof pauseBgMusic === 'function') {
+                    pauseBgMusic();
+                }
+            } catch(e) {}
+        }
+        
+        function safeResumeBgMusic() {
+            try {
+                if (window.parent && window !== window.parent) {
+                    window.parent.postMessage({ action: 'resumeBgMusic' }, '*');
+                    return;
+                }
+                if (typeof resumeBgMusic === 'function') {
+                    resumeBgMusic();
+                }
+            } catch(e) {}
+        }
+        
         // 播放视频
         function playVideo(videoUrl, title) {
+            // 暂停背景音乐
+            safePauseBgMusic();
+            
             const modal = document.createElement('div');
             modal.className = 'video-modal';
             modal.innerHTML = `
@@ -1423,6 +1451,8 @@
                 modal.remove();
                 document.body.style.overflow = '';
             }
+            // 恢复背景音乐
+            safeResumeBgMusic();
         }
         
         // 打开纪录片弹窗

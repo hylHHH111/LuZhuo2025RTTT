@@ -53,8 +53,13 @@
         }
     }
     
-    // 创建音乐控制按钮
+    // 创建音乐控制按钮（只在非 iframe 环境中创建）
     function createMusicButton() {
+        // 如果在 iframe 中运行，不创建按钮（由父页面 shell.html 提供）
+        if (window !== window.parent) {
+            return;
+        }
+        
         var btn = document.createElement('div');
         btn.id = 'music-control-btn';
         btn.innerHTML = '♪';
@@ -75,8 +80,13 @@
         updateButtonState();
     }
     
-    // 更新按钮状态
+    // 更新按钮状态（只在非 iframe 环境中更新）
     function updateButtonState() {
+        // 如果在 iframe 中运行，不更新按钮（由父页面 shell.html 管理）
+        if (window !== window.parent) {
+            return;
+        }
+        
         var btn = document.getElementById('music-control-btn');
         if (!btn) return;
         

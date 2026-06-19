@@ -579,11 +579,34 @@
             nav.classList.toggle('active');
         }
 
-        // 暂停背景音乐（由 music.js 提供）
-        // window.pauseBgMusic 已在 music.js 中定义
+        // 安全的音乐控制函数
+        function safePauseBgMusic() {
+            try {
+                // 优先调用父页面的函数（通过 postMessage）
+                if (window.parent && window !== window.parent) {
+                    window.parent.postMessage({ action: 'pauseBgMusic' }, '*');
+                    return;
+                }
+                // 如果是独立页面，调用本地函数
+                if (typeof pauseBgMusic === 'function') {
+                    pauseBgMusic();
+                }
+            } catch(e) {}
+        }
         
-        // 恢复背景音乐（由 music.js 提供）
-        // window.resumeBgMusic 已在 music.js 中定义
+        function safeResumeBgMusic() {
+            try {
+                // 优先调用父页面的函数（通过 postMessage）
+                if (window.parent && window !== window.parent) {
+                    window.parent.postMessage({ action: 'resumeBgMusic' }, '*');
+                    return;
+                }
+                // 如果是独立页面，调用本地函数
+                if (typeof resumeBgMusic === 'function') {
+                    resumeBgMusic();
+                }
+            } catch(e) {}
+        }
 
         // 打开微博视频模态框
         function openWeiboVideoModal() {
@@ -592,7 +615,7 @@
             const videoUrl = 'https://weibo.com/tv/show/1034:5306837772206150?from=old_pc_videoshow';
             
             // 暂停背景音乐
-            pauseBgMusic();
+            safePauseBgMusic();
             
             // 插入 iframe
             container.innerHTML = `
@@ -618,7 +641,7 @@
             document.body.style.overflow = '';
             
             // 恢复背景音乐
-            resumeBgMusic();
+            safeResumeBgMusic();
         }
 
         // 打开第二个小红书视频模态框
@@ -633,7 +656,7 @@
             }
 
             // 暂停背景音乐
-            pauseBgMusic();
+            safePauseBgMusic();
 
             const modal = document.getElementById('weiboVideoModal2');
             const container = document.getElementById('weiboVideoContainer2');
@@ -662,7 +685,7 @@
             document.body.style.overflow = '';
             
             // 恢复背景音乐
-            resumeBgMusic();
+            safeResumeBgMusic();
         }
 
         // 点击模态框背景关闭
