@@ -289,11 +289,22 @@
         }
     });
     
-    // 监听音频暂停事件 - 处理移动端滚动自动暂停问题
-    bgMusic.addEventListener('pause', function() {
-        // 如果之前正在播放，且不是用户手动暂停，也不是视频暂停，说明是浏览器自动暂停（如滚动时）
-        if (window.bgMusicPlaying && !window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
-            // 立即尝试恢复播放
+    // 标记用户是否有过交互（用于绕过自动播放限制）
+    var userInteracted = false;
+    
+    // 监听用户交互
+    function markUserInteraction() {
+        userInteracted = true;
+        document.removeEventListener('touchstart', markUserInteraction, { once: true });
+        document.removeEventListener('click', markUserInteraction, { once: true });
+    }
+    document.addEventListener('touchstart', markUserInteraction, { once: true });
+    document.addEventListener('click', markUserInteraction, { once: true });
+    
+    // 使用 requestAnimationFrame 轮询检测并恢复播放
+    function checkAndResumeMusic() {
+        // 如果音频被暂停，且不是用户手动暂停，也不是视频暂停，且用户有过交互
+        if (bgMusic.paused && !window.bgMusicUserPaused && !window.bgMusicPausedByVideo && userInteracted) {
             bgMusic.play().then(function() {
                 window.bgMusicPlaying = true;
                 updateMusicButtonState();
@@ -301,6 +312,21 @@
             }).catch(function(error) {
                 // 播放失败，可能是自动播放策略限制
             });
+        }
+        requestAnimationFrame(checkAndResumeMusic);
+    }
+    
+    // 启动轮询检测
+    checkAndResumeMusic();
+    
+    // 监听音频暂停事件 - 作为补充
+    bgMusic.addEventListener('pause', function() {
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo && userInteracted) {
+            bgMusic.play().then(function() {
+                window.bgMusicPlaying = true;
+                updateMusicButtonState();
+                saveMusicState();
+            }).catch(function(error) {});
         }
     });
     
