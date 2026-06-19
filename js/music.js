@@ -1,4 +1,4 @@
-// 背景音乐管理器 - 全站通用
+// 背景音乐管理器 - 简化版
 (function() {
     // 防止重复初始化
     if (window.bgMusicInitialized) {
@@ -15,7 +15,7 @@
         bgMusic.preload = 'auto';
         bgMusic.src = 'music/kanong.mp3';
         bgMusic.volume = 0.5;
-        bgMusic.autoplay = true; // 尝试自动播放
+        bgMusic.autoplay = true;
         document.body.appendChild(bgMusic);
     }
     
@@ -28,7 +28,6 @@
     // 保存播放状态到 localStorage
     function saveMusicState() {
         try {
-            localStorage.setItem('bgMusic_currentTime', bgMusic.currentTime);
             localStorage.setItem('bgMusic_isPlaying', window.bgMusicPlaying);
             localStorage.setItem('bgMusic_pausedByVideo', window.bgMusicPausedByVideo);
             localStorage.setItem('bgMusic_userPaused', window.bgMusicUserPaused);
@@ -38,15 +37,9 @@
     // 从 localStorage 恢复播放状态
     function restoreMusicState() {
         try {
-            var savedTime = localStorage.getItem('bgMusic_currentTime');
             var wasPlaying = localStorage.getItem('bgMusic_isPlaying') === 'true';
             var pausedByVideo = localStorage.getItem('bgMusic_pausedByVideo') === 'true';
-            // 首次访问时不考虑用户暂停状态，让音乐能自动播放
-            var userPaused = false;
-            
-            if (savedTime) {
-                bgMusic.currentTime = parseFloat(savedTime);
-            }
+            var userPaused = false; // 首次访问时不考虑用户暂停状态
             return { wasPlaying: wasPlaying, pausedByVideo: pausedByVideo, userPaused: userPaused };
         } catch (e) {
             return { wasPlaying: false, pausedByVideo: false, userPaused: false };
@@ -58,7 +51,9 @@
         var btn = document.getElementById('music-control-btn');
         if (!btn) return;
         
-        if (window.bgMusicPlaying) {
+        // 按钮状态由我们的逻辑控制：只有用户暂停或视频暂停时才显示灰色
+        // 不管浏览器是否真的在播放
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
             btn.innerHTML = '♪';
             btn.style.background = '#42abf3';
             btn.setAttribute('data-playing', 'true');
@@ -69,24 +64,40 @@
         }
     }
     
+    // 播放音乐
+    function playMusic() {
+        if (window.bgMusicUserPaused || window.bgMusicPausedByVideo) {
+            return;
+        }
+        
+        bgMusic.play().then(function() {
+            window.bgMusicPlaying = true;
+            saveMusicState();
+        }).catch(function(error) {
+            console.log('播放失败:', error);
+        });
+    }
+    
+    // 暂停音乐
+    function pauseMusic() {
+        bgMusic.pause();
+        window.bgMusicPlaying = false;
+        saveMusicState();
+    }
+    
     // 切换播放/暂停
     window.toggleBgMusic = function() {
-        if (window.bgMusicPlaying) {
-            bgMusic.pause();
-            window.bgMusicPlaying = false;
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
+            // 当前正在播放，暂停
             window.bgMusicUserPaused = true;
+            pauseMusic();
         } else {
+            // 当前未播放，开始播放
             window.bgMusicUserPaused = false;
-            bgMusic.play().then(function() {
-                window.bgMusicPlaying = true;
-                updateMusicButtonState();
-                saveMusicState();
-            }).catch(function(error) {
-                console.log('播放失败:', error);
-            });
+            window.bgMusicPausedByVideo = false;
+            playMusic();
         }
         updateMusicButtonState();
-        saveMusicState();
     };
     
     // 创建音乐控制按钮
@@ -113,70 +124,43 @@
         document.body.appendChild(btn);
     }
     
-    // 尝试播放
-    function tryPlay() {
-        if (window.bgMusicUserPaused || window.bgMusicPausedByVideo) {
-            return;
-        }
-        
-        bgMusic.play().then(function() {
-            window.bgMusicPlaying = true;
-            updateMusicButtonState();
-            saveMusicState();
-        }).catch(function(error) {
-            // 自动播放被阻止
-        });
-    }
-    
     // 初始化音乐
     function initMusic() {
         var state = restoreMusicState();
-        
         window.bgMusicUserPaused = state.userPaused;
         
-        // 创建音乐控制按钮
         createMusicButton();
-        
-        // 定期保存播放进度（每1秒）
-        setInterval(saveMusicState, 1000);
+        saveMusicState();
         
         // 重置视频暂停状态
         window.bgMusicPausedByVideo = false;
         
         // 尝试播放
-        tryPlay();
+        if (!window.bgMusicUserPaused) {
+            playMusic();
+        }
         
-        // 更新按钮状态
         updateMusicButtonState();
     }
     
-    // 用户首次交互后尝试播放
-    function handleUserInteraction(e) {
+    // 用户交互后尝试播放
+    function handleUserInteraction() {
         if (!window.bgMusicPlaying && !window.bgMusicUserPaused) {
-            bgMusic.play().then(function() {
-                window.bgMusicPlaying = true;
-                updateMusicButtonState();
-                saveMusicState();
-            }).catch(function(error) {
-                // 播放失败，不处理
-            });
+            playMusic();
         }
     }
     
-    // 添加点击交互事件监听
     document.addEventListener('click', function(e) {
-        // 排除导航栏和汉堡菜单按钮的点击
         if (e.target.closest('.navbar, .navbar-toggle, .navbar-nav, .nav-item')) {
             return;
         }
-        handleUserInteraction(e);
+        handleUserInteraction();
     });
     document.addEventListener('touchstart', function(e) {
-        // 排除导航栏和汉堡菜单按钮的触摸
         if (e.target.closest('.navbar, .navbar-toggle, .navbar-nav, .nav-item')) {
             return;
         }
-        handleUserInteraction(e);
+        handleUserInteraction();
     });
     
     // 立即执行初始化
@@ -193,19 +177,11 @@
         
         if (videoElement || videoContainer) {
             window.bgMusicPausedByVideo = true;
-            // 强制暂停音乐，不管当前状态
-            try {
-                bgMusic.pause();
-                window.bgMusicPlaying = false;
-                updateMusicButtonState();
-                saveMusicState();
-            } catch (err) {
-                console.log('暂停背景音乐失败:', err);
-            }
+            pauseMusic();
+            updateMusicButtonState();
         }
     });
     
-    // 监听触摸事件 - 移动端视频点击
     document.addEventListener('touchstart', function(e) {
         var target = e.target;
         var videoElement = target.tagName === 'VIDEO' ? target : target.closest('video');
@@ -213,23 +189,18 @@
         
         if (videoElement || videoContainer) {
             window.bgMusicPausedByVideo = true;
-            // 强制暂停音乐，不管当前状态
-            try {
-                bgMusic.pause();
-                window.bgMusicPlaying = false;
-                updateMusicButtonState();
-                saveMusicState();
-            } catch (err) {
-                console.log('暂停背景音乐失败:', err);
-            }
+            pauseMusic();
+            updateMusicButtonState();
         }
     }, { passive: true });
     
-    // 恢复音乐函数
+    // 恢复音乐
     function resumeMusic() {
-        window.bgMusicPausedByVideo = false;
-        saveMusicState();
-        tryPlay();
+        if (!window.bgMusicUserPaused) {
+            window.bgMusicPausedByVideo = false;
+            playMusic();
+            updateMusicButtonState();
+        }
     }
     
     // 监听关闭按钮
@@ -270,119 +241,47 @@
     // 页面可见性变化处理
     document.addEventListener('visibilitychange', function() {
         if (!document.hidden) {
-            var state = restoreMusicState();
             window.bgMusicPausedByVideo = false;
+            var state = restoreMusicState();
             if (state.wasPlaying && !state.userPaused && !window.bgMusicPlaying) {
-                tryPlay();
+                playMusic();
+                updateMusicButtonState();
             }
         }
     });
     
-    // 使用 pageshow 事件处理页面切换
+    // pageshow 事件处理
     window.addEventListener('pageshow', function(e) {
         if (e.persisted) {
-            var state = restoreMusicState();
             window.bgMusicPausedByVideo = false;
+            var state = restoreMusicState();
             if (state.wasPlaying && !state.userPaused) {
-                tryPlay();
+                playMusic();
+                updateMusicButtonState();
             }
         }
     });
     
-    // 强制恢复音乐播放的函数 - 用于处理移动端滚动自动暂停问题
-    window.forceResumeBgMusic = function() {
-        if (bgMusic.paused && !window.bgMusicUserPaused) {
-            bgMusic.play().then(function() {
-                window.bgMusicPlaying = true;
-                updateMusicButtonState();
-                saveMusicState();
-            }).catch(function(error) {
-                // 播放失败，可能是自动播放策略限制
-            });
-        }
-    };
-    
-    // 尝试恢复播放的函数
-    function attemptResumeMusic(forceResume) {
-        // 如果音频被暂停，且不是用户手动暂停
-        // forceResume 参数用于强制恢复（忽略 bgMusicPausedByVideo 标志）
-        if (bgMusic.paused && !window.bgMusicUserPaused && (forceResume || !window.bgMusicPausedByVideo)) {
-            bgMusic.play().then(function() {
-                window.bgMusicPlaying = true;
-                updateMusicButtonState();
-                saveMusicState();
-            }).catch(function(error) {
-                // 播放失败，可能是自动播放策略限制
-            });
-        }
-    }
-    
-    // 使用 setInterval 持续检测并恢复播放
-    var resumeInterval = setInterval(function() {
-        attemptResumeMusic(false);
-    }, 50); // 每50ms检测一次
-    
-    // 检测用户是否正在滚动
-    var isScrolling = false;
-    var scrollTimeout = null;
-    
-    function startScroll() {
-        isScrolling = true;
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-    }
-    
-    function endScroll() {
-        scrollTimeout = setTimeout(function() {
-            isScrolling = false;
-        }, 150);
-    }
-    
-    // 监听触摸和滚动事件 - 滚动期间强制恢复播放
-    document.addEventListener('touchstart', function() {
-        startScroll();
-    }, { passive: true });
-    
-    document.addEventListener('touchmove', function() {
-        startScroll();
-        attemptResumeMusic(true); // 强制恢复，忽略 bgMusicPausedByVideo
-    }, { passive: true });
-    
-    document.addEventListener('touchend', function() {
-        endScroll();
-    }, { passive: true });
-    
-    document.addEventListener('touchcancel', function() {
-        endScroll();
-    }, { passive: true });
-    
-    window.addEventListener('scroll', function() {
-        startScroll();
-        attemptResumeMusic(true); // 强制恢复，忽略 bgMusicPausedByVideo
-    }, { passive: true });
-    
-    // 监听音频暂停事件 - 作为补充
-    bgMusic.addEventListener('pause', function() {
-        if (!window.bgMusicUserPaused) {
-            bgMusic.play().then(function() {
-                window.bgMusicPlaying = true;
-                updateMusicButtonState();
-                saveMusicState();
-            }).catch(function(error) {});
-        }
-    });
-    
-    // 监听音频播放事件
+    // 监听音频播放事件 - 更新状态
     bgMusic.addEventListener('play', function() {
-        window.bgMusicPlaying = true;
-        updateMusicButtonState();
-        saveMusicState();
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
+            window.bgMusicPlaying = true;
+            updateMusicButtonState();
+            saveMusicState();
+        }
     });
     
-    // 监听音频停止事件
-    bgMusic.addEventListener('ended', function() {
-        window.bgMusicPlaying = false;
-        updateMusicButtonState();
-        saveMusicState();
+    // 监听音频暂停事件 - 如果不是用户主动暂停，尝试恢复
+    bgMusic.addEventListener('pause', function() {
+        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
+            // 被意外暂停，尝试恢复
+            playMusic();
+        }
     });
+    
+    // 定期更新按钮状态（确保按钮状态正确显示）
+    setInterval(function() {
+        updateMusicButtonState();
+    }, 500);
     
 })();

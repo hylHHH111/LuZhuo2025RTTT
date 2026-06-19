@@ -1513,48 +1513,5 @@
         });
     </script>
     <script src="js/music.js"></script>
-    <script>
-        // 滚动时持续恢复音乐播放
-        (function() {
-            function forceResumeMusic() {
-                if (window.forceResumeBgMusic) {
-                    window.forceResumeBgMusic();
-                }
-            }
-            
-            var scrollResumeTimer = null;
-            function startScrollResume() {
-                if (scrollResumeTimer) clearInterval(scrollResumeTimer);
-                scrollResumeTimer = setInterval(forceResumeMusic, 30);
-            }
-            function stopScrollResume() {
-                if (scrollResumeTimer) {
-                    clearInterval(scrollResumeTimer);
-                    scrollResumeTimer = null;
-                }
-            }
-            
-            document.addEventListener('touchstart', function() {
-                startScrollResume();
-            }, { passive: true });
-            
-            document.addEventListener('touchmove', function() {
-                forceResumeMusic();
-            }, { passive: true });
-            
-            document.addEventListener('touchend', function() {
-                stopScrollResume();
-                setTimeout(forceResumeMusic, 100);
-            }, { passive: true });
-            
-            document.addEventListener('touchcancel', function() {
-                stopScrollResume();
-            }, { passive: true });
-            
-            window.addEventListener('scroll', function() {
-                forceResumeMusic();
-            }, { passive: true });
-        })();
-    </script>
 </body>
 </html>
