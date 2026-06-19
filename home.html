@@ -787,5 +787,22 @@
         })();
     </script>
     <script src="js/music.js"></script>
+    <script>
+        var musicPlayTriggered = false;
+        
+        function triggerMusicPlay() {
+            if (!musicPlayTriggered && window !== window.parent) {
+                musicPlayTriggered = true;
+                window.parent.postMessage({ action: 'playBgMusic' }, '*');
+                setTimeout(function() {
+                    musicPlayTriggered = false;
+                }, 1000);
+            }
+        }
+        
+        document.addEventListener('click', triggerMusicPlay);
+        document.addEventListener('touchstart', triggerMusicPlay);
+        document.addEventListener('touchmove', triggerMusicPlay);
+    </script>
 </body>
 </html>

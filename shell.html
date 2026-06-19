@@ -26,12 +26,10 @@
             background: linear-gradient(180deg, #a2d7fc 0%, #e4f5fd 50%, #ffffff 100%);
         }
         
-        /* 音乐播放器 - 隐藏 */
         #bg-music {
             display: none;
         }
         
-        /* 音乐控制按钮容器 */
         .music-button-container {
             position: fixed;
             bottom: 26px;
@@ -43,7 +41,6 @@
             z-index: 9999;
         }
 
-        /* 移动端适配 */
         @media (max-width: 768px) {
             .music-button-container {
                 right: 16px;
@@ -51,7 +48,6 @@
             }
         }
         
-        /* 音乐控制按钮 */
         #music-control-btn {
             width: 36px;
             height: 36px;
@@ -72,7 +68,6 @@
             transform: scale(1.1);
         }
         
-        /* 内容区域 */
         #content-frame {
             position: fixed;
             top: 0;
@@ -87,26 +82,34 @@
     </style>
 </head>
 <body>
-    <!-- 音乐播放器 -->
     <audio id="bg-music" loop preload="auto">
         <source src="music/kanong.mp3" type="audio/mpeg">
     </audio>
     
-    <!-- 音乐控制按钮 -->
     <div class="music-button-container">
         <button id="music-control-btn" aria-label="音乐控制">♪</button>
     </div>
     
-    <!-- 内容区域 - iframe -->
     <iframe id="content-frame" name="content-frame" src="home.html"></iframe>
     
     <script>
         (function() {
             var audio = document.getElementById('bg-music');
             var btn = document.getElementById('music-control-btn');
+            var iframe = document.getElementById('content-frame');
             var isPlaying = false;
             
-            // 音乐控制
+            function playMusic() {
+                localStorage.setItem('userInteracted', 'true');
+                audio.play().then(function() {
+                    btn.innerHTML = '♪';
+                    btn.style.background = '#42abf3';
+                    isPlaying = true;
+                }).catch(function(error) {
+                    console.log('音频播放失败:', error);
+                });
+            }
+            
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -117,71 +120,25 @@
                     btn.style.background = 'rgba(150,150,150,0.9)';
                     isPlaying = false;
                 } else {
-                    audio.play();
-                    btn.innerHTML = '♪';
-                    btn.style.background = '#42abf3';
-                    isPlaying = true;
+                    playMusic();
                 }
             });
             
-            // 尝试自动播放
             function tryAutoPlay() {
-                // 检查用户是否有过交互
                 var userInteracted = localStorage.getItem('userInteracted') === 'true';
-                
                 if (userInteracted) {
-                    // 用户有过交互，可以自动播放
-                    audio.play().then(function() {
-                        btn.innerHTML = '♪';
-                        btn.style.background = '#42abf3';
-                        isPlaying = true;
-                    }).catch(function() {
-                        // 自动播放失败，等待用户交互
-                        setupInteractionListener();
-                    });
-                } else {
-                    // 用户没有交互，等待用户点击
-                    setupInteractionListener();
-                }
-            }
-            
-            // 设置交互监听器 - 任何交互都能触发播放
-            function setupInteractionListener() {
-                function startMusic() {
-                    // 记录用户交互
-                    localStorage.setItem('userInteracted', 'true');
-                    
                     audio.play().then(function() {
                         btn.innerHTML = '♪';
                         btn.style.background = '#42abf3';
                         isPlaying = true;
                     }).catch(function() {});
-                    
-                    // 移除所有交互监听器
-                    document.removeEventListener('click', startMusic);
-                    document.removeEventListener('touchstart', startMusic);
-                    document.removeEventListener('touchmove', startMusic);
-                    document.removeEventListener('mousedown', startMusic);
-                    document.removeEventListener('keydown', startMusic);
                 }
-                
-                // 添加多种交互监听器
-                document.addEventListener('click', startMusic);
-                document.addEventListener('touchstart', startMusic);
-                document.addEventListener('touchmove', startMusic);
-                document.addEventListener('mousedown', startMusic);
-                document.addEventListener('keydown', startMusic);
             }
             
-            // 始终添加交互监听器（确保任何情况下都能触发播放）
-            setupInteractionListener();
-            
-            // 页面加载后尝试自动播放
             window.addEventListener('load', function() {
                 setTimeout(tryAutoPlay, 500);
             });
             
-            // 全局函数 - 供 iframe 内页面调用
             window.pauseBgMusic = function() {
                 audio.pause();
                 btn.innerHTML = '♫';
@@ -197,19 +154,17 @@
                 }).catch(function() {});
             };
             
-            // 定期检查并注入函数到 iframe
-            var iframe = document.getElementById('content-frame');
-            
             function injectFunctions() {
                 try {
                     if (iframe.contentWindow) {
                         iframe.contentWindow.pauseBgMusic = window.pauseBgMusic;
                         iframe.contentWindow.resumeBgMusic = window.resumeBgMusic;
                     }
-                } catch(e) {}
+                } catch(e) {
+                    console.log('注入失败:', e);
+                }
             }
             
-            // 多次尝试注入
             iframe.addEventListener('load', injectFunctions);
             window.addEventListener('load', function() {
                 injectFunctions();
@@ -218,7 +173,6 @@
                 setTimeout(injectFunctions, 1000);
             });
             
-            // 监听来自 iframe 的消息
             window.addEventListener('message', function(event) {
                 try {
                     if (event.data && event.data.action) {
@@ -228,6 +182,11 @@
                                 break;
                             case 'resumeBgMusic':
                                 window.resumeBgMusic();
+                                break;
+                            case 'playBgMusic':
+                                if (!isPlaying) {
+                                    playMusic();
+                                }
                                 break;
                         }
                     }
