@@ -13,7 +13,7 @@
         bgMusic.id = 'bg-music';
         bgMusic.loop = true;
         bgMusic.preload = 'auto';
-        bgMusic.src = 'music/wushengdianying.MP3';
+        bgMusic.src = 'music/kanong.mp3';
         bgMusic.volume = 0.5;
         bgMusic.autoplay = true; // 尝试自动播放
         document.body.appendChild(bgMusic);
