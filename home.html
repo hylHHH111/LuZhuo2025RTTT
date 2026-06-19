@@ -579,11 +579,47 @@
             nav.classList.toggle('active');
         }
 
+        // 暂停背景音乐
+        function pauseBgMusic() {
+            if (window.bgMusic) {
+                window.bgMusicPausedByVideo = true;
+                window.bgMusic.pause();
+                window.bgMusicPlaying = false;
+                if (window.updateMusicButtonState) {
+                    window.updateMusicButtonState();
+                }
+                if (window.saveMusicState) {
+                    window.saveMusicState();
+                }
+            }
+        }
+
+        // 恢复背景音乐
+        function resumeBgMusic() {
+            window.bgMusicPausedByVideo = false;
+            if (window.bgMusic && !window.bgMusicUserPaused) {
+                window.bgMusic.play().then(function() {
+                    window.bgMusicPlaying = true;
+                    if (window.updateMusicButtonState) {
+                        window.updateMusicButtonState();
+                    }
+                    if (window.saveMusicState) {
+                        window.saveMusicState();
+                    }
+                }).catch(function(error) {
+                    console.log('恢复播放失败:', error);
+                });
+            }
+        }
+
         // 打开微博视频模态框
         function openWeiboVideoModal() {
             const modal = document.getElementById('weiboVideoModal');
             const container = document.getElementById('weiboVideoContainer');
             const videoUrl = 'https://weibo.com/tv/show/1034:5306837772206150?from=old_pc_videoshow';
+            
+            // 暂停背景音乐
+            pauseBgMusic();
             
             // 插入 iframe
             container.innerHTML = `
@@ -607,15 +643,9 @@
             modal.style.display = 'none';
             container.innerHTML = ''; // 清空 iframe 停止播放
             document.body.style.overflow = '';
-        }
-
-        // 关闭微博视频模态框
-        function closeWeiboVideoModal() {
-            const modal = document.getElementById('weiboVideoModal');
-            const container = document.getElementById('weiboVideoContainer');
-            modal.style.display = 'none';
-            container.innerHTML = ''; // 清空 iframe 停止播放
-            document.body.style.overflow = '';
+            
+            // 恢复背景音乐
+            resumeBgMusic();
         }
 
         // 打开第二个小红书视频模态框
@@ -628,6 +658,9 @@
                 window.open(videoUrl, '_blank');
                 return;
             }
+
+            // 暂停背景音乐
+            pauseBgMusic();
 
             const modal = document.getElementById('weiboVideoModal2');
             const container = document.getElementById('weiboVideoContainer2');
@@ -654,6 +687,9 @@
             modal.style.display = 'none';
             container.innerHTML = ''; // 清空 iframe 停止播放
             document.body.style.overflow = '';
+            
+            // 恢复背景音乐
+            resumeBgMusic();
         }
 
         // 点击模态框背景关闭
