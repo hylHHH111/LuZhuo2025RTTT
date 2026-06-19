@@ -289,4 +289,33 @@
         }
     });
     
+    // 监听音频暂停事件 - 处理移动端滚动自动暂停问题
+    bgMusic.addEventListener('pause', function() {
+        // 如果之前正在播放，且不是用户手动暂停，也不是视频暂停，说明是浏览器自动暂停（如滚动时）
+        if (window.bgMusicPlaying && !window.bgMusicUserPaused && !window.bgMusicPausedByVideo) {
+            // 立即尝试恢复播放
+            bgMusic.play().then(function() {
+                window.bgMusicPlaying = true;
+                updateMusicButtonState();
+                saveMusicState();
+            }).catch(function(error) {
+                // 播放失败，可能是自动播放策略限制
+            });
+        }
+    });
+    
+    // 监听音频播放事件
+    bgMusic.addEventListener('play', function() {
+        window.bgMusicPlaying = true;
+        updateMusicButtonState();
+        saveMusicState();
+    });
+    
+    // 监听音频停止事件
+    bgMusic.addEventListener('ended', function() {
+        window.bgMusicPlaying = false;
+        updateMusicButtonState();
+        saveMusicState();
+    });
+    
 })();
