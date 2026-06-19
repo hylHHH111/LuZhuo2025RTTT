@@ -289,22 +289,11 @@
         }
     });
     
-    // 标记用户是否有过交互（用于绕过自动播放限制）
-    var userInteracted = false;
-    
-    // 监听用户交互
-    function markUserInteraction() {
-        userInteracted = true;
-        document.removeEventListener('touchstart', markUserInteraction, { once: true });
-        document.removeEventListener('click', markUserInteraction, { once: true });
-    }
-    document.addEventListener('touchstart', markUserInteraction, { once: true });
-    document.addEventListener('click', markUserInteraction, { once: true });
-    
     // 尝试恢复播放的函数
-    function attemptResumeMusic() {
-        // 如果音频被暂停，且不是用户手动暂停，也不是视频暂停，且用户有过交互
-        if (bgMusic.paused && !window.bgMusicUserPaused && !window.bgMusicPausedByVideo && userInteracted) {
+    function attemptResumeMusic(forceResume) {
+        // 如果音频被暂停，且不是用户手动暂停
+        // forceResume 参数用于强制恢复（忽略 bgMusicPausedByVideo 标志）
+        if (bgMusic.paused && !window.bgMusicUserPaused && (forceResume || !window.bgMusicPausedByVideo)) {
             bgMusic.play().then(function() {
                 window.bgMusicPlaying = true;
                 updateMusicButtonState();
@@ -315,22 +304,52 @@
         }
     }
     
-    // 使用 setInterval 持续检测并恢复播放（比 requestAnimationFrame 更可靠）
-    setInterval(attemptResumeMusic, 100); // 每100ms检测一次
+    // 使用 setInterval 持续检测并恢复播放
+    var resumeInterval = setInterval(function() {
+        attemptResumeMusic(false);
+    }, 50); // 每50ms检测一次
     
-    // 监听 touchmove 事件 - 滚动时持续尝试恢复播放
-    document.addEventListener('touchmove', function() {
-        attemptResumeMusic();
+    // 检测用户是否正在滚动
+    var isScrolling = false;
+    var scrollTimeout = null;
+    
+    function startScroll() {
+        isScrolling = true;
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+    }
+    
+    function endScroll() {
+        scrollTimeout = setTimeout(function() {
+            isScrolling = false;
+        }, 150);
+    }
+    
+    // 监听触摸和滚动事件 - 滚动期间强制恢复播放
+    document.addEventListener('touchstart', function() {
+        startScroll();
     }, { passive: true });
     
-    // 监听 scroll 事件
+    document.addEventListener('touchmove', function() {
+        startScroll();
+        attemptResumeMusic(true); // 强制恢复，忽略 bgMusicPausedByVideo
+    }, { passive: true });
+    
+    document.addEventListener('touchend', function() {
+        endScroll();
+    }, { passive: true });
+    
+    document.addEventListener('touchcancel', function() {
+        endScroll();
+    }, { passive: true });
+    
     window.addEventListener('scroll', function() {
-        attemptResumeMusic();
+        startScroll();
+        attemptResumeMusic(true); // 强制恢复，忽略 bgMusicPausedByVideo
     }, { passive: true });
     
     // 监听音频暂停事件 - 作为补充
     bgMusic.addEventListener('pause', function() {
-        if (!window.bgMusicUserPaused && !window.bgMusicPausedByVideo && userInteracted) {
+        if (!window.bgMusicUserPaused) {
             bgMusic.play().then(function() {
                 window.bgMusicPlaying = true;
                 updateMusicButtonState();
