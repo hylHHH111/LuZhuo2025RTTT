@@ -62,64 +62,7 @@
         }
     }
     
-    // 创建音乐控制按钮（只在非 iframe 环境中创建）
-    function createMusicButton() {
-        // 如果在 iframe 中运行，不创建按钮（由父页面 shell.html 提供）
-        if (window !== window.parent) {
-            return;
-        }
-        
-        // 如果页面上已经有音乐按钮，不再创建
-        if (document.getElementById('music-control-btn')) {
-            return;
-        }
-        
-        // 音乐控制按钮样式
-        var buttonStyles = 'position:fixed;bottom:30px;right:20px;width:36px;height:36px;border-radius:50%;background:#42abf3;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
-
-        // 移动端适配
-        if (window.innerWidth <= 768) {
-            buttonStyles = 'position:fixed;bottom:20px;right:16px;width:36px;height:36px;border-radius:50%;background:#42abf3;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:all 0.3s ease;user-select:none;';
-        }
-
-        var btn = document.createElement('div');
-        btn.id = 'music-control-btn';
-        btn.innerHTML = '♪';
-        btn.style.cssText = buttonStyles;
-        
-        btn.addEventListener('mouseenter', function() {
-            btn.style.transform = 'scale(1.1)';
-        });
-        btn.addEventListener('mouseleave', function() {
-            btn.style.transform = 'scale(1)';
-        });
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMusic();
-        });
-        
-        document.body.appendChild(btn);
-        updateButtonState();
-    }
     
-    // 更新按钮状态（只在非 iframe 环境中更新）
-    function updateButtonState() {
-        // 如果在 iframe 中运行，不更新按钮（由父页面 shell.html 管理）
-        if (window !== window.parent) {
-            return;
-        }
-        
-        var btn = document.getElementById('music-control-btn');
-        if (!btn) return;
-        
-        if (window.bgMusicUserPaused || window.bgMusicPausedByVideo) {
-            btn.innerHTML = '♫';
-            btn.style.background = 'rgba(150,150,150,0.9)';
-        } else {
-            btn.innerHTML = '♪';
-            btn.style.background = '#42abf3';
-        }
-    }
     
     // 切换播放/暂停
     function toggleMusic() {
@@ -135,7 +78,6 @@
             audioElement.play();
             window.bgMusicPlaying = true;
         }
-        updateButtonState();
     }
     
     // 尝试播放
@@ -149,13 +91,9 @@
         if (promise) {
             promise.then(function() {
                 window.bgMusicPlaying = true;
-                updateButtonState();
             }).catch(function() {});
         }
     }
-    
-    // 初始化
-    createMusicButton();
     
     // 用户首次交互后初始化 Web Audio 和播放
     function onFirstInteraction() {
@@ -177,7 +115,6 @@
             window.bgMusicPausedByVideo = true;
             audioElement.pause();
             window.bgMusicPlaying = false;
-            updateButtonState();
         }
     });
     
@@ -190,7 +127,6 @@
         if (isClose && !window.bgMusicUserPaused) {
             window.bgMusicPausedByVideo = false;
             tryPlay();
-            updateButtonState();
         }
     });
     
@@ -201,7 +137,6 @@
             initWebAudio();
             ensureContextRunning();
             tryPlay();
-            updateButtonState();
         }
     });
     
@@ -212,7 +147,6 @@
             ensureContextRunning();
             audioElement.play().then(function() {
                 window.bgMusicPlaying = true;
-                updateButtonState();
             }).catch(function() {});
         }
     }, 100); // 每100ms检查一次
