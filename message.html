@@ -466,6 +466,131 @@
             font-size: var(--font-size-base);
         }
 
+        /* 滚动弹幕区域 */
+        .danmaku-container {
+            position: relative;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 245, 255, 0.95));
+            border-radius: var(--radius-md);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .danmaku-track {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+        }
+
+        .danmaku-scroll {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            animation: danmakuScroll 40s linear infinite;
+        }
+
+        @keyframes danmakuScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .danmaku-item {
+            display: inline-block;
+            margin-right: var(--space-xl);
+            padding: var(--space-xs) var(--space-md);
+            background: linear-gradient(135deg, var(--primary), #6dd5ed);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+            animation: danmakuFade 0.3s ease;
+        }
+
+        @keyframes danmakuFade {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .danmaku-item:nth-child(odd) {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+        }
+
+        .danmaku-item:nth-child(3n) {
+            background: linear-gradient(135deg, #54a0ff, #5f27cd);
+        }
+
+        .danmaku-item:nth-child(4n) {
+            background: linear-gradient(135deg, #00d2d3, #1dd1a1);
+        }
+
+        .danmaku-label {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+
+        .danmaku-icon {
+            color: var(--primary);
+            font-size: var(--font-size-sm);
+            animation: danmakuPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes danmakuPulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .danmaku-container:hover .danmaku-scroll {
+            animation-play-state: paused;
+        }
+
+        /* 移动端弹幕适配 */
+        @media (max-width: 768px) {
+            .danmaku-container {
+                padding: var(--space-sm);
+            }
+
+            .danmaku-track {
+                height: 80px;
+            }
+
+            .danmaku-item {
+                padding: var(--space-xs) var(--space-sm);
+                font-size: var(--font-size-xs);
+                margin-right: var(--space-lg);
+            }
+
+            .danmaku-scroll {
+                animation-duration: 30s;
+            }
+
+            .danmaku-label {
+                display: none;
+            }
+        }
+
         /* 页脚 */
         .footer {
             background: var(--primary);
@@ -690,11 +815,24 @@
                     </div>
                 </div>
 
+                <!-- 滚动弹幕区域 -->
+                <div class="danmaku-container">
+                    <div class="danmaku-track" id="danmakuTrack">
+                        <div class="danmaku-scroll" id="danmakuScroll">
+                            <!-- 弹幕将在这里滚动 -->
+                        </div>
+                    </div>
+                    <div class="danmaku-label">
+                        <span class="danmaku-icon">✦</span>
+                        <span>实时留言</span>
+                    </div>
+                </div>
+
                 <!-- 留言列表 -->
                 <div class="messages-container">
                     <div class="messages-header">
                         <span class="messages-count">共 <span id="messageTotal">0</span> 条留言</span>
-                        <span class="messages-limit">（最多显示222条）</span>
+                        <span class="messages-limit">（最多显示1124条）</span>
                     </div>
                     <div id="messagesList" class="messages-list">
                         <!-- 留言将在这里动态显示 -->
@@ -804,6 +942,7 @@
 
             if (messages.length === 0) {
                 container.innerHTML = '<div class="empty-tip">还没有留言，快来抢沙发吧~</div>';
+                updateDanmaku([]);
                 return;
             }
 
@@ -817,6 +956,32 @@
                     <div class="message-content">${escapeHtml(msg.content)}</div>
                 </div>
             `).join('');
+
+            // 更新弹幕
+            updateDanmaku(messages);
+        }
+
+        // 更新滚动弹幕
+        function updateDanmaku(messages) {
+            const danmakuScroll = document.getElementById('danmakuScroll');
+            
+            if (!danmakuScroll || messages.length === 0) {
+                danmakuScroll.innerHTML = '';
+                return;
+            }
+
+            // 获取最新的 20-40 条留言
+            const latestMessages = messages.slice(0, Math.min(40, messages.length));
+            
+            // 创建弹幕内容
+            const danmakuItems = latestMessages.map(msg => {
+                // 截取内容，最多显示 20 个字符
+                const shortContent = msg.content.length > 20 ? msg.content.substring(0, 20) + '...' : msg.content;
+                return `<span class="danmaku-item">${escapeHtml(msg.nickname)}：${escapeHtml(shortContent)}</span>`;
+            }).join('');
+
+            // 复制一份弹幕实现无缝滚动
+            danmakuScroll.innerHTML = danmakuItems + danmakuItems;
         }
 
         // 提交留言
