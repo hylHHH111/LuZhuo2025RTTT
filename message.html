@@ -503,10 +503,10 @@
             white-space: nowrap;
         }
 
-        .danmaku-scroll.delay-0 { animation: danmakuScroll 47s linear infinite; }
-        .danmaku-scroll.delay-1 { animation: danmakuScroll 50s linear infinite; animation-delay: -12s; }
-        .danmaku-scroll.delay-2 { animation: danmakuScroll 52s linear infinite; animation-delay: -20s; }
-        .danmaku-scroll.delay-3 { animation: danmakuScroll 44s linear infinite; animation-delay: -10s; }
+        .danmaku-scroll.delay-0 { animation: danmakuScroll 40s linear infinite; }
+        .danmaku-scroll.delay-1 { animation: danmakuScroll 42s linear infinite; animation-delay: -12s; }
+        .danmaku-scroll.delay-2 { animation: danmakuScroll 44s linear infinite; animation-delay: -20s; }
+        .danmaku-scroll.delay-3 { animation: danmakuScroll 38s linear infinite; animation-delay: -8s; }
 
         @keyframes danmakuScroll {
             0% {
@@ -935,7 +935,6 @@
                 console.error('加载留言出错:', error);
                 document.getElementById('messagesList').innerHTML =
                     '<div class="empty-tip">加载失败，请刷新页面重试</div>';
-                updateDanmaku();  // 显示预设弹幕
             }
         }
 
@@ -948,7 +947,7 @@
 
             if (messages.length === 0) {
                 container.innerHTML = '<div class="empty-tip">还没有留言，快来抢沙发吧~</div>';
-                updateDanmaku();  // 不传参数，使用预设数据
+                updateDanmaku([]);
                 return;
             }
 
@@ -971,13 +970,13 @@
         function updateDanmaku(messages) {
             const danmakuTrack = document.getElementById('danmakuTrack');
             
-            if (!danmakuTrack || !messages || messages.length === 0) {
+            if (!danmakuTrack || messages.length === 0) {
                 danmakuTrack.innerHTML = '';
                 return;
             }
 
-            // 获取最新的 20-40 条留言
-            const latestMessages = displayMessages.slice(0, Math.min(200, displayMessages.length));
+            // 获取最新的最多 200 条留言
+            const latestMessages = messages.slice(0, Math.min(200, messages.length));
             
             // 将弹幕平均分配到4行
             const rows = 4;
