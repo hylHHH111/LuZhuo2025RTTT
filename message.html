@@ -479,37 +479,48 @@
 
         .danmaku-track {
             position: relative;
-            height: 120px;
+            height: 150px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .danmaku-row {
+            position: relative;
+            width: 100%;
+            height: 36px;
             overflow: hidden;
         }
 
         .danmaku-scroll {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
             white-space: nowrap;
-            animation: danmakuScroll 40s linear infinite;
         }
+
+        .danmaku-scroll.delay-0 { animation: danmakuScroll 45s linear infinite; }
+        .danmaku-scroll.delay-1 { animation: danmakuScroll 50s linear infinite; animation-delay: -10s; }
+        .danmaku-scroll.delay-2 { animation: danmakuScroll 55s linear infinite; animation-delay: -20s; }
+        .danmaku-scroll.delay-3 { animation: danmakuScroll 40s linear infinite; animation-delay: -5s; }
 
         @keyframes danmakuScroll {
             0% {
-                transform: translateX(0);
+                transform: translateY(-50%) translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateY(-50%) translateX(-50%);
             }
         }
 
         .danmaku-item {
             display: inline-block;
-            margin-right: var(--space-xl);
-            padding: var(--space-xs) var(--space-md);
-            background: linear-gradient(135deg, var(--primary), #6dd5ed);
-            color: var(--white);
-            border-radius: var(--radius-full);
-            font-size: var(--font-size-sm);
+            margin-right: 30px;
+            padding: 6px 16px;
+            color: #333;
+            font-size: 13px;
             white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
             animation: danmakuFade 0.3s ease;
         }
 
@@ -525,15 +536,7 @@
         }
 
         .danmaku-item:nth-child(odd) {
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-        }
-
-        .danmaku-item:nth-child(3n) {
-            background: linear-gradient(135deg, #54a0ff, #5f27cd);
-        }
-
-        .danmaku-item:nth-child(4n) {
-            background: linear-gradient(135deg, #00d2d3, #1dd1a1);
+            color: #42abf3;
         }
 
         .danmaku-label {
@@ -545,6 +548,7 @@
             gap: var(--space-xs);
             font-size: var(--font-size-xs);
             color: var(--text-secondary);
+            z-index: 10;
         }
 
         .danmaku-icon {
@@ -562,10 +566,6 @@
             }
         }
 
-        .danmaku-container:hover .danmaku-scroll {
-            animation-play-state: paused;
-        }
-
         /* 移动端弹幕适配 */
         @media (max-width: 768px) {
             .danmaku-container {
@@ -573,18 +573,23 @@
             }
 
             .danmaku-track {
-                height: 80px;
+                height: 100px;
+            }
+
+            .danmaku-row {
+                height: 28px;
             }
 
             .danmaku-item {
-                padding: var(--space-xs) var(--space-sm);
-                font-size: var(--font-size-xs);
-                margin-right: var(--space-lg);
+                padding: 4px 12px;
+                font-size: 11px;
+                margin-right: 20px;
             }
 
-            .danmaku-scroll {
-                animation-duration: 30s;
-            }
+            .danmaku-scroll.delay-0 { animation-duration: 35s; }
+            .danmaku-scroll.delay-1 { animation-duration: 40s; }
+            .danmaku-scroll.delay-2 { animation-duration: 45s; }
+            .danmaku-scroll.delay-3 { animation-duration: 30s; }
 
             .danmaku-label {
                 display: none;
@@ -818,9 +823,7 @@
                 <!-- 滚动弹幕区域 -->
                 <div class="danmaku-container">
                     <div class="danmaku-track" id="danmakuTrack">
-                        <div class="danmaku-scroll" id="danmakuScroll">
-                            <!-- 弹幕将在这里滚动 -->
-                        </div>
+                        <!-- 弹幕行会在这里动态生成 -->
                     </div>
                     <div class="danmaku-label">
                         <span class="danmaku-icon">✦</span>
@@ -963,25 +966,44 @@
 
         // 更新滚动弹幕
         function updateDanmaku(messages) {
-            const danmakuScroll = document.getElementById('danmakuScroll');
+            const danmakuTrack = document.getElementById('danmakuTrack');
             
-            if (!danmakuScroll || messages.length === 0) {
-                danmakuScroll.innerHTML = '';
+            if (!danmakuTrack || messages.length === 0) {
+                danmakuTrack.innerHTML = '';
                 return;
             }
 
             // 获取最新的 20-40 条留言
             const latestMessages = messages.slice(0, Math.min(40, messages.length));
             
-            // 创建弹幕内容
-            const danmakuItems = latestMessages.map(msg => {
-                // 截取内容，最多显示 20 个字符
-                const shortContent = msg.content.length > 20 ? msg.content.substring(0, 20) + '...' : msg.content;
-                return `<span class="danmaku-item">${escapeHtml(msg.nickname)}：${escapeHtml(shortContent)}</span>`;
+            // 将弹幕平均分配到4行
+            const rows = 4;
+            const rowMessages = [];
+            for (let i = 0; i < rows; i++) {
+                rowMessages.push([]);
+            }
+            
+            latestMessages.forEach((msg, index) => {
+                rowMessages[index % rows].push(msg);
+            });
+
+            // 创建多行弹幕结构
+            const rowsHtml = rowMessages.map((row, rowIndex) => {
+                const danmakuItems = row.map(msg => {
+                    const shortContent = msg.content.length > 20 ? msg.content.substring(0, 20) + '...' : msg.content;
+                    return `<span class="danmaku-item">${escapeHtml(msg.nickname)}：${escapeHtml(shortContent)}</span>`;
+                }).join('');
+                
+                return `
+                    <div class="danmaku-row">
+                        <div class="danmaku-scroll delay-${rowIndex}">
+                            ${danmakuItems}${danmakuItems}
+                        </div>
+                    </div>
+                `;
             }).join('');
 
-            // 复制一份弹幕实现无缝滚动
-            danmakuScroll.innerHTML = danmakuItems + danmakuItems;
+            danmakuTrack.innerHTML = rowsHtml;
         }
 
         // 提交留言
@@ -1120,21 +1142,12 @@
         // 格式化时间
         function formatTime(timestamp) {
             const date = new Date(timestamp);
-            const now = new Date();
-            const diff = now - date;
-
-            // 小于1小时显示"X分钟前"
-            if (diff < 60000) {
-                return '刚刚';
-            } else if (diff < 3600000) {
-                return Math.floor(diff / 60000) + '分钟前';
-            } else if (diff < 86400000) {
-                return Math.floor(diff / 3600000) + '小时前';
-            } else if (diff < 604800000) {
-                return Math.floor(diff / 86400000) + '天前';
-            } else {
-                return date.toLocaleDateString('zh-CN');
-            }
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}.${month}.${day} ${hours}:${minutes}`;
         }
     </script>
     <script src="js/music.js"></script>
