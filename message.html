@@ -292,7 +292,7 @@
         }
 
         .guestbook-submit:hover {
-            background: var(--primary-dark);
+            background: #2c8cd6;
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
@@ -479,47 +479,49 @@
 
         .danmaku-track {
             position: relative;
-            height: 150px;
+            height: 140px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: space-evenly;
+            padding: 5px 0;
         }
 
         .danmaku-row {
             position: relative;
             width: 100%;
-            height: 36px;
+            height: 28px;
+            line-height: 28px;
             overflow: hidden;
         }
 
         .danmaku-scroll {
             position: absolute;
             top: 50%;
+            right: -100%;
             transform: translateY(-50%);
             white-space: nowrap;
         }
 
-        .danmaku-scroll.delay-0 { animation: danmakuScroll 45s linear infinite; }
-        .danmaku-scroll.delay-1 { animation: danmakuScroll 50s linear infinite; animation-delay: -10s; }
-        .danmaku-scroll.delay-2 { animation: danmakuScroll 55s linear infinite; animation-delay: -20s; }
-        .danmaku-scroll.delay-3 { animation: danmakuScroll 40s linear infinite; animation-delay: -5s; }
+        .danmaku-scroll.delay-0 { animation: danmakuScroll 18s linear infinite; }
+        .danmaku-scroll.delay-1 { animation: danmakuScroll 20s linear infinite; animation-delay: -5s; }
+        .danmaku-scroll.delay-2 { animation: danmakuScroll 22s linear infinite; animation-delay: -10s; }
+        .danmaku-scroll.delay-3 { animation: danmakuScroll 16s linear infinite; animation-delay: -3s; }
 
         @keyframes danmakuScroll {
             0% {
                 transform: translateY(-50%) translateX(0);
             }
             100% {
-                transform: translateY(-50%) translateX(-50%);
+                transform: translateY(-50%) translateX(-200%);
             }
         }
 
         .danmaku-item {
             display: inline-block;
-            margin-right: 30px;
-            padding: 6px 16px;
+            margin-right: 40px;
             color: #333;
-            font-size: 13px;
+            font-size: 14px;
             white-space: nowrap;
             animation: danmakuFade 0.3s ease;
         }
