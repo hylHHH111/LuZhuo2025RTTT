@@ -1121,7 +1121,7 @@ body {
 }
 
 /* ========== 移动端底部导航栏 ========== */
-.mobile-bottom-nav {
+nav.mobile-bottom-nav {
     display: none !important;
     position: fixed !important;
     bottom: 0 !important;
@@ -1132,6 +1132,7 @@ body {
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-around !important;
@@ -1144,6 +1145,7 @@ body {
     border-right: none !important;
     min-height: 50px !important;
     max-height: 50px !important;
+    transform: none !important;
 }
 
 .mobile-nav-item {
@@ -1172,7 +1174,7 @@ body {
 
 .mobile-nav-icon {
     font-size: 18px !important;
-    margin-bottom: -3px !important;
+    margin-bottom: 1px !important;
     transition: transform 0.3s ease;
     line-height: 1 !important;
     display: block !important;
