@@ -1122,21 +1122,27 @@ body {
 
 /* ========== 移动端底部导航栏 ========== */
 .mobile-bottom-nav {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    justify-content: space-around;
-    z-index: 9999;
-    padding: 0 5px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: none !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 50px !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    z-index: 2147483647 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
 }
 
 .mobile-nav-item {
@@ -1391,6 +1397,11 @@ body {
 
     .mobile-bottom-nav {
         display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
     }
 
     .page-container {
