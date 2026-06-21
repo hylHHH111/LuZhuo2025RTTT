@@ -1108,11 +1108,13 @@ body {
 
 /* ========== 页脚 ========== */
 .footer {
-    background: var(--primary);
-    color: var(--white);
-    padding: 10px var(--space-lg);
-    text-align: center;
-    margin-top: var(--space-2xl);
+    background: #42abf3 !important;
+    color: #ffffff !important;
+    padding: 10px var(--space-lg) 80px !important;
+    text-align: center !important;
+    margin-top: var(--space-2xl) !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
 .footer-text {
