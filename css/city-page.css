@@ -1420,7 +1420,11 @@ nav.mobile-bottom-nav {
     }
 
     .footer {
-        padding-bottom: 70px;
+        padding-bottom: 70px !important;
+        background: var(--primary) !important;
+        color: var(--white) !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
 
     .back-to-top {
