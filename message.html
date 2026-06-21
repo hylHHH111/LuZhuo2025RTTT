@@ -612,6 +612,85 @@
             opacity: 0.9;
         }
 
+        /* 移动端底部导航栏 */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            justify-content: space-around;
+            z-index: 9999;
+            padding: 0 5px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 10px;
+            flex: 1;
+            min-width: 40px;
+            padding: 4px 0;
+        }
+
+        .mobile-nav-item.active {
+            color: #42abf3;
+        }
+
+        .mobile-nav-item.active .mobile-nav-icon {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-icon {
+            font-size: 18px;
+            margin-bottom: -3px;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-text {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .navbar-toggle {
+                display: none !important;
+            }
+
+            .navbar-nav {
+                display: none !important;
+            }
+
+            .mobile-bottom-nav {
+                display: flex !important;
+            }
+
+            .main-content {
+                padding-bottom: 80px;
+            }
+
+            .footer {
+                padding-bottom: 70px;
+            }
+
+            .back-to-top {
+                bottom: 80px;
+            }
+        }
+
         /* 回到顶部 */
         .back-to-top {
             position: fixed;
@@ -852,6 +931,42 @@
     <footer class="footer">
         <p class="footer-text">鹭卓2025 RTTT巡演记录 | ALL FOR LUZHUO</p>
     </footer>
+
+    <!-- 移动端底部导航栏 -->
+    <nav class="mobile-bottom-nav">
+        <a href="home.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🏠</span>
+            <span class="mobile-nav-text">首页</span>
+        </a>
+        <a href="chengdu.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🎵</span>
+            <span class="mobile-nav-text">成都</span>
+        </a>
+        <a href="hefei.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🎵</span>
+            <span class="mobile-nav-text">合肥</span>
+        </a>
+        <a href="taiyuan.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🎵</span>
+            <span class="mobile-nav-text">太原</span>
+        </a>
+        <a href="beijing.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🎵</span>
+            <span class="mobile-nav-text">北京</span>
+        </a>
+        <a href="nanjing.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🎵</span>
+            <span class="mobile-nav-text">南京</span>
+        </a>
+        <a href="stage.html" class="mobile-nav-item">
+            <span class="mobile-nav-icon">🎬</span>
+            <span class="mobile-nav-text">直拍</span>
+        </a>
+        <a href="message.html" class="mobile-nav-item active">
+            <span class="mobile-nav-icon">💬</span>
+            <span class="mobile-nav-text">留言</span>
+        </a>
+    </nav>
 
     <!-- 回到顶部 -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
