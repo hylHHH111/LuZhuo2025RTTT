@@ -49,7 +49,7 @@
             <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left;">
                 <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">成都站</h2>
                 <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px; margin-bottom: 4px;">2025年9月26-27日 成都东安湖体育公园多功能体育馆</p>
-                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://weibo.com/p/2315226052b20b68344334845e7904c7514e64" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #想对鹭卓说的话#</a></p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://m.weibo.cn/p/2315226052b20b68344334845e7904c7514e64" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #想对鹭卓说的话#</a></p>
             </div>
         </section>
 
@@ -1590,6 +1590,18 @@
             
             if (!isClickInNavbar && navbarNav && navbarNav.classList.contains('active')) {
                 navbarNav.classList.remove('active');
+            }
+        });
+
+        // 拦截微博链接，强制在浏览器中打开
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+            while (target && target.tagName !== 'A') {
+                target = target.parentElement;
+            }
+            if (target && target.href && (target.href.indexOf('weibo.com') !== -1 || target.href.indexOf('m.weibo.cn') !== -1)) {
+                e.preventDefault();
+                window.open(target.href, '_blank');
             }
         });
     </script>

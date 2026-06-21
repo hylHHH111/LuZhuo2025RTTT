@@ -49,7 +49,7 @@
             <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left;">
                 <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">南京站</h2>
                 <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px;">2025年11月22-23日 南京梦之蓝青奥体育公园体育馆</p>
-                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://weibo.com/p/231522503296ad748ee91d96d2691870686294" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #给鹭卓的三行情诗#</a></p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://m.weibo.cn/p/231522503296ad748ee91d96d2691870686294" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #给鹭卓的三行情诗#</a></p>
             </div>
         </section>
 
@@ -292,7 +292,7 @@
                             { title: '阿乐乐乐', video: 'https://www.xiaohongshu.com/explore/6922a60a000000000d00e342?xsec_token=AB6j7T3OaatVH37BMTRQYFk4T6AwcNj8RnqHR8odq-MOk=&xsec_source=pc_user', isLeaf: true },
                             { title: '麩菓子', video: 'https://www.xiaohongshu.com/explore/6938e29f000000001f00604f?xsec_token=AB879ayw9zeqstTLWV4LlrzIcv5-ghqw81Kj9uxAP7TPM=&xsec_source=pc_user', isLeaf: true },
                             { title: '星河鹭起StarryEgret_鹭卓', video: 'https://www.xiaohongshu.com/explore/6921bd7a000000001e032f5c?xsec_token=ABeSU3Mbtf21x_n2k64NzxAjwWfqurc6GTRY26_Q4rS9o=&xsec_source=pc_user', isLeaf: true },
-                            { title: '荔枝不着陆', video: 'https://www.xiaohongshu.com/explore/696a1da2000000001a01dbe5?xsec_token=ABAaZ5sUJT7VzZrhkPyp3NyM4pcW30riZHYM40F3QlSiU=&xsec_source=pc_user', isLeaf: true }
+                            { title: '荔枝不着陆', video: 'https://www.xiaohongshu.com/explore/6927be46000000001b023524?xsec_token=ABUnag5SWTS9Z-f1tM6aOy1S6GKIdeEBPPDcamlpP-zFc=&xsec_source=pc_like', isLeaf: true }
                         ]
                     },
                     {
@@ -609,8 +609,7 @@
                             { title: '麩菓子', video: 'https://www.xiaohongshu.com/explore/692440fe000000001e02c4f0?xsec_token=ABxw3QZ-dtXAjqV3nnX9Wxf4SbtKiHl-LT90AcXxcr_Gc=&xsec_source=pc_user', isLeaf: true },
                             { title: 'Irradiaphilia_鹭卓', video: 'https://www.xiaohongshu.com/explore/69fb20b2000000003601c847?xsec_token=ABFHzvqGBtF0kOqc91kG0IEDEjuWl1ODFqWhlx_wON_MY=&xsec_source=pc_user', isLeaf: true },
                             { title: '胡椒小熊饼🍪', video: 'https://www.xiaohongshu.com/explore/69234143000000001f00b1a7?xsec_token=ABzktftSzjCw7TnH0gStZYok7NKJHVNjTok9uqibHp0NE=&xsec_source=pc_user', isLeaf: true },
-                            { title: '荔枝不着陆', video: 'https://www.xiaohongshu.com/explore/696a1da2000000001a01dbe5?xsec_token=ABAaZ5sUJT7VzZrhkPyp3NyM4pcW30riZHYM40F3QlSiU=&xsec_source=pc_user', isLeaf: true },
-                            { title: '荔枝不着陆', video: 'https://www.xiaohongshu.com/explore/6927be46000000001b023524?xsec_token=ABv0Ho_d5eIVwv36gF-U2CS70ashx2uSRPhycP2SHJQe0=&xsec_source=pc_user', isLeaf: true }
+                            { title: '荔枝不着陆', video: 'https://www.xiaohongshu.com/explore/696a1da2000000001a01dbe5?xsec_token=ABAaZ5sUJT7VzZrhkPyp3NyA-qDmZnn54KSSwBre-mSOs=&xsec_source=pc_user', isLeaf: true }
                         ]
                     },
                     {
@@ -1486,6 +1485,18 @@
             
             if (!isClickInNavbar && navbarNav && navbarNav.classList.contains('active')) {
                 navbarNav.classList.remove('active');
+            }
+        });
+
+        // 拦截微博链接，强制在浏览器中打开
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+            while (target && target.tagName !== 'A') {
+                target = target.parentElement;
+            }
+            if (target && target.href && (target.href.indexOf('weibo.com') !== -1 || target.href.indexOf('m.weibo.cn') !== -1)) {
+                e.preventDefault();
+                window.open(target.href, '_blank');
             }
         });
     </script>

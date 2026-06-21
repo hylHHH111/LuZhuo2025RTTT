@@ -49,7 +49,7 @@
             <div class="city-header-content" style="position: absolute; bottom: 20px; left: 40px; text-align: left;">
                 <h2 class="city-name" style="margin-bottom: 4px; font-size: 35px;">北京站</h2>
                 <p class="city-date" style="opacity: 0.9; color: var(--white); font-size: 13px;">2025年11月08-09日 华熙生物·润百颜中心</p>
-                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #跟着鹭卓一起热浪抵达#</a></p>
+                <p class="city-date" style="opacity: 1; font-size: 16px; margin-top: 4px;"><a href="https://m.weibo.cn/p/23152262740ec162e02515c00902051fab9e2f" target="_blank" style="color: var(--white); text-decoration: none; font-weight: 600;">💌点击▷ #跟着鹭卓一起热浪抵达#</a></p>
             </div>
         </section>
 
@@ -1498,6 +1498,18 @@
             
             if (!isClickInNavbar && navbarNav && navbarNav.classList.contains('active')) {
                 navbarNav.classList.remove('active');
+            }
+        });
+
+        // 拦截微博链接，强制在浏览器中打开
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+            while (target && target.tagName !== 'A') {
+                target = target.parentElement;
+            }
+            if (target && target.href && (target.href.indexOf('weibo.com') !== -1 || target.href.indexOf('m.weibo.cn') !== -1)) {
+                e.preventDefault();
+                window.open(target.href, '_blank');
             }
         });
     </script>
