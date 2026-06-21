@@ -613,7 +613,7 @@
         }
 
         /* 移动端底部导航栏 */
-        .mobile-bottom-nav {
+        nav.mobile-bottom-nav {
             display: none;
             position: fixed;
             bottom: 0;
@@ -624,14 +624,18 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: space-around;
-            z-index: 9999;
-            padding: 0 5px;
+            z-index: 2147483647;
+            padding: 0;
+            margin: 0;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
+            transform: none;
         }
 
-        .mobile-nav-item {
+        nav.mobile-bottom-nav .mobile-nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -643,25 +647,32 @@
             flex: 1;
             min-width: 40px;
             padding: 4px 0;
+            margin: 0;
+            box-sizing: border-box;
         }
 
-        .mobile-nav-item.active {
+        nav.mobile-bottom-nav .mobile-nav-item.active {
             color: #42abf3;
         }
 
-        .mobile-nav-item.active .mobile-nav-icon {
+        nav.mobile-bottom-nav .mobile-nav-item.active .mobile-nav-icon {
             transform: scale(1.1);
         }
 
-        .mobile-nav-icon {
+        nav.mobile-bottom-nav .mobile-nav-icon {
             font-size: 18px;
-            margin-bottom: -3px;
+            margin-bottom: 1px;
             transition: transform 0.3s ease;
+            line-height: 1;
+            display: block;
         }
 
-        .mobile-nav-text {
+        nav.mobile-bottom-nav .mobile-nav-text {
             font-weight: 500;
             letter-spacing: 0.5px;
+            font-size: 10px;
+            line-height: 1.2;
+            display: block;
         }
 
         /* 移动端适配 */
