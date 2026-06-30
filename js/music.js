@@ -1,5 +1,5 @@
 // 背景音乐播放器 - Web Audio API 版本
-// 注意：此脚本只在独立打开 home.html 时生效
+// 注意：此脚本只在独立打开页面时生效
 // 通过 shell.html 的 iframe 打开时，音频由 shell.html 控制
 (function() {
     // 防止重复初始化
@@ -10,6 +10,19 @@
     if (window !== window.parent) {
         window.pauseBgMusic = function() {};
         window.resumeBgMusic = function() {};
+        return;
+    }
+    
+    // 检查是否已经存在音频元素（防止重复创建）
+    var existingAudio = document.getElementById('bg-music');
+    if (existingAudio) {
+        console.log('已存在音频元素，跳过创建');
+        return;
+    }
+    
+    // 检查是否已经由 shell.html 控制音频
+    if (window.bgMusicControlledByShell) {
+        console.log('音频已由 shell.html 控制，跳过创建');
         return;
     }
     

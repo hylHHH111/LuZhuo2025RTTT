@@ -94,6 +94,9 @@
     
     <script>
         (function() {
+            // 标记音频已经由 shell.html 控制
+            window.bgMusicControlledByShell = true;
+            
             var audio = document.getElementById('bg-music');
             var btn = document.getElementById('music-control-btn');
             var iframe = document.getElementById('content-frame');
@@ -157,8 +160,12 @@
             function injectFunctions() {
                 try {
                     if (iframe.contentWindow) {
+                        // 注入音乐控制函数
                         iframe.contentWindow.pauseBgMusic = window.pauseBgMusic;
                         iframe.contentWindow.resumeBgMusic = window.resumeBgMusic;
+                        
+                        // 注入标志，告诉 iframe 音频已经由 shell.html 控制
+                        iframe.contentWindow.bgMusicControlledByShell = true;
                         
                         // 移除 iframe 中可能存在的重复音乐按钮
                         setTimeout(function() {
